@@ -14,6 +14,7 @@ RUN pnpm install --frozen-lockfile
 FROM base AS build
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+ENV NODE_OPTIONS="--max-old-space-size=6144"
 RUN pnpm run build
 
 # ---------- Production runtime ----------
