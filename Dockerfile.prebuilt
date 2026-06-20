@@ -1,0 +1,46 @@
+FROM node:22-slim
+
+WORKDIR /app
+
+# Dependencias del sistema
+RUN apt-get update && apt-get install -y \
+    python3 make g++ \
+    dos2unix \
+    && rm -rf /var/lib/apt/lists/*
+
+# Configurar PNPM
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+ENV PNPM_ALLOW_ALL_BUILDS=1
+
+RUN corepack enable
+
+# Copiar todo
+COPY . .
+
+# ==============================================
+# LIMPIAR y REINSTALAR
+# ==============================================
+# 1. Eliminar node_modules de Windows
+RUN find . -type d -name "node_modules" -prune -exec rm -rf {} \;
+
+# 2. Instalar dependencias en Linux
+RUN pnpm install --frozen-lockfile
+
+# 3. Reconstruir módulos nativos
+RUN pnpm rebuild better-sqlite3 sharp esbuild @parcel/watcher vue-demi
+
+# 4. Copiar node_modules al .output/server
+RUN cp -r node_modules .output/server/
+
+# 5. NORMALIZAR archivos (CRITICAL para resolver el error)
+RUN find .output -type f \( -name "*.js" -o -name "*.mjs" -o -name "*.cjs" \) -exec dos2unix {} \; && \
+    find .output -type f \( -name "*.js" -o -name "*.mjs" -o -name "*.cjs" \) -exec sed -i 's/\\/\//g' {} \; && \
+    find .output -type f \( -name "*.js" -o -name "*.mjs" -o -name "*.cjs" \) -exec sed -i 's/\r$//' {} \;
+
+# 6. Verificar que el archivo principal esté bien
+RUN head -50 .output/server/index.mjs
+
+EXPOSE 3000
+
+CMD ["node", ".output/server/index.mjs"]
