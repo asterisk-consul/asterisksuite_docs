@@ -7,14 +7,11 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 ENV PNPM_ALLOW_ALL_BUILDS=1
 ENV NODE_OPTIONS="--max-old-space-size=6144"
-ENV CI=true
 RUN corepack enable
 COPY package.json pnpm-lock.yaml ./
 COPY pnpm-workspace.yaml ./
-RUN pnpm config set ignore-scripts false
-RUN pnpm install
-RUN pnpm rebuild better-sqlite3 sharp esbuild @parcel/watcher vue-demi
+RUN pnpm install --frozen-lockfile
 COPY . .
-RUN DEBUG=vite:*,nuxt:* pnpm build
+RUN pnpm build
 EXPOSE 3000
 CMD ["node", ".output/server/index.mjs"]
