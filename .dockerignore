@@ -1,7 +1,9 @@
 node_modules
+.output/server/node_modules
 .pnpm-store
 .nuxt
 .git
+.github
 .env
 .env.*
 *.log
@@ -9,3 +11,7 @@ node_modules
 .vscode
 .idea
 dist
+Dockerfile
+Dockerfile.prebuilt
+.dockerignore
+README.md

@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     contentRawMarkdown: false,
   },
 
-  modules: ['nuxt-studio'],
+  modules:  ['nuxt-studio'],
   studio: {
     repository: {
       provider: 'github',
@@ -22,8 +22,5 @@ export default defineNuxtConfig({
     }
   },
 
-  // SOLO PARA DIAGNÓSTICO - sacar esto después de confirmar la causa
-  $production: {
-    studio: false
-  }
+
 })
