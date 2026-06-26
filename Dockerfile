@@ -10,7 +10,6 @@ RUN --mount=type=cache,target=/root/.local/share/pnpm/store pnpm install --froze
 
 FROM deps AS build
 ENV NODE_OPTIONS="--max-old-space-size=4096"
-ENV NUXT_SKIP_STUDIO=true
 COPY . .
 RUN --mount=type=cache,target=/app/.nuxt pnpm build
 
