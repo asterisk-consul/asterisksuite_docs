@@ -62,8 +62,4 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Deploy to Dokploy
-        run: |
-          curl -s -X POST "${{ secrets.DOKPLOY_URL }}/api/service.deploy" \
-            -H "Content-Type: application/json" \
-            -H "x-api-key: ${{ secrets.DOKPLOY_API_KEY }}" \
-            -d '{"serviceName": "${{ secrets.DOKPLOY_SERVICE_NAME }}"}'
+        run: curl -X POST "https://panel.asterisksuite.cloud/api/deploy/pU_Bom0Qv_eceVOBNLDOa"
