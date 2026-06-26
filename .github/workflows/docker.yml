@@ -60,3 +60,10 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Deploy to Dokploy
+        run: |
+          curl -s -X POST "${{ secrets.DOKPLOY_URL }}/api/service.deploy" \
+            -H "Content-Type: application/json" \
+            -H "x-api-key: ${{ secrets.DOKPLOY_API_KEY }}" \
+            -d '{"serviceName": "${{ secrets.DOKPLOY_SERVICE_NAME }}"}'
