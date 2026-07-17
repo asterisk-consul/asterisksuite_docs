@@ -1,6 +1,5 @@
 export default defineAppConfig({
   header: {
-    title: 'Asterisk',
-  
+    title: "Asterisk",
   },
-})
+});
