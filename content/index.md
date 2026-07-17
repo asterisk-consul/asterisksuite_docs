@@ -1,15 +1,14 @@
 ---
 seo:
-  title: Documentacion de AsteriskSuite
+  title: AsteriskSuite
   description: Documentacion
 ---
 
 ::u-page-hero
 #title
-Documentacion de AsteriskSuite
+AsteriskSuite
 
 #description
-Documentacion
 
 #links
   :::u-button
