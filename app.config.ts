@@ -1,5 +1,11 @@
 export default defineAppConfig({
-  header: {
-    title: "Asterisk",
+  docus: {
+    header: {
+      title: "Asterisk",
+    },
+    // Algunos temas permiten configurar el colorMode aquí
+    colorMode: {
+      preference: "light", // Esto fija el modo, pero puede no quitar el atajo
+    },
   },
 });
