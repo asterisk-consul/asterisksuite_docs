@@ -14,7 +14,8 @@ export default defineConfig({
       logo: {
         light: './public/logo.png',
         dark: './public/logo-white.png',
-        alt: 'Asterisk Suite'
+        alt: 'Asterisk Suite',
+        replacesTitle: true
       },
 
       favicon: '/favicon.svg',
