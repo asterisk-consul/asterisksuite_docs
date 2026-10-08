@@ -180,4 +180,4 @@ Ante una diferencia, registrar empresa, usuario, fecha, identificadores de los d
 
 ## Ver También
 
-- [Crear Producto](/procesos/productos/): alta del producto tarifa usado en los circuitos de venta y logística.
+- [Crear Producto](/configuracion/productos/crear-producto/): alta del producto tarifa usado en los circuitos de venta y logística.

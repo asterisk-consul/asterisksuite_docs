@@ -234,4 +234,4 @@ Si la validación es exitosa, el producto se crea y aparece en la lista.
 
 ## Ver También
 
-- [Implementación de Logística](/procesos/logistica-implementacion/): circuito completo donde se utilizan los productos y las tarifas.
+- [Implementación de Logística](/procesos/logistica/implementacion/): circuito completo donde se utilizan los productos y las tarifas.

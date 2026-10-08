@@ -26,11 +26,6 @@ export default defineConfig({
         }
       ],
 
-      editLink: {
-        baseUrl:
-          'https://github.com/asterisk-consul/asterisksuite_docs/edit/main/'
-      },
-
       lastUpdated: true,
 
       customCss: ['./src/styles/custom.css'],

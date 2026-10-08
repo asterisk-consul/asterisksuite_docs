@@ -9,5 +9,4 @@ Guías funcionales de los principales circuitos de Asterisk Suite, organizadas c
 
 ## Contenido disponible
 
-- [Crear Producto](/procesos/productos/)
-- [Implementación de Logística](/procesos/logistica-implementacion/)
+- [Implementación de Logística](/procesos/logistica/implementacion/)

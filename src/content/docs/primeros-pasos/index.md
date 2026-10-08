@@ -7,8 +7,11 @@ sidebar:
 
 Esta sección reúne las guías para poner en marcha el sistema: alta de la empresa, usuarios, roles y permisos, y los conceptos generales que se usan en el resto de la documentación.
 
+## Contenido disponible
+
+- [Configuración inicial de la empresa](/primeros-pasos/configuracion-inicial-empresa/) — crear la empresa y completar sus datos.
+
 ## Contenido previsto
 
-- Configuración inicial de una empresa.
 - Usuarios, roles y permisos.
 - Conceptos generales de navegación.
