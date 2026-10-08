@@ -17,7 +17,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [~] Productos
   - [x] Crear un producto
   - [x] Variantes
-  - [ ] Componentes / BOM
+  - [x] Componentes / BOM
   - [ ] Precios, listas y por contraparte
   - [ ] Costos y plantillas de costo
   - [x] Atributos, categorías y tags

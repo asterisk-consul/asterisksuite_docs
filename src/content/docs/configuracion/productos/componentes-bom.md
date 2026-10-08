@@ -1,0 +1,74 @@
+---
+title: Componentes y BOM
+description: Definir la estructura de materiales (BOM) de un producto compuesto a partir de sus componentes.
+sidebar:
+  order: 7
+---
+
+## Para qué sirve
+
+La **lista de materiales (BOM)** define de qué está compuesto un producto fabricado. Cada **componente** indica qué producto (y en qué cantidad) se consume para fabricar una unidad del producto principal. Es la base del cálculo de costos y del módulo de fabricación.
+
+En el sistema, la sección **BOM e ingeniería** (`/bom`) lista las estructuras de los productos cuyo origen de costo es **BOM** o **Ingeniería**.
+
+## Permisos necesarios
+
+`products.*` para crear el producto, y los permisos de componentes/ingeniería (`product_components.*` / `engineering.*`) para administrar la estructura.
+
+## Configuración previa
+
+- El **producto principal** debe existir y estar configurado como compuesto.
+- Los **componentes** deben ser productos de tipo **Materia prima** o **Producto intermedio (semi-terminado)**.
+- Opcionalmente, tener cargadas las **variantes** y **unidades** que se usarán.
+
+## Cómo crear un BOM
+
+1. Ir a **Fabricación → BOM** (`/bom`) y presionar **Nuevo BOM**.
+2. **Paso 1 – Datos generales**: completar el producto terminado y la configuración de costos (origen de costo **BOM**). El sistema precarga origen `BOM`, cálculo automático de costo y tipo Producto Terminado. Opcionalmente definir el **precio de venta** por costo + margen (%).
+3. Presionar **Crear y continuar**.
+4. **Paso 2 – Template de costos**: asignar un template de costos (o **Saltar**).
+5. Se abre el producto en la pestaña **Ingeniería**, donde se agregan los componentes.
+
+## Cómo agregar un componente
+
+1. En la estructura, presionar **Agregar componente**.
+2. Elegir el tipo: **Materias primas**, **Intermedios** o **Todos**.
+3. Seleccionar el **producto** (buscador por nombre o SKU). Si no existe, se puede crear desde el mismo modal.
+4. Definir el consumo:
+   - **Variante** (opcional).
+   - **Cantidad** (obligatoria, mayor a 0).
+   - **Unidad del consumo**.
+   - **Desperdicio (%)** (opcional).
+5. En modo **Ingeniería**, además se cargan **Largo, Ancho y Alto (mm)** de cada pieza.
+6. Presionar **Agregar**.
+
+En estructuras de varios niveles, un componente puede ser a su vez un **subconjunto** con sus propios hijos; su costo se acumula primero en ese producto intermedio.
+
+## Reglas y validaciones
+
+- Un producto **no puede ser componente de sí mismo**.
+- No se permiten **referencias circulares** (un componente no puede contener, directa o indirectamente, al producto padre).
+- Los componentes solo admiten productos de tipo **Materia prima** o **Intermedio**.
+- La **cantidad** debe ser mayor a 0.
+- Cada cambio en la estructura genera una **nueva versión** de la estructura del producto.
+- Al agregar el primer componente, el producto se marca como **compuesto**; si se eliminan todos, deja de estarlo.
+
+## Estados y efectos
+
+- Agregar/editar/quitar componentes **recalcula** el costo del producto según su template.
+- Quitar un componente es una baja **lógica**.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| "El BOM solo admite materias primas y productos intermedios" | El componente elegido es un producto terminado o un servicio. | Elegí una materia prima o un intermedio. |
+| "Un producto no puede ser componente de sí mismo" | Se seleccionó el mismo producto. | Elegí otro componente. |
+| "... generaría una referencia circular" | El componente contiene al producto padre. | Revisá la estructura y evitá el ciclo. |
+| La cantidad no se acepta | Es 0 o negativa. | Ingresá una cantidad mayor a 0. |
+
+## Ver también
+
+- [Productos](/configuracion/productos/).
+- [Variantes de producto](/configuracion/productos/variantes/).
+- Fabricación (próximamente).
