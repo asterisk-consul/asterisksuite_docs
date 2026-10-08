@@ -12,11 +12,12 @@ export default defineConfig({
       defaultLocale: 'es',
 
       logo: {
-        src: './src/assets/logo.svg',
+        light: './public/logo.png',
+        dark: './public/logo-white.png',
         alt: 'Asterisk Suite'
       },
 
-      favicon: '/favicon.ico',
+      favicon: '/favicon.svg',
 
       social: [
         {
