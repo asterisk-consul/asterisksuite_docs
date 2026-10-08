@@ -1,0 +1,72 @@
+---
+title: Precios por cliente y proveedor
+description: Precios acordados por contraparte, comparación con el precio general, historial e importación.
+sidebar:
+  order: 10
+---
+
+## Para qué sirve
+
+Permite definir **precios acordados** con un **cliente** o **proveedor** para un producto específico. Si existe un precio específico vigente, se usa en las operaciones; si no, se usa el **precio general** del producto.
+
+Se administran en **Productos → Precios por cliente y proveedor** (`/productos/by-party`), o desde la pestaña **Clientes y proveedores** del producto.
+
+## Permisos necesarios
+
+`pricing.*` / `product_party_pricing.*` para gestionar; `business_parties.read` para ver contrapartes.
+
+## Cómo asignar un precio
+
+Desde la pestaña **Clientes y proveedores** del producto:
+
+1. Presionar **Asignar**.
+2. Completar:
+   - **Tipo de relación**: Venta (cliente) o Compra (proveedor).
+   - **Cliente** o **Proveedor**.
+   - **Moneda**.
+   - **Precio acordado**.
+   - En compras: **Días de entrega** y **Cantidad mín.**
+   - **Proveedor principal** (interruptor).
+3. Guardar.
+
+## Consulta por contraparte
+
+En `/productos/by-party`:
+
+1. Elegir **Clientes** o **Proveedores**.
+2. Seleccionar la contraparte y, opcionalmente, buscar por producto/SKU.
+3. Ver la pestaña **Precios vigentes** o **Historial**.
+
+La tabla de precios vigentes muestra: producto, operación, **precio general**, **precio acordado**, **diferencia (%)** y fecha de actualización.
+
+## Volver al precio general
+
+En la fila del precio específico, usar la acción **Volver al precio general** para eliminarlo. El producto vuelve a usar su precio general.
+
+## Importar y exportar
+
+- **Exportar**: Excel (.xlsx) o CSV con producto, SKU, operación, moneda, precio acordado, precio general y fecha.
+- **Importar**: Excel con las columnas **SKU**, **Moneda** y **Precio acordado**. El tipo de operación se determina por si es Cliente (venta) o Proveedor (compra).
+
+## Historial
+
+El historial registra cada cambio: precio anterior, nuevo, **origen** (Manual, Venta confirmada, Compra confirmada, Tarifa de despacho, Proveedor existente) y fecha.
+
+## Reglas y validaciones
+
+- El precio acordado requiere **contraparte** y **moneda**.
+- El "proveedor principal" aplica solo a relaciones de compra.
+- Los precios específicos no reemplazan al general: lo **priorizan** mientras estén vigentes.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No aparece el precio acordado en la operación | El precio específico no está vigente o es de otra moneda. | Verificá vigencia y moneda en la pestaña de la contraparte. |
+| No puedo guardar | Falta contraparte o moneda. | Completá ambos campos. |
+| La importación falla | Faltan columnas SKU/Moneda/Precio. | Usá la plantilla con esas columnas. |
+
+## Ver también
+
+- [Precios de producto](/configuracion/productos/precios/).
+- [Listas de precio](/configuracion/productos/listas-de-precio/).
