@@ -7,8 +7,12 @@ sidebar:
 
 Guías de administración del sistema: alta de empresas, gestión de usuarios, asignación de roles y permisos, y consulta de la auditoría.
 
+## Contenido disponible
+
+- [Usuarios, roles y permisos](/administracion/usuarios-roles-permisos/) — modelo de acceso y gestión.
+
 ## Contenido previsto
 
 - Empresas y sucursales.
-- Usuarios, roles y permisos.
 - Auditoría y seguridad.
+- Notificaciones y papelera.

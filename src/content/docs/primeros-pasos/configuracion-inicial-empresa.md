@@ -95,6 +95,6 @@ Si el usuario pertenece a más de una empresa, desde **Seleccionar empresa** (`/
 ## Ver también
 
 - [Primeros pasos](/primeros-pasos/) — resto del recorrido inicial.
-- Usuarios, roles y permisos (próximamente).
+- [Usuarios, roles y permisos](/administracion/usuarios-roles-permisos/) — gestionar accesos.
 - Secuencias y tipos de documento (próximamente).
 - Impuestos y configuración fiscal (próximamente).

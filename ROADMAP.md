@@ -9,7 +9,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 ## Primeros pasos
 
 - [x] Configuración inicial de la empresa
-- [ ] Usuarios, roles y permisos
+- [x] Usuarios, roles y permisos
 - [ ] Navegación general y conceptos
 
 ## Configuración
@@ -87,7 +87,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 
 - [ ] Centro de configuración
 - [ ] Empresa
-- [ ] Usuarios y miembros
+- [x] Usuarios, roles y permisos
 - [ ] Seguridad
 - [ ] Notificaciones
 - [ ] Auditoría
