@@ -11,7 +11,9 @@ La pantalla **Usuarios** (`/settings/users`) lista los usuarios que pertenecen a
 
 ## Permisos necesarios
 
-Solo usuarios con membresía **OWNER** o **ADMIN** de la empresa pueden gestionar usuarios y asignar roles. El resto ve el listado con las acciones deshabilitadas.
+:::note[Permisos necesarios]
+Solo los usuarios con membresía **OWNER** o **ADMIN** de la empresa pueden gestionar usuarios y asignar roles. El resto ve el listado con las acciones deshabilitadas.
+:::
 
 ## Configuración previa
 

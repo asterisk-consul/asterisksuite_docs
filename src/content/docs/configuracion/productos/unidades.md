@@ -11,7 +11,14 @@ Las **unidades de medida** se usan en todo el sistema: definen cómo se cuantifi
 
 ## Permisos necesarios
 
-`units.read` para ver; `units.create` y `units.update` para crear, editar y activar/desactivar.
+:::note[Permisos necesarios]
+Estos son los permisos que otorgan acceso a esta pantalla (tal como figuran en **Roles y permisos**):
+
+- Ver unidades de medida
+- Crear unidades de medida
+- Editar unidades de medida
+- Eliminar unidades de medida
+:::
 
 ## Unidades por defecto
 

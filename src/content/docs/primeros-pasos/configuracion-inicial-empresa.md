@@ -13,8 +13,10 @@ Conviene crear la empresa **antes** de configurar productos, impuestos y secuenc
 
 ## Permisos necesarios
 
+:::note[Permisos necesarios]
 - **Crear empresa**: cualquier usuario autenticado. Un usuario puede ser **OWNER de hasta 3 empresas**.
 - **Editar los datos de la empresa**: solo usuarios con rol **OWNER** o **ADMIN** dentro de esa empresa.
+:::
 
 ## Antes de empezar
 

@@ -13,7 +13,19 @@ En el sistema, la sección **BOM e ingeniería** (`/bom`) lista las estructuras 
 
 ## Permisos necesarios
 
-`products.*` para crear el producto, y los permisos de componentes/ingeniería (`product_components.*` / `engineering.*`) para administrar la estructura.
+:::note[Permisos necesarios]
+Para configurar la estructura del producto:
+
+- Ver productos
+- Crear productos
+- Editar productos
+- Ver estructura de producto
+- Crear componentes de ingeniería
+- Editar estructura de producto
+- Eliminar componentes de ingeniería
+- Configurar BOM e ingeniería de productos
+- Ver costos de fabricación
+:::
 
 ## Configuración previa
 

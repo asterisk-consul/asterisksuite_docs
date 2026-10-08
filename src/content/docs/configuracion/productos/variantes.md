@@ -13,7 +13,14 @@ Se administran **dentro del producto**, en la pestaña **Variables**.
 
 ## Permisos necesarios
 
-`product_variants.read` para ver; `product_variants.create`, `product_variants.update` y `product_variants.delete` para gestionarlas.
+:::note[Permisos necesarios]
+Estos son los permisos que aparecen en **Roles y permisos** para esta pantalla:
+
+- Ver variantes de producto
+- Crear variantes de producto
+- Editar variantes de producto
+- Eliminar variantes de producto
+:::
 
 ## Dónde se administran
 

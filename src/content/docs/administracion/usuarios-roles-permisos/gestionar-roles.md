@@ -11,7 +11,9 @@ La pantalla **Roles y permisos** (`/settings/roles`) permite crear roles de nego
 
 ## Permisos necesarios
 
-Solo usuarios con membresía **OWNER** o **ADMIN** de la empresa pueden gestionar roles y permisos.
+:::note[Permisos necesarios]
+Solo los usuarios con membresía **OWNER** o **ADMIN** de la empresa pueden gestionar roles y permisos.
+:::
 
 ## Cómo crear un rol
 
@@ -48,8 +50,8 @@ La barra inferior indica si hay cambios sin guardar y cuántos permisos están s
 
 Los permisos del módulo **Documentos** tienen dos niveles:
 
-- **Permisos generales** (`documents.*`, `sales.*`, `purchases.*` a nivel 2, como `sales.read`): habilitan la acción para **todos los tipos** de documento.
-- **Permisos por tipo** (`sales.invoices.*`, `purchases.orders.*`, etc.): habilitan la acción solo para ese tipo.
+- **Permisos generales** (por ejemplo, "Ver ventas" o "Confirmar compras"): habilitan la acción para **todos los tipos** de documento.
+- **Permisos por tipo** (por ejemplo, "Confirmar facturas de ventas" o "Crear órdenes de compra"): habilitan la acción solo para ese tipo.
 
 Si un rol tiene permisos generales, el sistema muestra un **aviso** y ofrece el botón **"Usar configuración por tipo de documento"**, que los quita para que el permiso dependa únicamente de los tipos seleccionados. Conviene preferir el permiso por tipo para un control más fino.
 

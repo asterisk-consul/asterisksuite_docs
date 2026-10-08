@@ -11,7 +11,14 @@ Los **tags** (etiquetas) permiten clasificar productos de forma transversal y fl
 
 ## Permisos necesarios
 
-`tags.read` para ver; `tags.create` y `tags.update` para crear, editar y activar/desactivar.
+:::note[Permisos necesarios]
+Estos son los permisos que aparecen en **Roles y permisos** para esta pantalla:
+
+- Ver etiquetas
+- Crear etiquetas
+- Editar etiquetas
+- Eliminar etiquetas
+:::
 
 ## Cómo crear un tag
 

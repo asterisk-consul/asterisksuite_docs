@@ -11,7 +11,14 @@ Los **precios del producto** son la base de los documentos de venta y compra. Se
 
 ## Permisos necesarios
 
-`products.read` para ver; `products.update` (o los permisos de precios) para editar.
+:::note[Permisos necesarios]
+La gestión de precios se habilita con acceso a la gestión de productos:
+
+- Ver productos
+- Editar productos
+
+Además, el producto debe tener activada la casilla **Habilitar precio** para cargar precios de venta.
+:::
 
 ## Dónde se administran
 

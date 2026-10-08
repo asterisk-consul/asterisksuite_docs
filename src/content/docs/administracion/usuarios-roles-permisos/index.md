@@ -51,7 +51,7 @@ Los usuarios con membresía **OWNER** de la empresa omiten esta verificación y 
 
 ## Convención de permisos
 
-Cada permiso se identifica con `{módulo}.{acción}` (por ejemplo `products.create`, `picking.execute`). En la pantalla de permisos se agrupan por módulo:
+Cada permiso combina un **módulo** y una **acción** (por ejemplo, crear productos o ejecutar picking). En la pantalla de permisos cada uno se muestra con su **descripción en español**, agrupado por módulo:
 
 **Acceso** · **Documentos** (con subgrupos por tipo) · **Maestros** · **Ingeniería y Costos** · **Logística** · **Capturas y adjuntos** · **Tesorería** · **RRHH** · **Sistema**.
 
@@ -64,8 +64,11 @@ Acciones habituales: `read` (ver), `create` (crear), `update` (editar), `confirm
 
 ## Permisos necesarios
 
+:::note[Permisos necesarios]
 - Gestionar usuarios y roles requiere ser **OWNER** o **ADMIN** de la empresa.
-- A nivel de permisos: `roles.read`, `roles.create`, `roles.update`, `roles.delete`, `roles.manage_permissions`, y `users.read_roles`, `users.assign_roles`, `users.read_permissions`.
+- Permisos de roles: Ver roles · Crear roles · Editar roles · Eliminar roles · Asignar permisos a roles.
+- Permisos de usuarios: Ver roles de un usuario · Asignar roles a usuarios · Ver permisos efectivos de un usuario.
+:::
 
 ## Ver también
 

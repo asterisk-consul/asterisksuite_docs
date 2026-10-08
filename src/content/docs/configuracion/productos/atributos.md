@@ -11,7 +11,14 @@ Los **atributos** definen características reutilizables que se aplican a los pr
 
 ## Permisos necesarios
 
-`attributes.read` para ver; `attributes.create` y `attributes.update` para crear, editar y activar/desactivar.
+:::note[Permisos necesarios]
+Estos son los permisos que aparecen en **Roles y permisos** para esta pantalla:
+
+- Ver atributos
+- Crear atributos
+- Editar atributos
+- Eliminar atributos
+:::
 
 ## Cómo crear un atributo
 

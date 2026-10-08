@@ -11,7 +11,14 @@ Las **categorías** permiten organizar el catálogo de productos en una estructu
 
 ## Permisos necesarios
 
-`categories.read` para ver; `categories.create` y `categories.update` para crear, editar, mover y eliminar.
+:::note[Permisos necesarios]
+Estos son los permisos que aparecen en **Roles y permisos** para esta pantalla:
+
+- Ver categorías
+- Crear categorías
+- Editar categorías
+- Eliminar categorías
+:::
 
 ## Cómo crear una categoría
 

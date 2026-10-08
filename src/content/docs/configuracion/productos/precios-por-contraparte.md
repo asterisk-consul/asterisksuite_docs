@@ -13,7 +13,13 @@ Se administran en **Productos → Precios por cliente y proveedor** (`/productos
 
 ## Permisos necesarios
 
-`pricing.*` / `product_party_pricing.*` para gestionar; `business_parties.read` para ver contrapartes.
+:::note[Permisos necesarios]
+Para consultar y asignar precios acordados necesitás acceso a:
+
+- Ver productos
+- Editar productos
+- Ver terceros
+:::
 
 ## Cómo asignar un precio
 

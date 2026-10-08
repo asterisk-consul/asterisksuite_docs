@@ -11,7 +11,12 @@ Las **listas de precio** agrupan productos bajo una **moneda** y un **tipo** (ve
 
 ## Permisos necesarios
 
-`price_lists.read` para ver; `price_lists.create`, `price_lists.update` y `price_lists.delete` para gestionarlas.
+:::note[Permisos necesarios]
+La gestión de listas de precio se habilita con acceso a la gestión de precios de productos:
+
+- Ver productos
+- Editar productos
+:::
 
 ## Cómo crear una lista
 

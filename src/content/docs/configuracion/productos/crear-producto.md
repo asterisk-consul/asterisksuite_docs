@@ -24,7 +24,7 @@ Los productos se utilizan en múltiples módulos del sistema:
 Para crear un producto necesitas:
 
 1. **Sesión activa**: haber iniciado sesión en el sistema.
-2. **Permisos**: contar con el permiso `products.create` (los roles **admin** y **manager** lo tienen por defecto).
+2. **Permisos**: contar con permiso para crear productos (los roles **Administrador** y **Gerente** lo tienen por defecto).
 3. **Datos mínimos**: un nombre para el producto.
 
 ---
