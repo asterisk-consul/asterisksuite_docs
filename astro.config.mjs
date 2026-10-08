@@ -32,10 +32,9 @@ export default defineConfig({
       defaultLocale: 'es',
 
       logo: {
-        light: './public/logo.png',
-        dark: './public/logo-white.png',
-        alt: 'Asterisk Suite',
-        replacesTitle: true
+        light: './public/logo-mark.png',
+        dark: './public/logo-mark-white.png',
+        alt: 'Asterisk Suite'
       },
 
       favicon: '/favicon.svg',

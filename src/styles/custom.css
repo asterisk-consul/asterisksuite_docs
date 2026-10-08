@@ -2,7 +2,6 @@
   --sl-color-accent-low: #002a2a;
   --sl-color-accent: #00b8b8;
   --sl-color-accent-high: #a1f0f0;
-  --sl-nav-height: 4.25rem;
 }
 
 :root[data-theme='light'] {
@@ -11,8 +10,33 @@
   --sl-color-accent-high: #003b3b;
 }
 
+/* Logo del nav estilo tema Six: marca grande que sobrepasa el header */
+.header,
+.container__header {
+  overflow: visible;
+}
+
+.site-title-wrapper {
+  position: relative;
+  z-index: 3;
+}
+
+.site-title {
+  align-items: flex-start;
+  overflow: visible;
+}
+
+.site-title .logo-size,
 .site-title img {
-  height: 2.75rem;
+  height: 4.5rem;
   width: auto;
-  object-position: left center;
+  margin-top: 0.15rem;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.35));
+}
+
+@media (max-width: 1023px) {
+  .site-title .logo-size,
+  .site-title img {
+    height: 3.25rem;
+  }
 }

@@ -1,20 +1,46 @@
 ---
 title: Asterisk Suite
-description: Manual de uso, configuración e implementación.
+description: Manual de uso, configuración e implementación de Asterisk Suite.
 template: splash
-hero:
-  title: Documentación de Asterisk Suite
-  tagline: Aprendé a configurar y utilizar cada proceso del sistema.
-  actions:
-    - text: Comenzar
-      link: /primeros-pasos/
-      icon: right-arrow
-    - text: Ver procesos
-      link: /procesos/
-      variant: minimal
+editUrl: false
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid } from '@astrojs/starlight/components'
+import { ContainerSection, HeroX } from '@six-tech/starlight-theme-six/components'
+import heroImage from '../../assets/hero-asterisk.svg'
+
+<HeroX
+  height="400px"
+  mt="2rem"
+  mb="0"
+  px="4rem"
+  radius="1.5rem"
+  title="Documentación de Asterisk Suite"
+  tagline="Aprendé a configurar y utilizar cada proceso del sistema: ventas, compras, tesorería, stock, logística y más."
+  image={{
+    background: heroImage,
+    alt: 'Asterisk Suite',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    contentPosition: 'bottom-left'
+  }}
+  actions={[
+    {
+      text: 'Comenzar',
+      link: '/primeros-pasos/'
+    },
+    {
+      text: 'Ver procesos',
+      link: '/procesos/',
+      variant: 'minimal'
+    }
+  ]}
+/>
+
+<ContainerSection>
+
+## Explorá por área
 
 <CardGrid>
   <Card title="Ventas" icon="star">
@@ -33,3 +59,5 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
     Depósitos, reservas, reposición, BOM y fabricación.
   </Card>
 </CardGrid>
+
+</ContainerSection>
