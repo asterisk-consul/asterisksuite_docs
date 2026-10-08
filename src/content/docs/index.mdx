@@ -1,0 +1,35 @@
+---
+title: Asterisk Suite
+description: Manual de uso, configuración e implementación.
+template: splash
+hero:
+  title: Documentación de Asterisk Suite
+  tagline: Aprendé a configurar y utilizar cada proceso del sistema.
+  actions:
+    - text: Comenzar
+      link: /primeros-pasos/
+      icon: right-arrow
+    - text: Ver procesos
+      link: /procesos/
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <Card title="Ventas" icon="star">
+    Presupuestos, órdenes de venta, facturación, cobros y remitos.
+  </Card>
+
+  <Card title="Compras" icon="document">
+    Órdenes de compra, facturas, pagos y cuentas corrientes.
+  </Card>
+
+  <Card title="Tesorería" icon="database">
+    Cajas, bancos, cheques, tarjetas, impuestos y servicios.
+  </Card>
+
+  <Card title="Stock y fabricación" icon="puzzle">
+    Depósitos, reservas, reposición, BOM y fabricación.
+  </Card>
+</CardGrid>

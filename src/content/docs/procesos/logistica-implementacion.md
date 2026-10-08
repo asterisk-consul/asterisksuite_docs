@@ -1,9 +1,8 @@
 ---
 title: Guía de implementación de Logística
 description: Pruebas y capacitación de ventas, despachos, viajes, mantenimientos y cubiertas
-navigation:
-  title: Implementación de Logística
-  position: 2
+sidebar:
+  order: 2
 ---
 
 ## Objetivo
@@ -178,3 +177,7 @@ Estados de cubierta: En stock, Instalada, En reparación, Dada de baja y Vendida
 - [ ] Una cubierta conserva serie, ubicación, vehículo, posición, movimientos y costos durante todo su ciclo.
 
 Ante una diferencia, registrar empresa, usuario, fecha, identificadores de los documentos, estado esperado, estado obtenido y una captura antes de repetir la prueba.
+
+## Ver También
+
+- [Crear Producto](/procesos/productos/): alta del producto tarifa usado en los circuitos de venta y logística.

@@ -1,0 +1,237 @@
+---
+title: Crear Producto
+description: Guía paso a paso para crear productos en Asterisk Suite ERP
+sidebar:
+  order: 1
+---
+
+## Qué es un Producto
+
+Un **producto** es la unidad básica de catálogo en Asterisk Suite. Cada producto representa un artículo, material, servicio o tarifa que la empresa comercializa, fabrica o utiliza en sus operaciones.
+
+Los productos se utilizan en múltiples módulos del sistema:
+
+- **Compras**: selección de artículos al generar órdenes de compra.
+- **Ventas**: inclusión en facturas y presupuestos.
+- **Logística**: control de stock, picking y despacho.
+- **Inventario**: seguimiento de movimientos y valuación.
+- **Contabilidad**: asociación a cuentas contables para asientos automáticos.
+
+---
+
+## Requisitos Previos
+
+Para crear un producto necesitas:
+
+1. **Sesión activa**: haber iniciado sesión en el sistema.
+2. **Permisos**: contar con el permiso `products.create` (los roles **admin** y **manager** lo tienen por defecto).
+3. **Datos mínimos**: un nombre para el producto.
+
+---
+
+## Campos del Formulario
+
+### Campos Obligatorios
+
+| Campo | Descripción |
+|-------|-------------|
+| **Nombre** | Nombre del producto. Es el campo único obligatorio. |
+
+### Campos Opcionales
+
+| Campo | Tipo | Valor por defecto | Descripción |
+|-------|------|-------------------|-------------|
+| SKU | Texto | vacío | Código único de identificación. Si se ingresa, debe ser único entre todos los productos activos. |
+| Tipo de producto | Enum | `PRODUCTO_TERMINADO` | Clasificación del producto (ver sección Tipos de Producto). |
+| Tipo de cálculo | Enum | `UNIDAD` | Cómo se mide el producto (ver sección Tipos de Cálculo). |
+| Fuente de costo | Enum | `BOM` | De dónde proviene el costo del producto (ver sección Fuentes de Costo). |
+| Activo | Checkbox | `true` | Indica si el producto está disponible para uso en el sistema. |
+| Controla stock | Checkbox | `true` | Si está activo, el sistema controla el inventario de este producto. |
+| Requiere refrigeración | Checkbox | `false` | Marcar si el producto debe mantenerse en cadena de frío. |
+| Habilitar precio | Checkbox | `false` | Permite asociar precios de venta al producto. |
+| Calcular costo automáticamente | Checkbox | `false` | El sistema calcula el costo según la fuente de costo configurada. |
+| Producto compuesto | Checkbox | `false` | Indica que este producto se fabrica a partir de otros componentes. |
+| Tiene ingeniería | Checkbox | `false` | Indica si el producto tiene estructura de ingeniería asociada. |
+| Es tipo tarifa | Checkbox | `false` | Marcar si el producto representa una tarifa de transporte. |
+| Cuenta contable de ingreso | Selector | vacío | Cuenta contable para registrar ingresos por venta de este producto. |
+| Cuenta contable de gasto | Selector | vacío | Cuenta contable para registrar gastos asociados a este producto. |
+| Cuenta contable de inventario | Selector | vacío | Cuenta contable para registrar el valor en inventario. |
+| Impuesto | Selector | vacío | Impuesto principal asociado al producto. |
+| Categoría fiscal | Selector | vacío | Categoría fiscal del producto para cálculo de IVA. |
+
+---
+
+## Tipos de Producto
+
+El sistema ofrece 5 tipos de producto para clasificar correctamente tu catálogo:
+
+| Tipo | Código | Descripción | Ejemplo |
+|------|--------|-------------|---------|
+| **Materia Prima** | `RAW_MATERIAL` | Material básico que se utiliza en la fabricación. No se vende directamente al cliente final. | Chapa de acero, madera, tela |
+| **Semi-terminado** | `SEMI_FINISHED` | Producto que ha sido procesado parcialmente y puede ser componente de otro producto o vendido como tal. | Tabla cepillada, perfil metálico |
+| **Producto Terminado** | `FINISHED_PRODUCT` | Producto listo para la venta al cliente final. Es el tipo por defecto. | Mesa, puerta, mueble completo |
+| **Servicio** | `SERVICE` | No es un producto físico, sino una prestación. No controla stock. | Instalación, mantenimiento, asesoramiento |
+| **Tarifa** | `RATES` | Representa una tarifa de transporte o logística. | Tarifa por kilómetro, tarifa fija de envío |
+
+---
+
+## Tipos de Cálculo
+
+Define cómo se mide o cuantifica el producto:
+
+| Tipo | Código | Cuándo usar | Ejemplo |
+|------|--------|-------------|---------|
+| **Unidad** | `UNIT` | Productos que se cuentan en unidades enteras. Es el tipo por defecto. | 1 mesa, 10 sillas, 50 tornillos |
+| **Superficie** | `SURFACE` | Productos que se miden en metros cuadrados. | Láminas, paneles, pisos |
+| **Volumen** | `VOLUME` | Productos que se miden en metros cúbicos. | Bloques de hormigón, tanques |
+| **Lineal** | `LINEAR` | Productos que se miden en metros lineales. | Perfiles, tubos, cables |
+
+---
+
+## Fuentes de Costo
+
+Indica cómo se obtiene el costo del producto:
+
+| Fuente | Código | Cuándo usar | Descripción |
+|--------|--------|-------------|-------------|
+| **Manual** | `MANUAL` | Cuando el costo se ingresa manualmente. | Útil para productos con costos variables o que no se fabrican internamente. |
+| **BOM (Lista de Materiales)** | `BOM` | Cuando el costo se calcula sumando el costo de los componentes. | Productos compuestos que se fabrican a partir de materias primas. |
+| **Ingeniería** | `ENGINEERING` | Cuando el costo proviene de cálculos de ingeniería. | Productos con estructura técnica compleja. |
+| **Compra** | `PURCHASE` | Cuando el costo es el precio de compra al proveedor. | Materia prima o artículos que se adquieren externamente. |
+| **Tarifa** | `RATE` | Cuando el costo proviene de una tarifa de transporte. | Productos logísticos con costo por km o por flete. |
+
+---
+
+## Paso a Paso: Crear un Producto
+
+### 1. Acceder al módulo de Productos
+
+Desde el menú principal, navega a **Master Data > Productos**.
+
+### 2. Iniciar la creación
+
+Haz clic en el botón **"Crear Producto"** (o **"+"**) ubicado en la parte superior de la lista de productos.
+
+### 3. Completar los campos
+
+El formulario se abre con los valores por defecto pre-cargados:
+
+- **Tipo de producto**: Producto Terminado.
+- **Tipo de cálculo**: Unidad.
+- **Fuente de costo**: BOM.
+- **Activo**: Sí.
+- **Controla stock**: Sí.
+
+Completa al menos el campo **Nombre**. Los demás campos son opcionales.
+
+### 4. Configuración avanzada (opcional)
+
+Según las necesidades de tu producto, podés configurar:
+
+- **SKU**: si usás codificación de artículos, ingresá el código único.
+- **Precios**: marcá "Habilitar precio" para poder asignar precios de venta.
+- **Contable**: asociá cuentas de ingreso, gasto e inventario para contabilización automática.
+- **Fiscal**: asociá impuestos y categoría fiscal para cálculo automático de IVA.
+
+### 5. Guardar
+
+Haz clic en el botón **"Guardar"**. El sistema validará:
+
+- Que el **nombre** no esté vacío.
+- Que el **SKU** (si se ingresó) no esté duplicado entre productos activos.
+
+Si la validación es exitosa, el producto se crea y aparece en la lista.
+
+---
+
+## Ejemplos Prácticos
+
+### Ejemplo 1: Crear una Materia Prima Básica
+
+**Escenario**: queremos cargar una lámina de acero que compramos a un proveedor.
+
+| Campo | Valor |
+|-------|-------|
+| Nombre | Lámina de Acero 3mm |
+| SKU | MAT-001 |
+| Tipo de producto | Materia Prima |
+| Fuente de costo | Compra |
+| Controla stock | Sí |
+| Habilitar precio | No (se vende como componente) |
+
+### Ejemplo 2: Crear un Producto Terminado con Precio
+
+**Escenario**: queremos cargar una mesa que fabricamos y vendemos.
+
+| Campo | Valor |
+|-------|-------|
+| Nombre | Mesa Comedor 6 Personas |
+| SKU | PROD-001 |
+| Tipo de producto | Producto Terminado |
+| Tipo de cálculo | Unidad |
+| Fuente de costo | BOM |
+| Controla stock | Sí |
+| Habilitar precio | Sí |
+| Producto compuesto | Sí (tiene componentes: patas, tablones, tornillos) |
+| Cuenta contable de ingreso | Seleccionar cuenta de ventas |
+| Categoría fiscal | Seleccionar categoría gravada con IVA |
+
+### Ejemplo 3: Crear un Servicio
+
+**Escenario**: queremos cargar el servicio de instalación que ofrecemos.
+
+| Campo | Valor |
+|-------|-------|
+| Nombre | Servicio de Instalación |
+| Tipo de producto | Servicio |
+| Controla stock | No (un servicio no tiene inventario) |
+| Habilitar precio | Sí |
+| Cuenta contable de ingreso | Seleccionar cuenta de prestación de servicios |
+
+---
+
+## Errores Comunes
+
+### SKU Duplicado
+
+**Error**: `Ya existe un producto con SKU [código]`
+
+**Causa**: ya existe otro producto activo con el mismo código SKU.
+
+**Solución**:
+
+1. Verificá en la lista de productos si ya existe uno con ese SKU.
+2. Si el producto anterior fue eliminado (baja lógica), podés **restaurarlo** desde la papelera en lugar de crear uno nuevo.
+3. Si necesitás crear un nuevo producto, usá un SKU diferente.
+
+### Nombre Requerido
+
+**Error**: el campo nombre no puede estar vacío.
+
+**Causa**: no se ingresó un nombre para el producto.
+
+**Solución**: ingresá un nombre descriptivo para el producto.
+
+---
+
+## Notas Importantes
+
+1. **Categorías y Tags**: las categorías y etiquetas (tags) se asocian al producto **después** de crearlo. Desde la pantalla de edición del producto podés asignarlas.
+
+2. **Precios**: si marcaste "Habilitar precio", los precios de venta se configuran desde la pestaña de precios del producto, no en el formulario de creación.
+
+3. **Componentes (BOM)**: si el producto es compuesto, los componentes se agregan desde la pestaña de componentes después de la creación.
+
+4. **Producto Inactivo**: si desmarcás la casilla "Activo", el producto quedará inactivo y no aparecerá en las listas de selección de otros módulos (compras, ventas, etc.), aunque seguirá existiendo en el sistema.
+
+5. **Eliminación Lógica**: cuando eliminás un producto, este no se borra permanentemente sino que se marca como eliminado. Podés restaurarlo desde la papelera si lo necesitás.
+
+6. **Auditoría**: el sistema registra automáticamente quién creó y modificó cada producto, con fecha y hora.
+
+7. **Moneda del Costo**: si configuraste "Calcular costo automáticamente", el sistema utilizará la fuente de costo seleccionada para calcular el costo del producto. Para productos con BOM, el costo será la suma del costo de todos los componentes.
+
+---
+
+## Ver También
+
+- [Implementación de Logística](/procesos/logistica-implementacion/): circuito completo donde se utilizan los productos y las tarifas.
