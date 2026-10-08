@@ -1,13 +1,33 @@
 import { defineConfig } from 'astro/config'
 import starlight from '@astrojs/starlight'
+import starlightThemeSix from '@six-tech/starlight-theme-six'
 
 export default defineConfig({
   site: 'https://docs.asterisksuite.cloud',
+
+  vite: {
+    build: {
+      cssMinify: 'esbuild'
+    }
+  },
 
   integrations: [
     starlight({
       title: 'Asterisk Suite',
       description: 'Documentación funcional y técnica de Asterisk Suite',
+
+      plugins: [
+        starlightThemeSix({
+          navLinks: [
+            {
+              label: 'GitHub',
+              link: 'https://github.com/asterisk-consul',
+              attrs: { target: '_blank', rel: 'noopener' }
+            }
+          ],
+          footerText: 'Asterisk Suite — Documentación'
+        })
+      ],
 
       defaultLocale: 'es',
 
