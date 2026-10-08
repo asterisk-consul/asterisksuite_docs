@@ -1,0 +1,47 @@
+---
+title: Tags
+description: Etiquetar productos para clasificarlos y filtrarlos con etiquetas simples.
+sidebar:
+  order: 4
+---
+
+## Para qué sirve
+
+Los **tags** (etiquetas) permiten clasificar productos de forma transversal y flexible, complementando a las categorías. La pantalla está en **Configuración → Productos → Tags** (`/productos/settings/tags`).
+
+## Permisos necesarios
+
+`tags.read` para ver; `tags.create` y `tags.update` para crear, editar y activar/desactivar.
+
+## Cómo crear un tag
+
+1. Ir a **Tags** y presionar **Nuevo tag**.
+2. Completar el **Nombre** (ej. "Frágil").
+3. Dejar **Activo** marcado y guardar.
+
+## Cómo editar o desactivar
+
+- **Editar**: presionar el ícono de edición en la fila.
+- **Activar/desactivar**: usar el interruptor. Los tags inactivos no se ofrecen al etiquetar productos.
+
+## Reglas y validaciones
+
+- El **nombre** es obligatorio.
+- No puede existir otro tag con el mismo **nombre**.
+
+## Notas
+
+- Los tags se asignan al producto **después** de crearlo, desde la pantalla del producto.
+- A diferencia de las categorías, un producto puede tener **varios** tags.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| "Ya existe un tag con ese nombre" | Nombre duplicado. | Usá otro nombre. |
+| El tag no aparece al etiquetar | Está inactivo. | Activalo desde esta pantalla. |
+
+## Ver también
+
+- [Productos](/configuracion/productos/).
+- [Categorías](/configuracion/productos/categorias/).

@@ -20,8 +20,8 @@ Plantilla de página: ver `src/content/docs/` y la convención:
   - [ ] Componentes / BOM
   - [ ] Precios, listas y por contraparte
   - [ ] Costos y plantillas de costo
-  - [ ] Atributos, categorías y tags
-- [ ] Unidades
+  - [x] Atributos, categorías y tags
+- [x] Unidades
 - [ ] Contrapartes (clientes, proveedores, socios, contactos)
 - [ ] Ubicaciones y depósitos
 - [ ] Monedas y cotizaciones
