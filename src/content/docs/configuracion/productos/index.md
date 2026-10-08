@@ -19,10 +19,10 @@ El módulo de **Productos** es la base del catálogo de Asterisk Suite. Cada pro
 - [Categorías](/configuracion/productos/categorias/).
 - [Tags](/configuracion/productos/tags/).
 - [Atributos](/configuracion/productos/atributos/).
+- [Variantes de producto](/configuracion/productos/variantes/).
 
 ## Páginas previstas
 
-- Variantes de producto.
 - Componentes y lista de materiales (BOM).
 - Precios por producto, lista y contraparte.
 - Costos y plantillas de costo.
