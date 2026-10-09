@@ -72,6 +72,30 @@ export default defineConfig({
 
       customCss: ['./src/styles/custom.css'],
 
+      head: [
+        {
+          tag: 'script',
+          content: `
+            window.addEventListener('load', function () {
+              document.querySelectorAll('.container-sidebar-entry').forEach(function (entry) {
+                var titleEl = entry.querySelector('.entry-title');
+                if (!titleEl) return;
+                var title = titleEl.textContent.trim();
+                var hasCurrent = !!entry.querySelector('a[aria-current="page"]');
+                var stored = localStorage.getItem('sidebar-' + title);
+                if (hasCurrent) {
+                  entry.classList.remove('collapsed');
+                  entry.classList.add('is-expanded');
+                } else if (stored === null) {
+                  entry.classList.add('collapsed');
+                  entry.classList.remove('is-expanded');
+                }
+              });
+            });
+          `
+        }
+      ],
+
       sidebar: [
         {
           label: 'Primeros pasos',
@@ -81,62 +105,56 @@ export default defineConfig({
           ]
         },
         {
-          label: 'Configuración',
-          items: [
-            'configuracion',
-            {
-              label: 'Productos',
-              items: [{ autogenerate: { directory: 'configuracion/productos' } }]
-            },
-            {
-              label: 'Contrapartes',
-              items: [{ autogenerate: { directory: 'configuracion/contrapartes' } }]
-            },
-            {
-              label: 'Depósitos y ubicaciones',
-              items: [{ autogenerate: { directory: 'configuracion/depositos-ubicaciones' } }]
-            },
-            {
-              label: 'Monedas y cotizaciones',
-              items: [{ autogenerate: { directory: 'configuracion/monedas' } }]
-            },
-            {
-              label: 'Secuencias y tipos de documento',
-              items: [{ autogenerate: { directory: 'configuracion/documentos' } }]
-            },
-            {
-              label: 'Impuestos y configuración fiscal',
-              items: [{ autogenerate: { directory: 'configuracion/impuestos' } }]
-            },
-            'configuracion/contabilidad'
-          ]
+          label: 'Productos',
+          items: [{ autogenerate: { directory: 'configuracion/productos' } }]
         },
         {
-          label: 'Procesos',
-          items: [
-            'procesos',
-            {
-              label: 'Ventas',
-              items: [{ autogenerate: { directory: 'procesos/ventas' } }]
-            },
-            {
-              label: 'Compras',
-              items: [{ autogenerate: { directory: 'procesos/compras' } }]
-            },
-            {
-              label: 'Logística',
-              items: [{ autogenerate: { directory: 'procesos/logistica' } }]
-            }
-          ]
+          label: 'Contrapartes',
+          items: [{ autogenerate: { directory: 'configuracion/contrapartes' } }]
+        },
+        {
+          label: 'Depósitos y ubicaciones',
+          items: [{ autogenerate: { directory: 'configuracion/depositos-ubicaciones' } }]
+        },
+        {
+          label: 'Monedas y cotizaciones',
+          items: [{ autogenerate: { directory: 'configuracion/monedas' } }]
+        },
+        {
+          label: 'Secuencias y tipos de documento',
+          items: [{ autogenerate: { directory: 'configuracion/documentos' } }]
+        },
+        {
+          label: 'Impuestos y configuración fiscal',
+          items: [{ autogenerate: { directory: 'configuracion/impuestos' } }]
+        },
+        {
+          label: 'Cuentas contables',
+          items: ['configuracion/contabilidad']
+        },
+        {
+          label: 'Ventas',
+          items: [{ autogenerate: { directory: 'procesos/ventas' } }]
+        },
+        {
+          label: 'Compras',
+          items: [{ autogenerate: { directory: 'procesos/compras' } }]
+        },
+        {
+          label: 'Tesorería',
+          items: [{ autogenerate: { directory: 'procesos/tesoreria' } }]
+        },
+        {
+          label: 'Logística',
+          items: [{ autogenerate: { directory: 'procesos/logistica' } }]
         },
         {
           label: 'Administración',
           items: [
             'administracion',
-            {
-              label: 'Usuarios, roles y permisos',
-              items: [{ autogenerate: { directory: 'administracion/usuarios-roles-permisos' } }]
-            }
+            'administracion/usuarios-roles-permisos',
+            'administracion/usuarios-roles-permisos/gestionar-usuarios',
+            'administracion/usuarios-roles-permisos/gestionar-roles'
           ]
         },
         {
