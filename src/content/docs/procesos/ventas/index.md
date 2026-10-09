@@ -38,6 +38,8 @@ flowchart LR
 - [Presupuestos](/procesos/ventas/presupuestos/)
 - [Crear una Orden de Venta](/procesos/ventas/crear-orden-de-venta/)
 - [Remitos de venta](/procesos/ventas/remitos/)
+- [Facturación](/procesos/ventas/facturacion/)
+- [Cobros](/procesos/ventas/cobros/)
 
 ## Permisos necesarios
 

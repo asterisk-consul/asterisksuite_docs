@@ -1,0 +1,74 @@
+---
+title: Facturación
+description: Emitir la factura de venta, con su cálculo de IVA y confirmación fiscal.
+sidebar:
+  order: 4
+---
+
+## Para qué sirve
+
+La **factura** es el comprobante fiscal de la venta. Se administra en **Ventas → Facturas** y se crea en **Nueva Factura** (`/erp/sales/new?category=INVOICE`). Las **notas de crédito** y **débito** ajustan una factura ya emitida.
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver ventas · Crear ventas · Editar ventas · Confirmar ventas · Anular ventas
+- También aplican los permisos por tipo de documento (facturas, notas de crédito/débito) si tu empresa los usa.
+:::
+
+## Configuración previa
+
+- **Tipo de documento** de categoría Factura (con letra y código AFIP) y su **secuencia**.
+- **Datos fiscales** del cliente (condición frente al IVA).
+- **Impuestos** y **categorías fiscales** configurados.
+- Autorizaciones/CAE según el tipo de emisión.
+
+## Cómo emitir una factura
+
+1. Desde la **OV** confirmada, usar **Crear Factura** (toma los ítems pendientes), o ir a **Nueva Factura**.
+2. **Datos generales**: cliente, fecha, moneda, tipo de documento y secuencia.
+3. **Productos**: ítems con producto, cantidad y precio.
+4. El sistema **calcula los impuestos** (IVA según la condición del emisor y del receptor) y muestra el detalle.
+5. Presionar **Guardar**.
+
+Para las **notas de crédito/débito**, se selecciona el **documento de referencia** (la factura) y se ajustan los ítems.
+
+## Confirmar la factura
+
+Al **Confirmar**, el comprobante:
+
+- Toma su **número** de la secuencia.
+- Obtiene el **CAE** (si es electrónica).
+- Pasa a estado **Confirmada**.
+
+Una vez confirmada no se edita; se ajusta con una **nota de crédito/débito** o se **anula** según corresponda.
+
+## Estados
+
+| N° | Estado | Descripción |
+|---|---|---|
+| 0 | **Borrador** | Creada, aún no confirmada. |
+| 1 | **Pendiente** | Pendiente de confirmación fiscal. |
+| 2 | **Confirmada** | Confirmada con CAE válido. |
+| 3 | **Anulada** | Anulada. |
+
+## Reglas y validaciones
+
+- La factura debe tener **cliente** y al menos un **ítem**.
+- El **IVA** se resuelve según **condición emisor × receptor**.
+- La confirmación asigna **número** y **CAE**.
+- Los documentos confirmados no se editan.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No puedo confirmar | Falta CAE/autorización o datos fiscales. | Revisá la configuración fiscal y la secuencia. |
+| El IVA no es el esperado | Condición de IVA del cliente incorrecta. | Verificá la condición en la contraparte. |
+| No puedo editar | La factura está confirmada. | Emití una nota de crédito/débito. |
+
+## Ver también
+
+- [Presupuestos](/procesos/ventas/presupuestos/) y [Remitos](/procesos/ventas/remitos/).
+- [Impuestos y configuración fiscal](/configuracion/impuestos/).
+- [Tipos de documento](/configuracion/documentos/tipos-de-documento/).

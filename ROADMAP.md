@@ -35,8 +35,8 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [x] Presupuestos
 - [x] Órdenes de venta
 - [x] Remitos de venta
-- [ ] Facturación
-- [ ] Cobros
+- [x] Facturación
+- [x] Cobros
 - [ ] Mis ventas y reportes
 
 ### Compras

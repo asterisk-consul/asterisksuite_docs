@@ -1,0 +1,61 @@
+---
+title: Cobros
+description: Registrar el cobro del cliente y aplicarlo a las facturas pendientes.
+sidebar:
+  order: 5
+---
+
+## Para qué sirve
+
+El **cobro** registra el pago del cliente y lo **aplica a las facturas pendientes**. Se gestiona desde **Tesorería → Pagos** (`/erp/treasury/payments`) y se inicia desde una OV/factura con **Cobrar** o en **Nuevo pago** (`/erp/treasury/payments/create?type=COLLECTION`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver pagos · Crear pagos · Editar pagos · Confirmar pagos · Anular pagos
+- Según la forma de cobro pueden intervenir permisos de cajas, bancos, cheques y tarjetas.
+:::
+
+## Configuración previa
+
+- **Caja abierta** para cobros en efectivo.
+- **Cuenta bancaria** para transferencias.
+- **Cheques** o **tarjetas** configurados si se usan como medio.
+
+## Cómo registrar un cobro
+
+1. Desde el listado de ventas/OV usar **Cobrar**, o ir a **Nuevo pago** con tipo **Cobro (COLLECTION)**.
+2. **Cliente** y **moneda**.
+3. **Forma de cobro**:
+   - **Efectivo** (elige caja).
+   - **Transferencia bancaria** (elige cuenta).
+   - **Cheque** (selecciona cheques disponibles).
+   - **Tarjeta** (elige la tarjeta y el código de autorización).
+4. **Documentos a aplicar**: seleccionar las facturas pendientes y el **importe aplicado** a cada una.
+5. **Retenciones**: al transferir, el sistema puede **sugerir retenciones** según el motor fiscal (se pueden ajustar, agregar o quitar).
+6. Guardar y **Confirmar** el cobro.
+
+## Confirmar el cobro
+
+Al confirmar, el cobro queda registrado, se actualiza la **cuenta corriente** del cliente y el **saldo** de las facturas aplicadas.
+
+## Reglas y validaciones
+
+- El **importe aplicado** no puede superar el **saldo pendiente** del documento.
+- Se requiere **caja abierta** (efectivo) o **cuenta** (transferencia) según el medio.
+- Las **retenciones** sugeridas dependen del motor fiscal y del medio de pago.
+- Un documento ya saldado no aparece entre los pendientes.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| "El documento ya no tiene saldo pendiente" | La factura ya fue cobrada. | Verificá los cobros existentes. |
+| No puedo cobrar en efectivo | No hay caja abierta. | Abrí una sesión de caja. |
+| No aparecen retenciones | El medio no las genera o falta configuración. | Revisá [Reglas y alícuotas](/configuracion/impuestos/reglas-y-alicuotas/). |
+
+## Ver también
+
+- [Facturación](/procesos/ventas/facturacion/).
+- [Cuentas corrientes](/procesos/ventas/) — saldos por cliente.
+- [Reglas y alícuotas](/configuracion/impuestos/reglas-y-alicuotas/).
