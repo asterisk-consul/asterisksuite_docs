@@ -1,0 +1,72 @@
+---
+title: Cheques
+description: Administrar cheques propios y de terceros, con depósito y endoso.
+sidebar:
+  order: 3
+---
+
+## Para qué sirve
+
+Los **cheques** administran tanto los **propios** (emitidos por la empresa) como los **de terceros** (recibidos de clientes). Se gestionan en **Tesorería → Cheques** (`/erp/treasury/checks`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver cheques · Crear cheques · Editar cheques · Eliminar cheques
+- Depositar cheques · Endosar cheques · Rechazar cheques
+:::
+
+## Campos de un cheque
+
+- **Número de cheque**.
+- **Banco**, **sucursal** y **número de cuenta**.
+- **Emisor** (nombre e identificación).
+- **Monto** y **moneda**; **cotización** y **monto convertido** si es en otra moneda.
+- **Fecha de emisión** y **vencimiento**.
+- **Es propio** (cheque propio) o de un tercero.
+- **Notas** y **fecha de pago**.
+
+## Cómo registrar un cheque
+
+1. Ir a **Cheques** y presionar **Nuevo cheque** (`/erp/treasury/checks/create`).
+2. Completar número, banco, emisor, monto, moneda y fechas.
+3. Indicar si es **propio**.
+4. Guardar.
+
+## Estados
+
+| Estado | Descripción |
+|---|---|
+| **Pendiente** | Registrado, aún no confirmado ni cobrado. |
+| **Confirmado** | Confirmado. |
+| **Cobrado** | Acreditado (cobrado/depositado). |
+| **Rechazado** | Rechazado por el banco. |
+| **Anulado** | Anulado. |
+
+## Acciones
+
+- **Confirmar** el cheque.
+- **Depositar** en una cuenta bancaria.
+- **Cobrar/ingresar** en una caja.
+- **Endosar** (transferir a un tercero).
+- **Rechazar** un cheque.
+- **Revertir** una operación o **registrar un débito**.
+
+## Reglas y validaciones
+
+- El **número**, **banco**, **emisor**, **monto** (mayor a 0), **moneda** y **fechas** son obligatorios.
+- Para **depositar** hay que elegir una **cuenta bancaria**.
+- Un cheque rechazado queda registrado y afecta la cuenta corriente correspondiente.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No puedo depositar | Falta elegir la cuenta bancaria. | Seleccioná una cuenta. |
+| El monto no es válido | Es 0 o negativo. | Ingresá un monto mayor a 0. |
+| No puedo endosar/rechazar | Estado incompatible o sin permiso. | Verificá el estado y tus permisos. |
+
+## Ver también
+
+- [Bancos](/procesos/tesoreria/bancos/) y [Cajas](/procesos/tesoreria/cajas/).
+- [Cuentas corrientes](/procesos/tesoreria/cuentas-corrientes/).

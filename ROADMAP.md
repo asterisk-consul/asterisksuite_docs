@@ -49,10 +49,10 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 ### Tesorería
 - [x] Cajas y movimientos
 - [x] Bancos
-- [ ] Cheques
+- [x] Cheques
 - [ ] Tarjetas
 - [ ] Inversiones
-- [ ] Cuentas corrientes
+- [x] Cuentas corrientes
 - [ ] Impuestos y servicios
 - [ ] Reportes
 
