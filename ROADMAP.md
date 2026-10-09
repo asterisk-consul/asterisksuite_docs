@@ -25,7 +25,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [x] Contrapartes (clientes, proveedores, socios, contactos)
 - [x] Ubicaciones y depósitos
 - [x] Monedas y cotizaciones
-- [ ] Secuencias y tipos de documento
+- [x] Secuencias y tipos de documento
 - [ ] Impuestos y configuración fiscal (reglas, autorizaciones, retenciones)
 - [ ] Cuentas contables
 

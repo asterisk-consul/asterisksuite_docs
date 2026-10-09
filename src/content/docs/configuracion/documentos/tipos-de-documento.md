@@ -1,0 +1,61 @@
+---
+title: Tipos de documento
+description: Configurar facturas, notas, órdenes, presupuestos, recibos y remitos.
+sidebar:
+  order: 1
+---
+
+## Para qué sirve
+
+Los **tipos de documento** definen cada comprobante del sistema y su comportamiento: si es de venta o compra, si afecta stock, contabilidad, libro de IVA o pagos, y su información fiscal.
+
+Se administran en **Tipos de Documento** (`/erp/settings/document-types`).
+
+## Campos principales
+
+- **Código** y **Descripción**.
+- **Dirección**: Venta o Compra.
+- **Letra** (A, B, C).
+- **Código AFIP**.
+- **Categoría**: Factura, Nota de Crédito, Nota de Débito, Orden, Presupuesto, Recibo o Remito.
+- **Afecta stock**.
+- **Afecta contabilidad**.
+- **Afecta libro de IVA**.
+- **Afecta pagos**.
+- **Calcula impuestos**.
+- **Requiere CAE** y **Electrónico**.
+- **Activo**.
+- **Campos personalizados** (opcional): clave, etiqueta, tipo (Texto, Número, Fecha, Selección, Largo, Sí/No), requerido y placeholder.
+
+## Cómo crear un tipo
+
+1. Ir a **Tipos de Documento** y presionar **Nuevo tipo**.
+2. Completar código, descripción, dirección, letra, categoría y las banderas de comportamiento.
+3. Guardar.
+
+## Listado y exportación
+
+Se puede filtrar por pestañas (Venta, Compra, Todos) y buscar por código o descripción. El listado se puede **exportar a Excel**.
+
+## Cómo editar o eliminar
+
+- **Editar**: abrir el tipo y modificar sus datos.
+- **Eliminar**: usar la acción de borrado.
+
+## Reglas y validaciones
+
+- El **código** y la **descripción** son obligatorios.
+- La **letra** y el **código AFIP** se usan para la emisión fiscal.
+- Algunas banderas (afecta stock/contabilidad/IVA) determinan si el comprobante genera movimientos.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| El comprobante no mueve stock | El tipo no tiene "Afecta stock". | Editá el tipo y activá la opción. |
+| No aparece el tipo al emitir | Está inactivo. | Activalo en Tipos de Documento. |
+| Falta numeración al emitir | No hay secuencia asociada. | Creá una [secuencia](/configuracion/documentos/secuencias/). |
+
+## Ver también
+
+- [Secuencias de numeración](/configuracion/documentos/secuencias/).
