@@ -1,0 +1,63 @@
+---
+title: Bancos
+description: Cuentas bancarias propias, movimientos y gastos bancarios.
+sidebar:
+  order: 2
+---
+
+## Para qué sirve
+
+Las **cuentas bancarias** representan las cuentas propias de la empresa. Permiten registrar **movimientos**, **gastos bancarios** y usar la cuenta en pagos y cobros por transferencia. Se administran en **Tesorería → Bancos** (`/erp/treasury/bank-accounts`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver cuentas bancarias · Crear cuentas bancarias · Editar cuentas bancarias · Eliminar cuentas bancarias
+- Registrar movimientos bancarios · Anular movimientos bancarios
+- Ver conceptos bancarios · Administrar conceptos bancarios
+:::
+
+## Campos de una cuenta
+
+- **Nombre**.
+- **Banco**.
+- **Tipo de cuenta**.
+- **CBU**, **Alias** y **Número de cuenta** (opcionales).
+- **Moneda**.
+- **Saldo**.
+- **Activa**.
+
+## Cómo crear una cuenta
+
+1. Ir a **Bancos** y presionar **Nueva cuenta**.
+2. Completar nombre, banco, tipo de cuenta, moneda y, si corresponde, CBU/alias/número y saldo inicial.
+3. Guardar.
+
+## Movimientos bancarios
+
+Desde la cuenta se registran **movimientos** (débitos y créditos), y se pueden **anular** si corresponde. Los **conceptos bancarios** clasifican los movimientos.
+
+También se registran **gastos bancarios** y comisiones.
+
+## Uso en pagos y cobros
+
+Al pagar o cobrar por **transferencia bancaria**, se elige la cuenta; el movimiento impacta su saldo y puede disparar el cálculo de **retenciones** (en pagos a proveedores).
+
+## Reglas y validaciones
+
+- El **nombre**, **banco**, **tipo de cuenta** y **moneda** son obligatorios.
+- Los movimientos afectan el **saldo** de la cuenta.
+- Los movimientos anulados quedan registrados.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No aparece la cuenta al transferir | Está inactiva o es de otra moneda. | Verificá estado y moneda. |
+| El saldo no coincide | Movimientos pendientes o sin confirmar. | Revisá los movimientos de la cuenta. |
+| No puedo anular un movimiento | Ya conciliado o sin permiso. | Verificá permisos y estado. |
+
+## Ver también
+
+- [Cajas](/procesos/tesoreria/cajas/).
+- [Cuentas corrientes](/procesos/tesoreria/) — saldos por contraparte.

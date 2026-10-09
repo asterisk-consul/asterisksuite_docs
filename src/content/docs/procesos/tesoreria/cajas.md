@@ -1,0 +1,67 @@
+---
+title: Cajas
+description: Crear cajas, abrir y cerrar sesiones y registrar movimientos de efectivo.
+sidebar:
+  order: 1
+---
+
+## Para qué sirve
+
+Las **cajas** controlan el **efectivo**. Cada caja tiene una **moneda** y un **saldo**, y se opera por **sesiones** (apertura y cierre). Se administran en **Tesorería → Cajas** (`/erp/treasury/cash-boxes`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver cajas · Crear cajas · Editar cajas · Eliminar cajas
+- Abrir sesión de caja · Cerrar sesión de caja
+:::
+
+## Tipos de caja
+
+- **Principal** — caja central.
+- **Fija** — caja permanente de un punto.
+- **Caja registradora** — caja de mostrador.
+
+## Campos
+
+- **Nombre** (ej. "Caja central").
+- **Tipo** (Principal, Fija, Caja registradora).
+- **Moneda**.
+- **Saldo inicial**.
+- **Es principal**.
+- **Activa**.
+- **Límite** (opcional).
+- **Usuarios**: se asignan con un **rol** — **Responsable**, **Operador** o **Visor**.
+
+## Cómo crear una caja
+
+1. Ir a **Cajas** y presionar **Nueva caja** (`/erp/treasury/cash-boxes/create`).
+2. Completar nombre, tipo, moneda, saldo inicial y si es principal.
+3. Asignar los **usuarios** que podrán operarla y su rol.
+4. Guardar.
+
+## Operar la caja
+
+- **Abrir sesión**: una caja debe estar **abierta** para registrar movimientos.
+- **Movimientos de caja**: ingresos y egresos de efectivo.
+- **Cerrar sesión**: al finalizar, se cierra con el recuento.
+- **Rendiciones** y **transferencias entre cajas** según los permisos.
+
+## Reglas y validaciones
+
+- El **nombre** y la **moneda** son obligatorios.
+- Solo una caja debería ser **principal**.
+- Para **pagar o cobrar en efectivo** se requiere una sesión de caja **abierta**.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No puedo cobrar/pagar en efectivo | No hay caja abierta. | Abrí una sesión de caja. |
+| La caja no aparece al operar | Está inactiva o es de otra moneda. | Verificá su estado y moneda. |
+| No puedo operar la caja | Tu usuario no tiene rol en esa caja. | Pedí que te asignen un rol. |
+
+## Ver también
+
+- [Bancos](/procesos/tesoreria/bancos/).
+- [Cobros](/procesos/ventas/cobros/) y [Pagos](/procesos/compras/pagos/).

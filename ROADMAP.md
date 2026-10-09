@@ -47,8 +47,8 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [ ] Importadores (Excel)
 
 ### Tesorería
-- [ ] Cajas y movimientos
-- [ ] Bancos
+- [x] Cajas y movimientos
+- [x] Bancos
 - [ ] Cheques
 - [ ] Tarjetas
 - [ ] Inversiones
