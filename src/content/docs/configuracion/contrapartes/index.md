@@ -1,6 +1,6 @@
 ---
 title: Contrapartes
-description: Personas y entidades del sistema: clientes, proveedores, socios, empleados y más.
+description: Personas y entidades del sistema, como clientes, proveedores, socios y empleados.
 sidebar:
   order: 2
 ---
