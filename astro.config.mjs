@@ -40,11 +40,7 @@ export default defineConfig({
       plugins: [
         starlightThemeSix({
           navLinks: [
-            {
-              label: 'GitHub',
-              link: 'https://github.com/asterisk-consul',
-              attrs: { target: '_blank', rel: 'noopener' }
-            }
+            { label: 'Docs', link: '/' }
           ],
           footerText: 'Asterisk Suite — Documentación'
         })

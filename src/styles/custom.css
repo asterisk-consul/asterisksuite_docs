@@ -36,8 +36,8 @@
 }
 
 /* "Suite" en peso más fino dentro del título del nav */
-.header .title-text .title-light {
-  font-weight: 200;
+.title-text .title-light {
+  font-weight: 200 !important;
   opacity: 0.9;
 }
 
