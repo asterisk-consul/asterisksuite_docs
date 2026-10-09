@@ -149,6 +149,10 @@ export default defineConfig({
           items: [{ autogenerate: { directory: 'procesos/tesoreria' } }]
         },
         {
+          label: 'Stock y fabricación',
+          items: [{ autogenerate: { directory: 'procesos/stock' } }]
+        },
+        {
           label: 'Logística',
           items: [{ autogenerate: { directory: 'procesos/logistica' } }]
         },

@@ -12,4 +12,5 @@ Guías funcionales de los principales circuitos de Asterisk Suite, organizadas c
 - [Ventas](/procesos/ventas/) — circuito comercial.
 - [Compras](/procesos/compras/) — circuito de abastecimiento.
 - [Tesorería](/procesos/tesoreria/) — cajas, bancos y pagos.
+- [Stock y fabricación](/procesos/stock/) — existencias, reposición y producción.
 - [Implementación de Logística](/procesos/logistica/implementacion/)

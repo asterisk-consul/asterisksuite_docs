@@ -57,11 +57,11 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [ ] Reportes
 
 ### Stock, fabricación e inventario
-- [ ] Disponibilidad de stock
-- [ ] Reposición
+- [x] Disponibilidad de stock
+- [x] Reposición
 - [ ] Picking y pallets
-- [ ] BOM
-- [ ] Fabricación
+- [x] BOM
+- [x] Fabricación
 - [ ] Plantillas de costo / combustible
 
 ### Logística
