@@ -23,7 +23,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
   - [x] Atributos, categorías y tags
 - [x] Unidades
 - [x] Contrapartes (clientes, proveedores, socios, contactos)
-- [ ] Ubicaciones y depósitos
+- [x] Ubicaciones y depósitos
 - [ ] Monedas y cotizaciones
 - [ ] Secuencias y tipos de documento
 - [ ] Impuestos y configuración fiscal (reglas, autorizaciones, retenciones)

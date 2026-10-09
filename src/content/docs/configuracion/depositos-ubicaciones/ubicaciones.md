@@ -1,0 +1,56 @@
+---
+title: Ubicaciones
+description: Registrar direcciones reutilizables para contrapartes, depósitos y otros.
+sidebar:
+  order: 1
+---
+
+## Para qué sirve
+
+Las **ubicaciones** son direcciones que se registran una vez y se reutilizan en todo el sistema (contrapartes, depósitos, viajes, etc.).
+
+Se administran en **Ajustes → Locaciones** (`/ajustes/locaciones`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver ubicaciones
+- Crear ubicaciones
+- Editar ubicaciones
+- Eliminar ubicaciones
+:::
+
+## Campos
+
+- **Dirección**.
+- **Ciudad**.
+- **Provincia**.
+- **País**.
+- **Código postal**.
+- **Coordenadas** (latitud y longitud) — opcional.
+
+## Cómo crear una ubicación
+
+1. Ir a **Locaciones** y presionar **Nueva Locación**.
+2. Completar los campos.
+3. Guardar.
+
+## Cómo editar o eliminar
+
+- **Editar**: presionar el ícono de edición en la fila. Algunos campos (ciudad, provincia, país, código postal) se pueden editar en línea.
+- **Eliminar**: usar la acción de borrado (individual o masivo).
+
+## Filtros y orden
+
+El listado permite **filtrar** por ciudad, provincia y país, y **ordenar** por dirección, ciudad, provincia, país, código postal, coordenadas o fecha de creación.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No aparece la ubicación al crear una contraparte | No está cargada. | Creala primero en Locaciones. |
+| No puedo eliminar la ubicación | Está en uso por otra entidad. | Revisá contrapartes o depósitos que la referencien. |
+
+## Ver también
+
+- [Depósitos](/configuracion/depositos-ubicaciones/depositos/).

@@ -11,10 +11,10 @@ Esta sección agrupa la configuración de catálogos y datos maestros: productos
 
 - [Productos](/configuracion/productos/) — catálogo, variantes, BOM, precios y costos.
 - [Contrapartes](/configuracion/contrapartes/) — clientes, proveedores, socios y demás terceros.
+- [Depósitos y ubicaciones](/configuracion/depositos-ubicaciones/) — direcciones y almacenes.
 
 ## Contenido previsto
 
-- Ubicaciones y depósitos.
 - Monedas y cotizaciones.
 - Secuencias y tipos de documento.
 - Impuestos y configuración fiscal.
