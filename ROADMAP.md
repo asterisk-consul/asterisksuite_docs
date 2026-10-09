@@ -32,7 +32,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 ## Procesos
 
 ### Ventas
-- [ ] Presupuestos
+- [x] Presupuestos
 - [x] Órdenes de venta
 - [ ] Remitos de venta
 - [ ] Facturación

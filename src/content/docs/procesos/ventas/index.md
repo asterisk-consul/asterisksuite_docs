@@ -35,6 +35,7 @@ flowchart LR
 
 ## Páginas de esta sección
 
+- [Presupuestos](/procesos/ventas/presupuestos/)
 - [Crear una Orden de Venta](/procesos/ventas/crear-orden-de-venta/)
 
 ## Permisos necesarios
