@@ -1,0 +1,47 @@
+---
+title: Configuración fiscal
+description: Elegir el modo del motor fiscal y cómo se muestran los impuestos.
+sidebar:
+  order: 2
+---
+
+## Para qué sirve
+
+Define cómo calcula y muestra los impuestos el sistema. Se administra en **Ajustes → Configuración fiscal** (`/settings/fiscal-config`).
+
+## Opciones
+
+- **Modo del motor**:
+  - **Simples** — sin discriminación de impuestos; el precio es final.
+  - **Completos** — motor fiscal completo: IVA, percepciones y retenciones.
+- **Los precios ingresados ya incluyen IVA**.
+- **Mostrar IVA separado en facturas**.
+- **País**: Argentina, Uruguay, Paraguay o Chile.
+
+Desde esta pantalla también se accede a **Reglas y alícuotas** y a **Retenciones**.
+
+## Cómo configurar
+
+1. Ir a **Configuración fiscal**.
+2. Elegir el **modo** (Simples o Completos) según la operatoria de la empresa.
+3. Definir si los **precios incluyen IVA** y si el **IVA se muestra separado**.
+4. Seleccionar el **país**.
+5. Presionar **Guardar configuración**.
+
+## Reglas y consideraciones
+
+- En modo **Simples**, no se discrimina IVA ni se aplican percepciones/retenciones automáticas.
+- En modo **Completos**, el motor resuelve IVA por condición emisor × receptor y aplica reglas de percepción/retención.
+- El **país** condiciona los impuestos y reglas disponibles.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No se discrimina IVA en las facturas | Modo "Simples". | Cambiá a modo "Completos". |
+| El total coincide pero no aparece el IVA | "Mostrar IVA separado" desactivado. | Activalo en la configuración. |
+
+## Ver también
+
+- [Reglas y alícuotas](/configuracion/impuestos/reglas-y-alicuotas/).
+- [Autorizaciones fiscales](/configuracion/impuestos/autorizaciones-fiscales/).

@@ -1,0 +1,49 @@
+---
+title: Impuestos
+description: Catálogo de impuestos que se aplican en los comprobantes.
+sidebar:
+  order: 1
+---
+
+## Para qué sirve
+
+El catálogo de **impuestos** define todos los tributos que pueden aplicarse a productos y operaciones. Se administra en **Ajustes → Impuestos** (`/settings/taxes`).
+
+## Campos
+
+- **Código** (ej. `IVA_21`).
+- **Nombre** (ej. "IVA 21%").
+- **Tipo de impuesto**: IVA, IIBB, Percepción, Retención u Otro.
+- **Tasa** (valor numérico).
+- **Nivel de cálculo**: `LINE` (por línea), `TOTAL` (sobre el total) o `HEADER` (a nivel cabecera).
+- **Es porcentaje**: porcentaje o importe fijo.
+- **Activo**.
+
+## Cómo crear un impuesto
+
+1. Ir a **Impuestos** y presionar **Nuevo impuesto**.
+2. Completar código, nombre, tipo, tasa, nivel de cálculo y si es porcentaje.
+3. Guardar.
+
+## Cómo editar, activar o eliminar
+
+- **Editar**: presionar el ícono de lápiz.
+- **Activar/desactivar**: usar el interruptor de la fila.
+- **Eliminar**: presionar el ícono de papelera y confirmar.
+
+## Notas
+
+- Los impuestos se **asocian a productos** (impuesto principal y categoría fiscal) y a **tipos de documento**.
+- Cada empresa nueva se crea con impuestos base de IVA (21%, 10.5%, 27%, 0%) y de importación.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| El impuesto no aparece en el producto | Está inactivo. | Activalo en el catálogo. |
+| El importe calculado no es el esperado | Nivel de cálculo o porcentaje mal configurado. | Revisá tasa y nivel de cálculo. |
+
+## Ver también
+
+- [Configuración fiscal](/configuracion/impuestos/configuracion-fiscal/).
+- [Reglas y alícuotas](/configuracion/impuestos/reglas-y-alicuotas/).
