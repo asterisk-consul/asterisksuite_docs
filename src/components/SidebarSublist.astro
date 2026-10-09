@@ -1,0 +1,199 @@
+---
+import type { StarlightRouteData } from '@astrojs/starlight/route-data'
+
+interface Props {
+  sublist: StarlightRouteData['sidebar']
+  nested?: boolean
+}
+
+const { sublist, nested } = Astro.props
+
+type Item =
+  | { kind: 'link'; entry: any }
+  | { kind: 'group'; entry: any; indexLink: any | null; children: any[] }
+
+const items: Item[] = sublist.map((entry: any) => {
+  if (entry.type === 'link') return { kind: 'link', entry }
+
+  const indexLink =
+    entry.entries?.find(
+      (e: any) => e.type === 'link' && String(e.label) === String(entry.label)
+    ) ?? null
+
+  return {
+    kind: 'group',
+    entry,
+    indexLink,
+    children: indexLink
+      ? entry.entries.filter((e: any) => e !== indexLink)
+      : (entry.entries ?? [])
+  }
+})
+---
+
+{
+  items.map((item) =>
+    item.kind === 'link' ? (
+      <a
+        href={item.entry.href}
+        aria-current={item.entry.isCurrent && 'page'}
+        class:list={['entry-link', item.entry.attrs?.class]}
+        {...item.entry.attrs}
+      >
+        {item.entry.label}
+        {item.entry.badge && <span class="entry-badge">{item.entry.badge.text}</span>}
+      </a>
+    ) : (
+      <div class="container-sidebar-entry">
+        <div class="entry-header">
+          {item.indexLink ? (
+            <a
+              href={item.indexLink.href}
+              aria-current={item.indexLink.isCurrent && 'page'}
+              class="entry-title-link"
+            >
+              <h4 class="entry-title">{item.entry.label}</h4>
+            </a>
+          ) : (
+            <h4 class="entry-title">{item.entry.label}</h4>
+          )}
+          <button
+            class="entry-title-button"
+            data-group-toggle
+            aria-label={`Mostrar u ocultar ${item.entry.label}`}
+          >
+            <svg
+              class="collapse-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+        <div class="container-group-link" data-group-content>
+          <Astro.self sublist={item.children} nested />
+        </div>
+      </div>
+    ),
+  )
+}
+
+<style>
+  .container-sidebar-entry {
+    flex-direction: column;
+    display: flex;
+  }
+
+  .container-sidebar-entry.is-expanded {
+    margin-bottom: 1rem;
+  }
+
+  .entry-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
+  }
+
+  .entry-title {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .entry-title-link {
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+    padding: 0.5rem 0;
+  }
+
+  .entry-title-link:hover {
+    color: var(--accent-foreground);
+  }
+
+  .entry-title-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0.5rem 0.25rem;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    flex-shrink: 0;
+  }
+
+  .entry-title-button:hover {
+    color: var(--accent-foreground);
+  }
+
+  .collapse-icon {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.2s ease-in-out;
+    flex-shrink: 0;
+  }
+
+  .container-sidebar-entry.collapsed .collapse-icon {
+    transform: rotate(-90deg);
+  }
+
+  .container-group-link {
+    overflow: hidden;
+    max-height: 1000px;
+    opacity: 1;
+  }
+
+  .container-sidebar-entry.collapsed .container-group-link {
+    max-height: 0;
+    opacity: 0;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleButtons = document.querySelectorAll('[data-group-toggle]')
+
+    toggleButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const entry = button.closest('.container-sidebar-entry')
+        if (entry) {
+          entry.classList.toggle('collapsed')
+          entry.classList.toggle('is-expanded')
+
+          const titleText = entry.querySelector('.entry-title')?.textContent?.trim()
+          if (titleText) {
+            const isCollapsed = entry.classList.contains('collapsed')
+            localStorage.setItem(`sidebar-${titleText}`, isCollapsed.toString())
+          }
+        }
+      })
+    })
+
+    toggleButtons.forEach((button) => {
+      const entry = button.closest('.container-sidebar-entry')
+      const titleText = entry?.querySelector('.entry-title')?.textContent?.trim()
+
+      if (titleText && entry) {
+        const isCollapsed = localStorage.getItem(`sidebar-${titleText}`) === 'true'
+        if (isCollapsed) {
+          entry.classList.add('collapsed')
+          entry.classList.remove('is-expanded')
+        } else {
+          entry.classList.remove('collapsed')
+          entry.classList.add('is-expanded')
+        }
+      }
+    })
+  })
+</script>
