@@ -1,0 +1,53 @@
+---
+title: Cotizaciones
+description: Tipos de cambio entre monedas, incluido el dólar en línea.
+sidebar:
+  order: 1
+---
+
+## Para qué sirve
+
+Las **cotizaciones** (tipos de cambio) definen cuánto vale una moneda respecto de otra a una fecha dada. Se usan para convertir precios y calcular importes en distintas monedas.
+
+Se administran en **Ajustes → Monedas → Cotizaciones** (`/settings/monedas`) y se consultan en **Cotizaciones** (`/cotizaciones`).
+
+## Estructura de una cotización
+
+- **Moneda origen** y **moneda destino**.
+- **Valor** (tasa de cambio, mayor a 0).
+- **Tipo** (`rate_type`): Oficial, Blue, MEP, CCL, Mayorista, Cripto o Tarjeta.
+- **Fecha de vigencia** (`effective_date`).
+- **Fuente** (opcional).
+
+## Dólar en línea
+
+La sección **Cotizaciones → Dólar** muestra las cotizaciones del dólar (Oficial, Blue y otras) obtenidas de **DolarApi.com**, con su fecha de actualización. Es una vista de consulta rápida del mercado.
+
+## Otras monedas
+
+En **Otras Monedas** se listan las cotizaciones cargadas manualmente, con estadísticas e historial.
+
+## Cómo registrar una cotización
+
+1. Ir a **Monedas → Cotizaciones**.
+2. Crear una nueva cotización indicando **moneda origen**, **moneda destino**, **valor**, **tipo** y **fecha de vigencia**.
+3. Guardar.
+
+## Reglas y validaciones
+
+- El **valor** debe ser mayor a 0.
+- Deben existir las **monedas** de origen y destino.
+- La **fecha de vigencia** define desde cuándo rige el valor (se toma la más reciente según la fecha).
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| El importe no se convierte | No hay cotización entre esas monedas. | Cargá la cotización correspondiente. |
+| Aparece un valor viejo | La cotización vigente no está actualizada. | Registrá una nueva con fecha más reciente. |
+| No puedo elegir una moneda | No está creada o está inactiva. | Creala/activála en Monedas. |
+
+## Ver también
+
+- [Monedas y cotizaciones](/configuracion/monedas/).
+- [Precios de producto](/configuracion/productos/precios/).
