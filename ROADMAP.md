@@ -27,7 +27,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [x] Monedas y cotizaciones
 - [x] Secuencias y tipos de documento
 - [x] Impuestos y configuración fiscal (reglas, autorizaciones, retenciones)
-- [ ] Cuentas contables
+- [x] Cuentas contables
 
 ## Procesos
 

@@ -15,7 +15,8 @@ Esta sección agrupa la configuración de catálogos y datos maestros: productos
 - [Monedas y cotizaciones](/configuracion/monedas/) — divisas y tipos de cambio.
 - [Secuencias y tipos de documento](/configuracion/documentos/) — comprobantes y numeración.
 - [Impuestos y configuración fiscal](/configuracion/impuestos/) — impuestos, reglas y autorizaciones.
+- [Cuentas contables](/configuracion/contabilidad/) — plan de cuentas.
 
 ## Contenido previsto
 
-- Cuentas contables y plan de cuentas.
+- Depósitos y stock (ampliación).
