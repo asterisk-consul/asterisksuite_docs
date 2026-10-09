@@ -28,6 +28,7 @@ sidebar:
 - [Bancos](/procesos/tesoreria/bancos/)
 - [Cheques](/procesos/tesoreria/cheques/)
 - [Tarjetas](/procesos/tesoreria/tarjetas/)
+- [Inversiones](/procesos/tesoreria/inversiones/)
 - [Cuentas corrientes](/procesos/tesoreria/cuentas-corrientes/)
 
 ## Permisos necesarios

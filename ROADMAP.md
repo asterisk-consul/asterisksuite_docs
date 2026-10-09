@@ -51,7 +51,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [x] Bancos
 - [x] Cheques
 - [x] Tarjetas
-- [ ] Inversiones
+- [x] Inversiones
 - [x] Cuentas corrientes
 - [ ] Impuestos y servicios
 - [ ] Reportes
