@@ -1,0 +1,71 @@
+---
+title: Impuestos y servicios
+description: Obligaciones de tesorería, vencimientos y pagos recurrentes.
+sidebar:
+  order: 7
+---
+
+## Para qué sirve
+
+Planifica y controla el pago de **impuestos y servicios** de la empresa: entidades, vencimientos, recurrencia y pagos. Se administra en **Tesorería → Impuestos y servicios** (`/erp/treasury/taxes-services`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Acceso a Tesorería y permisos de pagos (Ver pagos · Crear pagos · Confirmar pagos).
+:::
+
+## Secciones
+
+- **Próximos vencimientos**.
+- **Servicios e impuestos** (obligaciones).
+- **Recurrentes**.
+- **Historial y reportes**.
+
+## Datos de una obligación
+
+- **Categoría**: Impuesto, Servicio público, Servicio, Financiero u Otro.
+- **Entidad**, **descripción** y **concepto de servicio**.
+- **Cuenta de gasto**.
+- **Monto** y **vencimiento**.
+- **Recurrencia**: Mensual, Bimestral, Trimestral, Semestral, Anual o Personalizada.
+- **Recordatorio**: sin recordatorio; 15, 7, 3 o 1 día antes; o el día del vencimiento.
+- **Tipo de pago**: con factura fiscal o pago directo sin factura.
+
+## Estados
+
+| Estado | Descripción |
+|---|---|
+| **Planificada** | Cargada, aún no lista. |
+| **Revisar** | Requiere atención. |
+| **Lista para pagar** | Apta para registrar el pago. |
+| **Pagada** | Pagada. |
+| **Vencida** | Pasó el vencimiento sin pago. |
+| **Cancelada** | Cancelada. |
+
+## Cómo cargar una obligación
+
+1. Ir a **Impuestos y servicios** y crear una nueva obligación.
+2. Completar **entidad**, **descripción** y **vencimiento**.
+3. Elegir **concepto de servicio**, **cuenta de gasto** y **monto**.
+4. Definir **categoría**, **recurrencia**, **recordatorio** y **tipo de pago**.
+5. Guardar.
+
+## Reglas y validaciones
+
+- **Entidad**, **descripción** y **vencimiento** son obligatorios.
+- Se requiere **concepto de servicio**, **cuenta de gasto** y **monto**.
+- Los **recordatorios** ayudan a no vencer; las obligaciones vencidas se marcan como **Vencida**.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No puedo guardar | Faltan entidad, descripción o vencimiento. | Completá esos campos. |
+| No aparece el concepto | No está configurado. | Verificá los servicios disponibles. |
+| La obligación figura Vencida | Pasó la fecha sin registrar el pago. | Registrá el pago o actualizá la fecha. |
+
+## Ver también
+
+- [Bancos](/procesos/tesoreria/bancos/) y [Pagos](/procesos/compras/pagos/).
+- [Impuestos y configuración fiscal](/configuracion/impuestos/).

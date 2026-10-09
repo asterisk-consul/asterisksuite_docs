@@ -53,7 +53,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [x] Tarjetas
 - [x] Inversiones
 - [x] Cuentas corrientes
-- [ ] Impuestos y servicios
+- [x] Impuestos y servicios
 - [ ] Reportes
 
 ### Stock, fabricación e inventario
