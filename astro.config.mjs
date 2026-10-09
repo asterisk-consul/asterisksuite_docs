@@ -1,6 +1,9 @@
 import { defineConfig } from 'astro/config'
 import starlight from '@astrojs/starlight'
 import starlightThemeSix from '@six-tech/starlight-theme-six'
+import { fileURLToPath } from 'node:url'
+
+const customSiteTitle = fileURLToPath(new URL('./src/components/SiteTitle.astro', import.meta.url))
 
 export default defineConfig({
   site: 'https://docs.asterisksuite.cloud',
@@ -8,7 +11,25 @@ export default defineConfig({
   vite: {
     build: {
       cssMinify: 'esbuild'
-    }
+    },
+    plugins: [
+      {
+        name: 'override-six-site-title',
+        enforce: 'pre',
+        resolveId(source, importer) {
+          const isPackageSpecifier =
+            source === '@six-tech/starlight-theme-six/overrides/SiteTitle.astro'
+          const isThemeHeaderImport =
+            source === './SiteTitle.astro' &&
+            !!importer &&
+            /starlight-theme-six[\\/]+src[\\/]+overrides[\\/]Header\.astro/.test(importer)
+
+          if (isPackageSpecifier || isThemeHeaderImport) return customSiteTitle
+
+          return null
+        }
+      }
+    ]
   },
 
   integrations: [

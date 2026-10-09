@@ -10,7 +10,7 @@
   --sl-color-accent-high: #003b3b;
 }
 
-/* Logo del nav estilo tema Six: marca grande que sobrepasa el header */
+/* Logo del nav estilo tema Six: marca grande que sobrepasa el header hacia abajo */
 .header,
 .container__header {
   overflow: visible;
@@ -19,24 +19,32 @@
 .site-title-wrapper {
   position: relative;
   z-index: 3;
+  align-items: center;
 }
 
-.site-title {
-  align-items: flex-start;
+.header .site-title {
+  align-items: center;
   overflow: visible;
 }
 
-.site-title .logo-size,
-.site-title img {
-  height: 4.5rem;
+.header .site-title .logo-size,
+.header .site-title img {
+  height: 4rem;
   width: auto;
-  margin-top: 0.15rem;
+  margin-top: 0.7rem;
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.35));
 }
 
+/* "Suite" en peso más fino dentro del título del nav */
+.header .title-text .title-light {
+  font-weight: 300;
+  opacity: 0.85;
+}
+
 @media (max-width: 1023px) {
-  .site-title .logo-size,
-  .site-title img {
-    height: 3.25rem;
+  .header .site-title .logo-size,
+  .header .site-title img {
+    height: 3rem;
+    margin-top: 0.2rem;
   }
 }
