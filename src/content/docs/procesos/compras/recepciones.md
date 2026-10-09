@@ -1,0 +1,60 @@
+---
+title: Recepciones
+description: Registrar la recepción de mercadería y dar entrada de stock.
+sidebar:
+  order: 2
+---
+
+## Para qué sirve
+
+La **recepción** (remito de compra) documenta el ingreso de la mercadería del proveedor y da **entrada de stock**. Se administra en **Compras → Remitos** (`/erp/purchases/remitos`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver compras · Crear compras · Editar compras · Confirmar compras · Anular compras
+- También aplican los permisos por tipo de documento (remitos de compra).
+:::
+
+## Configuración previa
+
+- La **OC** de origen debe existir.
+- Debe existir el **depósito de destino**.
+
+## Cómo registrar una recepción
+
+1. Desde la **OC** generar el **remito de compra**, o ir a **Nuevo Remito de Compra** (`/erp/purchases/remitos/new`).
+2. Indicar las **cantidades recibidas** y el **depósito de destino** de cada producto.
+3. Guardar.
+
+## Confirmar la recepción
+
+Al **Confirmar**, el sistema registra la **entrada de stock** en el depósito indicado. Cada ítem debe tener depósito asignado.
+
+## Estados
+
+| N° | Estado | Descripción |
+|---|---|---|
+| 0 | **Borrador** | Creado, aún no ingresado. |
+| 1 | **En Tránsito** | Mercadería en camino. |
+| 2 | **Entregado / Recibido** | Mercadería recibida. |
+| 3 | **Cancelado** | Anulado. |
+
+## Reglas y validaciones
+
+- Todos los ítems deben tener **depósito** para confirmar.
+- La confirmación **suma stock** al depósito.
+- Una recepción parcial deja la OC en estado **Parcial Entregada**.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| Faltan depósitos | Algún ítem sin depósito de destino. | Completá los depósitos. |
+| El stock no ingresó | La recepción no está confirmada. | Confirmá la recepción. |
+| No puedo editar | Ya está confirmada. | Anulá y recreá si hace falta. |
+
+## Ver también
+
+- [Órdenes de compra](/procesos/compras/ordenes-de-compra/).
+- [Depósitos y ubicaciones](/configuracion/depositos-ubicaciones/).

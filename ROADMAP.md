@@ -40,10 +40,10 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [ ] Mis ventas y reportes
 
 ### Compras
-- [ ] Órdenes de compra
-- [ ] Recepción / remitos de compra
-- [ ] Facturas de compra
-- [ ] Pagos y cuentas por pagar
+- [x] Órdenes de compra
+- [x] Recepción / remitos de compra
+- [x] Facturas de compra
+- [x] Pagos y cuentas por pagar
 - [ ] Importadores (Excel)
 
 ### Tesorería
