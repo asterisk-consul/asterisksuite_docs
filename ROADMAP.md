@@ -33,7 +33,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 
 ### Ventas
 - [ ] Presupuestos
-- [ ] Órdenes de venta
+- [x] Órdenes de venta
 - [ ] Remitos de venta
 - [ ] Facturación
 - [ ] Cobros

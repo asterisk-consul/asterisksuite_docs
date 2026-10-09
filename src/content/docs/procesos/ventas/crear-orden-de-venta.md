@@ -1,0 +1,93 @@
+---
+title: Crear una Orden de Venta
+description: Registrar una OV, agregar productos, completar datos de entrega y confirmarla.
+sidebar:
+  order: 1
+---
+
+## Para qué sirve
+
+La **Orden de Venta (OV)** es el compromiso de venta al cliente. Dispara la preparación, el despacho y, luego, la facturación y el cobro.
+
+Se administran en **Ventas → Órdenes de Venta** (`/erp/orders`) y se crean en **Nueva OV** (`/erp/sales/new?category=ORDER`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver ventas · Crear ventas · Editar ventas · Confirmar ventas · Anular ventas
+- También aplican los permisos por tipo de documento (órdenes de venta) si tu empresa los usa.
+:::
+
+## Configuración previa
+
+- El **cliente** debe existir (Contrapartes).
+- Los **productos** deben tener precio para la moneda.
+- Debe existir un **tipo de documento** de categoría Orden y su **secuencia** (punto de venta).
+- Opcionalmente, un **depósito** y **vendedores** (empleados marcados como vendedores).
+
+## Cómo crear una OV
+
+1. Ir a **Órdenes de Venta** y presionar **Nueva OV**.
+2. **Datos generales**:
+   - **Cliente** (se puede crear uno nuevo desde el mismo formulario).
+   - **Fecha**, **moneda**, **descripción** y **referencia**.
+   - Tipo de documento y punto de venta/secuencia.
+3. **Productos**: agregar ítems indicando producto, cantidad y precio. Según el producto, se puede elegir **variante** y **depósito**.
+4. **Información de entrega** (extensión de la OV):
+   - **Prioridad**: Baja, Media, Alta o Urgente.
+   - **Fecha comprometida**.
+   - **Dirección de entrega**, **contacto**, **teléfono** y **tiempo de entrega**.
+   - **Transporte** e **instrucciones de entrega**.
+5. **Vendedor y comisión**: elegir el vendedor (se autocompleta la comisión según sus valores por defecto) y, si corresponde, ajustar la **comisión (%)** y la base de comisión.
+6. Presionar **Guardar Orden de Venta**.
+
+La OV se crea en estado **Borrador**.
+
+## Estados de la OV
+
+| N° | Estado | Descripción |
+|---|---|---|
+| 0 | **Borrador** | Creada, aún no aprobada internamente. |
+| 1 | **Aprobada** | Aprobada, pendiente de preparación. |
+| 2 | **En Preparación** | Se está preparando el despacho. |
+| 3 | **Lista Despacho** | Lista para ser despachada. |
+| 4 | **Parcial Entregada** | Se entregó parcialmente. |
+| 5 | **Entregada** | Todos los ítems entregados. |
+| 6 | **Facturada** | Facturada completamente. |
+| 7 | **Cerrada** | Cerrada definitivamente. |
+| 8 | **Cancelada** | Cancelada. |
+
+## Confirmar y avanzar
+
+Desde el detalle de la OV se puede **Confirmar** y **cambiar de estado** (según transiciones válidas: Borrador → Aprobada, Aprobada → En Preparación, etc.).
+
+- Al abrir la confirmación, el sistema puede mostrar la **disponibilidad de stock**; según la configuración, **bloquea** la confirmación o permite **confirmar con faltante**.
+- Una vez **confirmada**, la OV **no se puede editar** (solo avanzar de estado).
+
+## Acciones relacionadas
+
+- **Crear Orden de Despacho** (disponible desde estados aprobados): genera la orden de despacho para planificar el viaje y luego el remito.
+- **Crear Factura**: desde la OV se puede generar la factura con los ítems pendientes de facturar.
+- **Cobro**: desde el listado, generar el cobro de una OV facturada.
+
+## Reglas y validaciones
+
+- La OV debe tener **cliente** y al menos un **ítem**.
+- La **secuencia** define el número del documento.
+- Confirmar puede requerir **stock suficiente** según la política configurada.
+- Los documentos confirmados no se editan; se avanza de estado o se anulan (según categoría).
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No aparece el cliente | No está cargado. | Crealo en Contrapartes o desde el formulario. |
+| El producto no tiene precio | Falta precio para esa moneda. | Cargá el precio en Productos. |
+| No puedo confirmar la OV | Falta stock y la política bloquea. | Reponé stock o ajustá la política. |
+| No puedo editar la OV | Ya está confirmada. | Cambiá de estado o anulá y recreá. |
+
+## Ver también
+
+- [Ventas](/procesos/ventas/) — circuito completo.
+- [Contrapartes](/configuracion/contrapartes/).
+- [Implementación de Logística](/procesos/logistica/implementacion/) — despacho y remito.

@@ -9,4 +9,5 @@ Guías funcionales de los principales circuitos de Asterisk Suite, organizadas c
 
 ## Contenido disponible
 
+- [Ventas](/procesos/ventas/) — circuito comercial.
 - [Implementación de Logística](/procesos/logistica/implementacion/)
