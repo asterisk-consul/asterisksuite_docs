@@ -24,6 +24,7 @@ El módulo de **Productos** es la base del catálogo de Asterisk Suite. Cada pro
 ### Estructura y costos
 
 - [Componentes y BOM](/configuracion/productos/componentes-bom/).
+- [Plantillas de costo](/configuracion/productos/plantillas-de-costo/).
 
 ### Precios
 
@@ -33,4 +34,4 @@ El módulo de **Productos** es la base del catálogo de Asterisk Suite. Cada pro
 
 ## Páginas previstas
 
-- Plantillas de costo.
+- Costos (cálculo, historial y Pareto).

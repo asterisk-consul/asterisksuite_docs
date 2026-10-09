@@ -19,7 +19,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
   - [x] Variantes
   - [x] Componentes / BOM
   - [x] Precios, listas y por contraparte
-  - [ ] Plantillas de costo
+  - [x] Plantillas de costo
   - [x] Atributos, categorías y tags
 - [x] Unidades
 - [ ] Contrapartes (clientes, proveedores, socios, contactos)
