@@ -40,7 +40,7 @@ export default defineConfig({
       plugins: [
         starlightThemeSix({
           navLinks: [
-            { label: 'Docs', link: '/' }
+            { label: 'Docs', link: '/docs/' }
           ],
           footerText: 'Asterisk Suite — Documentación'
         })
