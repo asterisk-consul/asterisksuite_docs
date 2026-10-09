@@ -48,6 +48,10 @@ export default defineConfig({
 
       defaultLocale: 'es',
 
+      locales: {
+        root: { label: 'Español', lang: 'es' }
+      },
+
       logo: {
         light: './public/logo-mark.png',
         dark: './public/logo-mark-white.png',
