@@ -75,19 +75,69 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Primeros pasos',
-          items: [{ autogenerate: { directory: 'primeros-pasos' } }]
-        },
-        {
-          label: 'Procesos',
-          items: [{ autogenerate: { directory: 'procesos' } }]
+          items: [
+            'primeros-pasos',
+            'primeros-pasos/configuracion-inicial-empresa'
+          ]
         },
         {
           label: 'Configuración',
-          items: [{ autogenerate: { directory: 'configuracion' } }]
+          items: [
+            'configuracion',
+            {
+              label: 'Productos',
+              items: [{ autogenerate: { directory: 'configuracion/productos' } }]
+            },
+            {
+              label: 'Contrapartes',
+              items: [{ autogenerate: { directory: 'configuracion/contrapartes' } }]
+            },
+            {
+              label: 'Depósitos y ubicaciones',
+              items: [{ autogenerate: { directory: 'configuracion/depositos-ubicaciones' } }]
+            },
+            {
+              label: 'Monedas y cotizaciones',
+              items: [{ autogenerate: { directory: 'configuracion/monedas' } }]
+            },
+            {
+              label: 'Secuencias y tipos de documento',
+              items: [{ autogenerate: { directory: 'configuracion/documentos' } }]
+            },
+            {
+              label: 'Impuestos y configuración fiscal',
+              items: [{ autogenerate: { directory: 'configuracion/impuestos' } }]
+            },
+            'configuracion/contabilidad'
+          ]
+        },
+        {
+          label: 'Procesos',
+          items: [
+            'procesos',
+            {
+              label: 'Ventas',
+              items: [{ autogenerate: { directory: 'procesos/ventas' } }]
+            },
+            {
+              label: 'Compras',
+              items: [{ autogenerate: { directory: 'procesos/compras' } }]
+            },
+            {
+              label: 'Logística',
+              items: [{ autogenerate: { directory: 'procesos/logistica' } }]
+            }
+          ]
         },
         {
           label: 'Administración',
-          items: [{ autogenerate: { directory: 'administracion' } }]
+          items: [
+            'administracion',
+            {
+              label: 'Usuarios, roles y permisos',
+              items: [{ autogenerate: { directory: 'administracion/usuarios-roles-permisos' } }]
+            }
+          ]
         },
         {
           label: 'Solución de problemas',
