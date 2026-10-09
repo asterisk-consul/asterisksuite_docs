@@ -22,7 +22,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
   - [x] Plantillas de costo
   - [x] Atributos, categorías y tags
 - [x] Unidades
-- [ ] Contrapartes (clientes, proveedores, socios, contactos)
+- [x] Contrapartes (clientes, proveedores, socios, contactos)
 - [ ] Ubicaciones y depósitos
 - [ ] Monedas y cotizaciones
 - [ ] Secuencias y tipos de documento

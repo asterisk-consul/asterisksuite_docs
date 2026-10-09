@@ -9,11 +9,13 @@ Esta sección agrupa la configuración de catálogos y datos maestros: productos
 
 ## Contenido disponible
 
-- [Productos](/configuracion/productos/) — alta y administración del catálogo.
+- [Productos](/configuracion/productos/) — catálogo, variantes, BOM, precios y costos.
+- [Contrapartes](/configuracion/contrapartes/) — clientes, proveedores, socios y demás terceros.
 
 ## Contenido previsto
 
-- Unidades, atributos, categorías y tags.
-- Precios y listas de precios.
+- Ubicaciones y depósitos.
+- Monedas y cotizaciones.
+- Secuencias y tipos de documento.
 - Impuestos y configuración fiscal.
 - Cuentas contables y plan de cuentas.
