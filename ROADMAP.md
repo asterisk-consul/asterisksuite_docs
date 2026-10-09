@@ -34,7 +34,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 ### Ventas
 - [x] Presupuestos
 - [x] Órdenes de venta
-- [ ] Remitos de venta
+- [x] Remitos de venta
 - [ ] Facturación
 - [ ] Cobros
 - [ ] Mis ventas y reportes

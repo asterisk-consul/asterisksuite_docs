@@ -1,0 +1,71 @@
+---
+title: Remitos de venta
+description: Registrar la entrega de mercadería y dar salida de stock.
+sidebar:
+  order: 3
+---
+
+## Para qué sirve
+
+El **remito** documenta la entrega de la mercadería al cliente y registra la **salida de stock**. Se administra en **Ventas → Remitos** (`/erp/remitos`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver ventas · Crear ventas · Editar ventas · Confirmar ventas · Anular ventas
+- También aplican los permisos por tipo de documento (remitos) si tu empresa los usa.
+:::
+
+## Configuración previa
+
+- La **OV** (o el documento de origen) debe existir.
+- Deben existir los **depósitos** de salida.
+- Para **remitos fiscales**, se requiere una **autorización fiscal (CAI)** vigente.
+
+## Cómo crear un remito
+
+El remito normalmente se genera desde la Orden de Venta:
+
+1. Abrir la **OV** y **Crear Orden de Despacho** (o **Crear/abrir remito**).
+2. Indicar las **cantidades** a entregar y el **depósito de salida** de cada producto.
+3. Guardar.
+
+También se puede crear manualmente con **Nuevo remito** (`/erp/sales/new?category=REMITO`), en **modo operativo** (cantidades y depósito de salida por producto).
+
+## Confirmar el remito
+
+Al **Confirmar**, el sistema **registra la salida de mercadería** del depósito:
+
+- Cada ítem debe tener **depósito** asignado; si falta, no se puede confirmar.
+- Puede haber un **control fiscal** (CAI) que **bloquee** la confirmación si la autorización no es válida.
+- Se descuenta el stock del depósito indicado.
+
+## Estados
+
+| N° | Estado | Descripción |
+|---|---|---|
+| 0 | **Borrador** | Creado, aún no despachado. |
+| 1 | **En Tránsito** | Mercadería en camino al cliente. |
+| 2 | **Entregado** | Recibido por el cliente. |
+| 3 | **Cancelado** | Remito cancelado. |
+
+## Reglas y validaciones
+
+- Todos los ítems deben tener **depósito** asignado para confirmar.
+- La confirmación **descuenta stock**.
+- El control fiscal puede **bloquear** la confirmación.
+- La entrega completa la Orden de Despacho y, cuando corresponde, el viaje asociado.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| "productos no tienen depósito" | Faltó asignar depósito en algún ítem. | Completá los depósitos desde el remito o su edición. |
+| "No se puede confirmar fiscalmente" | CAI faltante o vencido. | Registrá/renová la autorización fiscal. |
+| El stock no se descontó | El remito no está confirmado. | Confirmá el remito. |
+
+## Ver también
+
+- [Ventas](/procesos/ventas/).
+- [Autorizaciones fiscales](/configuracion/impuestos/autorizaciones-fiscales/).
+- [Implementación de Logística](/procesos/logistica/implementacion/).
