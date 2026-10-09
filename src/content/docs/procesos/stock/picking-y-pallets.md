@@ -1,0 +1,51 @@
+---
+title: Picking y pallets
+description: Preparación de pedidos y agrupación de mercadería dentro del depósito.
+sidebar:
+  order: 4
+---
+
+## Para qué sirve
+
+El **picking** es la preparación de la mercadería dentro del depósito para despachar un pedido. Los **pallets** agrupan mercadería para moverla y transferirla entre ubicaciones. Estas operaciones se gestionan desde **Logística → Almacenes** (`/logistica/warehouse`) y se disparan desde el circuito de **despacho**.
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Picking: Ver picking · Crear órdenes de picking · Ejecutar picking · Transferir pallets
+- Pallets: Ver pallets · Crear pallets · Editar pallets · Eliminar pallets
+:::
+
+## Picking
+
+1. Se genera una **orden de picking** para un **depósito**, con sus **ítems** (producto y cantidad); normalmente a partir de una **orden de despacho**.
+2. Al crearla, el sistema **reserva** el stock de los productos.
+3. Al **ejecutar** el picking, se **descuenta** la cantidad y lo reservado del stock, y se registran los **resultados**.
+
+El stock del depósito se actualiza con cada movimiento y **no se permite stock negativo**.
+
+## Pallets
+
+Los **pallets** son unidades de agrupación con un **código**, un **depósito** y un **estado**. Se pueden:
+
+- **Crear** y **editar** pallets.
+- **Transferir** un pallet: se registra la **salida (OUT)** en el origen y la **entrada (IN)** en el destino.
+
+## Reglas y consideraciones
+
+- Cada movimiento actualiza `warehouse_stock` y evita saldos negativos.
+- El picking **reserva** primero y **descuenta** al ejecutar.
+- La transferencia de un pallet mueve stock **OUT/IN** entre ubicaciones o depósitos.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No puedo ejecutar el picking | El producto no tiene stock reservado suficiente. | Verificá disponibilidad en el depósito. |
+| El stock quedó negativo | Movimiento sin stock disponible. | Revisá los movimientos del producto. |
+| La transferencia no impacta | Origen/destino incorrectos. | Verificá depósitos y cantidades. |
+
+## Ver también
+
+- [Disponibilidad de stock](/procesos/stock/disponibilidad/).
+- [Implementación de Logística](/procesos/logistica/implementacion/).

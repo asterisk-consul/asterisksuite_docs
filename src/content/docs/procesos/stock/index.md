@@ -21,6 +21,7 @@ Reúne el control de **stock** por depósito, el análisis de **disponibilidad c
 - [Disponibilidad de stock](/procesos/stock/disponibilidad/)
 - [Reposición](/procesos/stock/reposicion/)
 - [Fabricación](/procesos/stock/fabricacion/)
+- [Picking y pallets](/procesos/stock/picking-y-pallets/)
 
 ## Permisos necesarios
 

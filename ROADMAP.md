@@ -59,7 +59,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 ### Stock, fabricación e inventario
 - [x] Disponibilidad de stock
 - [x] Reposición
-- [ ] Picking y pallets
+- [x] Picking y pallets
 - [x] BOM
 - [x] Fabricación
 - [ ] Plantillas de costo / combustible
