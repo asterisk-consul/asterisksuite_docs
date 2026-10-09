@@ -50,7 +50,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [x] Cajas y movimientos
 - [x] Bancos
 - [x] Cheques
-- [ ] Tarjetas
+- [x] Tarjetas
 - [ ] Inversiones
 - [x] Cuentas corrientes
 - [ ] Impuestos y servicios
