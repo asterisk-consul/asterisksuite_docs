@@ -65,10 +65,10 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [ ] Plantillas de costo / combustible
 
 ### Logística
-- [~] Implementación de logística (guía general de prueba/capacitación)
-- [ ] Viajes
+- [x] Implementación de logística (guía general de prueba/capacitación)
+- [x] Viajes
 - [ ] Corredores
-- [ ] Órdenes de despacho
+- [x] Órdenes de despacho
 - [ ] Choferes, vehículos y combinaciones
 - [ ] Tarifas de transferencia
 - [ ] Mantenimiento (órdenes, planes, cubiertas)

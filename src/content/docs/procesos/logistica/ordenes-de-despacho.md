@@ -1,0 +1,72 @@
+---
+title: Órdenes de despacho
+description: Pedidos a despachar, generados desde la Orden de Venta.
+sidebar:
+  order: 3
+---
+
+## Para qué sirve
+
+La **Orden de Despacho** representa el pedido a despachar. Se genera desde la **Orden de Venta**, se puede **planificar en un viaje** y da origen al **remito**. Se administra en **Logística → Órdenes de Despacho** (`/logistica/viajes/dispatch-orders`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver órdenes de despacho · Crear órdenes de despacho · Editar órdenes de despacho · Eliminar órdenes de despacho
+:::
+
+## Datos
+
+- **Número** y **estado**.
+- **Cliente**.
+- **Origen** y **destino**.
+- **Corredor** (ruta predefinida).
+- **Fecha planificada**.
+- **Tarifas** e **ítems** (producto, cantidad, precio).
+- **Requiere stock**.
+
+## Cómo se genera
+
+1. Abrir la **OV** confirmada.
+2. Presionar **Crear Orden de Despacho**.
+3. Se copian cliente, productos, cantidades y precios; la tarifa se muestra como producto y puede ajustarse.
+
+Volver a ejecutar la acción **reutiliza** el vínculo existente y no duplica la operación.
+
+## Estados
+
+| Estado | Descripción |
+|---|---|
+| **Pendiente** | Creada, sin asignar a un viaje. |
+| **Asignada** | Asignada a un viaje. |
+| **En curso** | En ejecución. |
+| **Completada** | Despachada/entregada. |
+| **Cancelada** | Cancelada. |
+
+## Dos ramas independientes
+
+Desde la Orden de Despacho se pueden ejecutar dos procesos que **no se bloquean entre sí**:
+
+- **Planificación** — asignar la orden a un viaje.
+- **Documentación comercial** — crear/abrir el **remito**.
+
+Esto permite emitir el remito aunque no se use planificación, o planificar el viaje antes de emitirlo.
+
+## Reglas y consideraciones
+
+- La Orden de Despacho conserva la **trazabilidad** con la OV.
+- Al completarse todas las órdenes de un viaje, el viaje también se completa.
+- Las órdenes antiguas sin productos siguen mostrando sus tarifas históricas.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No se genera el remito | Ítems sin depósito asignado. | Completá los depósitos. |
+| La orden no aparece en viajes | No está asignada. | Asignala desde el planificador. |
+| Se duplicó el despacho | Se ejecutó la acción dos veces. | La acción reutiliza el vínculo; revisá las órdenes existentes. |
+
+## Ver también
+
+- [Viajes](/procesos/logistica/viajes/).
+- [Remitos de venta](/procesos/ventas/remitos/).

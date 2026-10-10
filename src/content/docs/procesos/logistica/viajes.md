@@ -1,0 +1,57 @@
+---
+title: Viajes
+description: Planificar y seguir el transporte de despachos.
+sidebar:
+  order: 2
+---
+
+## Para qué sirve
+
+Los **viajes** planifican y siguen el transporte: agrupan órdenes de despacho en un recorrido con vehículo y chofer. Se administran en **Logística → Viajes** (`/logistica/viajes`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver viajes · Crear viajes · Editar viajes · Eliminar viajes
+:::
+
+## Datos de un viaje
+
+- **Referencia** y **semana**.
+- **Combinación de vehículo**.
+- **Origen** y **destino**.
+- **Salida** y **llegada** (fechas).
+- **Estado**.
+- **Kilómetros**.
+
+## Cómo crear un viaje
+
+1. Ir a **Viajes** y presionar **Crear Viaje**.
+2. **Paso 1 — Viaje**: completar referencia, semana, combinación de vehículo, origen/destino y fechas.
+3. **Paso 2 — Asignación de órdenes**: asignar las **órdenes de despacho** al viaje.
+
+## Estados
+
+| Estado | Descripción |
+|---|---|
+| **Planificado** | Creado, aún no iniciado. |
+| **En curso** | En ejecución. |
+| **Completado** | Finalizado. |
+| **Cancelado** | Cancelado. |
+
+## Reglas y consideraciones
+
+- Al **completarse** todas las órdenes de despacho del viaje, el viaje pasa a **Completado**.
+- El viaje y el remito se gestionan de forma **independiente** (una rama no bloquea a la otra).
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No aparecen órdenes para asignar | No están creadas o ya están en otro viaje. | Generá las órdenes desde la OV. |
+| El viaje no se completa | Quedan órdenes sin despachar. | Verificá el estado de cada orden. |
+
+## Ver también
+
+- [Órdenes de despacho](/procesos/logistica/ordenes-de-despacho/).
+- [Implementación de Logística](/procesos/logistica/implementacion/).
