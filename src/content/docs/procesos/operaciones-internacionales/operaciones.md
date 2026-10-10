@@ -1,0 +1,71 @@
+---
+title: Operaciones
+description: Crear una operación de importación o exportación.
+sidebar:
+  order: 1
+---
+
+## Para qué sirve
+
+Permite dar de alta una **operación internacional** (importación/exportación) con sus datos generales, origen y destino, transporte e incoterm. Se crea en **Operaciones internacionales → Nueva Operación** (`/operaciones-internacionales/create`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver operaciones internacionales · Crear operaciones internacionales · Editar operaciones internacionales
+:::
+
+## Campos
+
+- **Número** y **Nombre**.
+- **Tipo de operación**: Importación, Exportación u Otra.
+- **Tipo de transporte**: Marítimo, Aéreo, Terrestre, Multimodal u Otro.
+- **Proveedor principal** (contraparte del exterior).
+- **País y ubicación de origen** y de **destino**.
+- **Fecha estimada de salida** y de **llegada**.
+- **Moneda**.
+- **Incoterm**.
+- **Responsable**.
+- **N° de operación del despachante** y **N° SIM**.
+- **OC del proveedor**.
+- **Notas**.
+
+## Incoterms
+
+El sistema incluye los Incoterms habituales (`EXW`, `FCA`, `FOB`, `CFR`, `CIF`, `CPT`, `CIP`, `DAP`, `DPU`), con una descripción de **quién asume cada tramo** (vendedor/comprador: transporte, seguro y despachos).
+
+## Estados
+
+| Estado | Descripción |
+|---|---|
+| **Planificada** | Creada, aún no iniciada. |
+| **En preparación** | Preparando la carga. |
+| **Embarcada** | Embarcada en origen. |
+| **En tránsito** | En camino. |
+| **Arribada** | Llegó al destino. |
+| **Aduana** | En proceso aduanero. |
+| **Liberada** | Liberada por aduana. |
+| **Entregada** | Entregada. |
+| **Cerrada** | Cerrada. |
+
+## Acciones relacionadas
+
+- **Asociar documentos** y **cotizaciones** a la operación.
+- Agregar **contenedores** y registrar su seguimiento.
+
+## Reglas y validaciones
+
+- Los **campos son opcionales**; conviene completar al menos número/nombre y origen/destino.
+- El **estado** avanza según el circuito de la operación.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No aparece el proveedor | No está cargado. | Crealo en Contrapartes. |
+| No puedo avanzar el estado | Faltan pasos previos. | Revisá el circuito de estados. |
+
+## Ver también
+
+- [Contenedores y seguimiento](/procesos/operaciones-internacionales/contenedores/).
+- [Contrapartes](/configuracion/contrapartes/).

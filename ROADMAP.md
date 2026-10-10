@@ -74,7 +74,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [ ] Mantenimiento (órdenes, planes, cubiertas)
 
 ### Operaciones internacionales
-- [ ] Operaciones y contenedores
+- [x] Operaciones y contenedores
 - [ ] Configuración
 
 ### RRHH

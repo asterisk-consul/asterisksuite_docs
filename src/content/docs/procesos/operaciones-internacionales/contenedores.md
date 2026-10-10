@@ -1,0 +1,63 @@
+---
+title: Contenedores y seguimiento
+description: Registrar contenedores y sus eventos de seguimiento.
+sidebar:
+  order: 2
+---
+
+## Para qué sirve
+
+Dentro de una operación internacional se registran sus **contenedores** y se hace el **seguimiento** mediante **eventos**. Se administra desde la operación → **Contenedores** (`/operaciones-internacionales/[id]/containers`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver operaciones internacionales · Crear/Editar operaciones internacionales
+:::
+
+## Datos de un contenedor
+
+- **Número de contenedor**.
+- **Tipo**: 20' DV, 40' DV, 40' HC, 45' HC u Otro.
+- **Precinto** y **Booking**.
+- **Bill of Lading (BL)**.
+- **Buque** y **número de viaje**.
+- **Puerto de origen** y de **destino**.
+- **Fecha estimada de salida** y de **llegada**.
+- **Peso** y **volumen**.
+- **Notas**.
+
+## Estados del contenedor
+
+El contenedor recorre estados como **Preparando**, **Cargado**, **Embarcado**, **En tránsito**, **Arribado**, **Aduana**, **Liberado**, **Recibiendo** y **Entregado**.
+
+## Eventos de seguimiento
+
+Se registran eventos que documentan el avance, por ejemplo:
+
+- Carga en origen y salida de origen.
+- Embarque, tránsito y arribo a puerto.
+- Aduana y liberación.
+- Transporte terrestre y arribo al depósito.
+
+## Entregar un contenedor
+
+Existe una acción específica para **entregar** el contenedor, que registra el cierre del movimiento hacia su destino.
+
+## Reglas y consideraciones
+
+- El **número de contenedor** es obligatorio.
+- Los **eventos** quedan en el historial del contenedor.
+- El estado del contenedor es independiente del estado de la operación.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No puedo guardar | Falta el número de contenedor. | Completalo. |
+| El contenedor no avanza | Faltan eventos/estado. | Registrá el evento correspondiente. |
+
+## Ver también
+
+- [Operaciones](/procesos/operaciones-internacionales/operaciones/).
+- [Logística](/procesos/logistica/).

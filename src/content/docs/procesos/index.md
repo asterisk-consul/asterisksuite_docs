@@ -14,3 +14,4 @@ Guías funcionales de los principales circuitos de Asterisk Suite, organizadas c
 - [Tesorería](/procesos/tesoreria/) — cajas, bancos y pagos.
 - [Stock y fabricación](/procesos/stock/) — existencias, reposición y producción.
 - [Logística](/procesos/logistica/) — despachos, viajes y flota.
+- [Operaciones internacionales](/procesos/operaciones-internacionales/) — importación y exportación.

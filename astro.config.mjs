@@ -157,6 +157,10 @@ export default defineConfig({
           items: [{ autogenerate: { directory: 'procesos/logistica' } }]
         },
         {
+          label: 'Operaciones internacionales',
+          items: [{ autogenerate: { directory: 'procesos/operaciones-internacionales' } }]
+        },
+        {
           label: 'Administración',
           items: [
             'administracion',
