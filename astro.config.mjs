@@ -105,7 +105,8 @@ export default defineConfig({
           label: 'Primeros pasos',
           items: [
             'primeros-pasos',
-            'primeros-pasos/configuracion-inicial-empresa'
+            'primeros-pasos/configuracion-inicial-empresa',
+            'primeros-pasos/navegacion'
           ]
         },
         {
@@ -168,8 +169,11 @@ export default defineConfig({
           label: 'Administración',
           items: [
             'administracion',
+            'administracion/centro-de-configuracion',
+            'administracion/empresa',
             'administracion/seguridad',
             'administracion/notificaciones',
+            'administracion/auditoria',
             'administracion/papelera',
             'administracion/usuarios-roles-permisos',
             'administracion/usuarios-roles-permisos/gestionar-usuarios',

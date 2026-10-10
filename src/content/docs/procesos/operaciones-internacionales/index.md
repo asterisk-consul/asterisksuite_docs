@@ -28,6 +28,7 @@ flowchart LR
 
 - [Operaciones](/procesos/operaciones-internacionales/operaciones/)
 - [Contenedores y seguimiento](/procesos/operaciones-internacionales/contenedores/)
+- [Configuración](/procesos/operaciones-internacionales/configuracion/)
 
 ## Permisos necesarios
 

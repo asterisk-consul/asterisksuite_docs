@@ -10,11 +10,11 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 
 - [x] Configuración inicial de la empresa
 - [x] Usuarios, roles y permisos
-- [ ] Navegación general y conceptos
+- [x] Navegación general y conceptos
 
 ## Configuración
 
-- [~] Productos
+- [x] Productos
   - [x] Crear un producto
   - [x] Variantes
   - [x] Componentes / BOM
@@ -62,7 +62,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [x] Picking y pallets
 - [x] BOM
 - [x] Fabricación
-- [ ] Plantillas de costo / combustible
+- [x] Plantillas de costo / combustible
 
 ### Logística
 - [x] Implementación de logística (guía general de prueba/capacitación)
@@ -75,7 +75,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 
 ### Operaciones internacionales
 - [x] Operaciones y contenedores
-- [ ] Configuración
+- [x] Configuración
 
 ### RRHH
 - [x] Empleados
@@ -85,20 +85,20 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 
 ## Administración
 
-- [ ] Centro de configuración
-- [ ] Empresa
+- [x] Centro de configuración
+- [x] Empresa
 - [x] Usuarios, roles y permisos
-- [ ] Seguridad
-- [ ] Notificaciones
-- [ ] Auditoría
-- [ ] Papelera
+- [x] Seguridad
+- [x] Notificaciones
+- [x] Auditoría
+- [x] Papelera
 
 ## Solución de problemas
 
-- [ ] Errores de validación
-- [ ] Permisos y acceso
-- [ ] Numeración y secuencias
-- [ ] Preguntas frecuentes
+- [x] Errores de validación
+- [x] Permisos y acceso
+- [x] Numeración y secuencias
+- [x] Preguntas frecuentes
 
 ## Orden de trabajo
 

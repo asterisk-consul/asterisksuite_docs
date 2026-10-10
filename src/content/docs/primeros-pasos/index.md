@@ -10,8 +10,8 @@ Esta sección reúne las guías para poner en marcha el sistema: alta de la empr
 ## Contenido disponible
 
 - [Configuración inicial de la empresa](/primeros-pasos/configuracion-inicial-empresa/) — crear la empresa y completar sus datos.
+- [Navegación general](/primeros-pasos/navegacion/) — cómo moverse por el sistema.
 
 ## Contenido previsto
 
-- Usuarios, roles y permisos.
-- Conceptos generales de navegación.
+- Conceptos generales.
