@@ -32,6 +32,10 @@ flowchart LR
 
 - [Viajes](/procesos/logistica/viajes/)
 - [Órdenes de despacho](/procesos/logistica/ordenes-de-despacho/)
+- [Corredores](/procesos/logistica/corredores/)
+- [Flota](/procesos/logistica/flota/)
+- [Tarifas de transferencia](/procesos/logistica/tarifas/)
+- [Mantenimiento](/procesos/logistica/mantenimiento/)
 - [Implementación de Logística](/procesos/logistica/implementacion/) — guía de prueba y capacitación.
 
 ## Permisos necesarios

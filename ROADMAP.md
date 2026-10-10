@@ -67,11 +67,11 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 ### Logística
 - [x] Implementación de logística (guía general de prueba/capacitación)
 - [x] Viajes
-- [ ] Corredores
+- [x] Corredores
 - [x] Órdenes de despacho
-- [ ] Choferes, vehículos y combinaciones
-- [ ] Tarifas de transferencia
-- [ ] Mantenimiento (órdenes, planes, cubiertas)
+- [x] Choferes, vehículos y combinaciones
+- [x] Tarifas de transferencia
+- [x] Mantenimiento (órdenes, planes, cubiertas)
 
 ### Operaciones internacionales
 - [x] Operaciones y contenedores
