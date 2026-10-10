@@ -15,3 +15,4 @@ Guías funcionales de los principales circuitos de Asterisk Suite, organizadas c
 - [Stock y fabricación](/procesos/stock/) — existencias, reposición y producción.
 - [Logística](/procesos/logistica/) — despachos, viajes y flota.
 - [Operaciones internacionales](/procesos/operaciones-internacionales/) — importación y exportación.
+- [RRHH](/procesos/rrhh/) — empleados, socios y vales.

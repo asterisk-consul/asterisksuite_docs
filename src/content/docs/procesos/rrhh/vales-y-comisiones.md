@@ -1,0 +1,69 @@
+---
+title: Vales y comisiones
+description: Vales de sueldos, adelantos y préstamos, y liquidación de comisiones.
+sidebar:
+  order: 3
+---
+
+## Para qué sirve
+
+Los **vales** registran movimientos con empleados y socios (sueldos, adelantos, extras, retiros, aportes, reintegros y préstamos). Las **comisiones** liquidan las ventas de los vendedores. Se administran en **RRHH → Vales** (`/erp/rrhh/vales`) y en **Reportes**.
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver vales · Crear vales · Editar vales · Eliminar vales · Aprobar vales · Rechazar vales
+:::
+
+## Tipos de vale
+
+| Tipo | Descripción |
+|---|---|
+| **Sueldo** | Pago de sueldo. |
+| **Adelanto** | Adelanto de sueldo. |
+| **Extras** | Horas extras, bonos. |
+| **Retiro** | Retiro de dinero. |
+| **Aporte** | Aporte del empleado/socio. |
+| **Reembolso** | Reintegro de gastos. |
+| **Préstamo** | Otorgamiento de préstamo. |
+
+## Datos de un vale
+
+- **Contraparte** (empleado o socio) y **tipo**.
+- **Monto** y **moneda** (con cotización si corresponde).
+- **Fecha** y **descripción**.
+
+## Cómo registrar un vale
+
+1. Ir a **Vales** y presionar **Nuevo**.
+2. Elegir la **contraparte** y el **tipo**.
+3. Indicar **monto**, **moneda** y **fecha**.
+4. Guardar. El vale queda en **Borrador** y se puede **Confirmar** (o cancelar).
+
+## Comisiones
+
+Los vendedores tienen **comisión (%)** y **base** definidas en su ficha de empleado. Las comisiones se calculan según las ventas y se consultan en **RRHH → Reportes → Comisiones**.
+
+## Reportes
+
+- **Comisiones**.
+- **Movimientos** y **Saldos** por empleado/socio.
+- **Vales por período**.
+- **Socios**.
+
+## Reglas y validaciones
+
+- El vale requiere **contraparte**, **tipo**, **monto**, **moneda** y **fecha**.
+- Un vale debe **confirmarse** para impactar la cuenta corriente.
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| El vale no impacta el saldo | Está en Borrador. | Confirmalo. |
+| No aparecen comisiones | El vendedor no tiene comisión configurada. | Editalo en Empleados. |
+
+## Ver también
+
+- [Empleados](/procesos/rrhh/empleados/).
+- [Cuentas corrientes](/procesos/tesoreria/cuentas-corrientes/).

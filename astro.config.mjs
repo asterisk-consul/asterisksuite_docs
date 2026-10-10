@@ -161,9 +161,16 @@ export default defineConfig({
           items: [{ autogenerate: { directory: 'procesos/operaciones-internacionales' } }]
         },
         {
+          label: 'RRHH',
+          items: [{ autogenerate: { directory: 'procesos/rrhh' } }]
+        },
+        {
           label: 'Administración',
           items: [
             'administracion',
+            'administracion/seguridad',
+            'administracion/notificaciones',
+            'administracion/papelera',
             'administracion/usuarios-roles-permisos',
             'administracion/usuarios-roles-permisos/gestionar-usuarios',
             'administracion/usuarios-roles-permisos/gestionar-roles'

@@ -10,9 +10,11 @@ Guías de administración del sistema: alta de empresas, gestión de usuarios, a
 ## Contenido disponible
 
 - [Usuarios, roles y permisos](/administracion/usuarios-roles-permisos/) — modelo de acceso y gestión.
+- [Seguridad](/administracion/seguridad/) — cambio de contraseña.
+- [Notificaciones](/administracion/notificaciones/) — canales y avisos.
+- [Papelera](/administracion/papelera/) — restaurar o eliminar definitivamente.
 
 ## Contenido previsto
 
 - Empresas y sucursales.
-- Auditoría y seguridad.
-- Notificaciones y papelera.
+- Auditoría.

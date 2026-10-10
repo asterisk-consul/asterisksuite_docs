@@ -78,9 +78,9 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [ ] Configuración
 
 ### RRHH
-- [ ] Empleados
-- [ ] Socios
-- [ ] Vales y comisiones
+- [x] Empleados
+- [x] Socios
+- [x] Vales y comisiones
 - [ ] Reportes
 
 ## Administración
