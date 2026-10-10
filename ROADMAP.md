@@ -37,14 +37,14 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [x] Remitos de venta
 - [x] Facturación
 - [x] Cobros
-- [ ] Mis ventas y reportes
+- [x] Mis ventas y reportes
 
 ### Compras
 - [x] Órdenes de compra
 - [x] Recepción / remitos de compra
 - [x] Facturas de compra
 - [x] Pagos y cuentas por pagar
-- [ ] Importadores (Excel)
+- [x] Importadores (Excel)
 
 ### Tesorería
 - [x] Cajas y movimientos
@@ -54,7 +54,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [x] Inversiones
 - [x] Cuentas corrientes
 - [x] Impuestos y servicios
-- [ ] Reportes
+- [x] Reportes
 
 ### Stock, fabricación e inventario
 - [x] Disponibilidad de stock
@@ -81,7 +81,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [x] Empleados
 - [x] Socios
 - [x] Vales y comisiones
-- [ ] Reportes
+- [x] Reportes
 
 ## Administración
 

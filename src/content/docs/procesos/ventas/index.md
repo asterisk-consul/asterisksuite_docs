@@ -40,6 +40,7 @@ flowchart LR
 - [Remitos de venta](/procesos/ventas/remitos/)
 - [Facturación](/procesos/ventas/facturacion/)
 - [Cobros](/procesos/ventas/cobros/)
+- [Mis ventas y reportes](/procesos/ventas/mis-ventas/)
 
 ## Permisos necesarios
 

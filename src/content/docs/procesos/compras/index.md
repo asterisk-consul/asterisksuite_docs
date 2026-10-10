@@ -35,6 +35,7 @@ flowchart LR
 - [Recepciones](/procesos/compras/recepciones/)
 - [Facturas de compra](/procesos/compras/facturas-de-compra/)
 - [Pagos](/procesos/compras/pagos/)
+- [Importadores](/procesos/compras/importadores/)
 
 ## Permisos necesarios
 
