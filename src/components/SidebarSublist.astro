@@ -149,14 +149,12 @@ const items: Item[] = sublist.map((entry: any) => {
   }
 
   .container-group-link {
-    overflow: hidden;
-    max-height: 1000px;
-    opacity: 1;
+    display: grid;
+    gap: 0.125rem;
   }
 
-  .container-sidebar-entry.collapsed .container-group-link {
-    max-height: 0;
-    opacity: 0;
+  .container-sidebar-entry.collapsed > .container-group-link {
+    display: none !important;
   }
 </style>
 
