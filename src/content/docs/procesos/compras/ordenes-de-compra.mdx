@@ -5,6 +5,8 @@ sidebar:
   order: 1
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 La **Orden de Compra (OC)** es la solicitud de mercadería al proveedor. Se administra en **Compras → Órdenes de Compra** (`/erp/purchases/orders`) y se crea en **Nueva Orden de Compra** (`/erp/purchases/orders/new`).
@@ -24,17 +26,32 @@ La **Orden de Compra (OC)** es la solicitud de mercadería al proveedor. Se admi
 
 ## Cómo crear una OC
 
-1. Ir a **Órdenes de Compra** y presionar **Nueva Orden de Compra**.
-2. **Datos generales**: proveedor, fecha, moneda, descripción, referencia y tipo de documento/secuencia.
-3. **Productos**: agregar ítems con producto, cantidad y precio.
-4. **Información de recepción** (extensión de la OC):
-   - **Prioridad**: Baja, Media, Alta o Urgente.
-   - **Fecha estimada de entrega**.
-   - **Dirección de recepción**, **contacto**, **teléfono** y **tiempo de entrega**.
-   - **Transporte** e **instrucciones de recepción**.
-5. Presionar **Guardar Orden de Compra**.
+<Steps>
 
-La OC se crea en estado **Borrador**.
+### Abrí el formulario
+
+Ir a **Órdenes de Compra** y presionar **Nueva Orden de Compra**.
+
+### Completá los datos generales
+
+Proveedor, fecha, moneda, descripción, referencia y tipo de documento/secuencia.
+
+### Agregá los productos
+
+Ítems con producto, cantidad y precio.
+
+### Completá la información de recepción
+
+- **Prioridad**: Baja, Media, Alta o Urgente.
+- **Fecha estimada de entrega**.
+- **Dirección de recepción**, **contacto**, **teléfono** y **tiempo de entrega**.
+- **Transporte** e **instrucciones de recepción**.
+
+### Guardá
+
+Presionar **Guardar Orden de Compra**. La OC se crea en estado **Borrador**.
+
+</Steps>
 
 ## Estados
 

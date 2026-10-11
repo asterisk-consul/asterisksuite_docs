@@ -23,12 +23,31 @@ El **pago** registra la cancelación de las facturas de compra. Se gestiona desd
 
 ## Cómo registrar un pago
 
-1. Desde la factura/OC usar **Pagar**, o ir a **Nuevo pago** con tipo **Pago (PAYMENT)**.
-2. **Proveedor** y **moneda**.
-3. **Forma de pago**: efectivo, transferencia bancaria, cheque o tarjeta.
-4. **Documentos a aplicar**: seleccionar las facturas de compra pendientes y el **importe aplicado**.
-5. **Retenciones**: el sistema puede **sugerir retenciones** practicadas según el motor fiscal (se pueden ajustar).
-6. Guardar y **Confirmar** el pago.
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
+<Steps>
+
+### Iniciá el pago
+
+Desde la factura/OC usar **Pagar**, o ir a **Nuevo pago** con tipo **Pago (PAYMENT)**.
+
+### Elegí proveedor y moneda
+
+### Elegí la forma de pago
+
+Efectivo, transferencia bancaria, cheque o tarjeta.
+
+### Aplicá a los documentos
+
+Seleccioná las facturas de compra pendientes y el **importe aplicado**.
+
+### Revisá las retenciones
+
+El sistema puede **sugerir retenciones** practicadas según el motor fiscal (se pueden ajustar).
+
+### Guardá y confirmá
+
+</Steps>
 
 ## Confirmar el pago
 
@@ -52,3 +71,4 @@ Al confirmar, se actualiza la **cuenta corriente del proveedor** y el **saldo** 
 
 - [Facturas de compra](/procesos/compras/facturas-de-compra/).
 - [Compras](/procesos/compras/).
+- [Retenciones](/configuracion/impuestos/retenciones/).

@@ -5,6 +5,8 @@ sidebar:
   order: 2
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 La **recepción** (remito de compra) documenta el ingreso de la mercadería del proveedor y da **entrada de stock**. Se administra en **Compras → Remitos** (`/erp/purchases/remitos`).
@@ -23,9 +25,21 @@ La **recepción** (remito de compra) documenta el ingreso de la mercadería del 
 
 ## Cómo registrar una recepción
 
-1. Desde la **OC** generar el **remito de compra**, o ir a **Nuevo Remito de Compra** (`/erp/purchases/remitos/new`).
-2. Indicar las **cantidades recibidas** y el **depósito de destino** de cada producto.
-3. Guardar.
+<Steps>
+
+### Partí de la OC o creá el remito
+
+Desde la **OC** generar el **remito de compra**, o ir a **Nuevo Remito de Compra** (`/erp/purchases/remitos/new`).
+
+### Indicá cantidades y depósito de destino
+
+Para cada producto, cargá la **cantidad recibida** y el **depósito de destino**.
+
+### Guardá y confirmá
+
+Al **Confirmar**, el sistema registra la **entrada de stock** en el depósito indicado.
+
+</Steps>
 
 ## Confirmar la recepción
 

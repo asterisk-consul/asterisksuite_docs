@@ -5,6 +5,8 @@ sidebar:
   order: 3
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 La **factura de compra** registra el comprobante del proveedor. Se administra en **Compras** (`/erp/purchases/purchases-documents`) y se crea en **Nuevo Comprobante de Compra** (`/erp/purchases/purchases-documents/new`). Las **notas de crédito/débito** de compra ajustan una factura.
@@ -24,17 +26,31 @@ La **factura de compra** registra el comprobante del proveedor. Se administra en
 
 ## Cómo registrar una factura de compra
 
-1. Ir a **Nuevo Comprobante de Compra** (o generarla desde la OC/recepción).
-2. **Datos generales**: proveedor, fecha, moneda, tipo de documento y secuencia.
-3. **Productos**: ítems con producto, cantidad y precio.
-4. El sistema calcula los **impuestos** y el total.
-5. Guardar y **Confirmar**.
+<Steps>
 
-Para las **notas de crédito/débito** de compra, se selecciona el **documento de referencia** (la factura) y se ajustan los ítems.
+### Iniciá el comprobante
 
-## Confirmación
+Ir a **Nuevo Comprobante de Compra** (o generarla desde la OC/recepción).
+
+### Completá los datos generales
+
+Proveedor, fecha, moneda, tipo de documento y secuencia.
+
+### Agregá los productos
+
+Ítems con producto, cantidad y precio.
+
+### Revisá los impuestos
+
+El sistema calcula los **impuestos** y el total.
+
+### Guardá y confirmá
 
 Al confirmar, el comprobante actualiza la **cuenta corriente del proveedor** (cuenta por pagar) y queda disponible para su **pago**.
+
+</Steps>
+
+Para las **notas de crédito/débito** de compra, se selecciona el **documento de referencia** (la factura) y se ajustan los ítems.
 
 ## Estados
 
