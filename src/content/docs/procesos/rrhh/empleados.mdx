@@ -5,6 +5,8 @@ sidebar:
   order: 1
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 Los **empleados** son el personal de la empresa. Se administran en **RRHH → Empleados** (`/erp/rrhh/employees`).
@@ -28,11 +30,27 @@ Los **empleados** son el personal de la empresa. Se administran en **RRHH → Em
 
 ## Cómo crear un empleado
 
-1. Ir a **Empleados** y presionar **Nuevo**.
-2. Completar nombre, apellido, documento, puesto, sector, fecha de ingreso, sueldo y moneda.
-3. Si es vendedor, marcar **Es vendedor** y definir **comisión** y **base**.
-4. Opcionalmente, crear/loguear el **usuario** vinculado.
-5. Guardar.
+<Steps>
+
+### Nuevo empleado
+
+Ir a **Empleados** y presionar **Nuevo**.
+
+### Completá los datos laborales
+
+Nombre, apellido, documento, puesto, sector, fecha de ingreso, sueldo y moneda.
+
+### Definí comisiones (si es vendedor)
+
+Marcar **Es vendedor** y definir **comisión** y **base**.
+
+### Vinculá un usuario (opcional)
+
+Se puede crear/vincular el **usuario** de acceso.
+
+### Guardá
+
+</Steps>
 
 Al crear un empleado, el sistema crea su **contraparte** (tipo Empleado) y puede vincular un **usuario** de acceso.
 

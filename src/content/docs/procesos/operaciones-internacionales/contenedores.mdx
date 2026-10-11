@@ -5,6 +5,8 @@ sidebar:
   order: 2
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 Dentro de una operación internacional se registran sus **contenedores** y se hace el **seguimiento** mediante **eventos**. Se administra desde la operación → **Contenedores** (`/operaciones-internacionales/[id]/containers`).
@@ -27,18 +29,29 @@ Dentro de una operación internacional se registran sus **contenedores** y se ha
 - **Peso** y **volumen**.
 - **Notas**.
 
+## Cómo registrar un contenedor
+
+<Steps>
+
+### Abrí la operación
+
+Ir a la operación y entrar a **Contenedores**.
+
+### Nuevo contenedor
+
+Completá el **número**, tipo y datos de transporte (precinto, booking, BL, buque, viaje, puertos y fechas).
+
+### Guardá
+
+</Steps>
+
 ## Estados del contenedor
 
 El contenedor recorre estados como **Preparando**, **Cargado**, **Embarcado**, **En tránsito**, **Arribado**, **Aduana**, **Liberado**, **Recibiendo** y **Entregado**.
 
 ## Eventos de seguimiento
 
-Se registran eventos que documentan el avance, por ejemplo:
-
-- Carga en origen y salida de origen.
-- Embarque, tránsito y arribo a puerto.
-- Aduana y liberación.
-- Transporte terrestre y arribo al depósito.
+Se registran eventos que documentan el avance, por ejemplo: carga y salida de origen; embarque, tránsito y arribo a puerto; aduana y liberación; transporte terrestre y arribo al depósito.
 
 ## Entregar un contenedor
 
