@@ -5,6 +5,8 @@ sidebar:
   order: 3
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 La **Orden de Despacho** representa el pedido a despachar. Se genera desde la **Orden de Venta**, se puede **planificar en un viaje** y da origen al **remito**. Se administra en **Logística → Órdenes de Despacho** (`/logistica/viajes/dispatch-orders`).
@@ -27,9 +29,19 @@ La **Orden de Despacho** representa el pedido a despachar. Se genera desde la **
 
 ## Cómo se genera
 
-1. Abrir la **OV** confirmada.
-2. Presionar **Crear Orden de Despacho**.
-3. Se copian cliente, productos, cantidades y precios; la tarifa se muestra como producto y puede ajustarse.
+<Steps>
+
+### Abrí la OV confirmada
+
+### Creá la orden de despacho
+
+Presionar **Crear Orden de Despacho**.
+
+### Revisá los datos copiados
+
+Se copian cliente, productos, cantidades y precios; la **tarifa** se muestra como producto y puede ajustarse.
+
+</Steps>
 
 Volver a ejecutar la acción **reutiliza** el vínculo existente y no duplica la operación.
 
