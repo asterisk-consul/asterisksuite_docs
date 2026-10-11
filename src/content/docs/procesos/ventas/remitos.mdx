@@ -5,6 +5,8 @@ sidebar:
   order: 3
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 El **remito** documenta la entrega de la mercadería al cliente y registra la **salida de stock**. Se administra en **Ventas → Remitos** (`/erp/remitos`).
@@ -24,11 +26,21 @@ El **remito** documenta la entrega de la mercadería al cliente y registra la **
 
 ## Cómo crear un remito
 
-El remito normalmente se genera desde la Orden de Venta:
+<Steps>
 
-1. Abrir la **OV** y **Crear Orden de Despacho** (o **Crear/abrir remito**).
-2. Indicar las **cantidades** a entregar y el **depósito de salida** de cada producto.
-3. Guardar.
+### Partí de la Orden de Venta
+
+Abrir la **OV** y **Crear Orden de Despacho** (o **Crear/abrir remito**).
+
+### Indicá cantidades y depósito de salida
+
+Para cada producto, cargá la **cantidad** a entregar y el **depósito de salida**.
+
+### Guardá
+
+Confirmá el remito cuando la mercadería esté lista para salir.
+
+</Steps>
 
 También se puede crear manualmente con **Nuevo remito** (`/erp/sales/new?category=REMITO`), en **modo operativo** (cantidades y depósito de salida por producto).
 

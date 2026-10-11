@@ -5,6 +5,8 @@ sidebar:
   order: 2
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 El **presupuesto** es una oferta comercial al cliente, con su validez y condiciones. Si el cliente acepta, el presupuesto se **convierte en Orden de Venta**.
@@ -26,15 +28,32 @@ Se administran en **Ventas → Presupuestos** (`/erp/budgets`) y se crean en **N
 
 ## Cómo crear un presupuesto
 
-1. Ir a **Presupuestos** y presionar **Nuevo presupuesto**.
-2. **Datos generales**: cliente, fecha, moneda, descripción, referencia y tipo de documento/secuencia.
-3. **Productos**: agregar ítems con producto, cantidad y precio.
-4. **Datos del Presupuesto** (extensión):
-   - **Fecha de vencimiento** (validez).
-   - **Garantía** (ej. "12 meses").
-   - **Observaciones comerciales**, **Observaciones internas** y **Exclusiones**.
-   - **Términos y condiciones**.
-5. Presionar **Guardar Presupuesto**.
+<Steps>
+
+### Iniciá el presupuesto
+
+Ir a **Presupuestos** y presionar **Nuevo presupuesto**.
+
+### Completá los datos generales
+
+Cliente, fecha, moneda, descripción, referencia y tipo de documento/secuencia.
+
+### Agregá los productos
+
+Ítems con producto, cantidad y precio.
+
+### Completá los datos del presupuesto
+
+- **Fecha de vencimiento** (validez).
+- **Garantía** (ej. "12 meses").
+- **Observaciones comerciales**, **Observaciones internas** y **Exclusiones**.
+- **Términos y condiciones**.
+
+### Guardá
+
+Presionar **Guardar Presupuesto**.
+
+</Steps>
 
 ## Estados
 

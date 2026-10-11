@@ -5,6 +5,8 @@ sidebar:
   order: 4
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 La **factura** es el comprobante fiscal de la venta. Se administra en **Ventas → Facturas** y se crea en **Nueva Factura** (`/erp/sales/new?category=INVOICE`). Las **notas de crédito** y **débito** ajustan una factura ya emitida.
@@ -25,11 +27,29 @@ La **factura** es el comprobante fiscal de la venta. Se administra en **Ventas �
 
 ## Cómo emitir una factura
 
-1. Desde la **OV** confirmada, usar **Crear Factura** (toma los ítems pendientes), o ir a **Nueva Factura**.
-2. **Datos generales**: cliente, fecha, moneda, tipo de documento y secuencia.
-3. **Productos**: ítems con producto, cantidad y precio.
-4. El sistema **calcula los impuestos** (IVA según la condición del emisor y del receptor) y muestra el detalle.
-5. Presionar **Guardar**.
+<Steps>
+
+### Partí de la OV o creá una nueva
+
+Desde la **OV** confirmada, usar **Crear Factura** (toma los ítems pendientes), o ir a **Nueva Factura**.
+
+### Completá los datos generales
+
+Cliente, fecha, moneda, tipo de documento y secuencia.
+
+### Agregá los productos
+
+Ítems con producto, cantidad y precio.
+
+### Revisá los impuestos
+
+El sistema **calcula los impuestos** (IVA según la condición del emisor y del receptor) y muestra el detalle.
+
+### Guardá y confirmá
+
+Presionar **Guardar** y luego **Confirmar** para asignar número y CAE.
+
+</Steps>
 
 Para las **notas de crédito/débito**, se selecciona el **documento de referencia** (la factura) y se ajustan los ítems.
 

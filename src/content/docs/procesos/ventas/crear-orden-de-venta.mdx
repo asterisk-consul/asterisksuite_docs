@@ -5,6 +5,8 @@ sidebar:
   order: 1
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 La **Orden de Venta (OV)** es el compromiso de venta al cliente. Dispara la preparación, el despacho y, luego, la facturación y el cobro.
@@ -27,21 +29,38 @@ Se administran en **Ventas → Órdenes de Venta** (`/erp/orders`) y se crean en
 
 ## Cómo crear una OV
 
-1. Ir a **Órdenes de Venta** y presionar **Nueva OV**.
-2. **Datos generales**:
-   - **Cliente** (se puede crear uno nuevo desde el mismo formulario).
-   - **Fecha**, **moneda**, **descripción** y **referencia**.
-   - Tipo de documento y punto de venta/secuencia.
-3. **Productos**: agregar ítems indicando producto, cantidad y precio. Según el producto, se puede elegir **variante** y **depósito**.
-4. **Información de entrega** (extensión de la OV):
-   - **Prioridad**: Baja, Media, Alta o Urgente.
-   - **Fecha comprometida**.
-   - **Dirección de entrega**, **contacto**, **teléfono** y **tiempo de entrega**.
-   - **Transporte** e **instrucciones de entrega**.
-5. **Vendedor y comisión**: elegir el vendedor (se autocompleta la comisión según sus valores por defecto) y, si corresponde, ajustar la **comisión (%)** y la base de comisión.
-6. Presionar **Guardar Orden de Venta**.
+<Steps>
 
-La OV se crea en estado **Borrador**.
+### Abrí el formulario
+
+Ir a **Órdenes de Venta** y presionar **Nueva OV** (`/erp/sales/new?category=ORDER`).
+
+### Completá los datos generales
+
+- **Cliente** (se puede crear uno nuevo desde el mismo formulario).
+- **Fecha**, **moneda**, **descripción** y **referencia**.
+- Tipo de documento y punto de venta/secuencia.
+
+### Agregá los productos
+
+Agregar ítems indicando producto, cantidad y precio. Según el producto, se puede elegir **variante** y **depósito**.
+
+### Completá la información de entrega
+
+- **Prioridad**: Baja, Media, Alta o Urgente.
+- **Fecha comprometida**.
+- **Dirección de entrega**, **contacto**, **teléfono** y **tiempo de entrega**.
+- **Transporte** e **instrucciones de entrega**.
+
+### Definí el vendedor y la comisión
+
+Elegir el **vendedor** (se autocompleta la comisión según sus valores por defecto) y, si corresponde, ajustar la **comisión (%)** y la base de comisión.
+
+### Guardá
+
+Presionar **Guardar Orden de Venta**. La OV se crea en estado **Borrador**.
+
+</Steps>
 
 ## Estados de la OV
 
@@ -89,5 +108,5 @@ Desde el detalle de la OV se puede **Confirmar** y **cambiar de estado** (según
 ## Ver también
 
 - [Ventas](/procesos/ventas/) — circuito completo.
+- [Circuito de ventas](/procesos/ventas/circuito-de-ventas/).
 - [Contrapartes](/configuracion/contrapartes/).
-- [Implementación de Logística](/procesos/logistica/implementacion/) — despacho y remito.
