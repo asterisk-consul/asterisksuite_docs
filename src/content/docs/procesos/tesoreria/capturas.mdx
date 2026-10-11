@@ -1,0 +1,77 @@
+---
+title: Capturas
+description: Cargar comprobantes con foto o PDF, enviarlos y procesarlos.
+sidebar:
+  order: 9
+---
+
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
+## Para qué sirve
+
+**Capturas** permite cargar comprobantes (pagos, cheques, facturas de compra/venta, depósitos) adjuntando una **foto o PDF**, y luego **enviarlos** a otro usuario o **procesarlos**. Se accede desde **Tesorería → Capturas** (`/erp/treasury/intake`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver menú y bandeja de capturas · Crear capturas en borrador
+- Adjuntar imágenes o PDF a capturas · Enviar capturas a otro usuario
+- Eliminar capturas propias en borrador · Procesar capturas asignadas
+:::
+
+## Cómo cargar una captura
+
+<Steps>
+
+### Crear el borrador
+
+Ir a **Capturas** y crear una nueva: completá **título**, **notas** (opcional) y una **clasificación sugerida**:
+
+- Pago o cobro
+- Cheque
+- Documento de compra
+- Documento de venta
+- Depósito de cheque
+- Sin clasificar
+
+### Adjuntar la imagen o el PDF
+
+Subir la foto o el PDF del comprobante.
+
+### Enviarlo o procesarlo
+
+- **Enviar** a otro usuario para que lo procese, o
+- **Procesar** la captura asignada (convierte el comprobante en el documento correspondiente).
+
+</Steps>
+
+## Bandeja y estados
+
+La lista muestra **Bandeja** (Recibido / Enviado por mí), tipo y **estado**:
+
+| Estado | Descripción |
+|---|---|
+| **Borrador** | Creado, sin enviar. |
+| **Enviado** | Enviado a otro usuario. |
+| **En proceso** | En revisión/procesamiento. |
+| **Completado** | Procesado y relacionado con su documento. |
+| **Rechazado** | Descartado. |
+
+## Reglas y consideraciones
+
+- Una captura propia en **borrador** puede eliminarse.
+- **Procesar** una captura suele generar o asociar el documento de destino.
+- Pensado para carga rápida desde el móvil (fotos de comprobantes).
+
+## Problemas frecuentes
+
+| Mensaje / síntoma | Causa | Solución |
+|---|---|---|
+| No puedo enviar | Falta adjuntar el comprobante. | Subí la foto o el PDF. |
+| No puedo procesar | No está asignada a vos. | Pedí que te la asignen. |
+| La captura no se convirtió en documento | Estado no completado. | Revisá el procesamiento. |
+
+## Ver también
+
+- [Cobros](/procesos/ventas/cobros/) y [Pagos](/procesos/compras/pagos/).
+- [Cheques](/procesos/tesoreria/cheques/).

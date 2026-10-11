@@ -106,7 +106,8 @@ export default defineConfig({
           items: [
             'primeros-pasos',
             'primeros-pasos/configuracion-inicial-empresa',
-            'primeros-pasos/navegacion'
+            'primeros-pasos/navegacion',
+            'primeros-pasos/paneles'
           ]
         },
         {

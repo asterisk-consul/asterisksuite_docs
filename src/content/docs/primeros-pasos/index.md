@@ -11,6 +11,7 @@ Esta sección reúne las guías para poner en marcha el sistema: alta de la empr
 
 - [Configuración inicial de la empresa](/primeros-pasos/configuracion-inicial-empresa/) — crear la empresa y completar sus datos.
 - [Navegación general](/primeros-pasos/navegacion/) — cómo moverse por el sistema.
+- [Paneles de inicio](/primeros-pasos/paneles/) — tableros y reportes de gestión.
 
 ## Contenido previsto
 

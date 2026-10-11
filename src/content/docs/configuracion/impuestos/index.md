@@ -29,6 +29,7 @@ Reúne la configuración fiscal de la empresa: el catálogo de **impuestos**, el
 - [Configuración fiscal](/configuracion/impuestos/configuracion-fiscal/)
 - [Reglas y alícuotas](/configuracion/impuestos/reglas-y-alicuotas/)
 - [Autorizaciones fiscales](/configuracion/impuestos/autorizaciones-fiscales/)
+- [Retenciones](/configuracion/impuestos/retenciones/)
 
 ## Ver también
 

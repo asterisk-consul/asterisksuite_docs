@@ -11,6 +11,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [x] Configuración inicial de la empresa
 - [x] Usuarios, roles y permisos
 - [x] Navegación general y conceptos
+- [x] Paneles de inicio
 
 ## Configuración
 
@@ -22,7 +23,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
   - [x] Plantillas de costo
   - [x] Atributos, categorías y tags
 - [x] Unidades
-- [x] Contrapartes (clientes, proveedores, socios, contactos)
+- [x] Contrapartes (clientes, proveedores, socios, contactos) — incluye rol doble / cliente interno
 - [x] Ubicaciones y depósitos
 - [x] Monedas y cotizaciones
 - [x] Secuencias y tipos de documento
@@ -38,6 +39,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [x] Facturación
 - [x] Cobros
 - [x] Mis ventas y reportes
+- [x] Circuito de ventas (configuración)
 
 ### Compras
 - [x] Órdenes de compra
@@ -55,6 +57,7 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [x] Cuentas corrientes
 - [x] Impuestos y servicios
 - [x] Reportes
+- [x] Capturas
 
 ### Stock, fabricación e inventario
 - [x] Disponibilidad de stock

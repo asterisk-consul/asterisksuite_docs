@@ -32,6 +32,7 @@ sidebar:
 - [Impuestos y servicios](/procesos/tesoreria/impuestos-y-servicios/)
 - [Cuentas corrientes](/procesos/tesoreria/cuentas-corrientes/)
 - [Reportes de tesorería](/procesos/tesoreria/reportes/)
+- [Capturas](/procesos/tesoreria/capturas/)
 
 ## Permisos necesarios
 

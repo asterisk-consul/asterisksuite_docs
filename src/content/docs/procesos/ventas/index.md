@@ -41,6 +41,7 @@ flowchart LR
 - [Facturación](/procesos/ventas/facturacion/)
 - [Cobros](/procesos/ventas/cobros/)
 - [Mis ventas y reportes](/procesos/ventas/mis-ventas/)
+- [Circuito de ventas](/procesos/ventas/circuito-de-ventas/) — configuración
 
 ## Permisos necesarios
 

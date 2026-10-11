@@ -1,0 +1,36 @@
+---
+title: Retenciones
+description: Histórico de retenciones practicadas y sufridas.
+sidebar:
+  order: 5
+---
+
+## Para qué sirve
+
+El módulo de **Retenciones** muestra el **histórico** de retenciones **practicadas** (las que hicimos a terceros) y **sufridas** (las que nos hicieron). Se accede desde **Tesorería** (`/erp/fiscal/withholdings`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Acceso al módulo de retenciones (según permisos fiscales/tesorería).
+:::
+
+## Conceptos
+
+- **Practicada** — retuvimos al pagar a un proveedor.
+- **Sufrida** — nos retuvieron al cobrar de un cliente.
+
+Cada registro muestra el importe retenido, el estado y el tercero involucrado. El encabezado muestra el **total** retenido.
+
+## Cómo se generan
+
+Las retenciones surgen del **motor fiscal** al registrar pagos o cobros (especialmente por transferencia bancaria), según las [reglas y alícuotas](/configuracion/impuestos/reglas-y-alicuotas/). Pueden sugerirse automáticamente y ajustarse antes de confirmar.
+
+## Filtros y consulta
+
+Se puede filtrar por tipo (practicada/sufrida) y estado, y usar los filtros del listado para acotar por fecha/tercero.
+
+## Ver también
+
+- [Pagos](/procesos/compras/pagos/) y [Cobros](/procesos/ventas/cobros/).
+- [Reglas y alícuotas](/configuracion/impuestos/reglas-y-alicuotas/).
