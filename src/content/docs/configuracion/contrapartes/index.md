@@ -22,6 +22,18 @@ Las **contrapartes** (o "terceros") son todas las personas y entidades con las q
 | **Entidad Financiera** | Bancos y tarjetas. |
 | **Proveedor de Servicios** | Otros prestadores. |
 
+## Tipo principal y roles adicionales
+
+Una contraparte tiene un **tipo principal**, pero **puede cumplir varios roles a la vez**. Los roles se guardan aparte del tipo y se pueden activar/desactivar.
+
+El caso típico es el **rol doble**: un **Empleado** puede habilitarse además como **Cliente interno**. En la ficha del empleado hay un interruptor **"Habilitar como cliente interno"**; al activarlo, la misma contraparte aparece también en las listas de **clientes** (para ventas internas, cuenta corriente, precios por cliente, etc.).
+
+Consecuencias de tener varios roles:
+
+- La contraparte **aparece en las listas de cada rol** que tenga activo (clientes, proveedores, empleados, socios…).
+- Los módulos que filtran por tipo (ventas, compras, tesorería, RRHH) la muestran según el rol correspondiente.
+- Se mantiene **una sola ficha** (un solo CUIT/identificación) compartiendo direcciones, contactos y cuentas.
+
 ## Datos generales
 
 Cada contraparte tiene:

@@ -36,6 +36,10 @@ Los **empleados** son el personal de la empresa. Se administran en **RRHH → Em
 
 Al crear un empleado, el sistema crea su **contraparte** (tipo Empleado) y puede vincular un **usuario** de acceso.
 
+## Cliente interno (rol doble)
+
+Un **empleado puede ser también cliente interno**. Desde su ficha se activa **"Habilitar como cliente interno"**; a partir de ahí, la misma contraparte aparece en las listas de **clientes** (para venderle, facturar y llevar su cuenta corriente). Ver [Crear y editar una contraparte](/configuracion/contrapartes/crear-contraparte/#roles-y-rol-doble).
+
 ## Reglas y consideraciones
 
 - Nombre y apellido son obligatorios.

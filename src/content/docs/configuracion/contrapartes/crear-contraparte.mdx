@@ -5,6 +5,8 @@ sidebar:
   order: 1
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 Permite dar de alta y editar cualquier **contraparte** (tercero) del sistema, junto con sus impuestos, direcciones, contactos y cuentas bancarias.
@@ -19,17 +21,40 @@ Permite dar de alta y editar cualquier **contraparte** (tercero) del sistema, ju
 
 ## Cómo crear una contraparte
 
-1. Ir a **Terceros** (`/erp/stakeholders`) y presionar **Nueva**.
-2. Elegir el **Tipo** (Cliente, Proveedor, Empleado, Socio, etc.).
-3. Completar los **datos generales**: nombre (y apellido si es persona), razón social, email, tipo y número de documento, condición de IVA, exención y estado activo.
-4. Completar las pestañas:
-   - **Impuestos** — perfil fiscal de la contraparte.
-   - **Direcciones** — ubicaciones asociadas.
-   - **Contactos** — personas de contacto (nombre, apellido, rol, teléfono, email).
-   - **Cuentas Bancarias** — CBU, alias, banco, tipo de cuenta, moneda, titular y cuenta predeterminada.
-   - **Datos Laborales** (si es Empleado): puesto, sector, fecha de ingreso, sueldo, si es vendedor y comisión.
-   - **Participación** (si es Socio): porcentaje de participación.
-5. Guardar.
+<Steps>
+
+### Elegí el tipo principal
+
+Ir a **Terceros** (`/erp/stakeholders`), presionar **Nueva** y elegir el **Tipo**: Cliente, Proveedor, Empleado, Socio, etc.
+
+### Completá los datos generales
+
+Nombre (y apellido si es persona), razón social, email, tipo y número de documento, condición de IVA, exención y estado activo.
+
+### Completá las pestañas
+
+- **Impuestos** — perfil fiscal de la contraparte.
+- **Direcciones** — ubicaciones asociadas.
+- **Contactos** — personas de contacto (nombre, apellido, rol, teléfono, email).
+- **Cuentas Bancarias** — CBU, alias, banco, tipo de cuenta, moneda, titular y cuenta predeterminada.
+- **Datos Laborales** (si es Empleado): puesto, sector, fecha de ingreso, sueldo, si es vendedor y comisión.
+- **Participación** (si es Socio): porcentaje de participación.
+
+### Guardá
+
+Presionar **Guardar**. El sistema crea la contraparte (y su empleado/socio cuando corresponde).
+
+</Steps>
+
+## Roles y rol doble
+
+Un tercero puede cumplir **varios roles** además de su tipo principal. El caso más común es un **Empleado que también es Cliente interno**:
+
+1. En la ficha del **Empleado** aparece el interruptor **"Habilitar como cliente interno"**.
+2. Al activarlo y guardar, la contraparte suma el rol **Cliente**.
+3. Desde ese momento aparece **también en las listas de clientes**: se le puede vender, facturar, asignar precios por cliente y llevar su cuenta corriente.
+
+Esto permite **una sola ficha** (un solo CUIT/identificación) compartiendo direcciones, contactos y cuentas, pero usándose como cliente, proveedor, empleado o socio según los roles activos.
 
 ## Validación del documento
 
@@ -54,6 +79,7 @@ Si el documento no respeta el formato, el sistema no permite guardar.
 - El **documento** debe cumplir el formato del tipo seleccionado.
 - Al crear un **Empleado**, el sistema crea automáticamente su registro de empleado.
 - Al crear un **Socio**, se crea su registro de participación.
+- Los roles adicionales (por ejemplo, **Cliente** en un empleado) se guardan por separado y se pueden activar/desactivar.
 - Las **direcciones**, **contactos** y **cuentas** se reemplazan al guardar la edición.
 
 ## Problemas frecuentes
@@ -61,10 +87,12 @@ Si el documento no respeta el formato, el sistema no permite guardar.
 | Mensaje / síntoma | Causa | Solución |
 |---|---|---|
 | "El CUIT debe tener 11 dígitos" | El número no coincide con el tipo. | Corregí el número o el tipo de documento. |
+| El empleado no aparece como cliente | No se activó "Habilitar como cliente interno". | Editalo y activá esa opción. |
 | No puedo guardar el contacto | El contacto no tiene nombre y apellido. | Completá los datos del contacto. |
 | No aparece la pestaña de datos | El tipo elegido no la habilita. | Los datos laborales/participación dependen del tipo. |
 
 ## Ver también
 
 - [Contrapartes](/configuracion/contrapartes/).
+- [Empleados](/procesos/rrhh/empleados/).
 - [Precios por cliente y proveedor](/configuracion/productos/precios-por-contraparte/).
