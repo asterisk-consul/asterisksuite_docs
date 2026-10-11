@@ -5,6 +5,8 @@ sidebar:
   order: 2
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 Las **cuentas bancarias** representan las cuentas propias de la empresa. Permiten registrar **movimientos**, **gastos bancarios** y usar la cuenta en pagos y cobros por transferencia. Se administran en **Tesorería → Bancos** (`/erp/treasury/bank-accounts`).
@@ -29,9 +31,19 @@ Las **cuentas bancarias** representan las cuentas propias de la empresa. Permite
 
 ## Cómo crear una cuenta
 
-1. Ir a **Bancos** y presionar **Nueva cuenta**.
-2. Completar nombre, banco, tipo de cuenta, moneda y, si corresponde, CBU/alias/número y saldo inicial.
-3. Guardar.
+<Steps>
+
+### Nueva cuenta
+
+Ir a **Bancos** y presionar **Nueva cuenta**.
+
+### Completá los datos
+
+Nombre, banco, tipo de cuenta, moneda y, si corresponde, CBU/alias/número y saldo inicial.
+
+### Guardá
+
+</Steps>
 
 ## Movimientos bancarios
 
@@ -60,4 +72,4 @@ Al pagar o cobrar por **transferencia bancaria**, se elige la cuenta; el movimie
 ## Ver también
 
 - [Cajas](/procesos/tesoreria/cajas/).
-- [Cuentas corrientes](/procesos/tesoreria/) — saldos por contraparte.
+- [Cuentas corrientes](/procesos/tesoreria/cuentas-corrientes/).

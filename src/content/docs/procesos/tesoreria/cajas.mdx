@@ -5,6 +5,8 @@ sidebar:
   order: 1
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 Las **cajas** controlan el **efectivo**. Cada caja tiene una **moneda** y un **saldo**, y se opera por **sesiones** (apertura y cierre). Se administran en **Tesorería → Cajas** (`/erp/treasury/cash-boxes`).
@@ -35,10 +37,23 @@ Las **cajas** controlan el **efectivo**. Cada caja tiene una **moneda** y un **s
 
 ## Cómo crear una caja
 
-1. Ir a **Cajas** y presionar **Nueva caja** (`/erp/treasury/cash-boxes/create`).
-2. Completar nombre, tipo, moneda, saldo inicial y si es principal.
-3. Asignar los **usuarios** que podrán operarla y su rol.
-4. Guardar.
+<Steps>
+
+### Nueva caja
+
+Ir a **Cajas** y presionar **Nueva caja** (`/erp/treasury/cash-boxes/create`).
+
+### Completá los datos
+
+Nombre, tipo, moneda, saldo inicial y si es principal.
+
+### Asigná usuarios
+
+Agregá los usuarios que podrán operarla, con su rol (Responsable, Operador o Visor).
+
+### Guardá
+
+</Steps>
 
 ## Operar la caja
 

@@ -5,6 +5,8 @@ sidebar:
   order: 6
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 El módulo de **Inversiones** controla colocaciones financieras: **plazos fijos**, **fondos/FIMA** y otras. Registra su constitución, rendimiento, valuación y rescate. Se administra en **Tesorería → Inversiones** (`/erp/treasury/investments`).
@@ -38,11 +40,29 @@ El módulo de **Inversiones** controla colocaciones financieras: **plazos fijos*
 
 ## Cómo constituir una inversión
 
-1. Ir a **Inversiones** y presionar **Nueva inversión**.
-2. Elegir el **tipo** y completar nombre, institución, moneda y cuenta de origen.
-3. Indicar **capital**, **fecha de constitución** y, en plazos fijos, **vencimiento**, **TNA** y **base de cálculo**.
-4. Si es precancelable, completar fecha y TNA de precancelación.
-5. Guardar. La confirmación **debita el capital** de la cuenta bancaria.
+<Steps>
+
+### Nueva inversión
+
+Ir a **Inversiones** y presionar **Nueva inversión**.
+
+### Completá los datos base
+
+Elegir el **tipo** y completar nombre, institución, moneda y cuenta de origen.
+
+### Definí capital y rendimiento
+
+Indicar **capital**, **fecha de constitución** y, en plazos fijos, **vencimiento**, **TNA** y **base de cálculo**.
+
+### Disponibilidad
+
+Si es precancelable, completar fecha y TNA de precancelación.
+
+### Guardá
+
+La confirmación **debita el capital** de la cuenta bancaria.
+
+</Steps>
 
 El sistema calcula el **interés estimado** y el **valor al vencimiento** a partir de la TNA y la base.
 

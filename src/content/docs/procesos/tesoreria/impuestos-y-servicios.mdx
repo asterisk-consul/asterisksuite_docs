@@ -5,6 +5,8 @@ sidebar:
   order: 7
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 Planifica y controla el pago de **impuestos y servicios** de la empresa: entidades, vencimientos, recurrencia y pagos. Se administra en **Tesorería → Impuestos y servicios** (`/erp/treasury/taxes-services`).
@@ -45,11 +47,27 @@ Planifica y controla el pago de **impuestos y servicios** de la empresa: entidad
 
 ## Cómo cargar una obligación
 
-1. Ir a **Impuestos y servicios** y crear una nueva obligación.
-2. Completar **entidad**, **descripción** y **vencimiento**.
-3. Elegir **concepto de servicio**, **cuenta de gasto** y **monto**.
-4. Definir **categoría**, **recurrencia**, **recordatorio** y **tipo de pago**.
-5. Guardar.
+<Steps>
+
+### Nueva obligación
+
+Ir a **Impuestos y servicios** y crear una nueva obligación.
+
+### Completá los datos básicos
+
+**Entidad**, **descripción** y **vencimiento**.
+
+### Concepto, cuenta y monto
+
+Elegir **concepto de servicio**, **cuenta de gasto** y **monto**.
+
+### Categoría, recurrencia y recordatorio
+
+Definir **categoría**, **recurrencia**, **recordatorio** y **tipo de pago**.
+
+### Guardá
+
+</Steps>
 
 ## Reglas y validaciones
 

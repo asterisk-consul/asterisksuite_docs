@@ -5,6 +5,8 @@ sidebar:
   order: 5
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 El módulo de **Tarjetas** administra dos cosas:
@@ -37,9 +39,21 @@ Se administran en **Tesorería → Tarjetas** (`/erp/treasury/cards`) y sus acre
 
 ## Cómo configurar
 
-1. Ir a **Tarjetas** y elegir la pestaña **Corporativas** o **Canales de cobro**.
-2. Presionar **Nueva configuración**.
-3. Completar los datos según el tipo y guardar.
+<Steps>
+
+### Elegí la pestaña
+
+Ir a **Tarjetas** y elegir la pestaña **Corporativas** o **Canales de cobro**.
+
+### Nueva configuración
+
+Presionar **Nueva configuración**.
+
+### Completá los datos
+
+Cargá los campos según el tipo y guardá.
+
+</Steps>
 
 > En **Canales de cobro** no se guardan números completos ni códigos de seguridad de tarjetas de clientes.
 
@@ -49,15 +63,26 @@ En la pestaña **Corporativas** se ven las **próximas cuotas**. El banco se des
 
 ## Liquidaciones de tarjeta
 
-Cuando se cobra una venta con tarjeta, el dinero queda **pendiente de acreditación** hasta que el adquirente lo deposita. Desde **Liquidaciones de tarjeta**:
+Cuando se cobra una venta con tarjeta, el dinero queda **pendiente de acreditación** hasta que el adquirente lo deposita.
 
-1. Se listan los cobros **Pendientes**, **Vencidos** o **Acreditados**.
-2. Se presiona **Acreditar**, indicando:
-   - **Cuenta bancaria** de destino.
-   - **Fecha real**.
-   - **Comisión**, **IVA/impuestos sobre comisión**, **retenciones** y **otros descuentos**.
-   - **Neto acreditado** y **referencia bancaria**.
-3. Se confirma la acreditación, que **afecta el banco**.
+<Steps>
+
+### Elegí el cobro a acreditar
+
+En **Liquidaciones de tarjeta** se listan los cobros **Pendientes**, **Vencidos** o **Acreditados**. Presionar **Acreditar**.
+
+### Completá la acreditación
+
+- **Cuenta bancaria** de destino.
+- **Fecha real**.
+- **Comisión**, **IVA/impuestos sobre comisión**, **retenciones** y **otros descuentos**.
+- **Neto acreditado** y **referencia bancaria**.
+
+### Confirmá
+
+Al confirmar, la acreditación **afecta el banco**.
+
+</Steps>
 
 El **bruto** menos los descuentos da el **neto**; si hay diferencia, se registra un **motivo**.
 
