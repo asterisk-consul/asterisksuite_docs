@@ -5,6 +5,8 @@ sidebar:
   order: 3
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 Registra una **fabricación**: a partir de la **lista de materiales (BOM)** de un producto compuesto, **descuenta los insumos** y **ingresa el producto terminado** al depósito. Se ejecuta en **Fabricación → Fabricar** (`/fabricacion/fabricar`) y su historial está en **Fabricación → Historial** (`/fabricacion/historial`).
@@ -25,13 +27,31 @@ Registra una **fabricación**: a partir de la **lista de materiales (BOM)** de u
 
 ## Cómo fabricar
 
-1. Ir a **Fabricación → Fabricar**.
-2. Elegir el **producto a fabricar** (solo productos terminados e intermedios).
-3. Si tiene **variantes**, elegir la variante (usa su estructura de fabricación).
-4. Indicar la **cantidad** a fabricar.
-5. Elegir el **depósito de materiales** (de dónde se descuentan las materias primas) y el **depósito de producto terminado** (dónde ingresa lo fabricado).
-6. Presionar **Ver materiales necesarios** para la previsualización.
-7. Confirmar para **registrar la fabricación**: se descuentan los insumos y se suma el producto terminado.
+<Steps>
+
+### Abrí Fabricar
+
+Ir a **Fabricación → Fabricar**.
+
+### Elegí el producto
+
+Seleccioná el **producto a fabricar** (solo productos terminados e intermedios). Si tiene **variantes**, elegí la variante.
+
+### Indicá la cantidad
+
+### Elegí los depósitos
+
+**Depósito de materiales** (de dónde se descuentan las materias primas) y **depósito de producto terminado** (dónde ingresa lo fabricado).
+
+### Previsualizá los materiales
+
+Presionar **Ver materiales necesarios**.
+
+### Confirmá
+
+Se **descuentan los insumos** y se **suma el producto terminado**.
+
+</Steps>
 
 ## Historial
 

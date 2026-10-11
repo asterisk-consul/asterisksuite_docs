@@ -5,6 +5,8 @@ sidebar:
   order: 2
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 La **reposición** detecta faltantes, considera los **arribos próximos** y sugiere **cantidades a reponer** para cada producto. Se consulta en **Stock → Reposición** (`/stock/reposicion`).
@@ -31,10 +33,25 @@ Para cada producto se muestra el **stock físico**, el **stock objetivo** y la *
 
 ## Cómo usar
 
-1. Ir a **Stock → Reposición**.
-2. Filtrar por **estado** y buscar producto.
-3. Según el caso, incluir u ocultar los **productos sin configurar**.
-4. Preparar las cantidades a reponer (orden de compra o ejecución de la sugerencia, según permisos).
+<Steps>
+
+### Abrí la reposición
+
+Ir a **Stock → Reposición**.
+
+### Filtrá
+
+Por **estado** y buscá el producto.
+
+### Mostrá u ocultá sin configurar
+
+Según el caso.
+
+### Reponé
+
+Preparar las cantidades a reponer (orden de compra o ejecución de la sugerencia, según permisos).
+
+</Steps>
 
 ## Reglas y consideraciones
 

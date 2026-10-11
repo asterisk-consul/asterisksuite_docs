@@ -5,6 +5,8 @@ sidebar:
   order: 4
 ---
 
+import { Steps } from '@six-tech/starlight-theme-six/components'
+
 ## Para qué sirve
 
 El **picking** es la preparación de la mercadería dentro del depósito para despachar un pedido. Los **pallets** agrupan mercadería para moverla y transferirla entre ubicaciones. Estas operaciones se gestionan desde **Logística → Almacenes** (`/logistica/warehouse`) y se disparan desde el circuito de **despacho**.
@@ -18,9 +20,21 @@ El **picking** es la preparación de la mercadería dentro del depósito para de
 
 ## Picking
 
-1. Se genera una **orden de picking** para un **depósito**, con sus **ítems** (producto y cantidad); normalmente a partir de una **orden de despacho**.
-2. Al crearla, el sistema **reserva** el stock de los productos.
-3. Al **ejecutar** el picking, se **descuenta** la cantidad y lo reservado del stock, y se registran los **resultados**.
+<Steps>
+
+### Generá la orden de picking
+
+Se crea una **orden de picking** para un **depósito**, con sus **ítems** (producto y cantidad); normalmente a partir de una **orden de despacho**.
+
+### Reservá el stock
+
+Al crearla, el sistema **reserva** el stock de los productos.
+
+### Ejecutá el picking
+
+Al **ejecutar**, se **descuenta** la cantidad y lo reservado del stock, y se registran los **resultados**.
+
+</Steps>
 
 El stock del depósito se actualiza con cada movimiento y **no se permite stock negativo**.
 
