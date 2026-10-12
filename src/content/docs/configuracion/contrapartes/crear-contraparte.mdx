@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-import { Steps } from '@six-tech/starlight-theme-six/components'
+import { Steps } from '@astrojs/starlight/components'
 
 ## Para qué sirve
 
@@ -23,26 +23,26 @@ Permite dar de alta y editar cualquier **contraparte** (tercero) del sistema, ju
 
 <Steps>
 
-### Elegí el tipo principal
+1. **Elegí el tipo principal**
 
-Ir a **Terceros** (`/erp/stakeholders`), presionar **Nueva** y elegir el **Tipo**: Cliente, Proveedor, Empleado, Socio, etc.
+   Ir a **Terceros** (`/erp/stakeholders`), presionar **Nueva** y elegir el **Tipo**: Cliente, Proveedor, Empleado, Socio, etc.
 
-### Completá los datos generales
+2. **Completá los datos generales**
 
-Nombre (y apellido si es persona), razón social, email, tipo y número de documento, condición de IVA, exención y estado activo.
+   Nombre (y apellido si es persona), razón social, email, tipo y número de documento, condición de IVA, exención y estado activo.
 
-### Completá las pestañas
+3. **Completá las pestañas**
 
-- **Impuestos** — perfil fiscal de la contraparte.
-- **Direcciones** — ubicaciones asociadas.
-- **Contactos** — personas de contacto (nombre, apellido, rol, teléfono, email).
-- **Cuentas Bancarias** — CBU, alias, banco, tipo de cuenta, moneda, titular y cuenta predeterminada.
-- **Datos Laborales** (si es Empleado): puesto, sector, fecha de ingreso, sueldo, si es vendedor y comisión.
-- **Participación** (si es Socio): porcentaje de participación.
+   - **Impuestos** — perfil fiscal de la contraparte.
+   - **Direcciones** — ubicaciones asociadas.
+   - **Contactos** — personas de contacto (nombre, apellido, rol, teléfono, email).
+   - **Cuentas Bancarias** — CBU, alias, banco, tipo de cuenta, moneda, titular y cuenta predeterminada.
+   - **Datos Laborales** (si es Empleado): puesto, sector, fecha de ingreso, sueldo, si es vendedor y comisión.
+   - **Participación** (si es Socio): porcentaje de participación.
 
-### Guardá
+4. **Guardá**
 
-Presionar **Guardar**. El sistema crea la contraparte (y su empleado/socio cuando corresponde).
+   Presionar **Guardar**. El sistema crea la contraparte (y su empleado/socio cuando corresponde).
 
 </Steps>
 

@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-import { Steps } from '@six-tech/starlight-theme-six/components'
+import { Steps } from '@astrojs/starlight/components'
 
 ## Para qué sirve
 
@@ -31,34 +31,34 @@ Se administran en **Ventas → Órdenes de Venta** (`/erp/orders`) y se crean en
 
 <Steps>
 
-### Abrí el formulario
+1. **Abrí el formulario**
 
-Ir a **Órdenes de Venta** y presionar **Nueva OV** (`/erp/sales/new?category=ORDER`).
+   Ir a **Órdenes de Venta** y presionar **Nueva OV** (`/erp/sales/new?category=ORDER`).
 
-### Completá los datos generales
+2. **Completá los datos generales**
 
-- **Cliente** (se puede crear uno nuevo desde el mismo formulario).
-- **Fecha**, **moneda**, **descripción** y **referencia**.
-- Tipo de documento y punto de venta/secuencia.
+   - **Cliente** (se puede crear uno nuevo desde el mismo formulario).
+   - **Fecha**, **moneda**, **descripción** y **referencia**.
+   - Tipo de documento y punto de venta/secuencia.
 
-### Agregá los productos
+3. **Agregá los productos**
 
-Agregar ítems indicando producto, cantidad y precio. Según el producto, se puede elegir **variante** y **depósito**.
+   Agregar ítems indicando producto, cantidad y precio. Según el producto, se puede elegir **variante** y **depósito**.
 
-### Completá la información de entrega
+4. **Completá la información de entrega**
 
-- **Prioridad**: Baja, Media, Alta o Urgente.
-- **Fecha comprometida**.
-- **Dirección de entrega**, **contacto**, **teléfono** y **tiempo de entrega**.
-- **Transporte** e **instrucciones de entrega**.
+   - **Prioridad**: Baja, Media, Alta o Urgente.
+   - **Fecha comprometida**.
+   - **Dirección de entrega**, **contacto**, **teléfono** y **tiempo de entrega**.
+   - **Transporte** e **instrucciones de entrega**.
 
-### Definí el vendedor y la comisión
+5. **Definí el vendedor y la comisión**
 
-Elegir el **vendedor** (se autocompleta la comisión según sus valores por defecto) y, si corresponde, ajustar la **comisión (%)** y la base de comisión.
+   Elegir el **vendedor** (se autocompleta la comisión según sus valores por defecto) y, si corresponde, ajustar la **comisión (%)** y la base de comisión.
 
-### Guardá
+6. **Guardá**
 
-Presionar **Guardar Orden de Venta**. La OV se crea en estado **Borrador**.
+   Presionar **Guardar Orden de Venta**. La OV se crea en estado **Borrador**.
 
 </Steps>
 

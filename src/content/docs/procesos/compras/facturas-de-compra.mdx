@@ -5,7 +5,7 @@ sidebar:
   order: 3
 ---
 
-import { Steps } from '@six-tech/starlight-theme-six/components'
+import { Steps } from '@astrojs/starlight/components'
 
 ## Para qué sirve
 
@@ -28,25 +28,25 @@ La **factura de compra** registra el comprobante del proveedor. Se administra en
 
 <Steps>
 
-### Iniciá el comprobante
+1. **Iniciá el comprobante**
 
-Ir a **Nuevo Comprobante de Compra** (o generarla desde la OC/recepción).
+   Ir a **Nuevo Comprobante de Compra** (o generarla desde la OC/recepción).
 
-### Completá los datos generales
+2. **Completá los datos generales**
 
-Proveedor, fecha, moneda, tipo de documento y secuencia.
+   Proveedor, fecha, moneda, tipo de documento y secuencia.
 
-### Agregá los productos
+3. **Agregá los productos**
 
-Ítems con producto, cantidad y precio.
+   Ítems con producto, cantidad y precio.
 
-### Revisá los impuestos
+4. **Revisá los impuestos**
 
-El sistema calcula los **impuestos** y el total.
+   El sistema calcula los **impuestos** y el total.
 
-### Guardá y confirmá
+5. **Guardá y confirmá**
 
-Al confirmar, el comprobante actualiza la **cuenta corriente del proveedor** (cuenta por pagar) y queda disponible para su **pago**.
+   Al confirmar, el comprobante actualiza la **cuenta corriente del proveedor** (cuenta por pagar) y queda disponible para su **pago**.
 
 </Steps>
 

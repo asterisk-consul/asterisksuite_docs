@@ -5,7 +5,7 @@ sidebar:
   order: 4
 ---
 
-import { Steps } from '@six-tech/starlight-theme-six/components'
+import { Steps } from '@astrojs/starlight/components'
 
 ## Para qué sirve
 
@@ -22,17 +22,17 @@ El **picking** es la preparación de la mercadería dentro del depósito para de
 
 <Steps>
 
-### Generá la orden de picking
+1. **Generá la orden de picking**
 
-Se crea una **orden de picking** para un **depósito**, con sus **ítems** (producto y cantidad); normalmente a partir de una **orden de despacho**.
+   Se crea una **orden de picking** para un **depósito**, con sus **ítems** (producto y cantidad); normalmente a partir de una **orden de despacho**.
 
-### Reservá el stock
+2. **Reservá el stock**
 
-Al crearla, el sistema **reserva** el stock de los productos.
+   Al crearla, el sistema **reserva** el stock de los productos.
 
-### Ejecutá el picking
+3. **Ejecutá el picking**
 
-Al **ejecutar**, se **descuenta** la cantidad y lo reservado del stock, y se registran los **resultados**.
+   Al **ejecutar**, se **descuenta** la cantidad y lo reservado del stock, y se registran los **resultados**.
 
 </Steps>
 
