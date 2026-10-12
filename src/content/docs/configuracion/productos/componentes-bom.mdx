@@ -5,6 +5,8 @@ sidebar:
   order: 7
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
 La **lista de materiales (BOM)** define de qué está compuesto un producto fabricado. Cada **componente** indica qué producto (y en qué cantidad) se consume para fabricar una unidad del producto principal. Es la base del cálculo de costos y del módulo de fabricación.
@@ -35,13 +37,19 @@ Para configurar la estructura del producto:
 
 ## Cómo crear un BOM
 
+<Steps>
+
 1. Ir a **Fabricación → BOM** (`/bom`) y presionar **Nuevo BOM**.
 2. **Paso 1 – Datos generales**: completar el producto terminado y la configuración de costos (origen de costo **BOM**). El sistema precarga origen `BOM`, cálculo automático de costo y tipo Producto Terminado. Opcionalmente definir el **precio de venta** por costo + margen (%).
 3. Presionar **Crear y continuar**.
 4. **Paso 2 – Template de costos**: asignar un template de costos (o **Saltar**).
 5. Se abre el producto en la pestaña **Ingeniería**, donde se agregan los componentes.
 
+</Steps>
+
 ## Cómo agregar un componente
+
+<Steps>
 
 1. En la estructura, presionar **Agregar componente**.
 2. Elegir el tipo: **Materias primas**, **Intermedios** o **Todos**.
@@ -53,6 +61,8 @@ Para configurar la estructura del producto:
    - **Desperdicio (%)** (opcional).
 5. En modo **Ingeniería**, además se cargan **Largo, Ancho y Alto (mm)** de cada pieza.
 6. Presionar **Agregar**.
+
+</Steps>
 
 En estructuras de varios niveles, un componente puede ser a su vez un **subconjunto** con sus propios hijos; su costo se acumula primero en ese producto intermedio.
 

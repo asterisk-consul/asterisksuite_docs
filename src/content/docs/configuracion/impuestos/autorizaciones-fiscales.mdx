@@ -5,6 +5,8 @@ sidebar:
   order: 4
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
 Las **autorizaciones fiscales** registran el **CAI/CAE** de los comprobantes, por **tipo de documento** y **punto de venta**, con su **vigencia** y **rango de numeración**. Se administran en **Ajustes → Autorizaciones fiscales** (`/settings/fiscal-authorizations`).
@@ -42,10 +44,14 @@ Desde **Configurar alertas** se ajustan las notificaciones y la política.
 
 ## Cómo registrar una autorización
 
+<Steps>
+
 1. Ir a **Autorizaciones fiscales** y presionar **Nueva autorización**.
 2. Elegir el **tipo**, completar el **código**, el **tipo de documento** y la **secuencia** (punto de venta).
 3. Definir **vigencia** y **rango**.
 4. Guardar.
+
+</Steps>
 
 El listado se puede **buscar** por CAI, remito, punto de venta, serie o estado, y filtrar por pestañas de tipo de documento.
 

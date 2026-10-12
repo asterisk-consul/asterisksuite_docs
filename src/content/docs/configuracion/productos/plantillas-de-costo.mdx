@@ -5,6 +5,8 @@ sidebar:
   order: 11
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
 Las **plantillas de costo** definen cómo se calcula el costo de fabricación de un producto. Agrupan **componentes de costo** (material, mano de obra, costos indirectos, otros) y se asignan a los productos para estimar su costo final.
@@ -47,11 +49,17 @@ La pantalla tiene dos pestañas: **Templates** y **Componentes**.
 
 ## Cómo crear un componente
 
+<Steps>
+
 1. Ir a **Templates de Costos → Componentes** y presionar **Nuevo componente**.
 2. Completar **Nombre**, **Tipo** y **Cálculo**; si corresponde, el **Valor**.
 3. Guardar.
 
+</Steps>
+
 ## Cómo crear una plantilla
+
+<Steps>
 
 1. Ir a **Templates de Costos → Templates** y presionar **Nuevo template**.
 2. **Paso 1 – Información**: **Nombre**, **Descripción** (opcional) y marcar **Usar como template predeterminado** si corresponde.
@@ -60,6 +68,8 @@ La pantalla tiene dos pestañas: **Templates** y **Componentes**.
    - Opcionalmente definir un **valor de override** por componente dentro del template.
    - Crear un **componente nuevo** sin salir de la pantalla.
 4. Presionar **Crear template**.
+
+</Steps>
 
 Para crear la plantilla se requiere un **nombre** y **al menos un componente**.
 

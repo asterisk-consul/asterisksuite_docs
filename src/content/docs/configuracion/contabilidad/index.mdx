@@ -5,6 +5,8 @@ sidebar:
   order: 7
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
 El **plan de cuentas** define las cuentas contables de la empresa. Se usa para la **contabilización automática** de documentos, productos y operaciones de tesorería. Se administra en **ERP → Contabilidad → Plan de Cuentas** (`/erp/contabilidad/accounts`).
@@ -33,9 +35,13 @@ Las cuentas se muestran en un **árbol**. Desde cada cuenta se puede agregar una
 
 ## Cómo crear una cuenta
 
+<Steps>
+
 1. Ir a **Plan de Cuentas** y presionar **Nueva cuenta** (o el **+** de una cuenta existente para una subcuenta).
 2. Completar **Código**, **Nombre**, **Tipo** y, opcionalmente, **Cuenta padre**.
 3. Guardar.
+
+</Steps>
 
 ## Importar y exportar
 

@@ -5,6 +5,8 @@ sidebar:
   order: 1
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
 El catálogo de **impuestos** define todos los tributos que pueden aplicarse a productos y operaciones. Se administra en **Ajustes → Impuestos** (`/settings/taxes`).
@@ -21,9 +23,13 @@ El catálogo de **impuestos** define todos los tributos que pueden aplicarse a p
 
 ## Cómo crear un impuesto
 
+<Steps>
+
 1. Ir a **Impuestos** y presionar **Nuevo impuesto**.
 2. Completar código, nombre, tipo, tasa, nivel de cálculo y si es porcentaje.
 3. Guardar.
+
+</Steps>
 
 ## Cómo editar, activar o eliminar
 

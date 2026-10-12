@@ -5,6 +5,8 @@ sidebar:
   order: 2
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
 Los **depósitos** (almacenes) son los lugares físicos donde se guarda y controla el stock. Todas las operaciones de inventario (ingresos, egresos, transferencias, picking y reposición) se registran contra un depósito.
@@ -30,9 +32,13 @@ Se administran en **Productos → Depósitos** (`/productos/warehouses`) y se co
 
 ## Cómo crear un depósito
 
+<Steps>
+
 1. Ir a **Depósitos** y presionar **Nuevo Depósito**.
 2. Completar **Nombre** y, opcionalmente, **Código**, **Ubicación** y **Unidad**.
 3. Guardar (queda activo por defecto).
+
+</Steps>
 
 ## Cómo editar, activar o eliminar
 

@@ -5,6 +5,8 @@ sidebar:
   order: 10
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
 Permite definir **precios acordados** con un **cliente** o **proveedor** para un producto específico. Si existe un precio específico vigente, se usa en las operaciones; si no, se usa el **precio general** del producto.
@@ -25,6 +27,8 @@ Para consultar y asignar precios acordados necesitás acceso a:
 
 Desde la pestaña **Clientes y proveedores** del producto:
 
+<Steps>
+
 1. Presionar **Asignar**.
 2. Completar:
    - **Tipo de relación**: Venta (cliente) o Compra (proveedor).
@@ -34,6 +38,8 @@ Desde la pestaña **Clientes y proveedores** del producto:
    - En compras: **Días de entrega** y **Cantidad mín.**
    - **Proveedor principal** (interruptor).
 3. Guardar.
+
+</Steps>
 
 ## Consulta por contraparte
 

@@ -5,6 +5,8 @@ sidebar:
   order: 1
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
 Las **cotizaciones** (tipos de cambio) definen cuánto vale una moneda respecto de otra a una fecha dada. Se usan para convertir precios y calcular importes en distintas monedas.
@@ -29,9 +31,13 @@ En **Otras Monedas** se listan las cotizaciones cargadas manualmente, con estad�
 
 ## Cómo registrar una cotización
 
+<Steps>
+
 1. Ir a **Monedas → Cotizaciones**.
 2. Crear una nueva cotización indicando **moneda origen**, **moneda destino**, **valor**, **tipo** y **fecha de vigencia**.
 3. Guardar.
+
+</Steps>
 
 ## Reglas y validaciones
 

@@ -5,6 +5,8 @@ sidebar:
   order: 5
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
 Los **atributos** definen características reutilizables que se aplican a los productos, como color, tamaño o material. La pantalla está en **Configuración → Productos → Atributos** (`/productos/settings/attributes`).
@@ -22,12 +24,16 @@ Estos son los permisos que aparecen en **Roles y permisos** para esta pantalla:
 
 ## Cómo crear un atributo
 
+<Steps>
+
 1. Ir a **Atributos** y presionar **Nuevo atributo**.
 2. Completar:
    - **Nombre**: ej. "Color".
    - **Código**: identificador corto único, ej. "CL".
    - **Tipo**: Texto, Número o Booleano.
 3. Dejar **Activo** marcado y guardar.
+
+</Steps>
 
 ## Cómo editar o desactivar
 

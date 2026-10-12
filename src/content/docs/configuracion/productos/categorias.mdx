@@ -5,6 +5,8 @@ sidebar:
   order: 3
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
 Las **categorías** permiten organizar el catálogo de productos en una estructura **jerárquica** (categorías y subcategorías). La pantalla está en **Configuración → Productos → Categorías** (`/productos/settings/categorias`).
@@ -22,8 +24,12 @@ Estos son los permisos que aparecen en **Roles y permisos** para esta pantalla:
 
 ## Cómo crear una categoría
 
+<Steps>
+
 1. Ir a **Categorías** y presionar **Nueva categoría** para una categoría raíz.
 2. Ingresar el **Nombre** y guardar.
+
+</Steps>
 
 Para crear una **subcategoría**, usar el botón **+** sobre la categoría padre en el árbol. El modal indica "Nueva subcategoría" y muestra "Se creará como subcategoría".
 

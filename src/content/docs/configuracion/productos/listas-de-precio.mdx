@@ -5,6 +5,8 @@ sidebar:
   order: 9
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
 Las **listas de precio** agrupan productos bajo una **moneda** y un **tipo** (venta o compra). Sirven para organizar y aplicar precios de forma masiva. Se administran en **Productos → Listas de Precio** (`/productos/price-lists`).
@@ -20,6 +22,8 @@ La gestión de listas de precio se habilita con acceso a la gestión de precios 
 
 ## Cómo crear una lista
 
+<Steps>
+
 1. Ir a **Listas de Precio** y presionar **Nueva Lista**.
 2. Completar:
    - **Nombre** (obligatorio), ej. "Lista Minorista".
@@ -27,6 +31,8 @@ La gestión de listas de precio se habilita con acceso a la gestión de precios 
    - **Moneda** (obligatorio).
    - **Descripción** (opcional).
 3. Guardar.
+
+</Steps>
 
 ## Listado y filtros
 

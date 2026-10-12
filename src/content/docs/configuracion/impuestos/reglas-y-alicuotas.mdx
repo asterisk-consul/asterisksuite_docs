@@ -5,6 +5,8 @@ sidebar:
   order: 3
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
 Las **reglas y alícuotas** definen cómo se calculan las percepciones y retenciones. Se administran en **Ajustes → Reglas y alícuotas** (`/settings/fiscal-rules`).
@@ -38,10 +40,14 @@ Las **reglas y alícuotas** definen cómo se calculan las percepciones y retenci
 
 ## Cómo crear una regla
 
+<Steps>
+
 1. Ir a **Reglas y alícuotas** y elegir la pestaña **Percepciones** o **Retenciones**.
 2. Presionar **Nueva regla** y completar nombre, impuesto, sujeto, método, ámbito, jurisdicción, concepto y vigencia.
 3. Si el método es **Escala por acumulado**, cargar al menos un tramo.
 4. Guardar.
+
+</Steps>
 
 ## Reglas y validaciones
 

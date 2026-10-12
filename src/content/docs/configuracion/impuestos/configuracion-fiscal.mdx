@@ -5,6 +5,8 @@ sidebar:
   order: 2
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
 Define cómo calcula y muestra los impuestos el sistema. Se administra en **Ajustes → Configuración fiscal** (`/settings/fiscal-config`).
@@ -22,11 +24,15 @@ Desde esta pantalla también se accede a **Reglas y alícuotas** y a **Retencion
 
 ## Cómo configurar
 
+<Steps>
+
 1. Ir a **Configuración fiscal**.
 2. Elegir el **modo** (Simples o Completos) según la operatoria de la empresa.
 3. Definir si los **precios incluyen IVA** y si el **IVA se muestra separado**.
 4. Seleccionar el **país**.
 5. Presionar **Guardar configuración**.
+
+</Steps>
 
 ## Reglas y consideraciones
 

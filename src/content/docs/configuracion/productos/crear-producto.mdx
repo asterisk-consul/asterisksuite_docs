@@ -5,6 +5,8 @@ sidebar:
   order: 1
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Qué es un Producto
 
 Un **producto** es la unidad básica de catálogo en Asterisk Suite. Cada producto representa un artículo, material, servicio o tarifa que la empresa comercializa, fabrica o utiliza en sus operaciones.
@@ -102,45 +104,49 @@ Indica cómo se obtiene el costo del producto:
 
 ---
 
-## Paso a Paso: Crear un Producto
+## Paso a paso: crear un producto
 
-### 1. Acceder al módulo de Productos
+<Steps>
 
-Desde el menú principal, navega a **Master Data > Productos**.
+1. **Acceder al módulo de Productos**
 
-### 2. Iniciar la creación
+   Desde el menú principal, navegá a **Master Data > Productos**.
 
-Haz clic en el botón **"Crear Producto"** (o **"+"**) ubicado en la parte superior de la lista de productos.
+2. **Iniciar la creación**
 
-### 3. Completar los campos
+   Hacé clic en el botón **"Crear Producto"** (o **"+"**) ubicado en la parte superior de la lista de productos.
 
-El formulario se abre con los valores por defecto pre-cargados:
+3. **Completar los campos**
 
-- **Tipo de producto**: Producto Terminado.
-- **Tipo de cálculo**: Unidad.
-- **Fuente de costo**: BOM.
-- **Activo**: Sí.
-- **Controla stock**: Sí.
+   El formulario se abre con los valores por defecto pre-cargados:
 
-Completa al menos el campo **Nombre**. Los demás campos son opcionales.
+   - **Tipo de producto**: Producto Terminado.
+   - **Tipo de cálculo**: Unidad.
+   - **Fuente de costo**: BOM.
+   - **Activo**: Sí.
+   - **Controla stock**: Sí.
 
-### 4. Configuración avanzada (opcional)
+   Completá al menos el campo **Nombre**. Los demás campos son opcionales.
 
-Según las necesidades de tu producto, podés configurar:
+4. **Configuración avanzada (opcional)**
 
-- **SKU**: si usás codificación de artículos, ingresá el código único.
-- **Precios**: marcá "Habilitar precio" para poder asignar precios de venta.
-- **Contable**: asociá cuentas de ingreso, gasto e inventario para contabilización automática.
-- **Fiscal**: asociá impuestos y categoría fiscal para cálculo automático de IVA.
+   Según las necesidades de tu producto, podés configurar:
 
-### 5. Guardar
+   - **SKU**: si usás codificación de artículos, ingresá el código único.
+   - **Precios**: marcá "Habilitar precio" para poder asignar precios de venta.
+   - **Contable**: asociá cuentas de ingreso, gasto e inventario para contabilización automática.
+   - **Fiscal**: asociá impuestos y categoría fiscal para cálculo automático de IVA.
 
-Haz clic en el botón **"Guardar"**. El sistema validará:
+5. **Guardar**
 
-- Que el **nombre** no esté vacío.
-- Que el **SKU** (si se ingresó) no esté duplicado entre productos activos.
+   Hacé clic en el botón **"Guardar"**. El sistema validará:
 
-Si la validación es exitosa, el producto se crea y aparece en la lista.
+   - Que el **nombre** no esté vacío.
+   - Que el **SKU** (si se ingresó) no esté duplicado entre productos activos.
+
+   Si la validación es exitosa, el producto se crea y aparece en la lista.
+
+</Steps>
 
 ---
 

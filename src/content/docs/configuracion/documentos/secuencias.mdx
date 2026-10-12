@@ -5,6 +5,8 @@ sidebar:
   order: 2
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
 Las **secuencias de numeración** controlan el número de cada comprobante. Cada **tipo de documento** mantiene su propia numeración dentro de un **punto de venta**, para no mezclar contadores.
@@ -24,10 +26,14 @@ Cada tarjeta muestra además el número **inicio**, **actual** y **fin** de la s
 
 ## Cómo crear una secuencia
 
+<Steps>
+
 1. Ir a **Secuencias de Numeración** y presionar **Nueva secuencia**.
 2. Completar **Nombre**, **Punto de venta**, **Prefijo** (opcional), **Rango inicio/fin** y, opcionalmente, desmarcar **Numeración automática**.
 3. Elegir el **Tipo de documento** (una serie pertenece a un solo tipo).
 4. Guardar.
+
+</Steps>
 
 ## Búsqueda y filtros
 
