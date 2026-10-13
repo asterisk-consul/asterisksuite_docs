@@ -35,8 +35,8 @@ pnpm preview      # previsualizar el build
 │   │   └── solucion-de-problemas/
 │   └── styles/custom.css          # tema
 ├── astro.config.mjs               # configuración de Astro y Starlight
-├── Dockerfile                     # build Astro + runtime Nginx
-└── nginx.conf
+├── Dockerfile                     # build Astro + runtime Node (server.mjs)
+└── server.mjs                     # servidor estático (puerto 3000)
 ```
 
 ## Agregar contenido
@@ -58,4 +58,4 @@ Las secciones de la barra lateral se generan automáticamente a partir de las ca
 
 El workflow `.github/workflows/docker.yml` (en la rama `main`) construye la imagen, la publica en `ghcr.io/asterisk-consul/asterisksuite-docs:prod` y dispara el despliegue en Dokploy mediante el secret `DOKPLOY_DEPLOY_WEBHOOK`.
 
-En el servidor solo corre un contenedor Nginx sirviendo archivos estáticos en el puerto `80`.
+El contenedor corre un servidor estático Node sobre los archivos de `dist/`, escuchando en el puerto `3000` (igual que el frontend).
