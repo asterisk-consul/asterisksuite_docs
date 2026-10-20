@@ -38,6 +38,9 @@ está actualizada:
 Starlight muestra un **banner en todas las páginas** con el estado
 (vía `routeMiddleware` en `astro.config.mjs` → `src/routeData.mjs`), por ejemplo:
 *"Documentación al día hasta v0.71.0-alpha · app en v0.82.0-alpha · 11 versiones pendientes de revisar"*.
+Se puede cerrar con el botón **×**: queda oculto en ese navegador sólo para el estado
+actual (se guarda en `localStorage`) y **vuelve a aparecer cuando cambia el estado**
+(corte nuevo o versión de la app pendiente), así no se pierde el aviso.
 
 ### Flujo después de cada versión de la app
 

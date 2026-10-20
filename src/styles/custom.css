@@ -48,3 +48,38 @@
     margin-top: 0.2rem;
   }
 }
+
+/* ===== Banner de estado de la documentación (cierre) ===== */
+
+.sl-banner:has(.sl-docs-banner-close) {
+  position: relative;
+  padding-inline-end: 3rem;
+}
+
+.sl-docs-banner-close {
+  position: absolute;
+  inset-inline-end: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0.375rem;
+  background: transparent;
+  color: inherit;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.sl-docs-banner-close:hover,
+.sl-docs-banner-close:focus-visible {
+  opacity: 1;
+  background: color-mix(in srgb, currentColor 20%, transparent);
+  outline: none;
+}

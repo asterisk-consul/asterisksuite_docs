@@ -100,6 +100,37 @@ export default defineConfig({
               });
             });
           `
+        },
+        {
+          tag: 'script',
+          content: `
+            (function () {
+              function setupDocsBanner() {
+                var banner = document.querySelector('.sl-banner');
+                if (!banner) return;
+                var button = banner.querySelector('.sl-docs-banner-close');
+                if (!button) return;
+                var storageKey = button.getAttribute('data-storage-key') || 'asterisksuite:docs-banner-dismissed';
+                var stateKey = button.getAttribute('data-dismiss-key') || '';
+                try {
+                  if (stateKey && localStorage.getItem(storageKey) === stateKey) {
+                    banner.style.display = 'none';
+                  }
+                } catch (error) {}
+                button.addEventListener('click', function () {
+                  banner.style.display = 'none';
+                  try {
+                    if (stateKey) localStorage.setItem(storageKey, stateKey);
+                  } catch (error) {}
+                });
+              }
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', setupDocsBanner);
+              } else {
+                setupDocsBanner();
+              }
+            })();
+          `
         }
       ],
 

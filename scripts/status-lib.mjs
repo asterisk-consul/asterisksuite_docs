@@ -267,19 +267,28 @@ ${body}`
 }
 
 const STATUS_PAGE = '/docs/estado-de-la-documentacion/'
+const DISMISS_STORAGE_KEY = 'asterisksuite:docs-banner-dismissed'
 
 /**
  * Banner que Starlight muestra arriba de todas las páginas (ver src/routeData.mjs).
  * `content` es HTML porque Banner.astro hace `set:html`.
+ *
+ * Incluye un botón de cierre: el aviso se guarda como descartado en `localStorage`
+ * sólo para el estado actual (`data-dismiss-key`, basado en el corte y los pendientes),
+ * de modo que vuelve a aparecer cuando se documenta una versión nueva.
  */
 export function buildBanner(state) {
   if (!state) return null
   const latest = state.latest ? `v${state.latest.version}` : 'desconocida'
   const page = `<a href="${STATUS_PAGE}">Ver estado</a>`
-  const content = state.pending.length
+  const message = state.pending.length
     ? `<strong>📄 Documentación al día hasta v${state.cutoff}</strong> · app en ${latest} · <strong>${state.pending.length} versión(es) de la app pendientes de revisar</strong> · ${page}`
     : `<strong>✅ Documentación al día con la última versión de la app (${latest})</strong> · ${page}`
-  return { content }
+  const dismissKey = `${state.cutoff}|${latest}|${state.pending.length}`
+
+  return {
+    content: `${message}<button type="button" class="sl-docs-banner-close" data-dismiss-key="${dismissKey}" data-storage-key="${DISMISS_STORAGE_KEY}" aria-label="Cerrar aviso de documentación" title="Cerrar">&times;</button>`
+  }
 }
 
 /** Estado calculado de forma perezosa y cacheada para el middleware de rutas. */
