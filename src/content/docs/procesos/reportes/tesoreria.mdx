@@ -1,0 +1,86 @@
+---
+title: Bancos, cajas y cheques
+description: Saldos, aperturas, variaciones y movimientos financieros de todas las empresas en el período.
+sidebar:
+  order: 4
+---
+
+## Para qué sirve
+
+La vista **Bancos, cajas y cheques** del módulo [Reportes gerenciales](/procesos/reportes/) reúne la posición financiera de las empresas seleccionadas: cuentas bancarias y cajas con su saldo actual, la variación del período y el detalle de cheques, movimientos y transferencias. Se accede desde **Reportes → Bancos, cajas y cheques** (`/erp/reports/consolidated?view=treasury`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver reportes de tesorería (`treasury.reports.read`).
+- Estar asociado a cada empresa del reporte.
+:::
+
+## Cómo generarlo
+
+1. Abrí **Reportes → Bancos, cajas y cheques**.
+2. Elegí las empresas y el período (igual que en el [consolidado](/procesos/reportes/consolidado/)).
+3. Presioná **Generar reporte**.
+4. Exportá a **PDF**, **Excel** o **CSV** si necesitás el archivo por empresa.
+
+## Bancos y cajas
+
+La tabla lista juntas las cuentas bancarias y los saldos de caja de cada empresa:
+
+| Columna | Contenido |
+|---|---|
+| **Tipo** | Banco o Caja. |
+| **Cuenta** | Nombre de la cuenta; debajo, la entidad y el tipo (cuenta corriente, caja de ahorro, caja fija, etc.). |
+| **Estado** | Activa / Abierta / Cerrada, según corresponda. |
+| **Movimientos** | Cantidad de movimientos registrados en el período. |
+| **Apertura** | Importe aportado por los movimientos de saldo inicial dentro del período. |
+| **Variación** | Cambio neto del período **excluyendo** las aperturas. |
+| **Saldo actual** | Saldo vigente al momento de generar el reporte. |
+
+El saldo es el valor **actual**; la variación corresponde **únicamente al período seleccionado** y las aperturas se informan aparte porque no representan ingresos del período.
+
+## Secciones de detalle
+
+| Sección | Contenido |
+|---|---|
+| **Pagos y cobros por estado** | Pagos y cobros del período agrupados por tipo (cobro, pago, gasto) y estado (borrador, confirmado, pagado, anulado). |
+| **Cheques por estado** | Cheques propios y de terceros en cartera, por estado y banco. *En cartera* es todo cheque todavía no cobrado, rechazado ni anulado. |
+| **Movimientos de tesorería por tipo** | Movimientos de banco y de caja del período por tipo: saldo inicial, retiro, depósito, comisión bancaria, retención, ingreso manual, egreso manual y reversión. |
+| **Transferencias** | Transferencias del período por tipo (caja a caja, caja a banco, banco a caja, banco a banco) y estado (pendiente, completada, fallida, en revisión). |
+| **Variación de caja y bancos** | Por moneda: *Bancos: variación sin aperturas*, *Bancos: aperturas*, *Cajas: variación sin aperturas* y *Cajas: aperturas*. |
+
+Cada empresa también muestra su lectura ejecutiva con la cantidad de cuentas bancarias, saldos de caja y cheques pendientes al momento del informe.
+
+## Estados
+
+- **Saldos**: actuales al generar el reporte; no corresponden al período.
+- **Movimientos del período**: calculados por fecha de operación; los anulados no afectan los importes.
+- **Cheques**: en cartera hasta que se cobren, se depositen, se rechacen o se anulen.
+- **Transferencias pendientes** aparecen además en las *Prioridades de seguimiento* de la empresa.
+
+## Validaciones
+
+- La variación excluye los movimientos de saldo inicial: si necesitás el total del período, sumá variación y aperturas a mano.
+- Documentos, pagos y movimientos de tesorería pueden representar una misma operación: no sumes secciones distintas entre sí.
+- Los importes por moneda se informan por separado.
+
+## Exportación
+
+La vista exporta, por empresa: lectura ejecutiva, transferencias, variación de bancos y cajas, pagos y cobros por estado, cheques por estado, movimientos de tesorería por tipo, cuentas bancarias y cajas, y alertas. El PDF incluye la portada con el resumen ejecutivo; los archivos se nombran `reporte-tesoreria-{desde}-{hasta}.{ext}`.
+
+## Problemas frecuentes
+
+| Problema | Causa | Solución |
+|---|---|---|
+| La variación no coincide con el saldo actual | La variación es del período y excluye aperturas; el saldo es actual. | Compará saldo actual contra saldo de apertura más variación. |
+| Un banco no aparece | La cuenta está inactiva o eliminada. | Verificá la cuenta en [Bancos](/procesos/tesoreria/bancos/). |
+| Una caja no aparece | La caja está inactiva o sin saldo en la moneda esperada. | Revisá la caja en [Cajas](/procesos/tesoreria/cajas/). |
+| Faltan cheques | Sólo se listan cheques en cartera: los cobrados, rechazados o anulados quedan fuera. | Revisá la cartera en [Cheques](/procesos/tesoreria/cheques/). |
+| Los movimientos de tesorería no cuadran con los pagos | Pueden ser movimientos manuales, comisiones o reversiones sin documento. | Usá la sección por tipo para identificar el origen de cada movimiento. |
+
+## Ver también
+
+- [Bancos](/procesos/tesoreria/bancos/), [Cajas](/procesos/tesoreria/cajas/) y [Cheques](/procesos/tesoreria/cheques/).
+- [Tesorería](/procesos/tesoreria/) — circuito operativo de bancos, cajas y cheques.
+- [Reportes de tesorería](/procesos/tesoreria/reportes/) — reportes de una sola empresa.
+- [Monedas y cotizaciones](/configuracion/monedas/).

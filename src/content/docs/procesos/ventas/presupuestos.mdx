@@ -25,6 +25,7 @@ Se administran en **Ventas → Presupuestos** (`/erp/budgets`) y se crean en **N
 - El **cliente** debe existir.
 - Los **productos** deben tener precio para la moneda.
 - Debe existir un **tipo de documento** de categoría Presupuesto y su **secuencia**.
+- Opcionalmente, una **plantilla comercial** propia (ver más abajo).
 
 ## Cómo crear un presupuesto
 
@@ -55,6 +56,21 @@ Se administran en **Ventas → Presupuestos** (`/erp/budgets`) y se crean en **N
 
 </Steps>
 
+## Formato de impresión (plantillas comerciales)
+
+El presupuesto se imprime con una **plantilla comercial** que cada empresa diseña en **Configuración → Centro de documentos → Plantillas comerciales** (`/settings/document-templates`).
+
+Qué se puede definir:
+
+- **Nombre interno**, **Documento** (*Presupuesto / proforma* u *Orden de venta*), **Título visible** (ej. `FACTURA PROFORMA`), **Predeterminada** y **Plantilla activa**.
+- **Bloques ordenables** (con las flechas) y **vista previa** del PDF al costado: Datos del cliente · Productos · Especificaciones · Condiciones comerciales · Totales y seña · Firmas · Pie de página.
+- **Contenido**: mostrar código, mostrar precio unitario, desglosar impuestos, mostrar firmas, título y texto de **especificaciones técnicas**, **transporte**, **leyenda de moneda** y **pie de página** (ej. "Documento no válido como factura").
+- **Seña**: activar **Calcular seña**, indicar el **%** y, opcionalmente, **Mostrar saldo después de la seña**: se agrega la línea *Saldo a pagar* **sin modificar el total original**.
+
+Las plantillas son **multi-tenant** (cada empresa administra las suyas) y solo aplican a **presupuestos y órdenes de venta**; las **facturas fiscales** y los **remitos** conservan su formato controlado.
+
+Al **imprimir**, si hay más de una plantilla activa de la categoría aparece el selector **Formato de impresión**; si no, se usa la **predeterminada**.
+
 ## Estados
 
 | N° | Estado | Descripción |
@@ -69,13 +85,14 @@ Se administran en **Ventas → Presupuestos** (`/erp/budgets`) y se crean en **N
 
 ## Convertir en Orden de Venta
 
-Con el presupuesto **Aprobado**, se puede **convertir en Orden de Venta** (pasa a estado *Convertido*). La OV toma el cliente y los ítems del presupuesto.
+Con el presupuesto **Aprobado**, se puede **convertir en Orden de Venta** (pasa a estado *Convertido*). La OV toma el cliente y los ítems del presupuesto, **conservando la variante** de cada producto.
 
 ## Reglas y validaciones
 
 - El presupuesto debe tener **cliente** y al menos un **ítem**.
 - La **fecha de vencimiento** define la validez.
 - Solo un presupuesto **Aprobado** puede convertirse en OV.
+- Un producto con variantes exige una variante activa en cada ítem.
 
 ## Problemas frecuentes
 
@@ -84,8 +101,12 @@ Con el presupuesto **Aprobado**, se puede **convertir en Orden de Venta** (pasa 
 | No puedo convertir en OV | El presupuesto no está Aprobado. | Cambiá su estado a Aprobado. |
 | No aparece el cliente | No está cargado. | Crealo en Contrapartes. |
 | El presupuesto figura Vencido | Pasó la fecha de vencimiento. | Generá uno nuevo con nueva validez. |
+| El PDF no muestra la seña | "Calcular seña" está desactivado en la plantilla. | Activá **Calcular seña** en Plantillas comerciales. |
+| No aparece el formato proforma | No hay plantilla activa de presupuesto. | Creá una plantilla *Presupuesto / proforma* y marcala como **Predeterminada**. |
+| La seña no descuenta del total | La seña es informativa por diseño. | Activá **Mostrar saldo después de la seña** para ver el *Saldo a pagar* sin tocar el total. |
 
 ## Ver también
 
 - [Ventas](/procesos/ventas/) — circuito completo.
 - [Crear una Orden de Venta](/procesos/ventas/crear-orden-de-venta/).
+- [Tipos de documento](/configuracion/documentos/tipos-de-documento/) y [Secuencias de numeración](/configuracion/documentos/secuencias/).

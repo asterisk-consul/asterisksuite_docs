@@ -13,7 +13,8 @@ Los **cheques** administran tanto los **propios** (emitidos por la empresa) como
 
 :::note[Permisos necesarios]
 - Ver cheques · Crear cheques · Editar cheques · Eliminar cheques
-- Depositar cheques · Endosar cheques · Rechazar cheques
+- Depositar cheques (`checks.deposit`) · Rechazar cheques (`checks.reject`)
+- Para cobrar un cheque de terceros en caja o pagar un cheque propio con efectivo de caja: además de `checks.deposit`, se requiere el permiso de registrar movimientos manuales de caja (`cash_box_movements.create_manual`)
 :::
 
 ## Campos de un cheque
@@ -61,25 +62,73 @@ import { Steps } from '@astrojs/starlight/components'
 ## Acciones
 
 - **Confirmar** el cheque.
-- **Depositar** en una cuenta bancaria.
-- **Cobrar/ingresar** en una caja.
+- **Depositar** un cheque de terceros, eligiendo el destino.
+- **Cobrar/ingresar** un cheque de terceros en una caja abierta.
+- **Procesar** un cheque propio (débito bancario o pago con efectivo de caja).
 - **Endosar** (transferir a un tercero).
 - **Rechazar** un cheque.
-- **Revertir** una operación o **registrar un débito**.
+- **Revertir** una operación.
+
+## Cómo depositar un cheque de terceros
+
+Al depositar un cheque de terceros podés elegir el **destino**:
+
+<Steps>
+
+1. **Elegí la acción Depositar**
+
+   En el listado de cheques, sobre el cheque de terceros, usar **Depositar**.
+
+2. **Elegí el destino**
+
+   - **Cuenta bancaria**: acreditar el cheque en la cuenta elegida (se muestran las cuentas activas en la **misma moneda** que el cheque).
+   - **Caja**: cobrar el cheque e **ingresar su importe en efectivo en una caja**. El selector muestra **solo cajas abiertas, autorizadas y compatibles con la moneda del cheque**.
+
+3. **Completá fecha e importe** y confirmá.
+
+</Steps>
+
+## Cómo procesar un cheque propio
+
+Al procesar (debitar) un cheque propio también podés elegir la **fuente**:
+
+<Steps>
+
+1. **Elegí la acción de procesamiento**
+
+   Sobre el cheque propio, usar la acción de débito.
+
+2. **Elegí la fuente**
+
+   - **Débito bancario directo**: registra el débito en la cuenta bancaria con la fecha efectiva.
+   - **Efectivo de caja**: fondear el cheque con efectivo de una caja, registrando el **depósito en el banco** y el **débito en la caja** como movimientos vinculados. El selector de cajas aplica el mismo filtro: **abiertas, autorizadas y en la moneda del cheque**.
+
+3. **Indicá la fecha** y confirmá.
+
+</Steps>
+
+## Movimientos vinculados
+
+Caja, banco y cheque utilizan los **mismos movimientos vinculados**, sin importar desde qué pantalla se inicie la operación: podés empezar desde la **cartera de cheques** o desde el **detalle de una caja** y el resultado es idéntico (el cheque queda cobrado/debitado y los movimientos de caja y banco quedan enlazados entre sí y con el cheque).
 
 ## Reglas y validaciones
 
 - El **número**, **banco**, **emisor**, **monto** (mayor a 0), **moneda** y **fechas** son obligatorios.
-- Para **depositar** hay que elegir una **cuenta bancaria**.
+- Para **depositar** hay que elegir una **cuenta bancaria** (activa y en la moneda del cheque).
+- Para **cobrar en caja** o **pagar con efectivo de caja** hay que elegir una caja **abierta**, a la que tengas acceso y en la **moneda del cheque**; se requiere además una **sesión abierta** y saldo suficiente en caso de egreso.
+- Las operaciones validan sesión, permisos, moneda y saldo dentro de una **única transacción**: si algo falla, no se registra ninguna parte.
 - Un cheque rechazado queda registrado y afecta la cuenta corriente correspondiente.
 
 ## Problemas frecuentes
 
 | Mensaje / síntoma | Causa | Solución |
 |---|---|---|
-| No puedo depositar | Falta elegir la cuenta bancaria. | Seleccioná una cuenta. |
+| No puedo depositar | Falta elegir la cuenta bancaria. | Seleccioná una cuenta activa en la moneda del cheque. |
 | El monto no es válido | Es 0 o negativo. | Ingresá un monto mayor a 0. |
 | No puedo endosar/rechazar | Estado incompatible o sin permiso. | Verificá el estado y tus permisos. |
+| No aparecen cajas para cobrar el cheque | No hay cajas abiertas, autorizadas o en la moneda del cheque. | Abrí una sesión en una caja compatible o ajustá su moneda. |
+| No puedo cobrar el cheque en caja | Te falta `checks.deposit` o `cash_box_movements.create_manual`. | Pedí que te agreguen los permisos a tu rol. |
+| No puedo procesar el débito del cheque propio | No hay caja abierta compatible o falta saldo. | Verificá la sesión y el saldo de la caja, o usá el débito bancario directo. |
 
 ## Ver también
 

@@ -27,6 +27,16 @@ El IVA se calcula según la **condición del emisor y del receptor** y los **imp
 
 Verificá las **columnas requeridas** del importador (por ejemplo, SKU/moneda/precio según el caso) y el formato de los datos.
 
+## El listado de comprobantes no abre filtrado por categoría
+
+El listado de comprobantes (`/erp/sales`, y también `/erp/purchases`) acepta el deep-link **`?category=`** con la categoría del documento:
+
+- `/erp/sales?category=INVOICE` — facturas de venta.
+- `/erp/sales?category=CREDIT_NOTE` y `/erp/sales?category=DEBIT_NOTE` — notas de crédito y débito.
+- Valores válidos: `QUOTE`, `ORDER`, `REMITO`, `INVOICE`, `CREDIT_NOTE`, `DEBIT_NOTE`. En compras (`/erp/purchases`) se aceptan todos salvo `QUOTE`.
+
+Al cambiar la categoría desde el selector, el parámetro **se persiste en la URL**: recargá, usá el botón "atrás" o compartí el enlace y el filtro se mantiene. Los accesos del widget [Actividad de la empresa](/primeros-pasos/paneles/) del inicio usan este formato.
+
 ## Ver también
 
 - [Secuencias y tipos de documento](/configuracion/documentos/).

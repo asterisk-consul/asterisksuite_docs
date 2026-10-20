@@ -34,7 +34,7 @@ El **remito** documenta la entrega de la mercadería al cliente y registra la **
 
 2. **Indicá cantidades y depósito de salida**
 
-   Para cada producto, cargá la **cantidad** a entregar y el **depósito de salida**.
+   Para cada producto, cargá la **cantidad** a entregar, la **variante** (si el producto tiene variantes es obligatoria) y el **depósito de salida**.
 
 3. **Guardá**
 
@@ -42,7 +42,15 @@ El **remito** documenta la entrega de la mercadería al cliente y registra la **
 
 </Steps>
 
-También se puede crear manualmente con **Nuevo remito** (`/erp/sales/new?category=REMITO`), en **modo operativo** (cantidades y depósito de salida por producto).
+También se puede crear manualmente con **Nuevo remito** (`/erp/sales/new?category=REMITO`), en **modo operativo** (cantidades, variantes y depósito de salida por producto).
+
+## Remitos automáticos y responsable
+
+Cuando el [Circuito de ventas](/procesos/ventas/circuito-de-ventas/) tiene activa la opción **Crear remito automáticamente** y la OV cumple las condiciones de entrega:
+
+- Se genera un **borrador de remito** listo para el usuario de logística.
+- El remito **hereda el responsable asignado en la OV**, así que aparece en el **listado de trabajo** de esa persona: los usuarios con membresía **Usuario** ven en **Ventas → Remitos** solo los documentos **asignados a ellos** o **creados por ellos**.
+- Desde el detalle de la OV, el aviso de entrega permite abrir el remito con **Completar remito** / **Ver remito**.
 
 ## Confirmar el remito
 
@@ -51,6 +59,15 @@ Al **Confirmar**, el sistema **registra la salida de mercadería** del depósito
 - Cada ítem debe tener **depósito** asignado; si falta, no se puede confirmar.
 - Puede haber un **control fiscal** (CAI) que **bloquee** la confirmación si la autorización no es válida.
 - Se descuenta el stock del depósito indicado.
+
+### Alerta de CAI por vencer
+
+Si el remito es **fiscal** y su CAI está a **5 días o menos** del vencimiento (o vence hoy), aparece un aviso *"El CAI vence en N día(s)"* con el botón **Cargar nuevo CAI**:
+
+- Abre **Ajustes → Autorizaciones fiscales** con la **renovación precargada** (`?new=1`): mismo tipo de documento y punto de venta, vigencia a partir del día siguiente y rango continuado.
+- Al guardar, el sistema **vuelve al remito** desde el que partiste.
+- El remito **conserva el CAI** que corresponde a su fecha de emisión: renovarlo no cambia remitos ya emitidos.
+- El botón requiere el permiso **Crear autorizaciones fiscales**.
 
 ## Estados
 
@@ -64,9 +81,12 @@ Al **Confirmar**, el sistema **registra la salida de mercadería** del depósito
 ## Reglas y validaciones
 
 - Todos los ítems deben tener **depósito** asignado para confirmar.
+- Un producto con **variantes** exige una variante activa en cada ítem; la variante elegida se conserva al editar y al generar el remito desde la OV.
 - La confirmación **descuenta stock**.
 - El control fiscal puede **bloquear** la confirmación.
+- Un CAI **por vencer** (5 días o menos) sólo avisa; no bloquea. La renovación se carga desde el remito y se asocia a los próximos.
 - La entrega completa la Orden de Despacho y, cuando corresponde, el viaje asociado.
+- El remito automático **hereda el responsable** de la OV de origen.
 
 ## Problemas frecuentes
 
@@ -74,10 +94,15 @@ Al **Confirmar**, el sistema **registra la salida de mercadería** del depósito
 |---|---|---|
 | "productos no tienen depósito" | Faltó asignar depósito en algún ítem. | Completá los depósitos desde el remito o su edición. |
 | "No se puede confirmar fiscalmente" | CAI faltante o vencido. | Registrá/renová la autorización fiscal. |
+| Aviso "El CAI vence en N día(s)" | El CAI del remito vence en 5 días o menos. | Presionar **Cargar nuevo CAI**, guardar la renovación y volverás al remito. |
+| "Seleccioná una variante para todos los productos que tienen variantes" | El producto tiene variantes activas. | Elegí la variante en el ítem. |
+| No veo un remito que se generó | Estás con membresía **Usuario** y el remito no te está asignado ni lo creaste vos. | Pedí que te lo asigne el responsable de la OV. |
 | El stock no se descontó | El remito no está confirmado. | Confirmá el remito. |
 
 ## Ver también
 
 - [Ventas](/procesos/ventas/).
+- [Crear una Orden de Venta](/procesos/ventas/crear-orden-de-venta/).
+- [Circuito de ventas](/procesos/ventas/circuito-de-ventas/).
 - [Autorizaciones fiscales](/configuracion/impuestos/autorizaciones-fiscales/).
 - [Implementación de Logística](/procesos/logistica/implementacion/).

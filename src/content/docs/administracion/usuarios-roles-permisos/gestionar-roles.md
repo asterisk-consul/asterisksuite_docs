@@ -55,6 +55,13 @@ Los permisos del módulo **Documentos** tienen dos niveles:
 
 Si un rol tiene permisos generales, el sistema muestra un **aviso** y ofrece el botón **"Usar configuración por tipo de documento"**, que los quita para que el permiso dependa únicamente de los tipos seleccionados. Conviene preferir el permiso por tipo para un control más fino.
 
+### Permisos especiales de ventas y comisiones
+
+Dos familias de permisos merecen atención al armar los roles:
+
+- **`sales.orders.view_amounts`** — *"Ver precios, totales y comisiones de órdenes de venta restringidas"*. Aparece en **Documentos → Ventas · Órdenes de venta**. Quienes no lo tengan ven las OV de los estados marcados como restringidos en el tipo de documento, pero **sin importes** (ver [Importes restringidos](/procesos/ventas/crear-orden-de-venta/#importes-restringidos)). Los roles **`admin`** y **`manager`** lo incluyen por defecto; OWNER y administradores de la empresa siempre ven los importes, aunque el rol no lo tenga.
+- **`commissions.view` / `commissions.manage` / `commissions.settle`** — *"Ver documentos, vendedores e importes de comisiones"*, *"Asignar vendedores, participación y reglas de comisión"* y *"Generar vales para liquidar comisiones"*. Controlan la bandeja de [comisiones](/procesos/rrhh/vales-y-comisiones/#comisiones) de RRHH. Los roles `admin` y `manager` los incluyen por defecto.
+
 ## Cómo eliminar un rol
 
 1. Presionar el ícono de papelera (solo aparece en roles **no** de sistema).

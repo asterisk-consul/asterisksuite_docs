@@ -12,7 +12,7 @@ import { Steps } from '@astrojs/starlight/components'
 - Las **monedas** son las divisas que se usan en precios, listas y documentos. Una de ellas es la **moneda base** de la empresa.
 - Las **cotizaciones** (tipos de cambio) permiten convertir importes entre monedas y mantener los precios en diferentes divisas.
 
-Se administran en **Ajustes → Monedas** (`/settings/monedas`), con pestañas **Monedas** y **Cotizaciones**. La sección **Cotizaciones** (`/cotizaciones`) muestra además el dólar con datos en línea.
+Se administran en **Ajustes → Monedas** (`/settings/monedas`), con pestañas **Monedas** y **Cotizaciones**. La sección **Cotizaciones** (`/cotizaciones`) muestra además el dólar con datos en línea: sus valores **se sincronizan automáticamente cada 30 minutos** (solo se registra historial cuando el valor cambia) y el historial se carga bajo demanda, paginado.
 
 ## Monedas
 

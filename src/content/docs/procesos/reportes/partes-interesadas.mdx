@@ -1,0 +1,90 @@
+---
+title: Clientes, proveedores, empleados y socios
+description: Vistas de partes interesadas y de personal del reporte gerencial multiempresa.
+sidebar:
+  order: 3
+---
+
+## Para qué sirve
+
+Estas vistas del módulo [Reportes gerenciales](/procesos/reportes/) muestran el detalle de las **personas y organizaciones** con las que opera cada empresa, en el período común seleccionado:
+
+- **Clientes** — *Reporte de clientes*: cobros, cuentas corrientes y documentación comercial. Se accede desde **Reportes → Clientes** (`/erp/reports/consolidated?view=customers`).
+- **Proveedores** — *Reporte de proveedores*: pagos, deuda, obligaciones y documentos de compra. Se accede desde **Reportes → Proveedores** (`/erp/reports/consolidated?view=suppliers`).
+- **Empleados y socios** — *Reporte de empleados y socios*: personas, vales, retiros y saldos pendientes. Se accede desde **Reportes → Empleados y socios** (`/erp/reports/consolidated?view=hr`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver reportes de tesorería (`treasury.reports.read`).
+- Estar asociado a cada empresa del reporte.
+:::
+
+## Cómo generarlos
+
+1. Abrí la vista desde **Reportes** (el flujo de empresas y período es el mismo del [consolidado](/procesos/reportes/consolidado/)).
+2. Definí las empresas y el período, y presioná **Generar reporte**.
+3. Revisá, empresa por empresa, el resumen de personas y las secciones de detalle.
+4. Exportá a **PDF**, **Excel** o **CSV** si necesitás distribuir el resultado.
+
+## Qué muestra cada vista
+
+### Clientes
+
+| Sección | Contenido |
+|---|---|
+| **Partes interesadas y cuentas corrientes** | Fila de Clientes: registrados, activos, con saldo y saldo neto. |
+| **Cobros por cliente** | Cobros del período agrupados por cliente, con registros e importe. |
+| **Cuentas de clientes con saldo** | Saldos actuales de las cuentas corrientes de clientes. |
+| **Documentos de venta y compra** | Documentos del período por circuito, tipo y estado. |
+
+### Proveedores
+
+| Sección | Contenido |
+|---|---|
+| **Partes interesadas y cuentas corrientes** | Fila de Proveedores: registrados, activos, con saldo y saldo neto. |
+| **Pagos y gastos por tercero** | Pagos y gastos del período agrupados por proveedor u otro tercero. |
+| **Cuentas de proveedores con saldo** | Saldos actuales de las cuentas corrientes de proveedores. |
+| **Obligaciones del período** | Obligaciones de tesorería con vencimiento en el período, por categoría y estado. |
+
+### Empleados y socios
+
+| Sección | Contenido |
+|---|---|
+| **Empleados y socios** (tabla) | Tipo (Empleado/Socio), persona con su estado Activo/Inactivo, datos (puesto y área del empleado; participación del socio), movimientos del período, importe del período y pendiente. |
+| **Vales de empleados y socios** | Vales del período agrupados por persona, tipo (sueldo, adelanto, extras, comisiones, retiro, reembolso, préstamo, aporte) y estado. |
+
+En las tres vistas, cada empresa comienza con su **lectura ejecutiva** y sus **prioridades de seguimiento** (documentos o pagos en borrador, transferencias pendientes y obligaciones sin pagar).
+
+## Estados
+
+- **Personas**: Activo / Inactivo, según la ficha actual de cada empleado o socio.
+- **Cuentas corrientes**: el saldo es el **actual** al momento de generar el reporte; los cobros, pagos y obligaciones corresponden al **período**.
+- **Vales**: los importes del período incluyen todos los vales cargados; el importe **Pendiente** separa los que todavía no están pagados ni anulados.
+- Los saldos y los movimientos no deben sumarse entre sí.
+
+## Exportación
+
+- **Clientes** exporta: lectura ejecutiva, cobros por cliente, saldos de clientes, documentos, alertas y el resumen de la fila Clientes.
+- **Proveedores** exporta: lectura ejecutiva, pagos por tercero, saldos de proveedores, obligaciones, documentos, alertas y el resumen de la fila Proveedores.
+- **Empleados y socios** exporta: lectura ejecutiva, vales, detalle de empleados, detalle de socios y alertas.
+
+El PDF sigue la estructura habitual (portada con resumen y una página por empresa) y los archivos se nombran `reporte-{vista}-{desde}-{hasta}.{ext}`.
+
+## Problemas frecuentes
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Un tercero no aparece en Cobros por cliente | No registró cobros dentro del período elegido. | Ampliá el período o revisá *Cuentas de clientes con saldo*. |
+| El saldo neto de Clientes no coincide con la suma de facturas | El saldo incluye cobros, notas y saldos iniciales de la cuenta corriente. | Revisá el detalle de la cuenta corriente del cliente. |
+| Un empleado no tiene movimientos | No se le cargaron vales en el período. | La fila se muestra igual, con movimientos en 0; revisá la pestaña de vales de [RRHH](/procesos/rrhh/vales-y-comisiones/). |
+| Un socio figura Inactivo | Su ficha está desactivada. | Verificá la ficha en [Socios](/procesos/rrhh/socios/). |
+| Figura *Sin tercero vinculado* | El pago o cobro se registró sin contraparte. | Editá el movimiento desde Tesorería y asignale el tercero. |
+
+## Ver también
+
+- [Contrapartes](/configuracion/contrapartes/) — clientes, proveedores y terceros.
+- [Cuentas corrientes](/procesos/tesoreria/cuentas-corrientes/).
+- [Empleados](/procesos/rrhh/empleados/), [Socios](/procesos/rrhh/socios/) y [Vales y comisiones](/procesos/rrhh/vales-y-comisiones/).
+- [Obligaciones (impuestos y servicios)](/procesos/tesoreria/impuestos-y-servicios/).
+- [Cobros](/procesos/ventas/cobros/) y [Pagos](/procesos/compras/pagos/).

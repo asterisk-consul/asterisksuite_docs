@@ -9,41 +9,49 @@ import { Steps } from '@astrojs/starlight/components'
 
 ## Para qué sirve
 
-La **recepción** (remito de compra) documenta el ingreso de la mercadería del proveedor y da **entrada de stock**. Se administra en **Compras → Remitos** (`/erp/purchases/remitos`).
+La **recepción** (remito de compra) documenta el ingreso de la mercadería del proveedor y da **entrada de stock**. Es el último eslabón del circuito: **Orden de compra → Factura de compra → Remito de compra**. Se administra en **Compras → Remitos de Compra** (`/erp/purchases/remitos`).
+
+El remito es una pantalla **operativa**: registra cantidades, variantes y depósitos de ingreso, **sin precios ni totales**. Los importes viven en la factura de compra.
 
 ## Permisos necesarios
 
 :::note[Permisos necesarios]
-- Ver compras · Crear compras · Editar compras · Confirmar compras · Anular compras
-- También aplican los permisos por tipo de documento (remitos de compra).
+- Ver compras · Crear compras · Editar compras · Confirmar compras · Cancelar compras
+- Además: permisos por tipo de documento, p. ej. *Crear remitos de compras* y *Confirmar remitos de compras*.
 :::
 
 ## Configuración previa
 
-- La **OC** de origen debe existir.
-- Debe existir el **depósito de destino**.
+- Para seguirla por el circuito: la **factura de compra** de origen debe existir y estar **confirmada**. Si el remito referencia un documento que no es una factura, el sistema responde *El remito de compra debe originarse en una factura de compra*.
+- Debe existir el **depósito receptor** de la mercadería (Depósitos).
 
 ## Cómo registrar una recepción
 
 <Steps>
 
-1. **Partí de la OC o creá el remito**
+1. **Partí de la factura o creá el remito**
 
-   Desde la **OC** generar el **remito de compra**, o ir a **Nuevo Remito de Compra** (`/erp/purchases/remitos/new`).
+   Desde la **factura de compra confirmada** presionar **Crear remito** (o **Ver remito** si ya existe), o ir a **Nuevo Remito de Compra** (`/erp/purchases/remitos/new`). Si venís de la factura, los productos, variantes, unidades y cantidades se copian y un aviso indica que el remito está **vinculado a una factura de compra**.
 
-2. **Indicá cantidades y depósito de destino**
+2. **Elegí el depósito de ingreso**
 
-   Para cada producto, cargá la **cantidad recibida** y el **depósito de destino**.
+   Cargá el **Depósito receptor** del documento; si cada producto entra a un depósito distinto, activá **Depósito por producto** y completá la columna **Depósito de ingreso** de cada ítem.
 
-3. **Guardá y confirmá**
+3. **Revisá cantidades y variantes**
 
-   Al **Confirmar**, el sistema registra la **entrada de stock** en el depósito indicado.
+   Para cada producto, ajustá la **cantidad a recibir** y la **variante**. El remito no muestra precios ni totales: eso lo administra la factura.
+
+4. **Guardá y confirmá**
+
+   Al **Confirmar remito** (*Se sumará el stock en los depósitos seleccionados*), el sistema registra la **entrada de stock** en cada depósito indicado y la cantidad pasa a *Cantidad recibida*.
 
 </Steps>
 
 ## Confirmar la recepción
 
-Al **Confirmar**, el sistema registra la **entrada de stock** en el depósito indicado. Cada ítem debe tener depósito asignado.
+Mientras algún producto quede **sin depósito**, la vista del remito muestra el aviso **Falta seleccionar un depósito de ingreso** (con el botón **Completar depósitos**) y **Confirmar remito** queda deshabilitado. Recién al confirmar se ingresa el stock.
+
+La vista también muestra la **cadena de documentos** (factura de origen → remito actual) con enlaces a cada eslabón, según tus permisos.
 
 ## Estados
 
@@ -56,19 +64,29 @@ Al **Confirmar**, el sistema registra la **entrada de stock** en el depósito in
 
 ## Reglas y validaciones
 
-- Todos los ítems deben tener **depósito** para confirmar.
-- La confirmación **suma stock** al depósito.
-- Una recepción parcial deja la OC en estado **Parcial Entregada**.
+- Cada producto debe tener depósito: se resuelve con el **depósito del ítem** o, en su defecto, con el **Depósito receptor** general del remito.
+- Sin depósito no hay ingreso: *Seleccioná el depósito receptor antes de confirmar el remito*. El remito no puede confirmarse ni ingresar stock mientras haya productos sin depósito general o individual.
+- El depósito elegido debe existir y estar activo: *El depósito seleccionado no existe o está inactivo*.
+- Solo se confirman remitos en **borrador**: *Solo se puede confirmar un documento en borrador*.
+- Solo puede existir **un remito activo** por factura: *La factura de compra ya tiene un remito activo asociado*.
+- La factura de origen debe estar **confirmada**: *La factura de compra debe estar confirmada*.
+- La confirmación **suma stock** en los depósitos indicados (movimiento de entrada por producto).
+- El remito trabaja **sin precios ni totales**; los importes se ajustan en la factura o con notas.
 
 ## Problemas frecuentes
 
 | Mensaje / síntoma | Causa | Solución |
 |---|---|---|
-| Faltan depósitos | Algún ítem sin depósito de destino. | Completá los depósitos. |
-| El stock no ingresó | La recepción no está confirmada. | Confirmá la recepción. |
+| *Falta seleccionar un depósito de ingreso* / no puedo confirmar | Algún producto sin depósito general ni individual. | Completá los depósitos con **Completar depósitos**. |
+| *Seleccioná el depósito receptor antes de confirmar el remito* | Falta el Depósito receptor general o el depósito por producto. | Asigná depósitos antes de confirmar. |
+| *La factura de compra ya tiene un remito activo asociado* | Ya existe un remito (borrador o confirmado) de esa factura. | Abrilo con **Ver remito** o anulalo. |
+| *El remito de compra debe originarse en una factura de compra* | El documento de origen no es una factura de compra. | Partí de la factura con **Crear remito**. |
+| *La factura de compra debe estar confirmada* | La factura de origen sigue en borrador o pendiente. | Confirmá la factura primero. |
+| El stock no ingresó | El remito no está confirmado. | Confirmá la recepción. |
 | No puedo editar | Ya está confirmada. | Anulá y recreá si hace falta. |
 
 ## Ver también
 
 - [Órdenes de compra](/procesos/compras/ordenes-de-compra/).
+- [Facturas de compra](/procesos/compras/facturas-de-compra/).
 - [Depósitos y ubicaciones](/configuracion/depositos-ubicaciones/).

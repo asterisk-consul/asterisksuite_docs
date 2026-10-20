@@ -14,8 +14,8 @@ La **Orden de Compra (OC)** es la solicitud de mercadería al proveedor. Se admi
 ## Permisos necesarios
 
 :::note[Permisos necesarios]
-- Ver compras · Crear compras · Editar compras · Confirmar compras · Anular compras
-- También aplican los permisos por tipo de documento (órdenes de compra).
+- Ver compras · Crear compras · Editar compras · Confirmar compras · Cancelar compras
+- Además: permisos por tipo de documento, p. ej. *Ver órdenes de compra* y *Crear facturas de compras*.
 :::
 
 ## Configuración previa
@@ -59,13 +59,19 @@ La OC usa los mismos estados que la orden de venta: **Borrador**, **Aprobada**, 
 
 ## Acciones relacionadas
 
-Desde la OC se puede **Confirmar**, **cambiar de estado** y generar la **recepción** (remito de compra) y la **factura de compra**.
+Desde la OC se puede **Confirmar**, **Anular** y generar los documentos siguientes del circuito:
+
+- **Crear Factura** (o **Ver factura** si ya existe): abre el comprobante con los productos, variantes, unidades, descuentos y depósitos heredados de la OC (`/erp/purchases/purchases-documents/new?parent_order_id={id}`). Requiere la OC **confirmada y activa** y el permiso *Crear facturas de compras*.
+- **Cadena de documentos**: la vista de la OC muestra la cadena *Origen* → *Actual* → *Generado* con enlaces a la factura, el remito y las notas, según tus permisos. Las notas de crédito/débito se crean desde la factura.
+- **Imprimir** y registrar pagos desde la factura generada.
 
 ## Reglas y validaciones
 
 - La OC debe tener **proveedor** y al menos un **ítem**.
 - La **secuencia** define el número del documento.
 - Una OC confirmada no se edita; se avanza de estado o se anula.
+- La factura solo puede originarse en una OC **confirmada y activa**: *La orden de compra debe estar confirmada y activa*.
+- Solo puede existir **una factura activa** por OC: *La orden de compra ya tiene una factura activa asociada* (borrar o anular la factura existente para poder crear otra).
 
 ## Problemas frecuentes
 
@@ -74,8 +80,12 @@ Desde la OC se puede **Confirmar**, **cambiar de estado** y generar la **recepci
 | No aparece el proveedor | No está cargado. | Crealo en Contrapartes. |
 | El producto no tiene costo | Falta precio de compra. | Cargá el costo en el producto. |
 | No puedo editar la OC | Está confirmada. | Cambiá de estado o anulá y recreá. |
+| No me deja crear la factura | La OC no está confirmada o está cancelada/cerrada. | Llevá la OC a un estado activo. |
+| *La orden de compra ya tiene una factura activa asociada* | Ya hay una factura (borrador o confirmada) nacida de esta OC. | Abrila desde la cadena de documentos o anulala. |
+| No aparece **Crear Factura** | No tenés el permiso *Crear facturas de compras*. | Pedí el permiso al administrador. |
 
 ## Ver también
 
 - [Compras](/procesos/compras/).
+- [Facturas de compra](/procesos/compras/facturas-de-compra/).
 - [Recepciones](/procesos/compras/recepciones/).

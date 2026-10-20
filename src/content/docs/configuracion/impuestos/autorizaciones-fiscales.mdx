@@ -13,6 +13,13 @@ Las **autorizaciones fiscales** registran el **CAI/CAE** de los comprobantes, po
 
 > Es necesario registrar el CAI antes de confirmar remitos fiscales.
 
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver autorizaciones fiscales y alertas · Crear autorizaciones fiscales · Editar, renovar o anular autorizaciones fiscales · Configurar alertas y políticas de autorizaciones fiscales
+- Para **reemplazar el CAI de un remito** desde su alerta: Reemplazar la autorización fiscal (CAI) de remitos en borrador.
+:::
+
 ## Datos de una autorización
 
 - **Tipo**: CAI, CAE o CAEA.
@@ -55,6 +62,24 @@ Desde **Configurar alertas** se ajustan las notificaciones y la política.
 
 El listado se puede **buscar** por CAI, remito, punto de venta, serie o estado, y filtrar por pestañas de tipo de documento.
 
+## Renovar un CAI desde un remito (`?new=1`)
+
+Cuando un CAI está **por vencer** (5 días o menos), el [remito de venta](/procesos/ventas/remitos/) muestra una alerta con el botón **Cargar nuevo CAI**. Ese botón abre esta pantalla con el parámetro **`?new=1`**, que precarga la **renovación** en vez de un alta vacía:
+
+| Parámetro | Qué hace |
+|---|---|
+| `authorization_id` | Renueva esa autorización: copia **tipo**, **tipo de documento** y **punto de venta**; la **vigencia** arranca al día siguiente del vencimiento; el **rango** continúa desde el final. |
+| `document_type_id` y `document_sequence_id` | Si no hay autorización para renovar, abre una **alta nueva** ya con ese tipo de documento y punto de venta. |
+| `return_to` | Remito de origen: al **guardar**, el sistema **vuelve a ese remito** (`/erp/remitos/{id}`). |
+
+Ejemplo de enlace:
+
+```
+/settings/fiscal-authorizations?new=1&authorization_id=abc&document_type_id=5&document_sequence_id=2&return_to=/erp/remitos/123
+```
+
+Verificá la **vigencia** y el **rango** precargados antes de guardar; el código se deja en blanco para que cargues el CAI nuevo.
+
 ## Reglas y validaciones
 
 - La autorización se asocia a un **tipo de documento** y una **secuencia**.
@@ -68,8 +93,11 @@ El listado se puede **buscar** por CAI, remito, punto de venta, serie o estado, 
 | No se puede confirmar un remito fiscal | Falta CAI o está vencido. | Registrá o renová la autorización. |
 | La autorización aparece "Vencida" | Pasó su fecha de vigencia. | Cargá una nueva autorización vigente. |
 | No se puede eliminar | La autorización está en uso. | Reemplazala o anulala según corresponda. |
+| No aparece el botón **Cargar nuevo CAI** en el remito | No tenés el permiso *Crear autorizaciones fiscales*, o el CAI todavía no está en los **5 días** previos al vencimiento. | Pedile el permiso al administrador o esperá al umbral de la alerta. |
+| El enlace `?new=1` abre una alta vacía | Faltó `authorization_id` o esa autorización ya no existe en el listado. | Abrí la pantalla y creá la autorización manualmente con el tipo y punto de venta correctos. |
 
 ## Ver también
 
+- [Remitos de venta](/procesos/ventas/remitos/).
 - [Tipos de documento](/configuracion/documentos/tipos-de-documento/).
 - [Reglas y alícuotas](/configuracion/impuestos/reglas-y-alicuotas/).

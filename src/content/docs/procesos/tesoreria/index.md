@@ -13,9 +13,9 @@ sidebar:
 
 | Componente | Para qué |
 |---|---|
-| **Cajas** | Movimientos de efectivo por caja y sesión. |
+| **Cajas** | Movimientos de efectivo por caja y sesión, con ingresos y egresos manuales auditables. |
 | **Bancos** | Cuentas bancarias propias, movimientos y gastos bancarios. |
-| **Cheques** | Cheques emitidos y recibidos, depósito y endoso. |
+| **Cheques** | Cheques emitidos y recibidos; al depositar o cobrar se elige banco o caja y todo queda con movimientos vinculados. |
 | **Tarjetas** | Tarjetas corporativas, cobros y liquidaciones. |
 | **Cuentas corrientes** | Saldos por cliente y proveedor. |
 | **Inversiones** | Colocaciones financieras. |
@@ -38,8 +38,9 @@ sidebar:
 
 :::note[Permisos necesarios]
 Cada submódulo tiene sus permisos. Por ejemplo:
-- Cajas: Ver cajas · Crear cajas · Editar cajas · Eliminar cajas · Abrir sesión de caja · Cerrar sesión de caja.
+- Cajas: Ver cajas · Crear cajas · Editar cajas · Eliminar cajas · Abrir sesión de caja · Cerrar sesión de caja · Registrar y anular movimientos manuales de caja.
 - Bancos: Ver cuentas bancarias · Crear cuentas bancarias · Editar cuentas bancarias · Eliminar cuentas bancarias.
+- Cheques: Ver/Crear/Editar/Eliminar cheques · Depositar cheques · Rechazar cheques.
 - Pagos: Ver pagos · Crear pagos · Editar pagos · Confirmar pagos · Anular pagos.
 :::
 

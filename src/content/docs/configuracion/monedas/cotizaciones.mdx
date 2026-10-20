@@ -25,9 +25,15 @@ Se administran en **Ajustes → Monedas → Cotizaciones** (`/settings/monedas`)
 
 La sección **Cotizaciones → Dólar** muestra las cotizaciones del dólar (Oficial, Blue y otras) obtenidas de **DolarApi.com**, con su fecha de actualización. Es una vista de consulta rápida del mercado.
 
+## Sincronización automática
+
+Las cotizaciones del dólar **se sincronizan automáticamente cada 30 minutos**, sin tener que cargarlas a mano. Cada sincronización solo genera un registro de historial **cuando el valor cambia**, de modo que el historial no se llena con valores repetidos.
+
+La consulta a DolarApi se hace **una sola vez por ejecución** y el resultado se comparte entre todas las empresas del sistema.
+
 ## Otras monedas
 
-En **Otras Monedas** se listan las cotizaciones cargadas manualmente, con estadísticas e historial.
+En **Otras Monedas** se listan las cotizaciones cargadas manualmente, con estadísticas e historial. El historial se **carga bajo demanda** (al abrirlo) y las cotizaciones se **pagina** desde la base de datos, por lo que no se descarga el historial completo de un solo vez.
 
 ## Cómo registrar una cotización
 
@@ -44,14 +50,16 @@ En **Otras Monedas** se listan las cotizaciones cargadas manualmente, con estad�
 - El **valor** debe ser mayor a 0.
 - Deben existir las **monedas** de origen y destino.
 - La **fecha de vigencia** define desde cuándo rige el valor (se toma la más reciente según la fecha).
+- En documentos de **ventas y compras en moneda extranjera**, si falta la cotización correspondiente el sistema muestra un **error explícito**: ya no acepta silenciosamente un valor igual a uno.
 
 ## Problemas frecuentes
 
 | Mensaje / síntoma | Causa | Solución |
 |---|---|---|
 | El importe no se convierte | No hay cotización entre esas monedas. | Cargá la cotización correspondiente. |
-| Aparece un valor viejo | La cotización vigente no está actualizada. | Registrá una nueva con fecha más reciente. |
+| Aparece un valor viejo | La cotización vigente no está actualizada. | Esperá la sincronización automática (cada 30 min) o registrá una nueva con fecha más reciente. |
 | No puedo elegir una moneda | No está creada o está inactiva. | Creala/activála en Monedas. |
+| Un documento en moneda extranjera no confirma por una cotización | Falta la cotización vigente para esa moneda. | Cargá la cotización (o esperá la sincronización automática) y volvé a intentar. |
 
 ## Ver también
 

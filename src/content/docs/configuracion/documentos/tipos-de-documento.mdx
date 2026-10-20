@@ -48,6 +48,16 @@ Se puede filtrar por pestañas (Venta, Compra, Todos) y buscar por código o des
 - **Editar**: abrir el tipo y modificar sus datos.
 - **Eliminar**: usar la acción de borrado.
 
+## Visibilidad de importes (OV)
+
+Cuando el tipo tiene **categoría Orden** (orden de venta), el formulario muestra una tarjeta adicional **"Visibilidad de importes"**:
+
+- **"Marcá los estados en los que precios, totales y comisiones quedarán ocultos para usuarios sin el permiso especial."**
+- Cada estado del documento aparece con un interruptor: **Importes restringidos** u **Importes visibles**.
+- La alerta aclara: **"OWNER, administradores y usuarios con sales.orders.view_amounts podrán ver los importes aun en estos estados."**
+
+Esto define qué estados ocultan importes en las OV (ver [Importes restringidos](/procesos/ventas/crear-orden-de-venta/#importes-restringidos)).
+
 ## Reglas y validaciones
 
 - El **código** y la **descripción** son obligatorios.

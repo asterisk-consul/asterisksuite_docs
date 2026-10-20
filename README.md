@@ -16,7 +16,43 @@ pnpm install      # instalar dependencias
 pnpm dev          # servidor de desarrollo en http://localhost:4321
 pnpm build        # build de producción a dist/
 pnpm preview      # previsualizar el build
+
+pnpm docs:status  # hasta qué versión de la app están documentados los docs
+pnpm docs:report  # regenerar DOCS_STATUS.md y la página de estado publicada
+pnpm docs:check   # sale con código 1 si hay versiones de la app sin revisar
 ```
+
+## Estado de la documentación (versión)
+
+El portal se versiona contra el historial de la app
+(`../asterisksuite_frontend/versiones/versions.json`). Siempre se sabe hasta qué versión
+está actualizada:
+
+| Archivo | Qué es |
+| --- | --- |
+| `docs-status.json` | Fuente de verdad: `documentedUpTo` (corte), versiones `resolved` (`skipped`/`partial` con nota) y los campos derivados `app`/`pending` que usa el banner en el build del contenedor. |
+| `DOCS_STATUS.md` | Reporte generado con cada versión pendiente y sus cambios. No editar a mano. |
+| `src/content/docs/docs/estado-de-la-documentacion.mdx` | El mismo reporte publicado en el sitio. |
+| `scripts/docs-status.mjs` | CLI que mantiene todo lo anterior. |
+
+Starlight muestra un **banner en todas las páginas** con el estado
+(vía `routeMiddleware` en `astro.config.mjs` → `src/routeData.mjs`), por ejemplo:
+*"Documentación al día hasta v0.71.0-alpha · app en v0.82.0-alpha · 11 versiones pendientes de revisar"*.
+
+### Flujo después de cada versión de la app
+
+```bash
+pnpm docs:status                              # qué cambió y qué falta revisar
+# ... actualizar los .md/.mdx de src/content/docs/ ...
+pnpm docs:status -- mark 0.83.0-alpha        # subir el corte (regenera el reporte)
+# o, si la versión no aporta cambios documentales:
+pnpm docs:status -- skip 0.84.0-alpha --note "solo rendimiento"
+# o, si quedó a medias:
+pnpm docs:status -- partial 0.85.0-alpha --note "falta la página de X"
+```
+
+Commitear junto con los contenidos: `docs-status.json`, `DOCS_STATUS.md` y
+`src/content/docs/docs/estado-de-la-documentacion.mdx`.
 
 ## Estructura
 
@@ -24,6 +60,9 @@ pnpm preview      # previsualizar el build
 .
 ├── .github/workflows/docker.yml   # build + push a GHCR + webhook Dokploy
 ├── public/                        # assets estáticos (favicon, imágenes)
+├── scripts/
+│   ├── docs-status.mjs            # CLI de estado de la documentación
+│   └── status-lib.mjs             # lógica compartida (estado, reportes, banner)
 ├── src/
 │   ├── assets/                    # logo y otros assets procesados por Astro
 │   ├── content/docs/              # contenido (Markdown/MDX)
@@ -33,7 +72,10 @@ pnpm preview      # previsualizar el build
 │   │   ├── configuracion/
 │   │   ├── administracion/
 │   │   └── solucion-de-problemas/
+│   ├── routeData.mjs              # banner de estado en todas las páginas
 │   └── styles/custom.css          # tema
+├── docs-status.json               # fuente de verdad del estado por versión
+├── DOCS_STATUS.md                 # reporte generado
 ├── astro.config.mjs               # configuración de Astro y Starlight
 ├── Dockerfile                     # build Astro + runtime Node (server.mjs)
 └── server.mjs                     # servidor estático (puerto 3000)

@@ -1,0 +1,84 @@
+---
+title: Documentos comerciales
+description: Documentos de compra y venta agrupados por circuito, tipo y estado en el período.
+sidebar:
+  order: 5
+---
+
+## Para qué sirve
+
+La vista **Documentos** del módulo [Reportes gerenciales](/procesos/reportes/) agrupa todos los documentos comerciales de las empresas seleccionados dentro del período, por circuito (venta o compra), tipo de documento y estado, con cantidad e importe. Se accede desde **Reportes → Documentos** (`/erp/reports/consolidated?view=documents`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver reportes de tesorería (`treasury.reports.read`).
+- Estar asociado a cada empresa del reporte.
+:::
+
+## Cómo generarlo
+
+1. Abrí **Reportes → Documentos**.
+2. Elegí las empresas y el período (igual que en el [consolidado](/procesos/reportes/consolidado/)).
+3. Presioná **Generar reporte**.
+4. Exportá a **PDF**, **Excel** o **CSV** para distribuir el detalle por empresa.
+
+## Documentos de venta y compra
+
+La tabla lista una fila por combinación de circuito, documento y estado:
+
+| Columna | Contenido |
+|---|---|
+| **Circuito** | Venta o Compra. |
+| **Documento** | Factura, Orden, Remito, Presupuesto, Nota de crédito, Nota de débito o Recibo. |
+| **Estado** | El estado del documento, en español (ver abajo). |
+| **Cantidad** | Cuántos documentos hay en esa combinación. |
+| **Importe** | Suma de los totales; las notas de crédito se informan en su propia fila. |
+
+Debajo, la sección **Pagos y cobros por estado** complementa con los movimientos del período: cobros y pagos agrupados por tipo (cobro, pago, gasto) y estado (borrador, confirmado, pagado, anulado).
+
+## Estados
+
+| Estado | Significado |
+|---|---|
+| **Borrador** | Cargado, sin confirmar. No integra los totales del período. |
+| **Pendiente** | Confirmación pendiente. No integra los totales. |
+| **Confirmado** | Activo; integra los totales. |
+| **Parcialmente entregado** | Con entregas parciales (remitos). |
+| **Entregado** | Orden entregada por completo. |
+| **Convertido** | Presupuesto convertido en otro documento. |
+| **Completado** | Documento finalizado. |
+| **Rechazado** | Presupuesto rechazado. |
+| **Anulado** | Anulado; no integra los totales. |
+| **Cerrado** | Cerrado sin más acciones. |
+| **Cancelado** | Cancelado. |
+
+Sólo los documentos **confirmados o superiores y no anulados** (facturas, notas de crédito y notas de débito) integran los indicadores de ventas y compras del período.
+
+## Criterios de lectura
+
+- El **importe** usa la cotización registrada en el documento: si existe, se informa convertido a ARS; si no, en su moneda original.
+- Los borradores, pendientes y anulados se listan con su propia fila para que estén visibles, pero **no suman** en los indicadores.
+- Los saldos de las cuentas corrientes (por cobrar / por pagar) son **actuales**, no del período.
+- Documentos, pagos y movimientos de tesorería pueden representar una misma operación: no sumes secciones entre sí.
+
+## Exportación
+
+La vista exporta, por empresa: lectura ejecutiva, documentos, pagos y cobros por estado, y alertas. El PDF incluye la portada con el resumen ejecutivo; los archivos se nombran `reporte-documentos-{desde}-{hasta}.{ext}`.
+
+## Problemas frecuentes
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Un documento no aparece | Está fuera del período o fue eliminado (papelera). | Ampliá el período o revisá la [Papelera](/administracion/papelera/). |
+| El importe no coincide con el listado de la empresa | Sólo se cuentan documentos confirmados; las notas de crédito restan. | Compará contra el mismo criterio de estado. |
+| No veo el IVA ni el desglose | El reporte agrupa por total de documento. | Usá el [Libro IVA](/procesos/tesoreria/reportes/) para el detalle fiscal. |
+| Aparece *Estado N* | Un estado poco común no tiene etiqueta. | Verificá el documento en su módulo (Ventas o Compras). |
+| Un recibo no tiene importe tributario | Los recibos registran el cobro, no una operación gravada. | Revisá la sección *Pagos y cobros por estado*. |
+
+## Ver también
+
+- [Facturación](/procesos/ventas/facturacion/) y [Cobros](/procesos/ventas/cobros/).
+- [Facturas de compra](/procesos/compras/facturas-de-compra/) y [Pagos](/procesos/compras/pagos/).
+- [Secuencias y tipos de documento](/configuracion/documentos/).
+- [Documentos comerciales (consolidado)](/procesos/reportes/consolidado/) — cómo se alimentan los indicadores globales.

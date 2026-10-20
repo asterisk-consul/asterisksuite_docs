@@ -35,11 +35,11 @@ La **factura** es el comprobante fiscal de la venta. Se administra en **Ventas �
 
 2. **Completá los datos generales**
 
-   Cliente, fecha, moneda, tipo de documento y secuencia.
+   Cliente, fecha, moneda, tipo de documento y secuencia. Si el tipo tiene **un solo punto de venta**, se selecciona **automáticamente** y el campo queda bloqueado; con varios, elegilo a mano. Al lado aparece el **Próximo comprobante** que va a usar la serie.
 
 3. **Agregá los productos**
 
-   Ítems con producto, cantidad y precio.
+   Ítems con producto, cantidad y precio. Si el producto tiene **variantes**, elegí la **variante** (si hay una sola se selecciona sola).
 
 4. **Revisá los impuestos**
 
@@ -63,6 +63,13 @@ Al **Confirmar**, el comprobante:
 
 Una vez confirmada no se edita; se ajusta con una **nota de crédito/débito** o se **anula** según corresponda.
 
+## Número y punto de venta
+
+- El formulario **anticipa el próximo número** (badge **Próximo comprobante**) calculado a partir de la serie elegida.
+- Si el tipo tiene **un único punto de venta**, se selecciona **solo** y el selector queda deshabilitado.
+- Las series se guardan en memoria por empresa: con conexión lenta, si no se puede anticipar el número aparece *"Sin conexión para anticipar el número. Se asignará correctamente al guardar."* y el número se asigna igual al confirmar.
+- Si la serie está completa, avisa *"La secuencia seleccionada está agotada"* antes de que guardes.
+
 ## Estados
 
 | N° | Estado | Descripción |
@@ -76,7 +83,9 @@ Una vez confirmada no se edita; se ajusta con una **nota de crédito/débito** o
 
 - La factura debe tener **cliente** y al menos un **ítem**.
 - El **IVA** se resuelve según **condición emisor × receptor**.
-- La confirmación asigna **número** y **CAE**.
+- Si la factura es en **moneda extranjera**, debe existir la **cotización** vigente: si falta, el sistema muestra un error explícito en lugar de asumir un valor igual a uno.
+- La confirmación asigna **número** y **CAE**; el número anticipado es orientativo, la fuente de verdad es la serie.
+- Un producto con variantes exige una variante activa en cada ítem.
 - Los documentos confirmados no se editan.
 
 ## Problemas frecuentes
@@ -86,9 +95,12 @@ Una vez confirmada no se edita; se ajusta con una **nota de crédito/débito** o
 | No puedo confirmar | Falta CAE/autorización o datos fiscales. | Revisá la configuración fiscal y la secuencia. |
 | El IVA no es el esperado | Condición de IVA del cliente incorrecta. | Verificá la condición en la contraparte. |
 | No puedo editar | La factura está confirmada. | Emití una nota de crédito/débito. |
+| "Elegí un punto de venta para conocer el próximo número" | El tipo tiene varias series y no se eligió ninguna. | Seleccioná el punto de venta. |
+| "La secuencia seleccionada está agotada" | Se alcanzó el rango fin de la serie. | Ampliá el rango o creá otra [secuencia](/configuracion/documentos/secuencias/). |
+| La factura en moneda extranjera no avanza | Falta la cotización vigente para esa moneda. | Cargá la cotización en [Cotizaciones](/configuracion/monedas/cotizaciones/) y volvé a intentar. |
 
 ## Ver también
 
 - [Presupuestos](/procesos/ventas/presupuestos/) y [Remitos](/procesos/ventas/remitos/).
 - [Impuestos y configuración fiscal](/configuracion/impuestos/).
-- [Tipos de documento](/configuracion/documentos/tipos-de-documento/).
+- [Tipos de documento](/configuracion/documentos/tipos-de-documento/) y [Secuencias de numeración](/configuracion/documentos/secuencias/).

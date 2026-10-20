@@ -35,6 +35,12 @@ El módulo puede requerir un permiso de lectura (por ejemplo "Ver cajas") o pued
 
 **Solución**: verificá el permiso de lectura del módulo.
 
+### 5. Después de una actualización no aparecen los permisos nuevos
+
+Cada versión puede incorporar permisos nuevos (por ejemplo, los permisos para registrar y anular movimientos manuales de caja). El **seed de permisos es aditivo**: sincroniza el catálogo de permisos y roles por defecto **preservando** los roles, permisos, asignaciones y personalizaciones existentes, así que no borra tu configuración.
+
+**Solución**: ejecutá el seed de RBAC del backend (`pnpm run seed:rbac`, indicando el tenant de la empresa si corresponde) para incorporar los permisos nuevos al catálogo, y luego agregá esos permisos a los roles que los necesiten en **Roles y permisos**. Aunque el permiso exista en el catálogo, cada rol debe incluirlo explícitamente.
+
 ## Ver también
 
 - [Usuarios, roles y permisos](/administracion/usuarios-roles-permisos/).

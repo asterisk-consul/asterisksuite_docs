@@ -16,6 +16,8 @@ Reúne el control de **stock** por depósito, el análisis de **disponibilidad c
 - **Fabricación**: registro de producción, descuento de materiales e historial.
 - **Picking y pallets**: preparación y movimiento dentro del depósito (Logística).
 
+Los accesos de la portada muestran **conteos reales**: el badge de **Productos** refleja la cantidad de productos activos (el servidor devuelve además el de inactivos) sin descargar el catálogo completo, y se mantiene correcto aunque navegues listados paginados.
+
 ## Páginas de esta sección
 
 - [Disponibilidad de stock](/procesos/stock/disponibilidad/)

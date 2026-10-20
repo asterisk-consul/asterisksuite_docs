@@ -11,7 +11,11 @@ El módulo de **Productos** es la base del catálogo de Asterisk Suite. Cada pro
 
 ### Alta de productos
 
-- [Crear un producto](/configuracion/productos/crear-producto/) — alta paso a paso, tipos, cálculos, fuentes de costo y errores frecuentes.
+- [Crear un producto](/configuracion/productos/crear-producto/) — alta paso a paso, tipos, cálculos, fuentes de costo, la **ficha del producto** (secciones General, Depósitos, Ingeniería y Costos) y errores frecuentes.
+
+### Ficha y edición
+
+La ficha (`/productos/{id}`) muestra un **resumen** del producto y **accesos operativos** (**Ver disponibilidad** y **Editar producto**), con **General** como sección por defecto; **Ingeniería** solo aparece en productos compuestos y **Costos** solo si hay plantilla o costos cargados. En los listados de **depósitos** y de **disponibilidad**, el nombre del producto abre directamente su edición (`/productos/{id}/edit`).
 
 ### Configuración del catálogo
 

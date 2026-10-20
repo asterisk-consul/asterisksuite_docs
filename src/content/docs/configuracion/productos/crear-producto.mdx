@@ -114,7 +114,7 @@ Indica cómo se obtiene el costo del producto:
 
 2. **Iniciar la creación**
 
-   Hacé clic en el botón **"Crear Producto"** (o **"+"**) ubicado en la parte superior de la lista de productos.
+   Hacé clic en el botón **"Nuevo Producto"** (icono **+**, arriba a la derecha de la lista de productos).
 
 3. **Completar los campos**
 
@@ -144,9 +144,29 @@ Indica cómo se obtiene el costo del producto:
    - Que el **nombre** no esté vacío.
    - Que el **SKU** (si se ingresó) no esté duplicado entre productos activos.
 
-   Si la validación es exitosa, el producto se crea y aparece en la lista.
+   Si la validación es exitosa, el producto se crea y pasás a su **ficha de edición** (`/productos/{id}/edit`), donde siguen las configuraciones avanzadas.
 
 </Steps>
+
+---
+
+## La ficha del producto
+
+La ficha (`/productos/{id}`) es la vista de consulta del producto. Abre con un **resumen** —Tipo, Uso, Unidad de stock, Estado, y las etiquetas *Gestiona stock*, cantidad de **variantes** y de **categorías**— y con dos **accesos operativos** en la cabecera:
+
+- **Ver disponibilidad**: lleva a Stock → Disponibilidad con la búsqueda ya cargada.
+- **Editar producto**: abre el formulario de edición (`/productos/{id}/edit`).
+
+Las secciones se muestran como pestañas y se adaptan al producto:
+
+| Sección | Cuándo aparece | Qué contiene |
+|---------|----------------|--------------|
+| **General** | Siempre, y es la que se abre **por defecto**. | Resumen del producto y sus datos básicos. |
+| **Depósitos** | Siempre disponible (también entrando con la ancla `#stock`). | Existencias por depósito, enlace al detalle de cada depósito y políticas de reposición. |
+| **Ingeniería** | Solo si el producto es **compuesto**. | Árbol de ingeniería y alta de componentes. |
+| **Costos** | Solo si el producto tiene **plantilla de costo** o costos cargados. | Plantilla asignada, cálculo de costos, resumen, historial y Pareto. |
+
+Si el producto no es compuesto no aparece **Ingeniería**, y sin plantilla ni costos cargados no aparece **Costos**: el resto de las secciones siguen disponibles.
 
 ---
 
@@ -240,4 +260,5 @@ Indica cómo se obtiene el costo del producto:
 
 ## Ver También
 
+- [Disponibilidad de stock](/procesos/stock/disponibilidad/): accesos operativos del producto desde su ficha.
 - [Implementación de Logística](/procesos/logistica/implementacion/): circuito completo donde se utilizan los productos y las tarifas.

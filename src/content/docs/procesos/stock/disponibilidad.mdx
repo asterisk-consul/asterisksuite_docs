@@ -19,6 +19,7 @@ Muestra la **disponibilidad comercial** de cada producto: cuánto hay, cuánto e
 
 ## Columnas
 
+- **Producto** — nombre del producto (enlace directo a su **edición**) y, debajo, la etiqueta **SKU** (o "Sin código") junto a la unidad de medida.
 - **Stock físico** — existencias reales en depósito.
 - **Reservado** — cantidad comprometida (reservas de ventas).
 - **Disponible hoy** — físico menos lo reservado.
@@ -31,11 +32,11 @@ Muestra la **disponibilidad comercial** de cada producto: cuánto hay, cuánto e
 
 1. **Abrí la disponibilidad**
 
-   Ir a **Stock → Disponibilidad**.
+   Ir a **Stock → Disponibilidad**. También podés llegar desde la ficha de un producto con **Ver disponibilidad**, que precarga la búsqueda (`/stock/disponibilidad?search=...`).
 
 2. **Buscá el producto**
 
-   Por nombre o código.
+   Por nombre o código (SKU). Al dejar de escribir, la tabla vuelve a la primera página y recalcula el total de coincidencias.
 
 3. **Elegí la proyección de entrega**
 
@@ -45,12 +46,17 @@ Muestra la **disponibilidad comercial** de cada producto: cuánto hay, cuánto e
 
    Presionar **Actualizar**.
 
+5. **Abrí el producto**
+
+   El **nombre** de cada fila abre directamente la **edición del producto** (`/productos/{id}/edit`).
+
 </Steps>
 
 ## Notas
 
 - El **disponible proyectado** ayuda a prometer entregas realistas.
 - Las **reservas** se generan al confirmar órdenes de venta.
+- Los resultados se cargan en **páginas de 25 registros**, con el total en el pie (*N productos · Página X de Y*).
 
 ## Problemas frecuentes
 
@@ -58,6 +64,7 @@ Muestra la **disponibilidad comercial** de cada producto: cuánto hay, cuánto e
 |---|---|---|
 | El disponible no coincide | Hay reservas o tránsito pendientes. | Revisá las columnas de reservado y tránsito. |
 | No aparece el producto | Está inactivo o sin stock configurado. | Verificá el producto y su depósito. |
+| La búsqueda no encuentra nada | Estás en una página sin coincidencias. | Volvé a la primera página o refiná la búsqueda. |
 
 ## Ver también
 

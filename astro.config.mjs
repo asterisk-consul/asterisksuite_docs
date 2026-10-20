@@ -37,6 +37,9 @@ export default defineConfig({
       title: 'Asterisk Suite',
       description: 'Documentación funcional y técnica de Asterisk Suite',
 
+      /** Banner de estado de la documentación en todas las páginas (ver src/routeData.mjs). */
+      routeMiddleware: './src/routeData.mjs',
+
       plugins: [
         starlightThemeSix({
           navLinks: [
@@ -165,6 +168,10 @@ export default defineConfig({
         {
           label: 'RRHH',
           items: [{ autogenerate: { directory: 'procesos/rrhh' } }]
+        },
+        {
+          label: 'Reportes gerenciales',
+          items: [{ autogenerate: { directory: 'procesos/reportes' } }]
         },
         {
           label: 'Administración',

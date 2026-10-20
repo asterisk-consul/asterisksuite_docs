@@ -18,6 +18,7 @@ Se administran en **Ventas → Órdenes de Venta** (`/erp/orders`) y se crean en
 :::note[Permisos necesarios]
 - Ver ventas · Crear ventas · Editar ventas · Confirmar ventas · Anular ventas
 - También aplican los permisos por tipo de documento (órdenes de venta) si tu empresa los usa.
+- **Ver precios, totales y comisiones de órdenes de venta restringidas** (`sales.orders.view_amounts`): habilita ver los importes cuando el tipo de documento los oculta en un estado. Los roles `admin` y `manager` ya lo tienen; OWNER y ADMIN lo ignoran (siempre ven importes).
 :::
 
 ## Configuración previa
@@ -25,7 +26,10 @@ Se administran en **Ventas → Órdenes de Venta** (`/erp/orders`) y se crean en
 - El **cliente** debe existir (Contrapartes).
 - Los **productos** deben tener precio para la moneda.
 - Debe existir un **tipo de documento** de categoría Orden y su **secuencia** (punto de venta).
-- Opcionalmente, un **depósito** y **vendedores** (empleados marcados como vendedores).
+- Opcionalmente, un **depósito** y **empleados marcados como vendedores** (se usan en la bandeja de comisiones).
+- En [Circuito de ventas](/procesos/ventas/circuito-de-ventas/) podés definir un **responsable sugerido** y si se **exige** asignarlo al confirmar.
+- Si el producto tiene **variantes**, cada ítem debe indicar una variante activa (ver [Variantes de producto](/configuracion/productos/variantes/)).
+- El **tipo de documento** puede ocultar precios, totales y comisiones según el estado (ver [Tipos de documento](/configuracion/documentos/tipos-de-documento/)).
 
 ## Cómo crear una OV
 
@@ -43,7 +47,7 @@ Se administran en **Ventas → Órdenes de Venta** (`/erp/orders`) y se crean en
 
 3. **Agregá los productos**
 
-   Agregar ítems indicando producto, cantidad y precio. Según el producto, se puede elegir **variante** y **depósito**.
+   Agregar ítems indicando producto, cantidad y precio. Si el producto tiene **variantes**, elegí la **variante** en cada ítem (cuando hay una sola se selecciona sola) y, según el producto, el **depósito**.
 
 4. **Completá la información de entrega**
 
@@ -52,15 +56,24 @@ Se administran en **Ventas → Órdenes de Venta** (`/erp/orders`) y se crean en
    - **Dirección de entrega**, **contacto**, **teléfono** y **tiempo de entrega**.
    - **Transporte** e **instrucciones de entrega**.
 
-5. **Definí el vendedor y la comisión**
+5. **Revisá vendedor y comisión**
 
-   Elegir el **vendedor** (se autocompleta la comisión según sus valores por defecto) y, si corresponde, ajustar la **comisión (%)** y la base de comisión.
+   El formulario **no pide** vendedor ni comisión: se asignan por período en la bandeja de comisiones de RRHH (ver [Vales y comisiones](/procesos/rrhh/vales-y-comisiones/)). Si la OV ya tiene vendedor y comisión cargados, al editar se **conservan**.
 
 6. **Guardá**
 
    Presionar **Guardar Orden de Venta**. La OV se crea en estado **Borrador**.
 
 </Steps>
+
+## Editar una OV
+
+La OV se edita con el botón **Editar** del detalle (`/erp/sales/{id}/edit`), disponible mientras esté en **Borrador** o **Aprobada**:
+
+- La edición **conserva la categoría** del documento (no se convierte en factura ni en remito) y mantiene el **vendedor** y la **comisión** ya cargados.
+- Se pueden actualizar los **datos de entrega**, los ítems y los datos generales.
+- Si otra persona modificó el documento mientras lo editabas, el guardado se cancela con el aviso *"Este documento fue modificado por otra persona. Recargá la página antes de guardar…"*; recargá y volvé a intentar.
+- Desde **En Preparación** en adelante la OV **no se edita**: solo se avanza de estado o se anula.
 
 ## Estados de la OV
 
@@ -76,12 +89,23 @@ Se administran en **Ventas → Órdenes de Venta** (`/erp/orders`) y se crean en
 | 7 | **Cerrada** | Cerrada definitivamente. |
 | 8 | **Cancelada** | Cancelada. |
 
+En los **listados**, las OV confirmadas muestran además **estados comerciales derivados** según el avance real: *En preparación*, *Lista para despacho* y *Remito pendiente*.
+
 ## Confirmar y avanzar
 
 Desde el detalle de la OV se puede **Confirmar** y **cambiar de estado** (según transiciones válidas: Borrador → Aprobada, Aprobada → En Preparación, etc.).
 
 - Al abrir la confirmación, el sistema puede mostrar la **disponibilidad de stock**; según la configuración, **bloquea** la confirmación o permite **confirmar con faltante**.
-- Una vez **confirmada**, la OV **no se puede editar** (solo avanzar de estado).
+- Al confirmar también se elige el **responsable** de la OV: se preselecciona el *responsable sugerido* del [Circuito de ventas](/procesos/ventas/circuito-de-ventas/) y, si está activa la opción **Exigir responsable**, no se puede confirmar sin asignar una persona.
+- El **responsable** es quien recibe la OV para continuar su preparación o seguimiento; es un dato distinto del **vendedor** (relación comercial).
+
+## Importes restringidos
+
+Cada **tipo de documento** de OV define en qué estados los **precios, totales y comisiones** quedan ocultos (tarjeta *Visibilidad de importes* en [Tipos de documento](/configuracion/documentos/tipos-de-documento/)).
+
+- Sin el permiso `sales.orders.view_amounts`, el documento llega **sin importes**: la columna **Total** muestra *Restringido*, el detalle oculta subtotales, totales, precios de ítem y comisión, y la API devuelve esos campos en `null` (la edición de importes en ese estado también se rechaza).
+- Para seguir operando, los listados muestran **estados comerciales derivados**, el **avance porcentual de cobro** (% cobrado vs. % requerido) e **indicadores operativos** (borradores, en preparación, listas para despacho, remitos pendientes) **sin revelar dinero**.
+- **OWNER**, **ADMIN** y los usuarios con el permiso ven los importes siempre.
 
 ## Acciones relacionadas
 
@@ -93,8 +117,11 @@ Desde el detalle de la OV se puede **Confirmar** y **cambiar de estado** (según
 
 - La OV debe tener **cliente** y al menos un **ítem**.
 - La **secuencia** define el número del documento.
+- Un producto con **variantes** exige una variante activa en cada ítem.
 - Confirmar puede requerir **stock suficiente** según la política configurada.
+- Si el circuito **exige responsable**, la confirmación requiere asignar una persona.
 - Los documentos confirmados no se editan; se avanza de estado o se anulan (según categoría).
+- Si los importes están restringidos en el estado, la edición se rechaza sin `sales.orders.view_amounts`.
 
 ## Problemas frecuentes
 
@@ -103,10 +130,17 @@ Desde el detalle de la OV se puede **Confirmar** y **cambiar de estado** (según
 | No aparece el cliente | No está cargado. | Crealo en Contrapartes o desde el formulario. |
 | El producto no tiene precio | Falta precio para esa moneda. | Cargá el precio en Productos. |
 | No puedo confirmar la OV | Falta stock y la política bloquea. | Reponé stock o ajustá la política. |
-| No puedo editar la OV | Ya está confirmada. | Cambiá de estado o anulá y recreá. |
+| "Falta asignar un responsable" | El circuito exige responsable al confirmar. | Elegí el responsable en el modal de confirmación o desactivá **Exigir responsable**. |
+| No puedo editar la OV | Ya salió de Borrador/Aprobada. | Cambiá de estado o anulá y recreá. |
+| Los importes aparecen "Restringido" | El tipo de OV oculta importes en ese estado y no tenés el permiso. | Pedí `sales.orders.view_amounts` o ajustá la *Visibilidad de importes* del tipo de documento. |
+| "Seleccioná una variante para todos los productos que tienen variantes" | El producto tiene variantes activas. | Elegí la variante en el ítem. |
+| "La variante seleccionada no pertenece al producto o está inactiva" | Variante de otro producto o dada de baja. | Revisá la variante elegida en el ítem. |
 
 ## Ver también
 
 - [Ventas](/procesos/ventas/) — circuito completo.
 - [Circuito de ventas](/procesos/ventas/circuito-de-ventas/).
+- [Vales y comisiones](/procesos/rrhh/vales-y-comisiones/) — vendedores, participación y comisiones.
+- [Tipos de documento](/configuracion/documentos/tipos-de-documento/) — visibilidad de importes.
+- [Variantes de producto](/configuracion/productos/variantes/).
 - [Contrapartes](/configuracion/contrapartes/).

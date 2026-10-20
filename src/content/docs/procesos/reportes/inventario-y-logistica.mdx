@@ -1,0 +1,95 @@
+---
+title: Inventario y logística
+description: Órdenes de venta por artículo y movimientos de stock de todas las empresas en el período.
+sidebar:
+  order: 6
+---
+
+## Para qué sirve
+
+La vista **Inventario y logística** del módulo [Reportes gerenciales](/procesos/reportes/) ofrece la mirada operativa del período: las **órdenes de venta por artículo** (qué se vendió, a quién, cuándo y quién lo cargó) y los **movimientos de stock** resumidos por producto. Se accede desde **Reportes → Inventario y logística** (`/erp/reports/consolidated?view=inventory`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver reportes de tesorería (`treasury.reports.read`).
+- Estar asociado a cada empresa del reporte.
+:::
+
+## Cómo generarlo
+
+1. Abrí **Reportes → Inventario y logística**.
+2. Elegí las empresas y el período (igual que en el [consolidado](/procesos/reportes/consolidado/)).
+3. Presioná **Generar reporte**.
+4. Exportá a **PDF**, **Excel** o **CSV** para llevar el detalle operativo a cada equipo.
+
+## Órdenes de venta por artículo
+
+Cada línea de cada orden de venta del período genera una fila con el detalle completo:
+
+| Columna | Contenido |
+|---|---|
+| **Empresa** | Empresa a la que pertenece la orden. |
+| **OV** | Número de la orden de venta. |
+| **Fecha OV** | Fecha de la orden. |
+| **Cliente** | Cliente de la orden; *Sin cliente* si no tiene tercero asignado. |
+| **Artículo** | Producto, y su variante cuando corresponde (producto · variante). |
+| **Cantidad** | Cantidad solicitada de esa línea. |
+| **Estado** | Estado de la orden en español (ver abajo). |
+| **Confirmación** | Fecha y hora en que se confirmó la orden, o *No confirmada* si sigue en borrador. |
+| **Usuario** | Usuario que confirmó la orden; si no se pudo identificar, quien la creó. |
+
+La tabla admite desplazamiento horizontal (para ver todas las columnas) y vertical (con encabezado fijo) cuando hay muchas líneas.
+
+## Estados de la orden
+
+| Estado | Significado |
+|---|---|
+| **Borrador** | Sin confirmar; la confirmación figura como *No confirmada*. |
+| **Pendiente** | En espera de confirmación. |
+| **Confirmado** | Operativamente activa. |
+| **Parcialmente entregado** | Con remitos que cubren parte de la cantidad. |
+| **Entregado** | Entrega completa. |
+| **Anulado** / **Cancelado** | Sin efecto operativo. |
+| **Cerrado** | Cerrada sin más acciones. |
+
+## Movimientos de stock
+
+| Columna | Contenido |
+|---|---|
+| **Producto** | Nombre del producto. |
+| **Origen** | Tipo de movimiento: documento, ajuste, manual, consumo de producción, producción terminada, transferencia o tránsito internacional. |
+| **Movimiento** | Entrada o Salida. |
+| **Cantidad neta** | Suma del período: las entradas son positivas y las salidas negativas. |
+| **Movimientos** | Cuántos registros forman esa cantidad neta. |
+
+## Criterios de lectura
+
+- El reporte toma las **órdenes de venta** (categoría Orden, circuito de venta) del período; para ver facturas y notas usá la vista [Documentos](/procesos/reportes/documentos/).
+- La fecha de *Confirmación* proviene del historial de cambios de la orden; si no hay registro, se toma la última actualización.
+- Cantidades y unidades se muestran en formato numérico argentino, sin convertir monedas.
+- Cada empresa del reporte se exporta por separado; en el PDF, el detalle operativo es el contenido principal.
+
+## Exportación
+
+- La vista exporta por empresa: órdenes de venta por artículo (con empresa, OV, fecha, cliente, artículo, cantidad, estado, confirmación y usuario), movimientos de stock y alertas.
+- **PDF**: a diferencia del resto de los reportes, **arranca directamente con la información operativa** de cada empresa, sin portada administrativa.
+- Los archivos se nombran `reporte-inventario-{desde}-{hasta}.{ext}`.
+
+## Problemas frecuentes
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Una OV no aparece | Es de otra categoría (p. ej. presupuesto) o está fuera del período. | Ampliá el período o revisá el circuito del documento. |
+| Figura *No confirmada* | La orden sigue en borrador. | Revisá la orden desde [Órdenes de venta](/procesos/ventas/crear-orden-de-venta/). |
+| El usuario no coincide con el creador | La columna muestra quien **confirmó** la orden. | Verificá la auditoría de la orden si necesitás el creador. |
+| Un producto no tiene variante | La línea no tiene variante asignada. | Completá la variante en el documento; ver [Variantes](/configuracion/productos/variantes/). |
+| La cantidad neta no coincide con el stock | El stock actual es una foto; el reporte suma movimientos del período. | Contrastá con [Disponibilidad](/procesos/stock/disponibilidad/). |
+| El PDF no muestra portada | Es intencional en esta vista: el reporte es operativo. | — |
+
+## Ver también
+
+- [Órdenes de venta](/procesos/ventas/crear-orden-de-venta/) — circuito de creación y confirmación.
+- [Disponibilidad](/procesos/stock/disponibilidad/) y [Reposición](/procesos/stock/reposicion/) — stock actual y proyectado.
+- [Picking y pallets](/procesos/stock/picking-y-pallets/) — ejecución de la entrega.
+- [Remitos de venta](/procesos/ventas/remitos/) — estados de entrega vinculados a la OV.

@@ -1,0 +1,11 @@
+{
+  "documentedUpTo": "0.83.0-alpha",
+  "lastReview": "2026-10-20",
+  "app": {
+    "version": "0.83.0-alpha",
+    "date": "2026-10-20"
+  },
+  "pending": [],
+  "resolved": {},
+  "notes": "Corte calculado el 2026-10-20 comparando los cambios de asterisksuite_frontend/versiones/versions.json contra el contenido de src/content/docs/: los módulos publicados hasta 0.71.0-alpha (inversiones, libro de movimientos bancarios, gastos bancarios, clientes internos, precancelación) están descriptos; de 0.72.0-alpha en adelante casi no hay rastro en los docs, con incorporaciones puntuales en 0.76.0-alpha (variantes) y 0.82.0-alpha (circuito de compras)."
+}

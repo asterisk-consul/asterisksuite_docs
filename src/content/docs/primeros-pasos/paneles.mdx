@@ -1,17 +1,155 @@
 ---
 title: Paneles de inicio
-description: Tableros y reportes de gestión para ver la operación de un vistazo.
+description: El inicio con saludo, tarjetas KPI y widgets personalizables, más los tableros y reportes de gestión.
 sidebar:
   order: 4
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 ## Para qué sirve
 
-Los **paneles** muestran la operación de un vistazo: inicio, tesorería, cobros, órdenes, picking y RRHH, más los **reportes de gestión**.
+Los **paneles** muestran la operación de un vistazo: el **inicio** (`/`), con un saludo personalizado, tarjetas KPI y widgets configurables, los tableros de cada área (tesorería, logística, picking, RRHH) y los **reportes de gestión**.
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- El inicio se abre con cualquier rol, pero cada **tarjeta KPI** y cada **widget** se muestra sólo si tenés su permiso. Los usuarios **OWNER** y **ADMIN** ven todo.
+- Los permisos que habilitan contenido en el inicio: Ver documentos · Ver productos · Ver cheques · Ver cuentas bancarias · Ver pagos · Ver tipos de cambio · Ver empleados · Ver picking · Ver viajes · Ver operaciones internacionales.
+:::
+
+## El inicio (`/`)
+
+- **Saludo personalizado**: `Hola, {nombre}`, con el **nombre de la empresa** y la **fecha** del día.
+- Botón **Actualizar** (arriba a la derecha): recarga los datos del inicio; la tarjeta de empresa muestra la hora de la última actualización ("Actualizado 12:34") o "Preparando información" mientras carga.
+- Tarjeta de empresa: nombre, **rol** con el que trabajás (Propietario, Administrador o Usuario) y el aviso de que el resumen prioriza la información habilitada para tu rol: *podés personalizar los bloques sin afectar la vista de otros usuarios*.
+
+### Tarjetas KPI
+
+Son hasta **4 tarjetas** de resumen; cada una abre su listado al hacer clic:
+
+| Tarjeta KPI | Muestra | Se abre | Permiso |
+|---|---|---|---|
+| **Por cobrar** | Suma de los saldos positivos de las cuentas corrientes de clientes (facturas, notas, cobros y saldos iniciales) y cuántos clientes con saldo | Cuentas corrientes (`/erp/treasury/current-accounts`) | Ver documentos |
+| **Cheques próximos** | Cantidad de cheques a vencer y su importe | Cheques (`/erp/treasury/checks`) | Ver cheques |
+| **Alertas de stock** | Productos por debajo del mínimo y total de productos con stock | Stock (`/stock`) | Ver productos |
+| **Órdenes de venta** | OVs **pendientes de entrega**, total de OV e importe | Órdenes de venta (`/erp/orders`) | Ver documentos |
+| **Mis pendientes** | Sólo aparece si no se completan las cuatro anteriores: documentos por completar | Inicio (`/`) | Sin permiso (tu actividad personal) |
+
+:::note
+**Órdenes de venta** reemplazó a **Viajes activos** en el resumen superior del inicio. El widget de viajes sigue disponible en el catálogo de widgets (sección siguiente).
+:::
+
+## Los widgets del inicio
+
+Debajo de las tarjetas KPI se ordenan los **widgets**, bloques de detalle con gráficos y listados. Cada widget pertenece a una **categoría** —personal, comercial, tesorería, operaciones o personas— y se muestra sólo si tenés su permiso (basta con uno, en el caso de los que aceptan **permisos múltiples**).
+
+| Widget (nombre en *Personalizar inicio*) | Qué muestra | Categoría | Permiso |
+|---|---|---|---|
+| **Mi actividad** | Tu actividad personal | personal | Siempre visible |
+| **Accesos directos** | Atajos a los módulos | personal | Siempre visible |
+| **Dólar del día** | Cotización oficial y blue | tesorería | Ver documentos, Ver pagos, Ver tipos de cambio **o** Ver operaciones internacionales (basta uno) |
+| **Finanzas** | Saldos bancarios y cajas, pagos y cobros | tesorería | Ver cuentas bancarias |
+| **Presupuestos** | Presupuestos por estado | comercial | Ver documentos |
+| **Órdenes de venta** | Órdenes pendientes de entrega | comercial | Ver documentos |
+| **Remitos** | Remitos por estado | comercial | Ver documentos |
+| **Resumen gráfico** (se muestra como *Actividad de la empresa*) | Documentos y productos de la empresa | comercial | Ver documentos |
+| **Documentos por cobrar** | Facturas de venta con saldo pendiente | tesorería | Ver documentos |
+| **Cuentas corrientes** | Principales cuentas por saldo | tesorería | Ver cuentas bancarias |
+| **Cheques a vencer** | Cheques propios a vencer en 30 días | tesorería | Ver cheques |
+| **Pagos y cobros pendientes** | Pagos y cobros confirmados sin liquidar | tesorería | Ver pagos |
+| **RR. HH.** | Empleados y vales | personas | Ver empleados |
+| **Stock** | Productos con stock | operaciones | Ver productos |
+| **Costeados vs. no costeados** | Productos con y sin snapshot de costeo | operaciones | Ver productos |
+| **Picking pendiente** | Órdenes de picking sin ejecutar | operaciones | Ver picking |
+| **Viajes activos** | Viajes planificados y en curso | operaciones | Ver viajes |
+
+## Actividad de la empresa
+
+Es el widget **Resumen gráfico** del catálogo; en el inicio se titula **Actividad de la empresa**. Separa dos bloques:
+
+- **Documentos del período** — barras apiladas por tipo (Presupuestos, Órdenes, Facturas, Notas crédito, Notas débito y Remitos) que distinguen **Ventas** y **Compras**, con el total de documentos y la fecha de inicio ("Desde 01/10/2026"). Al lado, la **dona "Distribución comercial"** muestra la proporción Ventas/Compras.
+- **Productos (snapshot actual)** — Productos, En depósito (con sus unidades), Para venta, Para compra, Costeados y Sin costear. Es el estado actual, no del período.
+
+**Selector de período**: **Hoy**, **7 días**, **15 días**, **30 días** o **1 año** (365 días). El período aplica a los documentos; las fechas de negocio se calculan en zona horaria Argentina.
+
+**Clic para abrir**: cada barra, cada sector de la dona y cada ítem de la leyenda navega al listado correspondiente. En compras, los mismos tipos apuntan al circuito de compras:
+
+| Elemento | Ventas | Compras |
+|---|---|---|
+| Presupuestos | `/erp/budgets` | — |
+| Órdenes | `/erp/orders` | `/erp/purchases/orders` |
+| Facturas | `/erp/sales?category=INVOICE` | `/erp/purchases?category=INVOICE` |
+| Notas crédito | `/erp/sales?category=CREDIT_NOTE` | `/erp/purchases?category=CREDIT_NOTE` |
+| Notas débito | `/erp/sales?category=DEBIT_NOTE` | `/erp/purchases?category=DEBIT_NOTE` |
+| Remitos | `/erp/remitos` | `/erp/purchases/remitos` |
+| Dona o leyenda (Ventas / Compras) | `/erp/sales` | `/erp/purchases` |
+
+Los documentos se muestran sólo con permiso **Ver documentos** y los productos sólo con **Ver productos**.
+
+## Dólar del día
+
+Muestra la **cotización oficial** y la **blue** (compra y venta) con su hora de actualización y un botón para recargarla.
+
+- La cotización se **cachea 5 minutos en el servidor**: apenas cambiés de pantalla o recargues, puede tardar hasta 5 minutos en refrescar la fuente.
+- Con permiso **Ver tipos de cambio** (o OWNER/ADMIN) aparece el enlace **Ver cotizaciones**, que abre `/settings/monedas`.
+- Si la fuente no responde se muestra **Cotización no disponible** con un botón **Reintentar**.
+
+## Finanzas
+
+Muestra la posición de tesorería con permiso **Ver cuentas bancarias**:
+
+- **Saldo bancario** y **Saldo cajas**, con el detalle por moneda (pesos y las monedas extra que uses) y enlaces a las cuentas y cajas.
+- **Cheques a cobrar** (de terceros) y **Cheques a pagar** (propios) pendientes.
+- Totales de **pagos registrados** y **cobros registrados** del período.
+- Botón de **actualización** propio. Si la carga falla aparece **"No pudimos cargar las finanzas"** con un botón **Reintentar**.
+
+## Cómo personalizar el inicio
+
+<Steps>
+
+1. **Abrí la personalización**
+
+   Presionar **Personalizar** (arriba a la derecha, junto a **Actualizar**).
+
+2. **Buscá el widget**
+
+   El campo de búsqueda filtra por nombre o descripción; el contador muestra "X de Y visibles". Sólo aparecen opciones habilitadas para tu rol.
+
+3. **Ordená los bloques**
+
+   **Arrastrá** cada bloque por el asa para cambiar el orden (o usá el selector numérico de posición). Mientras hay una búsqueda activa, el arrastre queda pausado.
+
+4. **Elegí el tamaño**
+
+   **Normal**, **Vertical** u **Horizontal** para cada widget visible.
+
+5. **Activá o desactivá**
+
+   Con el switch de cada fila (Visible / Oculto). Los widgets ocultos aparecen atenuados.
+
+6. **Guardá**
+
+   **Guardar cambios** confirma la vista con el aviso *"Inicio actualizado"*. **Restablecer** vuelve a la organización recomendada y **Cancelar** descarta los cambios sin guardar.
+
+</Steps>
+
+La personalización se guarda **por usuario** (no afecta la vista de los demás). Si desactivás todos los widgets, el inicio muestra "Tu inicio está listo para personalizar" con el botón **Elegir widgets**.
+
+## Problemas frecuentes
+
+| Problema | Causa | Solución |
+|---|---|---|
+| No veo una tarjeta KPI o un widget que otro usuario sí ve | No tenés el permiso del widget (o no sos OWNER/ADMIN). | Pedile al administrador el permiso indicado en la tabla de widgets. |
+| No puedo guardar la vista | Falló la conexión con el servidor. | Reintentá guardar; verás el aviso *"No pudimos guardar la vista"*. |
+| El dólar no cambió recién actualizado | La fuente se cachea **5 minutos** en el servidor. | Esperá unos minutos o presioná el botón de actualizar del widget. |
+| Finanzas muestra un error | No se pudieron cargar los datos de tesorería. | Presionar **Reintentar** dentro del widget. |
+| La actividad muestra pocos documentos | El período elegido es corto (Hoy o 7 días). | Ampliá el período a 30 días o 1 año. |
+| Al hacer clic en el gráfico no abre nada | El clic cayó fuera de una barra, sector o leyenda. | Hacé clic directamente sobre el elemento del gráfico. |
 
 ## Paneles
 
-- **Inicio** (`/`) — resumen general.
+- **Inicio** (`/`) — saludo, tarjetas KPI y widgets personalizables (descrito arriba).
 - **Tesorería → Tablero** — posición financiera, cobros/pagos y vencimientos.
 - **Logística** — viajes por planificar, despachos sin viaje/en viaje, importe operativo, estado de órdenes.
 - **Picking** — tareas de preparación.
@@ -25,7 +163,7 @@ En **Reportes → Gestión** (`/erp/reports/management`) se analiza la actividad
 - **Agrupación**: por mes, día, cliente, vendedor o moneda.
 - **Filtros**: por estado de cobro (sin cobrar, cobro parcial, totalmente cobrados), por entrega (sin iniciar, parcial, completo), por cliente y por vendedor.
 
-## Cómo usarlos
+### Cómo usarlos
 
 1. Elegir la **métrica** (OV, facturas o cobros).
 2. Elegir la **agrupación** y los **filtros**.
@@ -33,6 +171,7 @@ En **Reportes → Gestión** (`/erp/reports/management`) se analiza la actividad
 
 ## Ver también
 
-- [Ventas](/procesos/ventas/) y [Mis ventas y reportes](/procesos/ventas/mis-ventas/).
-- [Reportes de tesorería](/procesos/tesoreria/reportes/).
 - [Navegación general](/primeros-pasos/navegacion/).
+- [Permisos y acceso](/solucion-de-problemas/permisos-y-acceso/).
+- [Ventas](/procesos/ventas/) y [Mis ventas y reportes](/procesos/ventas/mis-ventas/).
+- [Cuentas corrientes](/procesos/tesoreria/cuentas-corrientes/) y [Reportes de tesorería](/procesos/tesoreria/reportes/).

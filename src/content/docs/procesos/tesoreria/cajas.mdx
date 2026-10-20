@@ -16,6 +16,10 @@ Las **cajas** controlan el **efectivo**. Cada caja tiene una **moneda** y un **s
 :::note[Permisos necesarios]
 - Ver cajas · Crear cajas · Editar cajas · Eliminar cajas
 - Abrir sesión de caja · Cerrar sesión de caja
+- Ver movimientos de caja (`cash_box_movements.read`)
+- Registrar ingresos y egresos manuales de caja (`cash_box_movements.create_manual`)
+- Anular movimientos manuales de caja mediante reversión (`cash_box_movements.reverse`)
+- Para operar con cheques desde la caja: Depositar cheques (`checks.deposit`) además del permiso de movimiento manual
 :::
 
 ## Tipos de caja
@@ -58,25 +62,95 @@ Las **cajas** controlan el **efectivo**. Cada caja tiene una **moneda** y un **s
 ## Operar la caja
 
 - **Abrir sesión**: una caja debe estar **abierta** para registrar movimientos.
-- **Movimientos de caja**: ingresos y egresos de efectivo.
+- **Movimientos de caja**: ingresos y egresos de efectivo (manuales, de pagos/cobros o de cheques).
 - **Cerrar sesión**: al finalizar, se cierra con el recuento.
 - **Rendiciones** y **transferencias entre cajas** según los permisos.
+
+## Cómo registrar un movimiento manual
+
+Las cajas permiten registrar **ingresos y egresos manuales** de efectivo (sueldos, gastos de caja, depósitos, etc.). Requiere una sesión **abierta**.
+
+<Steps>
+
+1. **Abrí la caja**
+
+   Ir a **Tesorería → Cajas** y entrar en la caja (`/erp/treasury/cash-boxes`).
+
+2. **Nuevo movimiento**
+
+   Presionar la acción de movimiento y elegir **Ingreso manual de efectivo** o **Egreso manual de efectivo**.
+
+3. **Completá los datos**
+
+   - **Concepto** (categoría del movimiento).
+   - **Descripción**: indicá el motivo, para que el movimiento sea auditable.
+   - **Fecha** e **importe**.
+
+4. **Revisá la vista previa del saldo**
+
+   El formulario muestra el **saldo resultante** antes de confirmar. Para un egreso, el sistema valida que el saldo alcance.
+
+5. **Confirmá**
+
+   Al confirmar, el movimiento afecta el saldo de la caja dentro de la misma transacción.
+
+</Steps>
+
+## Cómo anular un movimiento manual
+
+Los movimientos manuales confirmados pueden **anularse mediante un movimiento inverso**: se registra un nuevo movimiento que revierte el importe, sin perder el historial original (quedan ambos en la auditoría).
+
+<Steps>
+
+1. **Elegí el movimiento a anular**
+
+   En el detalle de la caja, usar la acción de reversión sobre el movimiento manual correspondiente.
+
+2. **Indicá el motivo**
+
+   La reversión exige un **motivo** para quedar registrada.
+
+3. **Confirmá**
+
+   El sistema crea el **movimiento inverso** (del tipo opuesto) vinculado al original y ajusta el saldo.
+
+</Steps>
+
+## Adjuntos
+
+Los movimientos de caja admiten **comprobantes e imágenes adjuntas** también **después de su confirmación**, de modo que se puede adjuntar el respaldo (ticket, transferencia, recibo) en el momento en que se consiga.
+
+## Validaciones transaccionales
+
+Todas las operaciones de caja (movimientos manuales, cobros/pagos en efectivo y operaciones con cheques) validan en una **única transacción**:
+
+- Que exista una **sesión abierta** en la caja.
+- Que el usuario tenga los **permisos** requeridos y un rol asignado en la caja.
+- Que la **moneda** del movimiento sea compatible con la de la caja.
+- **Saldo suficiente** en la caja para egresos.
+
+Si alguna validación falla, no se registra ninguna parte de la operación.
 
 ## Reglas y validaciones
 
 - El **nombre** y la **moneda** son obligatorios.
 - Solo una caja debería ser **principal**.
 - Para **pagar o cobrar en efectivo** se requiere una sesión de caja **abierta**.
+- Los movimientos manuales requieren **concepto** y **descripción**.
+- La **reversión** crea un movimiento inverso; no borra el movimiento original.
 
 ## Problemas frecuentes
 
 | Mensaje / síntoma | Causa | Solución |
 |---|---|---|
 | No puedo cobrar/pagar en efectivo | No hay caja abierta. | Abrí una sesión de caja. |
-| La caja no aparece al operar | Está inactiva o es de otra moneda. | Verificá su estado y moneda. |
+| La caja no aparece al operar | Está inactiva, cerrada o es de otra moneda. | Verificá su estado, sesión y moneda. |
 | No puedo operar la caja | Tu usuario no tiene rol en esa caja. | Pedí que te asignen un rol. |
+| No puedo registrar un movimiento manual | No tenés el permiso `cash_box_movements.create_manual` o la sesión está cerrada. | Pedí el permiso o abrí la sesión. |
+| No puedo anular un movimiento manual | No tenés el permiso `cash_box_movements.reverse`. | Pedí que te lo agreguen a tu rol. |
+| El egreso se rechaza | El saldo de la caja no alcanza. | Verificá el saldo resultante previsto en el formulario. |
 
 ## Ver también
 
-- [Bancos](/procesos/tesoreria/bancos/).
+- [Bancos](/procesos/tesoreria/bancos/) y [Cheques](/procesos/tesoreria/cheques/).
 - [Cobros](/procesos/ventas/cobros/) y [Pagos](/procesos/compras/pagos/).

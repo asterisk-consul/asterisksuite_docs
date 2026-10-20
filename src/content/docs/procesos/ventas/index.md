@@ -48,7 +48,14 @@ flowchart LR
 :::note[Permisos necesarios]
 - Ver ventas · Crear ventas · Editar ventas · Confirmar ventas · Anular ventas · Eliminar ventas
 - Además existen permisos por tipo de documento (presupuestos, órdenes de venta, facturas, remitos, notas de crédito/débito), que permiten un control más fino.
+- **Ver precios, totales y comisiones de órdenes de venta restringidas** (`sales.orders.view_amounts`): habilita ver los importes cuando el tipo de documento los oculta en un estado.
 :::
+
+## Visibilidad e identificación de documentos
+
+- **Importes restringidos**: el tipo de documento puede ocultar precios, totales y comisiones de la OV en estados elegidos; sin el permiso, los listados muestran estado comercial derivado, avance de cobro e indicadores operativos **sin revelar dinero** (ver [Crear una Orden de Venta](/procesos/ventas/crear-orden-de-venta/#importes-restringidos)).
+- **Cargado por**: los usuarios con membresía **OWNER** o **ADMIN** ven la columna **Cargado por** en los listados de ventas, órdenes de venta, remitos y compras.
+- **Plantillas comerciales**: los presupuestos y las OV se imprimen con formatos propios de cada empresa, con bloques ordenables y vista previa (ver [Presupuestos](/procesos/ventas/presupuestos/#formato-de-impresión-plantillas-comerciales)).
 
 ## Ver también
 

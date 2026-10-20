@@ -1,6 +1,6 @@
 ---
 title: Circuito de ventas
-description: Configurar cuándo nace la deuda, dónde se aplican los cobros y la reserva de stock.
+description: Configurar cuándo nace la deuda, dónde se aplican los cobros, la reserva de stock y el responsable de la OV.
 sidebar:
   order: 7
 ---
@@ -19,6 +19,12 @@ El **Circuito de ventas** define reglas globales de la operatoria comercial. Se 
   - **OV y luego factura** — la OV genera deuda provisoria y la factura la reemplaza sin duplicarla.
 - **El cobro se puede aplicar a**: Factura, Orden de venta u **OV o factura**.
 - **Reserva de stock**: cuándo la mercadería queda comprometida (reservada) para una venta, sin descontarla físicamente.
+- **Responsable de la Orden de Venta**:
+  - **Responsable sugerido**: se preselecciona al confirmar una OV que todavía no tenga responsable (o *Sin responsable predeterminado*, si querés que se elija cada vez).
+  - **Preguntar al confirmar**: si la OV no está asignada, muestra el selector y advierte que nadie recibirá la tarea.
+  - **Exigir responsable**: impide confirmar una OV sin seleccionar a una persona responsable.
+
+> El **vendedor** y el **responsable** son datos diferentes: el vendedor conserva la relación comercial; el responsable recibe la OV para continuar su preparación o seguimiento.
 
 Al guardar, se **sincronizan** los indicadores de las OV y facturas de venta, y se mantienen **sincronizados los tipos documentales** (factura sola, OV sola o ambos según el modo).
 
@@ -28,12 +34,15 @@ Al guardar, se **sincronizan** los indicadores de las OV y facturas de venta, y 
 2. Elegir **de dónde nace la deuda**.
 3. Elegir **a qué documento se aplica el cobro**.
 4. Definir la **reserva de stock**.
-5. Guardar. Se aplica a las **nuevas OV**.
+5. Definir el **responsable sugerido** de la OV y si se **pregunta** o se **exige** al confirmar.
+6. Guardar. Se aplica a las **nuevas OV**.
 
 ## Reglas y consideraciones
 
 - Las reglas se copian en cada **nueva OV**; las existentes no se recalculan.
 - El modo condiciona qué documentos están activos (factura, OV o ambos).
+- El **responsable** se elige en el modal de confirmación de la OV (con el sugerido precargado) y puede cambiarlo luego desde la acción **Asignar responsable**.
+- La configuración **normaliza** los registros guardados: no quedan valores vacíos incompatibles con los selectores.
 
 ## Problemas frecuentes
 
@@ -42,8 +51,11 @@ Al guardar, se **sincronizan** los indicadores de las OV y facturas de venta, y 
 | La deuda no aparece donde esperaba | Modo de registro de deuda. | Ajustá "La deuda se registra desde". |
 | No puedo cobrar contra la OV | El cobro se aplica solo a facturas. | Cambiá "El cobro se puede aplicar a". |
 | El stock no se reserva | Modo de reserva desactivado. | Configurá la reserva de stock. |
+| "Falta asignar un responsable" al confirmar | Está activa la opción **Exigir responsable**. | Elegí una persona o desactivá la opción. |
+| El selector de responsable no trae a nadie | No hay usuarios en la empresa o no hay responsable sugerido. | Cargá los usuarios y elegí el sugerido. |
 
 ## Ver también
 
 - [Ventas](/procesos/ventas/) y [Cobros](/procesos/ventas/cobros/).
+- [Crear una Orden de Venta](/procesos/ventas/crear-orden-de-venta/).
 - [Disponibilidad de stock](/procesos/stock/disponibilidad/).

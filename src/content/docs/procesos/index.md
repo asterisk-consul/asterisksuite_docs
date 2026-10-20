@@ -16,3 +16,4 @@ Guías funcionales de los principales circuitos de Asterisk Suite, organizadas c
 - [Logística](/procesos/logistica/) — despachos, viajes y flota.
 - [Operaciones internacionales](/procesos/operaciones-internacionales/) — importación y exportación.
 - [RRHH](/procesos/rrhh/) — empleados, socios y vales.
+- [Reportes gerenciales](/procesos/reportes/) — análisis multiempresa y exportación.

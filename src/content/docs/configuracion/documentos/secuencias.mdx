@@ -44,6 +44,15 @@ Se puede **buscar** por nombre, punto de venta o documento asociado, y filtrar c
 - **Editar**: presionar el ícono de edición en la tarjeta.
 - **Eliminar**: presionar el ícono de papelera y confirmar.
 
+## El próximo número en los formularios
+
+Cuando cargás un documento (por ejemplo, una factura), el formulario muestra el **próximo número** que va a ocupar, siguiendo la secuencia del tipo y punto de venta elegidos:
+
+- Si hay **un solo punto de venta** disponible para ese tipo, el formulario lo **auto-selecciona** y deja el campo **deshabilitado**: no se puede cambiar a otro PV.
+- El número se calcula **localmente, en caché por empresa**, para no consultar la base en cada tipeo. Al guardar, el backend vuelve a calcularlo de forma definitiva.
+- Si no hay conexión para anticiparlo, el formulario muestra **"Sin conexión para anticipar el número. Se asignará correctamente al guardar."**: el número real se asigna igualmente al guardar.
+- Junto al número se muestra un **badge con el próximo comprobante** (prefijo y PV), para que verifiques el formato antes de guardar.
+
 ## Reglas y validaciones
 
 - **Nombre**, **Punto de venta** y **Tipo de documento** son obligatorios.
@@ -58,7 +67,10 @@ Se puede **buscar** por nombre, punto de venta o documento asociado, y filtrar c
 | El número no corresponde al punto de venta | La secuencia elegida no es la correcta. | Verificá el tipo y punto de venta de la serie. |
 | No puedo guardar | Falta nombre, PV o tipo de documento. | Completá los campos obligatorios. |
 | Se agotó la numeración | Se alcanzó el rango fin. | Ampliá el rango de la secuencia. |
+| "La secuencia seleccionada está agotada" | El rango de la serie se completó. | Ampliá el rango o creá otra serie para ese tipo y PV. |
+| "Sin conexión para anticipar el número. Se asignará correctamente al guardar." | El formulario no pudo consultar la caché de series por empresa. | No es un error: el número se asigna correctamente al guardar. |
 
 ## Ver también
 
 - [Tipos de documento](/configuracion/documentos/tipos-de-documento/).
+- [Facturación](/procesos/ventas/facturacion/) — cómo se muestra el próximo número al facturar.

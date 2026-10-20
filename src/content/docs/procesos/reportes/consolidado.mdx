@@ -1,0 +1,112 @@
+---
+title: Reporte consolidado
+description: Indicadores globales y comparativo de todas las empresas seleccionadas en un período común.
+sidebar:
+  order: 2
+---
+
+import { Steps } from '@astrojs/starlight/components'
+
+## Para qué sirve
+
+El **Reporte consolidado** es la vista principal del módulo: reúne todas las empresas seleccionadas en un período común con tarjetas de indicadores, un comparativo por empresa y el detalle por área de cada empresa. Se accede desde **Reportes → Consolidado de empresas** (`/erp/reports/consolidated`); es la vista por defecto del módulo (`?view=consolidated`).
+
+## Permisos necesarios
+
+:::note[Permisos necesarios]
+- Ver reportes de tesorería (`treasury.reports.read`).
+- Estar asociado a cada empresa que querés consolidar.
+:::
+
+## Configuración previa
+
+- Tu usuario debe tener al menos una empresa asociada (el reporte acepta hasta 20).
+- No requiere configuración adicional: el reporte usa los datos ya cargados en cada empresa.
+
+## Cómo generarlo
+
+<Steps>
+
+1. **Abrí el reporte**
+
+   Ir a **Reportes → Consolidado de empresas**.
+
+2. **Elegí las empresas**
+
+   Las empresas asociadas a tu usuario aparecen en tarjetas con checkbox, nombre, dominio y tu rol en cada una. Todas vienen seleccionadas; usá **Seleccionar todas** / **Quitar todas** o marcá una por una.
+
+3. **Definí el período**
+
+   Completá **Desde** y **Hasta**. Por defecto se selecciona el mes en curso.
+
+4. **Generá el reporte**
+
+   Presioná **Generar reporte**. Aparecen las tarjetas de indicadores, el comparativo por empresa y, más abajo, el detalle de cada empresa.
+
+5. **Exportá (opcional)**
+
+   Presioná **PDF**, **Excel** o **CSV** en la barra del resultado para descargar la vista con todas las empresas agrupadas.
+
+</Steps>
+
+## Indicadores
+
+Las tarjetas del resumen muestran los totales de todas las empresas del período, separados por moneda:
+
+| Indicador | Qué muestra |
+|---|---|
+| **Ventas facturadas** | Facturas y notas de venta confirmadas o superiores del período; las notas de crédito restan. |
+| **Compras facturadas** | Facturas y notas de compra confirmadas o superiores del período. |
+| **Cobros** | Cobros confirmados o pagados dentro del período. |
+| **Pagos** | Pagos confirmados o pagados dentro del período. |
+| **Por cobrar actual** | Saldo vigente de las cuentas corrientes de clientes. |
+| **Por pagar actual** | Saldo vigente de las cuentas corrientes de proveedores. |
+
+Debajo, la tabla **Comparativo por empresa** repite estos indicadores por empresa y agrega **Bancos**, **Cajas** y **Cheques pendientes** (todo cheque todavía no cobrado, rechazado ni anulado).
+
+## Detalle por empresa
+
+Cada empresa tiene su propia tarjeta con:
+
+- **Prioridades de seguimiento**: documentos en borrador, pagos o cobros en borrador, transferencias pendientes de ejecución y obligaciones del período todavía no pagadas.
+- **Lectura ejecutiva**: frases que resumen los cobros y pagos efectivos del período, la cantidad de clientes y proveedores, las cuentas bancarias, saldos de caja y cheques pendientes, y el plantel de empleados y socios.
+- **Secciones por área**: partes interesadas y cuentas corrientes, cobros por cliente, pagos y gastos por tercero, saldos de clientes y proveedores con saldo, documentos de venta y compra, obligaciones del período, vales, empleados y socios, bancos y cajas, pagos y cobros por estado, cheques por estado, movimientos de tesorería, transferencias, variación de caja y bancos, órdenes de venta por artículo y movimientos de stock.
+
+El orden de las empresas en pantalla y en la exportación sigue su nombre, de la A a la Z.
+
+## Validaciones
+
+- Entre **1 y 20 empresas** por reporte.
+- Todas las empresas deben estar asociadas a tu usuario; si el backend detecta una que no lo está, responde *Una o más empresas no están disponibles para este usuario*.
+- La fecha **Desde** no puede ser posterior a la fecha **Hasta**.
+- El botón **Generar reporte** queda deshabilitado hasta seleccionar al menos una empresa y con un período válido.
+- Al cambiar empresas o período, el resultado anterior se descarta hasta volver a generar.
+
+## Exportación
+
+- **PDF**: A4 horizontal con título, período, empresas, resumen ejecutivo y criterios de lectura; luego una página por empresa con su detalle.
+- **Excel**: hoja *Resumen* con los indicadores por empresa, moneda, importe y cantidad; una hoja por empresa con sus secciones; y una hoja *Información* con el período, la fecha de generación y la nota de saldos actuales.
+- **CSV**: una fila por registro con la columna *Empresa*, separador `;` y codificación UTF-8.
+- El archivo se descarga como `reporte-consolidado-{desde}-{hasta}.{ext}`.
+
+## Estados
+
+No tiene estados propios: el reporte es de consulta y se recalcula en cada generación. Los estados que aparecen en sus tablas (documentos, pagos, cheques) se explican en las páginas de cada área.
+
+## Problemas frecuentes
+
+| Problema | Causa | Solución |
+|---|---|---|
+| *No se pudo generar el reporte: Una o más empresas no están disponibles para este usuario* | Se intentó consolidar una empresa a la que tu usuario no pertenece. | Recargá la página y elegí sólo empresas de tu lista. |
+| Aparece *No hay empresas disponibles* | Tu usuario no tiene empresas asociadas. | Pedí a un administrador que te asocie a las empresas. |
+| *La fecha desde no puede ser posterior a la fecha hasta* | El período está invertido. | Corregí las fechas antes de generar. |
+| Los totales no suman lo esperado | Los importes en moneda extranjera quedan separados; los saldos son actuales y los movimientos del período. | Leé el aviso *Criterio del reporte* y revisá cada moneda por separado. |
+| El reporte tarda | El backend procesa las empresas una por una de forma intencional. | Elegí menos empresas o esperá. |
+
+## Ver también
+
+- [Clientes, proveedores, empleados y socios](/procesos/reportes/partes-interesadas/).
+- [Bancos, cajas y cheques](/procesos/reportes/tesoreria/).
+- [Documentos comerciales](/procesos/reportes/documentos/).
+- [Inventario y logística](/procesos/reportes/inventario-y-logistica/).
+- [Cuentas corrientes](/procesos/tesoreria/cuentas-corrientes/) — saldo de clientes y proveedores.

@@ -86,6 +86,14 @@ Plantilla de página: ver `src/content/docs/` y la convención:
 - [x] Vales y comisiones
 - [x] Reportes
 
+### Reportes gerenciales
+- [x] Generalidades, permisos, criterios de lectura y exportación
+- [x] Reporte consolidado (empresas asociadas y período común)
+- [x] Clientes, proveedores, empleados y socios
+- [x] Bancos, cajas y cheques
+- [x] Documentos comerciales
+- [x] Inventario y logística (OV por artículo y movimientos de stock)
+
 ## Administración
 
 - [x] Centro de configuración

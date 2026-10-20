@@ -7,7 +7,10 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "docs:status": "node scripts/docs-status.mjs",
+    "docs:report": "node scripts/docs-status.mjs report",
+    "docs:check": "node scripts/docs-status.mjs check"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.42.5",

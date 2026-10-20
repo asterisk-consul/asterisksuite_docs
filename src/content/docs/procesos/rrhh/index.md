@@ -14,6 +14,7 @@ sidebar:
 - **Empleados** — datos, puesto, sueldo y comisiones.
 - **Socios** — participación y cuenta corriente.
 - **Vales** — sueldos, adelantos, extras, retiros, aportes y préstamos.
+- **Comisiones** — bandeja mensual para asignar vendedores a un período, seguir lo devengado y generar vales de comisión (`/erp/rrhh/commissions`).
 - **Cuentas corrientes** — saldos por empleado/socio.
 - **Reportes** — comisiones, movimientos, saldos, vales por período.
 
@@ -29,6 +30,7 @@ sidebar:
 - Empleados: Ver empleados · Crear empleados · Editar empleados · Eliminar empleados
 - Socios: Ver socios · Crear socios · Editar socios · Eliminar socios
 - Vales: Ver vales · Crear vales · Editar vales · Eliminar vales · Aprobar vales · Rechazar vales
+- Comisiones: Ver comisiones · Gestionar comisiones · Liquidar comisiones
 :::
 
 ## Ver también

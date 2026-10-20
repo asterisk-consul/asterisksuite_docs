@@ -9,12 +9,14 @@ import { Steps } from '@astrojs/starlight/components'
 
 ## Para qué sirve
 
-Los **vales** registran movimientos con empleados y socios (sueldos, adelantos, extras, retiros, aportes, reintegros y préstamos). Las **comisiones** liquidan las ventas de los vendedores. Se administran en **RRHH → Vales** (`/erp/rrhh/vales`) y en **Reportes**.
+Los **vales** registran movimientos con empleados y socios (sueldos, adelantos, extras, retiros, aportes, reintegros y préstamos). Las **comisiones** liquidan las ventas de los vendedores. Se administran en **RRHH → Vales** (`/erp/rrhh/vales`) y en **RRHH → Reportes → Comisiones** (`/erp/rrhh/commissions`).
 
 ## Permisos necesarios
 
 :::note[Permisos necesarios]
-- Ver vales · Crear vales · Editar vales · Eliminar vales · Aprobar vales · Rechazar vales
+- Vales: Ver vales · Crear vales · Editar vales · Eliminar vales · Aprobar vales · Rechazar vales
+- Comisiones: **Ver documentos, vendedores e importes de comisiones** (`commissions.view`) · **Asignar vendedores, participación y reglas de comisión** (`commissions.manage`) · **Generar vales para liquidar comisiones** (`commissions.settle`)
+- OWNER y ADMIN pueden todo en comisiones aunque no tengan los permisos.
 :::
 
 ## Tipos de vale
@@ -55,11 +57,45 @@ Los **vales** registran movimientos con empleados y socios (sueldos, adelantos, 
 
 ## Comisiones
 
-Los vendedores tienen **comisión (%)** y **base** definidas en su ficha de empleado. Las comisiones se calculan según las ventas y se consultan en **RRHH → Reportes → Comisiones**.
+Las comisiones se administran en la **bandeja mensual** de **RRHH → Reportes → Comisiones** (`/erp/rrhh/commissions`). Cada empleado marcado como **vendedor** tiene una **comisión por defecto (%)** y una **base** (*Facturar* o *Cobrar*) en su ficha; desde la bandeja se asignan vendedores y participación **documento por documento**. La **OV ya no define** comisiones.
+
+### Cómo asignar vendedores a un período
+
+<Steps>
+
+1. **Elegí el período**
+
+   En el selector **Período** (formato `AAAA-MM`) se listan las Órdenes de Venta del mes con su **total**, su avance de **cobro** y los **vendedores** asignados.
+
+2. **Abrí el documento**
+
+   Presionar **Asignar** (o **Editar**) en la fila. Un badge del encabezado avisa cuántos documentos están **sin vendedores**.
+
+3. **Cargá los vendedores**
+
+   En el modal **Asignar vendedores** se pueden agregar varios vendedores con **Agregar vendedor**. Para cada uno:
+   - **Vendedor** (se pre completa con los valores de su ficha de empleado).
+   - **Participación %**: debe **sumar 100%** entre todos.
+   - **Comisión %** (ajustable por documento).
+   - **Se devenga al**: **Facturar** o **Cobrar**.
+
+4. **Guardá la asignación**
+
+   Un vendedor **no puede repetirse** en el mismo documento. La asignación queda guardada por documento.
+
+</Steps>
+
+### Devengadas y liquidación
+
+La pestaña **Devengadas y liquidación** muestra, para el período elegido:
+
+- **Base comisionable**, **comisión disponible** y **cantidad de documentos**.
+- Por cada vendedor: documentos, **base alcanzada**, **participación**, **regla** (Facturado o Cobrado) y **comisión** devengada.
+- El botón **Generar vale** crea un vale tipo **Extras** con el total comisionado del vendedor (permiso `commissions.settle`); luego se confirma como cualquier otro vale.
 
 ## Reportes
 
-- **Comisiones**.
+- **Comisiones** — la bandeja mensual descrita arriba.
 - **Movimientos** y **Saldos** por empleado/socio.
 - **Vales por período**.
 - **Socios**.
@@ -68,15 +104,24 @@ Los vendedores tienen **comisión (%)** y **base** definidas en su ficha de empl
 
 - El vale requiere **contraparte**, **tipo**, **monto**, **moneda** y **fecha**.
 - Un vale debe **confirmarse** para impactar la cuenta corriente.
+- Para asignar vendedores se necesita `commissions.manage`; para liquidar, `commissions.settle`.
+- La **participación** de un documento debe sumar **100%** y los vendedores no pueden repetirse.
+- La **regla** inicial (Facturar/Cobrar) y la **comisión %** se toman de la ficha del empleado, y se pueden ajustar por documento.
 
 ## Problemas frecuentes
 
 | Mensaje / síntoma | Causa | Solución |
 |---|---|---|
 | El vale no impacta el saldo | Está en Borrador. | Confirmalo. |
-| No aparecen comisiones | El vendedor no tiene comisión configurada. | Editalo en Empleados. |
+| No aparecen comisiones | El período no tiene OV o los documentos no tienen vendedores asignados. | Elegí el período correcto y asigná vendedores. |
+| "La participación debe sumar 100%" | Las participaciones no suman 100. | Ajustá los porcentajes hasta completar 100%. |
+| "Un vendedor no puede repetirse" | Mismo vendedor en dos filas. | Quitá la fila duplicada o editala. |
+| No puedo asignar vendedores | No tenés `commissions.manage` y no sos OWNER/ADMIN. | Pedí el permiso o que lo haga un administrador. |
+| No puedo generar el vale | No tenés `commissions.settle` y no sos OWNER/ADMIN. | Pedí el permiso o que lo haga un administrador. |
 
 ## Ver también
 
-- [Empleados](/procesos/rrhh/empleados/).
+- [Empleados](/procesos/rrhh/empleados/) — ficha del vendedor y comisión por defecto.
+- [Mis ventas y reportes](/procesos/ventas/mis-ventas/).
+- [Crear una Orden de Venta](/procesos/ventas/crear-orden-de-venta/).
 - [Cuentas corrientes](/procesos/tesoreria/cuentas-corrientes/).

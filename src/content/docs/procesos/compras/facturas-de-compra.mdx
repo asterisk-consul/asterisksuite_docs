@@ -9,13 +9,13 @@ import { Steps } from '@astrojs/starlight/components'
 
 ## Para qué sirve
 
-La **factura de compra** registra el comprobante del proveedor. Se administra en **Compras** (`/erp/purchases/purchases-documents`) y se crea en **Nuevo Comprobante de Compra** (`/erp/purchases/purchases-documents/new`). Las **notas de crédito/débito** de compra ajustan una factura.
+La **factura de compra** registra el comprobante del proveedor y es el eslabón central del circuito: nace de una **OC confirmada** y a su vez origina el **remito de compra** y el pago. Se administra en **Compras → Comprobantes** (`/erp/purchases`), se crea en **Nuevo Comprobante de Compra** (`/erp/purchases/purchases-documents/new`) y se consulta en su vista (`/erp/purchases/purchases-documents/{id}`). Las **notas de crédito/débito** de compra ajustan una factura.
 
 ## Permisos necesarios
 
 :::note[Permisos necesarios]
-- Ver compras · Crear compras · Editar compras · Confirmar compras · Anular compras
-- También aplican los permisos por tipo de documento (facturas y notas de compra).
+- Ver compras · Crear compras · Editar compras · Confirmar compras · Cancelar compras
+- Además: permisos por tipo de documento, p. ej. *Crear facturas de compras*, *Crear remitos de compras* y *Crear notas de crédito de compras*.
 :::
 
 ## Configuración previa
@@ -23,6 +23,7 @@ La **factura de compra** registra el comprobante del proveedor. Se administra en
 - El **proveedor** debe existir.
 - **Tipo de documento** de categoría Factura (compra) y su **secuencia**.
 - **Impuestos** y **categorías fiscales** configurados (para el cálculo de IVA de compra).
+- Para originarla desde el circuito: la **OC de origen confirmada y activa**.
 
 ## Cómo registrar una factura de compra
 
@@ -30,7 +31,7 @@ La **factura de compra** registra el comprobante del proveedor. Se administra en
 
 1. **Iniciá el comprobante**
 
-   Ir a **Nuevo Comprobante de Compra** (o generarla desde la OC/recepción).
+   Ir a **Nuevo Comprobante de Compra**, o desde la OC confirmada presionar **Crear Factura**: los productos, variantes, unidades, descuentos y depósitos se copian de la orden.
 
 2. **Completá los datos generales**
 
@@ -48,9 +49,23 @@ La **factura de compra** registra el comprobante del proveedor. Se administra en
 
    Al confirmar, el comprobante actualiza la **cuenta corriente del proveedor** (cuenta por pagar) y queda disponible para su **pago**.
 
+6. **Generá el remito de compra**
+
+   Con la factura confirmada aparece **Crear remito** (o **Ver remito** si ya existe) para recepcionar la mercadería.
+
 </Steps>
 
 Para las **notas de crédito/débito** de compra, se selecciona el **documento de referencia** (la factura) y se ajustan los ítems.
+
+## Cadena de documentos
+
+La vista de la factura muestra la **cadena de documentos** con:
+
+- **Origen**: la OC de la que nació.
+- **Actual**: la factura en pantalla, con su estado.
+- **Generado**: el remito de compra, las notas y demás documentos hijos, con su estado (*Borrador* o *Confirmado*).
+
+Cada eslabón es un enlace a la vista específica del documento; si no tenés permiso para abrir ese tipo de comprobante, aparece marcado con un candado. El remito también se abre desde su acción **Ver remito**.
 
 ## Estados
 
@@ -64,8 +79,15 @@ Para las **notas de crédito/débito** de compra, se selecciona el **documento d
 ## Reglas y validaciones
 
 - La factura debe tener **proveedor** y al menos un **ítem**.
+- Si el comprobante es en **moneda extranjera**, debe existir la **cotización** vigente: si falta, el sistema muestra un error explícito en lugar de asumir un valor igual a uno.
 - La confirmación actualiza la **cuenta corriente**.
 - Los documentos confirmados no se editan; se ajustan con notas.
+- Si la factura referencia un documento de origen, debe ser una OC: *La factura de compra debe originarse en una orden de compra*.
+- La OC debe estar confirmada y activa: *La orden de compra debe estar confirmada y activa*.
+- Solo puede existir **una factura activa** por OC: *La orden de compra ya tiene una factura activa asociada*.
+- El remito solo nace de una factura confirmada y **una sola vez**: *La factura de compra ya tiene un remito activo asociado*.
+- El proveedor de la factura debe coincidir con el de la OC referenciada.
+- NC y ND solo pueden referenciar una factura: *Solo se puede referenciar una factura*.
 
 ## Problemas frecuentes
 
@@ -74,6 +96,11 @@ Para las **notas de crédito/débito** de compra, se selecciona el **documento d
 | El IVA no es el esperado | Categoría fiscal o impuestos mal configurados. | Revisá [Impuestos](/configuracion/impuestos/). |
 | No puedo editar | Está confirmada. | Emití una nota de crédito/débito. |
 | No aparece para pagar | No está confirmada. | Confirmá la factura. |
+| El comprobante en moneda extranjera no avanza | Falta la cotización vigente para esa moneda. | Cargá la cotización en [Cotizaciones](/configuracion/monedas/cotizaciones/) y volvé a intentar. |
+| *La factura de compra debe originarse en una orden de compra* | El documento de origen referenciado no es una OC. | Partí de la OC con **Crear Factura**. |
+| *La orden de compra ya tiene una factura activa asociada* | Ya existe una factura activa de esa OC. | Abrila desde la cadena de documentos o anulala. |
+| *La factura de compra ya tiene un remito activo asociado* | Ya hay un remito (borrador o confirmado) de esta factura. | Abrilo con **Ver remito** o anulalo. |
+| No aparece **Crear remito** | La factura no está confirmada o falta el permiso *Crear remitos de compras*. | Confirmá la factura o pedí el permiso. |
 
 ## Ver también
 
