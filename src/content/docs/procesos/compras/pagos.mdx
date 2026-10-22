@@ -37,6 +37,8 @@ import { Steps } from '@astrojs/starlight/components'
 
    Efectivo, transferencia bancaria, cheque o tarjeta.
 
+   Si elegís varios cheques, el formulario conserva el orden de selección.
+
 4. **Aplicá a los documentos**
 
    Seleccioná las facturas de compra pendientes y el **importe aplicado**.
@@ -46,6 +48,8 @@ import { Steps } from '@astrojs/starlight/components'
    El sistema puede **sugerir retenciones** practicadas según el motor fiscal (se pueden ajustar).
 
 6. **Guardá y confirmá**
+
+   Mientras la operación está en curso, el formulario bloquea nuevos envíos para evitar registrar el pago dos veces.
 
 </Steps>
 
@@ -58,6 +62,7 @@ Al confirmar, se actualiza la **cuenta corriente del proveedor** y el **saldo** 
 - El **importe aplicado** no puede superar el **saldo pendiente** del documento.
 - Se requiere **caja abierta** o **cuenta** según el medio.
 - Las **retenciones practicadas** dependen del motor fiscal y del medio.
+- No cierres ni recargues la pantalla mientras el guardado o la confirmación están en curso.
 
 ## Problemas frecuentes
 

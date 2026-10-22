@@ -136,6 +136,13 @@ export default defineConfig({
 
       sidebar: [
         {
+          label: 'Implementación y demostraciones',
+          items: [
+            'docs/guiones-de-demostracion-083-093',
+            'docs/estado-de-la-documentacion'
+          ]
+        },
+        {
           label: 'Primeros pasos',
           items: [
             'primeros-pasos',

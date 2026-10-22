@@ -1,6 +1,6 @@
 ---
 title: Impuestos y servicios
-description: Obligaciones de tesorería, vencimientos y pagos recurrentes.
+description: Obligaciones, VEP de retenciones, vencimientos e historial de pagos.
 sidebar:
   order: 7
 ---
@@ -23,6 +23,22 @@ Planifica y controla el pago de **impuestos y servicios** de la empresa: entidad
 - **Servicios e impuestos** (obligaciones).
 - **Recurrentes**.
 - **Historial y reportes**.
+
+Las tablas permiten buscar, filtrar, ordenar y paginar los resultados. Cuando contienen muchas columnas, el desplazamiento horizontal queda dentro de la tarjeta para mantener visible el resto de la pantalla.
+
+## VEP de retenciones
+
+Los **VEP de retenciones practicadas** aparecen entre las obligaciones pendientes. Cada registro permite:
+
+- consultar el período, importe y estado;
+- abrir el detalle de las retenciones incluidas;
+- registrar el pago desde Tesorería;
+- conservar el pago vinculado al VEP original;
+- revisar los pagos anteriores desde el historial.
+
+:::tip
+Para revisar el origen fiscal o gestionar imputaciones de retenciones sufridas, ir a [Retenciones](/configuracion/impuestos/retenciones/).
+:::
 
 ## Datos de una obligación
 
@@ -82,8 +98,10 @@ Planifica y controla el pago de **impuestos y servicios** de la empresa: entidad
 | No puedo guardar | Faltan entidad, descripción o vencimiento. | Completá esos campos. |
 | No aparece el concepto | No está configurado. | Verificá los servicios disponibles. |
 | La obligación figura Vencida | Pasó la fecha sin registrar el pago. | Registrá el pago o actualizá la fecha. |
+| El VEP no aparece entre los pendientes | Todavía no se generó o ya fue pagado. | Revisá el período y el estado en Retenciones. |
 
 ## Ver también
 
 - [Bancos](/procesos/tesoreria/bancos/) y [Pagos](/procesos/compras/pagos/).
+- [Retenciones](/configuracion/impuestos/retenciones/).
 - [Impuestos y configuración fiscal](/configuracion/impuestos/).

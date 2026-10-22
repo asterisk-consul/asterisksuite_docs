@@ -41,6 +41,8 @@ import { Steps } from '@astrojs/starlight/components'
    - **Cheque** (selecciona cheques disponibles).
    - **Tarjeta** (elige la tarjeta y el código de autorización).
 
+   Si seleccionás varios cheques, el formulario conserva el orden elegido.
+
 4. **Aplicá a los documentos**
 
    Seleccioná las facturas pendientes y el **importe aplicado** a cada una.
@@ -50,6 +52,8 @@ import { Steps } from '@astrojs/starlight/components'
    Al transferir, el sistema puede **sugerir retenciones** según el motor fiscal (se pueden ajustar, agregar o quitar).
 
 6. **Guardá y confirmá**
+
+   Mientras la operación está en curso, el formulario bloquea nuevos envíos para evitar registrar el cobro dos veces.
 
 </Steps>
 
@@ -63,6 +67,7 @@ Al confirmar, el cobro queda registrado, se actualiza la **cuenta corriente** de
 - Se requiere **caja abierta** (efectivo) o **cuenta** (transferencia) según el medio.
 - Las **retenciones** sugeridas dependen del motor fiscal y del medio de pago.
 - Un documento ya saldado no aparece entre los pendientes.
+- No cierres ni recargues la pantalla mientras el guardado o la confirmación están en curso.
 
 ## Problemas frecuentes
 

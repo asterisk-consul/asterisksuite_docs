@@ -1,6 +1,6 @@
 ---
 title: Retenciones
-description: Histórico de retenciones practicadas y sufridas.
+description: Histórico, VEP e imputaciones de retenciones practicadas y sufridas.
 sidebar:
   order: 5
 ---
@@ -22,15 +22,28 @@ El módulo de **Retenciones** muestra el **histórico** de retenciones **practic
 
 Cada registro muestra el importe retenido, el estado y el tercero involucrado. El encabezado muestra el **total** retenido.
 
+## Retenciones practicadas y VEP
+
+Las retenciones practicadas pendientes de depósito se agrupan por período. Al generar un **VEP**, la obligación también aparece en **Tesorería → Impuestos y servicios** para registrar su pago.
+
+Desde el detalle del VEP se pueden consultar las retenciones incluidas, el importe total y el pago asociado. El vínculo se conserva en el historial para poder reconstruir el circuito desde la retención hasta su cancelación.
+
+## Imputaciones de retenciones sufridas
+
+Una retención sufrida puede aplicarse de forma **parcial** a una obligación fiscal. El registro conserva cuánto se imputó y qué saldo continúa disponible.
+
+Si la aplicación fue incorrecta, se puede **revertir la imputación**. La reversión repone el saldo disponible sin eliminar la retención original.
+
 ## Cómo se generan
 
 Las retenciones surgen del **motor fiscal** al registrar pagos o cobros (especialmente por transferencia bancaria), según las [reglas y alícuotas](/configuracion/impuestos/reglas-y-alicuotas/). Pueden sugerirse automáticamente y ajustarse antes de confirmar.
 
 ## Filtros y consulta
 
-Se puede filtrar por tipo (practicada/sufrida) y estado, y usar los filtros del listado para acotar por fecha/tercero.
+Se puede filtrar por tipo (practicada/sufrida), período y estado, y usar los filtros del listado para acotar por fecha o tercero.
 
 ## Ver también
 
 - [Pagos](/procesos/compras/pagos/) y [Cobros](/procesos/ventas/cobros/).
+- [Impuestos y servicios](/procesos/tesoreria/impuestos-y-servicios/).
 - [Reglas y alícuotas](/configuracion/impuestos/reglas-y-alicuotas/).
