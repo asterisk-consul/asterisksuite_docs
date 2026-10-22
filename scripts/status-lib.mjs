@@ -184,7 +184,7 @@ function renderVersionSection(entry) {
   return lines
 }
 
-/** Genera el contenido del reporte (DOCS_STATUS.md y la página del portal). */
+/** Genera el reporte técnico interno (DOCS_STATUS.md). */
 export function renderReport(state) {
   const lines = []
   lines.push('# Estado de la documentación')
@@ -248,22 +248,26 @@ export function renderReport(state) {
   return `${lines.join('\n')}`
 }
 
-/** Mismo reporte, como página MDX del portal. */
+/** Página pública mínima para usuarios finales. */
 export function renderSitePage(state) {
-  const body = renderReport(state)
-    .replace(/^# Estado de la documentación\n+/, '')
-    .replace(/</g, '&lt;')
-    .replace(/```bash/g, '```bash')
+  const documentedVersion = `v${state.cutoff}`
+  const documentedDate =
+    state.latest?.version === state.cutoff && state.latest.date
+      ? state.latest.date
+      : state.lastReview || 'sin registrar'
 
   return `---
 title: Estado de la documentación
-description: Hasta qué versión de Asterisk Suite está actualizada la documentación y qué falta revisar.
+description: Versión y fecha de actualización de la documentación de Asterisk Suite.
 sidebar:
   hidden: true
 editUrl: false
 ---
 
-${body}`
+| Versión documentada | Fecha |
+| --- | --- |
+| **${documentedVersion}** | **${documentedDate}** |
+`
 }
 
 const STATUS_PAGE = '/docs/estado-de-la-documentacion/'
@@ -280,10 +284,11 @@ const DISMISS_STORAGE_KEY = 'asterisksuite:docs-banner-dismissed'
 export function buildBanner(state) {
   if (!state) return null
   const latest = state.latest ? `v${state.latest.version}` : 'desconocida'
+  const date = state.latest?.date ? ` · ${state.latest.date}` : ''
   const page = `<a href="${STATUS_PAGE}">Ver estado</a>`
   const message = state.pending.length
     ? `<strong>📄 Documentación al día hasta v${state.cutoff}</strong> · app en ${latest} · <strong>${state.pending.length} versión(es) de la app pendientes de revisar</strong> · ${page}`
-    : `<strong>✅ Documentación al día con la última versión de la app (${latest})</strong> · ${page}`
+    : `<strong>✅ Documentación ${latest}${date}</strong> · ${page}`
   const dismissKey = `${state.cutoff}|${latest}|${state.pending.length}`
 
   return {
