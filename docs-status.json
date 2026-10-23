@@ -1,9 +1,9 @@
 {
-  "documentedUpTo": "0.93.1-alpha",
-  "lastReview": "2026-10-22",
+  "documentedUpTo": "0.96.0-alpha",
+  "lastReview": "2026-10-23",
   "app": {
-    "version": "0.93.1-alpha",
-    "date": "2026-10-22"
+    "version": "0.96.0-alpha",
+    "date": "2026-10-23"
   },
   "pending": [],
   "resolved": {},

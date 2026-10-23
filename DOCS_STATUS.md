@@ -6,9 +6,9 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.93.1-alpha** (2026-10-22) |
-| Documentación al día hasta | **v0.93.1-alpha** |
-| Última revisión de docs | 2026-10-22 |
+| Última versión de la app | **v0.96.0-alpha** (2026-10-23) |
+| Documentación al día hasta | **v0.96.0-alpha** |
+| Última revisión de docs | 2026-10-23 |
 | Versiones pendientes de revisar | **0** |
 
 ## Pendientes

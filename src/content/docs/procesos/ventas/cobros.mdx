@@ -61,6 +61,42 @@ import { Steps } from '@astrojs/starlight/components'
 
 Al confirmar, el cobro queda registrado, se actualiza la **cuenta corriente** del cliente y el **saldo** de las facturas aplicadas.
 
+## Cobro con tarjeta en una venta
+
+Este circuito corresponde a una tarjeta presentada por el cliente. No es el mismo que pagar un gasto de la empresa con una tarjeta corporativa.
+
+<Steps>
+
+1. **Configurá el canal de cobro**
+
+   En **Tesorería → Tarjetas → Canales de cobro**, configurá la plataforma (por ejemplo, Mercado Pago), el tipo de canal (POS, aplicación, QR, link o e-commerce), moneda, comisión estimada y días para acreditar. La marca de tarjeta del cliente no determina dónde se acredita. No cargues su número completo ni el código de seguridad.
+
+2. **Registrá la venta cobrada con tarjeta**
+
+   Desde la factura/venta elegí **Cobrar**, o iniciá un cobro nuevo. Seleccioná moneda, documentos e importe; elegí **Tarjeta / POS / app**, el canal correspondiente y cargá la autorización o cupón si lo tenés. Guardá y confirmá.
+
+3. **Verificá el cobro pendiente de liquidación**
+
+   Al confirmar, la factura queda cobrada y la cuenta corriente del cliente se actualiza. El importe todavía no aumenta el saldo bancario: queda pendiente de acreditación del adquirente.
+
+4. **Registrá la liquidación cuando llegue al banco**
+
+   Abrí **Tesorería → Liquidaciones de tarjeta** (`/erp/treasury/card-settlements`) y seleccioná todos los cobros del mismo canal y moneda incluidos en ese depósito. Indicá el destino (banco o billetera), la fecha real, comisión, impuestos sobre comisión, retenciones, otros descuentos y la referencia/ID de depósito.
+
+5. **Confirmá y conciliá**
+
+   El neto se calcula como bruto menos descuentos. Si hay una diferencia respecto del extracto, registrala en **Otros descuentos / ajuste** y describila en observaciones. Al confirmar, el sistema crea una liquidación vinculada a todos los cobros, registra el bruto y los descuentos, y aumenta el saldo del banco o billetera elegida por el neto.
+
+</Steps>
+
+El campo **Retenciones** de la liquidación sirve para reflejar el descuento del adquirente y cuadrar el neto bancario. No crea por sí solo un certificado ni un registro fiscal en **Retenciones**; si recibiste un certificado, gestioná su registro por el circuito fiscal correspondiente.
+
+Si el proveedor acredita primero en su billetera (por ejemplo, Mercado Pago) y luego transfiere al banco, registrá la liquidación en una cuenta tipo **Billetera virtual**. Cuando se haga el retiro, abrí esa cuenta en **Tesorería → Cuentas bancarias** y usá **Transferir a otra cuenta** para reflejar el movimiento pareado de billetera a banco, sin duplicar ingresos.
+
+## Editar un cobro
+
+Mientras el cobro esté en **Borrador**, podés editar sus datos, incluida la **fecha**, desde el campo o el calendario. En la pantalla de edición hay dos acciones distintas: **Guardar borrador** persiste los cambios; **Confirmar** aplica el cobro usando los datos ya guardados. Si modificaste la fecha, primero hacé clic en **Guardar borrador**: el sistema no permite confirmar hasta que guardes esa fecha. Al confirmar, los datos quedan de solo lectura porque afectan los movimientos de tesorería y la cuenta corriente. Si necesitás corregir una operación ya procesada, revertí/anulá el movimiento y registralo nuevamente con la fecha correcta.
+
 ## Reglas y validaciones
 
 - El **importe aplicado** no puede superar el **saldo pendiente** del documento.

@@ -27,23 +27,24 @@ Se administran en **Tesorería → Tarjetas** (`/erp/treasury/cards`) y sus acre
 
 ## Campos de una configuración
 
-- **Nombre** (tarjeta o canal).
-- **Marca**: VISA, MASTERCARD, AMEX, NARANJA, CABAL u otra.
-- **Banco emisor** (corporativas) o **Adquirente/procesador** (canales).
+- **Nombre** (tarjeta o canal; por ejemplo, “Mercado Pago · QR Tienda”).
+- **Marca**: VISA, MASTERCARD, AMEX, NARANJA, CABAL u otra (solo corporativas).
+- **Banco emisor** (corporativas) o **Plataforma/adquirente** (canales).
+- **Tipo de canal** (POS, aplicación, QR, link de pago o e-commerce). No es la marca de la tarjeta del cliente.
 - **Moneda**.
 - **Titular** y **últimos 4 dígitos** (solo corporativas).
 - **Límite**.
 - **Comisión (%)** y **días de acreditación**.
-- **Día de cierre** y **día de vencimiento**.
+- **Día de cierre** y **día de vencimiento** (obligatorios para tarjetas corporativas).
 - **Activa**.
 
 ## Cómo configurar
 
 <Steps>
 
-1. **Elegí la pestaña**
+1. **Elegí la sección**
 
-   Ir a **Tarjetas** y elegir la pestaña **Corporativas** o **Canales de cobro**.
+   Ir a **Tesorería → Tarjetas**. La sección **Resúmenes** es la vista inicial; también podés entrar a **Tarjetas corporativas** o **Canales de cobro**.
 
 2. **Nueva configuración**
 
@@ -57,9 +58,48 @@ Se administran en **Tesorería → Tarjetas** (`/erp/treasury/cards`) y sus acre
 
 > En **Canales de cobro** no se guardan números completos ni códigos de seguridad de tarjetas de clientes.
 
-## Tarjetas corporativas
+## Tarjetas corporativas y resúmenes
 
-En la pestaña **Corporativas** se ven las **próximas cuotas**. El banco se descuenta recién cuando se **registra el pago** de la cuota o del resumen.
+> Esta guía es para compras y gastos pagados con una tarjeta de la empresa. Para cobrar una venta con tarjeta del cliente, seguí la [guía de ventas con tarjeta](/procesos/ventas/cobros/#cobro-con-tarjeta-en-una-venta).
+
+Cada tarjeta corporativa debe tener configurados el **día de cierre** y el **día de vencimiento**. El cierre agrupa los consumos en períodos mensuales; el vencimiento se aplica en el mes siguiente. Si un día configurado no existe en un mes, se usa el último día de ese mes.
+
+Al confirmar un gasto o pago con una tarjeta corporativa, el sistema distribuye el importe entre las cuotas y las incorpora a los resúmenes que correspondan. Una compra realizada **hasta el día de cierre inclusive** entra en el cierre de ese mes; si se registra después, pasa al cierre del mes siguiente. Cada cuota posterior avanza un ciclo mensual.
+
+### Registrar una compra o pago
+
+1. Iniciá un pago a proveedor o un gasto desde **Tesorería → Pagos** (también podés empezar desde la factura pendiente).
+2. Elegí la moneda y, como medio, **Tarjeta de crédito**. Seleccioná una tarjeta corporativa activa de esa moneda.
+3. Indicá la cantidad de cuotas —hasta **48**— y, si corresponde, la autorización o cupón.
+4. Guardá y confirmá el pago. La factura o gasto queda registrado; el banco **no** se debita en ese momento. El consumo aparecerá en el resumen mensual de la tarjeta.
+
+En **Resúmenes** podés filtrar por tarjeta y estado, abrir el detalle de consumos/cuotas y consultar los resúmenes pagados junto con la cuenta bancaria, fecha y referencia del movimiento.
+
+### Pagar un resumen
+
+<Steps>
+
+1. **Elegí un resumen pendiente**
+
+   Revisá la tarjeta, período, vencimiento y saldo. El importe se paga completo; no se permite cambiarlo ni pagar cuotas individuales desde esta pantalla.
+
+2. **Seleccioná la cuenta bancaria y la fecha**
+
+   Solo aparecen cuentas activas en la misma moneda que la tarjeta. Podés agregar una referencia y observaciones.
+
+3. **Confirmá el pago total**
+
+   Se registra un único débito bancario por el saldo del resumen y todas sus cuotas quedan saldadas juntas. El resumen pasa a **Pagado** y conserva el vínculo con el movimiento bancario.
+
+4. **Revertí un pago confirmado por error**
+
+   Desde el resumen pagado, usá **Revertir pago** y confirmá la acción. Se anula el débito bancario y las cuotas vuelven a quedar pendientes. Se requiere el permiso **Anular consumos**.
+
+</Steps>
+
+Los consumos confirmados nuevos generan sus resúmenes automáticamente. Para cuotas confirmadas anteriores a esta función, usá **Generar resúmenes pendientes**. El proceso es seguro para volver a ejecutar; si una tarjeta no tiene cierre o vencimiento configurado, primero completá esos datos en la configuración.
+
+Si un resumen ya pagado se confirmó por error, un usuario con permiso **Anular consumos** puede elegir **Revertir pago**. Se anula el débito bancario y las cuotas de ese resumen vuelven a pendiente; el pago original al proveedor no se modifica.
 
 ## Liquidaciones de tarjeta
 
@@ -67,35 +107,47 @@ Cuando se cobra una venta con tarjeta, el dinero queda **pendiente de acreditaci
 
 <Steps>
 
-1. **Elegí el cobro a acreditar**
+1. **Agrupá los cobros del depósito**
 
-   En **Liquidaciones de tarjeta** se listan los cobros **Pendientes**, **Vencidos** o **Acreditados**. Presionar **Acreditar**.
+   En **Liquidaciones de tarjeta**, seleccioná las ventas que el procesador incluyó en el mismo depósito. Sólo se pueden agrupar cobros del mismo canal y moneda.
 
 2. **Completá la acreditación**
 
-   - **Cuenta bancaria** de destino.
-   - **Fecha real**.
+   - **Destino del dinero**: cuenta bancaria o billetera virtual.
+   - **Fecha real** del depósito.
    - **Comisión**, **IVA/impuestos sobre comisión**, **retenciones** y **otros descuentos**.
-   - **Neto acreditado** y **referencia bancaria**.
+   - **Referencia de liquidación** del proveedor (por ejemplo, ID de depósito de Mercado Pago).
 
-3. **Confirmá**
+3. **Revisá el neto y confirmá**
 
-   Al confirmar, la acreditación **afecta el banco**.
+   El sistema registra un movimiento por el bruto y sus descuentos; el saldo del destino aumenta por el neto. Las ventas quedan vinculadas al mismo registro histórico.
 
 </Steps>
 
-El **bruto** menos los descuentos da el **neto**; si hay diferencia, se registra un **motivo**.
+El **bruto** menos los descuentos da el **neto**. Si el extracto muestra una diferencia, registrala como **Otros descuentos / ajuste** y describila en observaciones. Si el dinero quedó primero en Mercado Pago u otra billetera, elegí esa billetera como destino y registrá después el pase al banco.
+
+### Registrar una billetera y pasar el saldo al banco
+
+1. En **Tesorería → Cuentas bancarias**, creá una cuenta de tipo **Billetera virtual**, con el nombre de la plataforma y moneda, por ejemplo “Mercado Pago · ARS”. No hace falta cargar CBU.
+2. Al conciliar los depósitos del procesador, elegí esa billetera como **Destino del dinero**. Así el saldo de Mercado Pago queda separado del banco y las ventas se consideran liquidadas.
+3. Cuando Mercado Pago transfiera el saldo, abrí la billetera y usá **Transferir a otra cuenta**. Elegí la cuenta bancaria, importe, fecha y referencia del retiro.
+4. El sistema registra al mismo tiempo el débito de la billetera y el crédito del banco. Es una transferencia interna, no un gasto ni un ingreso nuevo.
 
 ## Reglas y validaciones
 
-- El **nombre**, **marca**, **banco/adquirente** y **moneda** son obligatorios.
-- La acreditación requiere una **cuenta bancaria**.
-- La liquidación afecta el **saldo bancario** al confirmarse.
+- El **nombre**, **banco emisor/plataforma** y **moneda** son obligatorios; la marca y los datos de cierre se usan solo para tarjetas corporativas.
+- La acreditación requiere un **destino activo** en la misma moneda: banco o billetera virtual.
+- Una liquidación se identifica por canal, moneda, fecha e importe agrupado; las retenciones informadas por el procesador se reflejan como descuentos, pero no generan por sí solas un certificado fiscal.
+- El traspaso de billetera a banco registra ambos lados como una única transferencia interna.
+- Las compras corporativas admiten hasta **48 cuotas**; el sistema ajusta los centavos en la última para conservar el importe total.
 
 ## Problemas frecuentes
 
 | Mensaje / síntoma | Causa | Solución |
 |---|---|---|
+| No se genera un resumen | La tarjeta corporativa no tiene día de cierre o vencimiento. | Editá la tarjeta y completá ambos días. |
+| No puedo pagar el resumen | La cuenta bancaria tiene otra moneda, está inactiva o no tiene saldo suficiente. | Elegí una cuenta activa de la moneda del resumen y verificá el saldo. |
+| El resumen no coincide con las cuotas | El resumen cambió o hay cuotas pagadas/duplicadas fuera del circuito. | Actualizá los resúmenes y revisá el detalle antes de intentar pagar de nuevo. |
 | El cobro queda pendiente | El adquirente aún no acreditó. | Registrá la acreditación cuando corresponda. |
 | No puedo acreditar | Falta la cuenta bancaria. | Elegí una cuenta. |
 | El neto no coincide | Comisión/retenciones distintas. | Ajustá los descuentos o cargá el motivo de diferencia. |

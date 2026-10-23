@@ -40,7 +40,10 @@ Desde la pantalla se puede registrar un **saldo inicial** por tercero, para migr
 
 ## Detalle por tercero
 
-Al abrir un tercero (`/erp/treasury/current-accounts/[partyId]`) se ve su **historial de movimientos** y el saldo resultante.
+Al abrir un tercero (`/erp/treasury/current-accounts/[partyId]`), el **resumen del saldo** queda visible y podés alternar entre dos pestañas:
+
+- **Detalle de la cuenta**: historial de movimientos, seleccionado por defecto al entrar.
+- **Análisis de la cuenta**: evolución y composición de los movimientos.
 
 ## Reglas y consideraciones
 

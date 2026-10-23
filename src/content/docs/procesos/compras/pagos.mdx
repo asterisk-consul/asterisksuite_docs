@@ -57,6 +57,14 @@ import { Steps } from '@astrojs/starlight/components'
 
 Al confirmar, se actualiza la **cuenta corriente del proveedor** y el **saldo** de las facturas aplicadas.
 
+## Consultar pagos y documentos aplicados
+
+En **Tesorería → Pagos** (`/erp/treasury/payments`), la tabla permite filtrar rápidamente por número, tercero y documento o concepto pagado. En **Filtros** también se puede acotar por fecha, tipo, medio, importe, cuenta y estado. La columna **Documento / concepto pagado** muestra el comprobante y el importe aplicado; cuando es una factura de ventas o compras, podés abrirla haciendo clic en su referencia. Si se pagó un servicio u obligación, muestra su descripción y período. Para ver todos los comprobantes asociados a un pago, abrí su detalle desde el número del pago.
+
+## Editar un pago
+
+Mientras el pago esté en **Borrador**, podés editar sus datos, incluida la **fecha**, desde el campo o el calendario. En la pantalla de edición hay dos acciones distintas: **Guardar borrador** persiste los cambios; **Confirmar** aplica el pago usando los datos ya guardados. Si modificaste la fecha, primero hacé clic en **Guardar borrador**: el sistema no permite confirmar hasta que guardes esa fecha. Al confirmar, los datos quedan de solo lectura porque afectan los movimientos de tesorería y la cuenta corriente. Si necesitás corregir una operación ya procesada, revertí/anulá el movimiento y registralo nuevamente con la fecha correcta.
+
 ## Reglas y validaciones
 
 - El **importe aplicado** no puede superar el **saldo pendiente** del documento.
