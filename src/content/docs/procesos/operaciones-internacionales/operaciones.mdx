@@ -32,6 +32,10 @@ Permite dar de alta una **operación internacional** (importación/exportación)
 - **OC del proveedor**.
 - **Notas**.
 
+Los selectores de origen y destino permiten buscar ubicaciones por dirección, ciudad, provincia, país o código postal. Al crear un presupuesto, el proveedor se puede buscar por nombre o CUIT y los productos por código o nombre; los resultados se cargan mientras escribís.
+
+Los puertos de origen y destino de los contenedores usan el mismo buscador de ubicaciones.
+
 ## Cómo crear una operación
 
 <Steps>
@@ -78,6 +82,43 @@ El sistema incluye los Incoterms habituales (`EXW`, `FCA`, `FOB`, `CFR`, `CIF`, 
 
 - **Asociar documentos** y **cotizaciones** a la operación.
 - Agregar **contenedores** y registrar su seguimiento.
+
+## Presupuestos por contenedor y categoría
+
+Primero creá un **contenedor** de la operación. En **Presupuestos**, podés crear una cotización de compra o asociar una existente, eligiendo siempre el **contenedor** y la **categoría de gasto** (mercadería, flete, seguro, despachante, etc.). Para **Otros**, indicá también el concepto. Si la moneda difiere de la operación, indicá la cotización. Las búsquedas de presupuestos ofrecen solo presupuestos de compra activos y se consultan mientras escribís.
+
+Podés cargar varias propuestas para el mismo contenedor y categoría, incluso de proveedores distintos. En **Presupuestos**, la pestaña **Todos** muestra todas las propuestas; también hay una pestaña por cada categoría que uses. Dentro de cada categoría, las propuestas se agrupan por contenedor y, para **Otros**, también por concepto. Así podés compararlas sin mezclar gastos diferentes. Los presupuestos no se suman a los totales de la operación.
+
+### Elegir y transformar una propuesta
+
+1. Usá **Elegir y transformar** sobre el presupuesto que elegiste.
+2. Elegí el tipo de **orden de compra** o **factura de compra** que se generará.
+3. Revisá el contenedor y la categoría: se conservan desde el presupuesto. Para presupuestos históricos sin contenedor, completá la asociación antes de continuar.
+4. Por defecto, usá **Crear borrador** para revisar y editar el comprobante después. Si ya está listo, activá **Confirmar al transformar** y usá **Crear y confirmar**. Se requieren los permisos de creación del tipo destino y, en este último caso, también de confirmación.
+
+Mientras se crea el comprobante y se actualiza el listado de documentos, la ventana muestra el estado de carga y permanece abierta. El documento aparece en **Documentos** cuando termina la actualización.
+
+Se conserva el proveedor, moneda, cantidades, unidades, precios unitarios y descuentos del presupuesto. Los impuestos se calculan con las reglas del tipo destino. El documento generado se asocia automáticamente al mismo contenedor y categoría y puede abrirse desde la propuesta.
+
+Si el destino es una **OC de Mercadería**, también puede generar [stock en tránsito](/procesos/operaciones-internacionales/contenedores/#stock-en-tránsito-desde-oc-o-factura) al confirmarse y cumplirse el estado de embarque del contenedor, igual que una factura de Mercadería. Al facturar posteriormente esa OC no se duplican las unidades.
+
+Las propuestas alternativas del **mismo contenedor, categoría y concepto de Otros**, si corresponde, pasan a rechazadas; las propuestas de otras categorías o contenedores conservan su estado. La creación, asociación y confirmación opcional se realizan en una transacción: si falla una validación, no queda una conversión parcial. Un reintento devuelve el documento ya generado y no crea otro. El presupuesto transformado conserva su vínculo para consultar el origen del comprobante.
+
+Al crear un presupuesto, primero se registra el comprobante de compra y luego se vincula a la operación; si la vinculación falla después de crear el comprobante, no lo dupliques: buscá el presupuesto existente en **Asociar presupuesto**.
+
+## Asociar documentos comerciales
+
+**Asociar documento** exige un contenedor y categoría. Al elegir **Compra**, ofrece solo **órdenes de compra y facturas de compra**; al elegir **Venta**, solo **órdenes y facturas de venta**. No ofrece vales, saldos iniciales, recibos ni otros tipos internos. La búsqueda se realiza en el servidor con resultados acotados; escribí para encontrar el comprobante. Los presupuestos se gestionan desde su sección específica.
+
+En **Documentos**, usá la pestaña **Todos** para ver los comprobantes de la operación o elegí una pestaña de categoría para filtrar. Cada pestaña indica cuántos documentos contiene. Los totales por categoría se expresan en la moneda de la operación; cada documento conserva su importe original y muestra su cotización cuando corresponde.
+
+El resumen financiero muestra total, pagado y pendiente en la moneda de la operación, junto con el equivalente en la otra moneda para evitar repetir la moneda principal. Debajo, **Detalle por moneda de pagos** agrupa los pagos confirmados por moneda original y presenta el importe y sus equivalentes en USD y ARS, calculados con la cotización propia de cada pago. Para cada comprobante se toma la conversión guardada al cargarlo; no se supone que la tasa de compra y la de pago sean iguales. En el detalle de la factura podés ver la cotización de compra y, al expandir sus pagos, la cotización y el equivalente en ARS de cada uno. Si falta una conversión, el equivalente se indica como parcial o sin cotización, sin usar la tasa de otro movimiento. La tarjeta **Información** oculta los campos que no estén cargados.
+
+Crear una factura desde la operación también requiere elegir primero un contenedor, cualquiera sea la categoría de gasto. Un contenedor con presupuestos, documentos o pagos asociados no puede eliminarse sin resolver antes sus vínculos.
+
+:::note[Actualización del sistema]
+Este circuito requiere la migración de base de datos `20261029120000_international_quote_assignments` en las bases de las empresas. Los presupuestos históricos no reciben un contenedor automáticamente: se conserva su información y se solicita completar la asociación al transformarlos.
+:::
 
 ## Reglas y validaciones
 

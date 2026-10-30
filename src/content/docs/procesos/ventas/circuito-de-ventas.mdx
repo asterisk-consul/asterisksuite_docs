@@ -7,9 +7,9 @@ sidebar:
 
 ## Para qué sirve
 
-El **Circuito de ventas** define reglas globales de la operatoria comercial. Se configura en **Configuración → Circuito de ventas** (`/settings/sales-flow`) y se **copian a cada nueva Orden de Venta**.
+El **Circuito de ventas** define reglas globales de la operatoria comercial. Se configura en **Configuración → Circuito de ventas** (`/settings/sales-flow`). Las reglas de deuda y aplicación de cobros se guardan en cada nueva Orden de Venta.
 
-> Cambiar esta configuración **no recalcula** documentos, pagos ni cuentas corrientes anteriores.
+Al cambiar las condiciones para remitir, el sistema vuelve a evaluar las órdenes que todavía no tienen un remito. Los remitos ya creados, los pagos y las cuentas corrientes no se modifican.
 
 ## Opciones
 
@@ -18,6 +18,7 @@ El **Circuito de ventas** define reglas globales de la operatoria comercial. Se 
   - **Orden de venta** — la deuda nace al confirmar la OV.
   - **OV y luego factura** — la OV genera deuda provisoria y la factura la reemplaza sin duplicarla.
 - **El cobro se puede aplicar a**: Factura, Orden de venta u **OV o factura**.
+- **Condición para remitir**: porcentaje mínimo cobrado y/o factura confirmada. Al cambiar estas reglas, se recalcula la disponibilidad de entrega de las OV que aún no tienen remito.
 - **Reserva de stock**: cuándo la mercadería queda comprometida (reservada) para una venta, sin descontarla físicamente.
 - **Responsable de la Orden de Venta**:
   - **Responsable sugerido**: se preselecciona al confirmar una OV que todavía no tenga responsable (o *Sin responsable predeterminado*, si querés que se elija cada vez).
@@ -35,11 +36,12 @@ Al guardar, se **sincronizan** los indicadores de las OV y facturas de venta, y 
 3. Elegir **a qué documento se aplica el cobro**.
 4. Definir la **reserva de stock**.
 5. Definir el **responsable sugerido** de la OV y si se **pregunta** o se **exige** al confirmar.
-6. Guardar. Se aplica a las **nuevas OV**.
+6. Guardar. Los cambios de deuda y aplicación de cobros se usan en las nuevas OV; las condiciones de entrega también se recalculan en las OV sin remito.
 
 ## Reglas y consideraciones
 
-- Las reglas se copian en cada **nueva OV**; las existentes no se recalculan.
+- La base de deuda y aplicación de cobros queda guardada en cada **nueva OV**; las condiciones de entrega se actualizan también en las OV que todavía no tienen remito.
+- Si exigís un porcentaje cobrado, una OV solo queda **Lista para despacho** cuando alcanza ese porcentaje. Con un requisito del 100 %, debe estar cobrada por completo.
 - El modo condiciona qué documentos están activos (factura, OV o ambos).
 - El **responsable** se elige en el modal de confirmación de la OV (con el sugerido precargado) y puede cambiarlo luego desde la acción **Asignar responsable**.
 - La configuración **normaliza** los registros guardados: no quedan valores vacíos incompatibles con los selectores.

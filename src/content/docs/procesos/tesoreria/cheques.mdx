@@ -12,7 +12,7 @@ Los **cheques** administran tanto los **propios** (emitidos por la empresa) como
 ## Permisos necesarios
 
 :::note[Permisos necesarios]
-- Ver cheques · Crear cheques · Editar cheques · Eliminar cheques
+- Ver cheques · Crear cheques · Editar cheques (`checks.update`) · Eliminar cheques
 - Depositar cheques (`checks.deposit`) · Rechazar cheques (`checks.reject`)
 - Para cobrar un cheque de terceros en caja o pagar un cheque propio con efectivo de caja: además de `checks.deposit`, se requiere el permiso de registrar movimientos manuales de caja (`cash_box_movements.create_manual`)
 :::
@@ -53,21 +53,33 @@ import { Steps } from '@astrojs/starlight/components'
 
 | Estado | Descripción |
 |---|---|
-| **Pendiente** | Registrado, aún no confirmado ni cobrado. |
-| **Confirmado** | Confirmado. |
+| **Pendiente** | Registrado. Un cheque propio espera a que se asocie y se confirme su pago; un cheque de tercero permanece en cartera hasta depositarlo, cobrarlo o aplicarlo a un pago. |
+| **Confirmado** | Cheque propio cuyo pago asociado fue confirmado. No registra por sí solo un movimiento bancario. |
 | **Cobrado** | Acreditado (cobrado/depositado). |
 | **Rechazado** | Rechazado por el banco. |
 | **Anulado** | Anulado. |
 
+## Pago o cobro relacionado
+
+En la cartera, la columna **Pago / Cobro** muestra el comprobante de tesorería relacionado con el cheque, si existe. Si el cheque se aplicó a más de una operación, aparecen todos los pagos vinculados. Cuando todavía no tiene relación, se indica **Pendiente de asociar**. Con permiso para ver pagos (`payments.read`) o como administrador/propietario, podés abrir cada registro desde ese enlace; sin ese permiso, el número se muestra sin navegación.
+
 ## Acciones
 
-- **Confirmar** el cheque.
-- **Depositar** un cheque de terceros, eligiendo el destino.
+- **Asociar un cheque propio a un pago**. Al confirmar ese pago, el cheque propio se confirma automáticamente. No hay confirmación manual desde la cartera; un pago todavía en borrador no confirma el cheque.
+- **Depositar** un cheque de terceros, eligiendo el destino. La acción está disponible aunque el cheque todavía no esté asociado a un pago o cobro.
 - **Cobrar/ingresar** un cheque de terceros en una caja abierta.
-- **Procesar** un cheque propio (débito bancario o pago con efectivo de caja).
+- **Procesar** un cheque propio confirmado y vencido (débito bancario o pago con efectivo de caja). Se requiere `checks.deposit`; la pantalla muestra la acción luego de confirmar el pago asociado y llegado el vencimiento.
 - **Endosar** (transferir a un tercero).
 - **Rechazar** un cheque.
 - **Revertir** una operación.
+
+## Avisos de vencimiento
+
+La campanita consulta la cartera actual y muestra avisos de cheques de terceros por resolver, débitos propios por registrar y próximos vencimientos. Cuando el proceso diario ya creó avisos individuales, se muestran esos; si todavía no existen, aparecen resúmenes agrupados al abrir las notificaciones. Los próximos vencimientos abarcan 30 días y cada aviso abre la cartera con el grupo correspondiente filtrado.
+
+Podés ocultar cada grupo hasta el día siguiente. Si todavía hay cheques pendientes, el grupo vuelve a aparecer; al depositar, cobrar, debitar, rechazar o anularlos, dejan de mostrarse. **Ver cheques** abre **Tesorería → Cheques** con el grupo filtrado.
+
+En **Tesorería → Cheques**, las tarjetas compactas de vencimientos filtran la tabla al hacer clic en su botón; podés desplegarlas para leer más detalle. Muestran cheques de terceros que vencen hoy o ya vencieron, cheques propios con débito pendiente de registrar y cheques próximos a vencer. Las fechas se interpretan según el calendario de Argentina. Usá **Ver todos** para quitar el filtro. El **Dashboard de Tesorería** usa las mismas tarjetas; al elegir una, abre la cartera con el grupo correspondiente filtrado. La campanita muestra próximos vencimientos dentro de 30 días; el plazo de las tarjetas se puede ajustar desde el dashboard.
 
 ## Cómo depositar un cheque de terceros
 
@@ -89,6 +101,8 @@ Al depositar un cheque de terceros podés elegir el **destino**:
 </Steps>
 
 ## Cómo procesar un cheque propio
+
+Un cheque propio debe estar asociado a un pago confirmado para quedar **Confirmado**. No se confirma manualmente desde la cartera. Al vencer, aparece **Procesar débito**; se requiere `checks.deposit` para registrar el débito o el pago desde caja.
 
 Al procesar (debitar) un cheque propio también podés elegir la **fuente**:
 

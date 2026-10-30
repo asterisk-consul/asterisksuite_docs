@@ -11,6 +11,8 @@ import { Steps } from '@astrojs/starlight/components'
 
 La **recepción** (remito de compra) documenta el ingreso de la mercadería del proveedor y da **entrada de stock**. Es el último eslabón del circuito: **Orden de compra → Factura de compra → Remito de compra**. Se administra en **Compras → Remitos de Compra** (`/erp/purchases/remitos`).
 
+En el listado de remitos, el interruptor **Mostrar anulados** permite incluir o esconder los anulados. Si elegís ese estado, se muestran automáticamente.
+
 El remito es una pantalla **operativa**: registra cantidades, variantes y depósitos de ingreso, **sin precios ni totales**. Los importes viven en la factura de compra.
 
 ## Permisos necesarios
@@ -26,6 +28,8 @@ El remito es una pantalla **operativa**: registra cantidades, variantes y depós
 - Debe existir el **depósito receptor** de la mercadería (Depósitos).
 
 ## Cómo registrar una recepción
+
+En el formulario de recepción, **Ctrl + S** guarda el borrador. Podés usar **F2** para abrir el selector de productos y **Ctrl + Enter** para agregar el producto elegido.
 
 <Steps>
 

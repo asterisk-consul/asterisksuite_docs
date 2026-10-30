@@ -1,0 +1,85 @@
+---
+title: Conexiones de IA por MCP
+description: Conectar un cliente de IA, limitarlo por empresa y usarlo para consultar información y preparar borradores de facturas de compra.
+sidebar:
+  order: 8
+---
+
+## Qué permite
+
+Asterisk Suite expone un servidor [MCP](https://modelcontextprotocol.io/) para conectar clientes de IA compatibles. Cada autorización queda asociada a **un usuario y una empresa**. Las herramientas disponibles además respetan los permisos vigentes de ese usuario en Asterisk Suite.
+
+En esta primera versión, el asistente puede buscar productos, existencias, clientes y proveedores, y documentos de compra o venta. También puede leer archivos de capturas propias o asignadas y preparar una factura de compra en borrador.
+
+## Requisitos para habilitarlo
+
+La persona que opera el servidor configura estas variables en el backend:
+
+```text
+MCP_ENABLED=true
+MCP_AUTH_ISSUER_URL=https://api.tu-dominio.com
+MCP_PUBLIC_URL=https://api.tu-dominio.com/api/mcp
+MCP_APP_AUTHORIZE_URL=https://app.tu-dominio.com/mcp/authorize
+MCP_ACCESS_TOKEN_SECRET=<secreto aleatorio de al menos 32 caracteres>
+```
+
+`MCP_AUTH_ISSUER_URL` es el emisor OAuth y no lleva ruta. `MCP_PUBLIC_URL` debe coincidir con la URL pública del endpoint MCP, incluido `/api/mcp`. `MCP_APP_AUTHORIZE_URL` debe apuntar a la pantalla de autorización de la aplicación. En producción, las tres URL públicas deben usar HTTPS.
+
+El proxy debe dirigir al backend tanto `/api/mcp` como los endpoints OAuth `/authorize`, `/token`, `/register`, `/revoke` y las rutas de metadata `/.well-known/oauth-authorization-server` y `/.well-known/oauth-protected-resource/api/mcp`. El servidor publica los endpoints OAuth en la raíz del dominio del emisor.
+
+Antes de habilitar el servidor, configurar `DATABASE_URL_PUBLIC` con la conexión a la base pública y ejecutar una sola vez la migración desde `asterisksuite_backend`:
+
+```bash
+pnpm migrate:mcp-oauth
+```
+
+La migración guarda clientes OAuth, autorizaciones y tokens. No se guardan tokens en texto plano; los refresh tokens se almacenan como hashes. Si `MCP_ENABLED` no es `true`, los endpoints permanecen deshabilitados.
+
+## Conectar una aplicación de IA
+
+1. En el cliente de IA, agregá un servidor MCP remoto con esta URL: `https://api.tu-dominio.com/api/mcp`.
+2. Iniciá sesión en Asterisk Suite cuando aparezca la autorización.
+3. Elegí la empresa a la que querés dar acceso y revisá los permisos solicitados.
+4. Aceptá la conexión. Para conectar otra empresa, repetí la autorización y elegí esa empresa.
+
+El cliente usa OAuth con registro dinámico y PKCE. No se necesita una clave de API de OpenAI ni una clave compartida entre empresas. El cliente de IA usa su propio modelo para responder y Asterisk Suite verifica los permisos en cada herramienta.
+
+### Permisos disponibles
+
+| Alcance OAuth | Acceso que habilita |
+| --- | --- |
+| `erp:read` | Consultas de productos, stock, terceros y documentos para los que el usuario tenga permiso. |
+| `intake:files.read` | Leer archivos adjuntos de capturas propias o asignadas; también requiere `intake.read` y `media.read`. |
+| `purchases:drafts.write` | Crear borradores de facturas de compra; también requiere permiso para crear facturas de compra y `intake.process`. |
+
+Los alcances OAuth no reemplazan los roles de Asterisk Suite. Una herramienta solo aparece si el usuario también tiene los permisos necesarios en esa empresa.
+
+## Preparar una factura con IA
+
+1. Abrí **Tesorería → Capturas** (`/erp/treasury/intake`), creá una captura y adjuntá una imagen o PDF de la factura. El archivo original queda almacenado en Asterisk Suite.
+2. En el asistente de IA conectado, pedile que busque tus capturas de facturas. La herramienta `list_invoice_uploads` devuelve las capturas disponibles y sus archivos.
+3. Pedile que lea el comprobante con `read_invoice_file`. La lectura desde MCP admite PDF e imágenes de hasta **5 MB** por archivo; si el archivo supera ese tamaño, comprimilo o subí una versión más liviana.
+4. Pedile que cree el borrador con los datos leídos. El asistente puede buscar proveedor, productos y tipos de factura antes de guardar.
+5. Revisá el documento en **Compras → Comprobantes**. Verificá proveedor, fecha, número, moneda, renglones, impuestos y total antes de confirmarlo.
+
+El borrador queda con los archivos originales asociados. El detalle OCR completo queda en las notas de la captura para revisión; los renglones de la factura se vinculan con productos existentes. Crear el borrador no confirma la factura ni registra pagos o movimientos de stock. La factura solo produce los efectos normales del circuito cuando una persona la revisa y la confirma en Asterisk Suite.
+
+El contenido del comprobante se envía al modelo del cliente de IA cuando se le pide leerlo. La aplicación conserva el archivo en la empresa elegida y no lo comparte con otras empresas.
+
+## Revisar o revocar conexiones
+
+Abrí **Configuración → Conexiones de IA** (`/settings/connected-apps`) para ver el cliente, la empresa autorizada, los permisos concedidos y la fecha de autorización. Al revocar una conexión, sus tokens dejan de funcionar.
+
+## Solución de problemas
+
+| Síntoma | Qué revisar |
+| --- | --- |
+| El cliente no encuentra la metadata OAuth | Confirmá que `MCP_PUBLIC_URL` sea la URL pública exacta y que el proxy publique ambas rutas de metadata y los endpoints `/authorize`, `/token`, `/register` y `/revoke`. |
+| La pantalla dice que la solicitud venció | Iniciá de nuevo la conexión desde el cliente de IA; la solicitud de autorización caduca a los 10 minutos. |
+| No aparece una herramienta | Revisá los alcances concedidos y los permisos del usuario dentro de la empresa autorizada. |
+| No aparece una captura | La conexión solo ve capturas creadas por el usuario o asignadas a él, y requiere `intake.read` y `media.read`. |
+| La IA no puede leer un archivo | Confirmá que el cliente MCP pueda recibir contenido de imagen o recursos embebidos, además de herramientas. |
+| No puede leer el archivo | Confirmá que el archivo siga adjunto, que sea PDF o imagen y que no supere 5 MB. |
+| No puede crear el borrador | Hace falta `purchases:drafts.write`, permiso de creación para facturas de compra y `intake.process`. |
+
+Las conexiones actuales se pueden revocar en **Configuración → Conexiones de IA**. Para dudas sobre el proveedor de IA, consultá la configuración de seguridad y retención de datos de ese proveedor.

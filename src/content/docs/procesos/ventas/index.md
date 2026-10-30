@@ -33,6 +33,24 @@ flowchart LR
 | **Nota de Crédito / Débito** | `CREDIT_NOTE` / `DEBIT_NOTE` | Ajustes sobre facturas. |
 | **Recibo** | `RECEIPT` | Constancia de cobro. |
 
+## Resumen y comprobantes
+
+En **Ventas → Resumen** (`/erp/sales`) podés consultar la actividad de los últimos 7, 30 o 90 días: indicadores de facturas confirmadas, presupuestos y órdenes; un gráfico de líneas que compara por día facturas, notas de crédito/débito, presupuestos, órdenes y remitos; e importe neto confirmado separado por moneda. Los importes consideran únicamente comprobantes confirmados e incluyen notas de crédito y débito; los estados operativos completos se consultan en cada listado.
+
+El listado combinado está en **Ventas → Comprobantes** (`/erp/sales/comprobantes`). Reúne los comprobantes de venta y permite filtrar por categoría y estado. En **Todos**, el filtro avanzado **Estado** identifica cada opción por tipo de comprobante (por ejemplo, *Factura · Pendiente* u *Orden de venta · Lista para despacho*); al seleccionar una categoría, muestra sus estados sin prefijo. Los enlaces anteriores con `?category=` siguen redirigiendo al listado filtrado.
+
+En los listados de presupuestos, órdenes de venta, remitos y comprobantes, podés abrir el documento haciendo clic en cualquier parte de su fila. Los botones y enlaces propios de la fila conservan su acción. Al volver con la navegación del navegador se restaura la posición del listado y, en comprobantes, la categoría que estabas consultando.
+
+Al abrir un comprobante y volver al listado se conservan la búsqueda, los filtros de tabla, el orden, la página y la posición de scroll. En los formularios, el buscador de clientes permite encontrar registros antiguos por nombre, razón social, CUIT o correo.
+
+En la ficha de cada comprobante podés usar **Alt + M** para editar, **Alt + I** para imprimir y **Alt + C** para abrir la confirmación cuando la acción esté disponible. En una OV o factura con saldo pendiente, **Alt + P** abre el registro del cobro. Al pasar el cursor o enfocar un botón, la ayuda muestra su atajo; confirmar siempre muestra primero el diálogo de revisión.
+
+La **referencia** cargada en el comprobante aparece destacada debajo de los datos principales de la ficha para identificarlo rápidamente.
+
+## Crear comprobantes desde cualquier listado
+
+El botón **Crear nuevo comprobante** aparece en **Ventas → Comprobantes** (`/erp/sales/comprobantes`) y en los listados de **Presupuestos** (`/erp/budgets`), **Órdenes de Venta** (`/erp/orders`) y **Remitos** (`/erp/remitos`). Permite iniciar cualquiera de esos comprobantes, una factura o una nota de crédito/débito sin importar desde cuál listado lo abriste. El botón muestra **Alt + N**, que abre el menú. En los formularios, los atajos se muestran junto a su acción: **F2** abre el selector de productos, **Tab** recorre los campos, **Ctrl + Enter** agrega el producto y **Ctrl + S** guarda. Las opciones disponibles respetan los permisos de creación de cada tipo.
+
 ## Páginas de esta sección
 
 - [Presupuestos](/procesos/ventas/presupuestos/)

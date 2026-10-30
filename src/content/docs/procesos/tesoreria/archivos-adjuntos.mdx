@@ -1,0 +1,23 @@
+---
+title: Archivos adjuntos
+description: Consultar comprobantes vinculados a documentos y movimientos de la empresa.
+sidebar:
+  order: 10
+---
+
+## Para qué sirve
+
+La biblioteca de **Archivos** reúne los adjuntos cargados en distintos documentos y movimientos de la empresa seleccionada. Permite buscar por nombre, revisar el tipo, tamaño, fecha y usuario que lo cargó, y abrir o descargar el archivo.
+
+## Cómo encontrar un archivo
+
+1. Abrir **Configuración → Archivos** desde el menú del ERP.
+2. Buscar por nombre de archivo o recorrer las páginas de resultados.
+3. En **Asociado a**, abrir el documento o movimiento relacionado cuando haya un enlace disponible.
+4. En el encabezado, consultar el total de archivos encontrados y el espacio usado por todos los originales activos de la empresa (independiente de la búsqueda), con una línea que desglosa imágenes, PDF y otros archivos. La línea representa la distribución del espacio usado, no el porcentaje de una cuota. El almacenamiento físico también puede incluir miniaturas y vistas previas, por lo que puede ser mayor que el total de originales.
+
+## Alcance por empresa
+
+La biblioteca consulta solo la empresa activa. Cambiar de empresa cambia también el conjunto de archivos; no se muestran ni se comparten adjuntos de otras empresas. En transferencias entre empresas, los comprobantes quedan visibles en la empresa de origen.
+
+Se requiere el permiso **Ver archivos** (`media.read`) para abrir la biblioteca y consultar/descargar su contenido. Para subir o quitar archivos se requiere **Subir archivos** (`media.upload`), además de los permisos propios de la operación cuando corresponda.

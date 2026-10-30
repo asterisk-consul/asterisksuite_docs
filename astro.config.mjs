@@ -211,6 +211,7 @@ export default defineConfig({
             'administracion/centro-de-configuracion',
             'administracion/empresa',
             'administracion/seguridad',
+            'administracion/conexiones-de-ia',
             'administracion/notificaciones',
             'administracion/auditoria',
             'administracion/papelera',

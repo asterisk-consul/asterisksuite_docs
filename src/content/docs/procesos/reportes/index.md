@@ -70,6 +70,7 @@ El mismo menú incluye **Resumen gerencial** (`/erp/reports/management`), un rep
 ## Páginas de esta sección
 
 - [Reporte consolidado](/procesos/reportes/consolidado/)
+- [Envíos automáticos por WhatsApp](/procesos/reportes/envios-automaticos-whatsapp/)
 - [Clientes, proveedores, empleados y socios](/procesos/reportes/partes-interesadas/)
 - [Bancos, cajas y cheques](/procesos/reportes/tesoreria/)
 - [Documentos comerciales](/procesos/reportes/documentos/)

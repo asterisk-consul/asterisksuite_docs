@@ -9,7 +9,7 @@ import { Steps } from '@astrojs/starlight/components'
 
 ## Para qué sirve
 
-El **Reporte consolidado** es la vista principal del módulo: reúne todas las empresas seleccionadas en un período común con tarjetas de indicadores, un comparativo por empresa y el detalle por área de cada empresa. Se accede desde **Reportes → Consolidado de empresas** (`/erp/reports/consolidated`); es la vista por defecto del módulo (`?view=consolidated`).
+El **Reporte consolidado** es la vista principal del módulo: reúne todas las empresas seleccionadas en un período común con indicadores, comparativo por empresa y detalle por área. Se accede desde **Reportes → Consolidado de empresas** (`/erp/reports/consolidated`); es la vista por defecto del módulo (`?view=consolidated`). En pantalla, el resultado se organiza en pestañas temáticas para revisar una parte del informe a la vez, como en las hojas de un libro de cálculo.
 
 ## Permisos necesarios
 
@@ -41,17 +41,17 @@ El **Reporte consolidado** es la vista principal del módulo: reúne todas las e
 
 4. **Generá el reporte**
 
-   Presioná **Generar reporte**. Aparecen las tarjetas de indicadores, el comparativo por empresa y, más abajo, el detalle de cada empresa.
+   Presioná **Generar reporte**. El resultado abre en **Hoja de cálculo**, una grilla tipo Excel con indicadores en filas y empresas en columnas, separadas por moneda. Podés editar importes: los totales de la hoja, el resumen y los gráficos se recalculan al instante. Cambiá a **Gráficos** para ver comparaciones, composición por empresa e indicadores globales; a **Tablas** para consultar el detalle por área; o a **Resumen** para ver los indicadores globales y las alertas.
 
-5. **Exportá (opcional)**
+5. **Elegí cómo presentar las empresas y exportá (opcional)**
 
-   Presioná **PDF**, **Excel** o **CSV** en la barra del resultado para descargar la vista con todas las empresas agrupadas.
+   En **Presentación**, elegí **Juntas** o **Por empresa**. Después abrí **Descargar** y elegí **PDF**, **Excel (.xlsx)** o **CSV**. Se incluyen las empresas seleccionadas, aunque estés viendo otra pestaña temática.
 
 </Steps>
 
 ## Indicadores
 
-Las tarjetas del resumen muestran los totales de todas las empresas del período, separados por moneda:
+Las tarjetas de **Resumen** muestran los totales globales de todas las empresas y áreas incluidas, separados por moneda:
 
 | Indicador | Qué muestra |
 |---|---|
@@ -61,8 +61,13 @@ Las tarjetas del resumen muestran los totales de todas las empresas del período
 | **Pagos** | Pagos confirmados o pagados dentro del período. |
 | **Por cobrar actual** | Saldo vigente de las cuentas corrientes de clientes. |
 | **Por pagar actual** | Saldo vigente de las cuentas corrientes de proveedores. |
+| **Saldos bancarios** | Saldos actuales de las cuentas bancarias. |
+| **Saldos en caja** | Saldos actuales de las cajas. |
+| **Cheques pendientes** | Cheques todavía no cobrados, rechazados ni anulados. |
 
-Debajo, la tabla **Comparativo por empresa** repite estos indicadores por empresa y agrega **Bancos**, **Cajas** y **Cheques pendientes** (todo cheque todavía no cobrado, rechazado ni anulado).
+**Hoja de cálculo** muestra el comparativo general en una grilla de sólo lectura, con apariencia de Excel: filas y columnas delimitadas, encabezado fijo, búsqueda, filtros y orden. Los valores vienen de la consulta y no se pueden modificar desde esta vista. **Resumen** reúne los indicadores globales, el **Comparativo por empresa**, alertas, lectura ejecutiva y todas las tablas disponibles de todas las áreas. Con **Juntas**, los detalles se combinan e identifican la empresa; con **Por empresa**, se muestran agrupados dentro de cada compañía. **Gráficos** ofrece comparación por empresa, composición e indicadores globales, sin mezclar monedas. **Tablas** presenta el detalle de un área a la vez con búsqueda, filtros y orden. Las exportaciones utilizan los datos originales del reporte.
+
+El comparativo mantiene una fila por empresa y moneda. Cuando se seleccionan varias monedas, no las convierte ni las suma entre sí. **Total seleccionado** suma los importes de las empresas incluidas en esa misma moneda; no aplica eliminaciones de operaciones entre empresas. El reporte actual no calcula margen, resultado, liquidez, presupuesto ni comparación interanual, por lo que esos indicadores no aparecen en las descargas. En las tablas de detalle con presentación **Juntas**, la columna **Empresa** identifica cada registro y permanece visible.
 
 ## Detalle por empresa
 
@@ -84,10 +89,10 @@ El orden de las empresas en pantalla y en la exportación sigue su nombre, de la
 
 ## Exportación
 
-- **PDF**: A4 horizontal con título, período, empresas, resumen ejecutivo y criterios de lectura; luego una página por empresa con su detalle.
-- **Excel**: hoja *Resumen* con los indicadores por empresa, moneda, importe y cantidad; una hoja por empresa con sus secciones; y una hoja *Información* con el período, la fecha de generación y la nota de saldos actuales.
-- **CSV**: una fila por registro con la columna *Empresa*, separador `;` y codificación UTF-8.
-- El archivo se descarga como `reporte-consolidado-{desde}-{hasta}.{ext}`.
+- **PDF**: A4 horizontal con título, período, empresas y presentación. Las vistas distintas de inventario incluyen un resumen ejecutivo y criterios de lectura. **Juntas** mantiene el detalle de las empresas dentro de un mismo documento e identifica cada fila con su empresa; el detalle de ventas por artículo agrupa columnas relacionadas para evitar tablas demasiado estrechas. **Por empresa** inicia el detalle de cada compañía en una página nueva.
+- **Excel**: incluye *Resumen* y *Comparativo*. El comparativo presenta una fila por empresa y moneda, columnas para los indicadores disponibles y el *Total seleccionado* al final de cada moneda. **Juntas** agrega una hoja *Detalle conjunto* con la columna *Empresa*; **Por empresa** agrega una hoja de detalle por compañía. También incluye *Información* con el período, la fecha de generación, la presentación y los criterios de lectura.
+- **CSV**: siempre genera una lista conjunta, con la columna *Empresa*, separador `;` y codificación UTF-8; no tiene pestañas separadas.
+- El archivo incluye las empresas seleccionadas. El nombre indica la vista y la presentación, por ejemplo `reporte-consolidated-juntas-{desde}-{hasta}.xlsx` o `reporte-consolidated-por-empresa-{desde}-{hasta}.pdf`.
 
 ## Estados
 

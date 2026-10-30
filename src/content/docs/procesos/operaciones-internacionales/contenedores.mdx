@@ -57,6 +57,18 @@ Se registran eventos que documentan el avance, por ejemplo: carga y salida de or
 
 Existe una acción específica para **entregar** el contenedor, que registra el cierre del movimiento hacia su destino.
 
+## Stock en tránsito desde OC o factura
+
+Una **orden de compra** o **factura de compra** confirmada, asociada al contenedor con categoría **Mercadería**, incorpora sus productos al depósito virtual de tránsito cuando el contenedor está **Embarcado**, **En tránsito**, **Arribado**, **Aduana**, **Liberado** o **Recibiendo**. Los presupuestos, comprobantes en borrador y gastos de otras categorías no generan este ingreso.
+
+Si el comprobante ya estaba confirmado, el ingreso se registra al asociarlo o al avanzar el contenedor a uno de esos estados. También podés usar **Sincronizar stock** para revisar OC y facturas confirmadas pendientes de ingresar. Las cantidades se expresan en unidades de stock, respetando las conversiones de unidades de compra.
+
+La OC y la factura vinculada mediante su documento de origen representan la misma mercadería: **no se ingresan dos veces**. Se conserva la mayor cobertura por producto de ambos comprobantes. Por ejemplo, OC de 10 unidades y factura de 10 mantienen 10; si la factura cubre 12, se agregan solo las 2 faltantes. Una factura menor no retira unidades automáticamente: revisá las diferencias con el envío real. Documentos de compras independientes sí suman sus cantidades.
+
+Al crear una factura desde una OC internacional, hereda su contenedor, categoría y cotización; debe conservar la moneda de la OC para esa asociación. La OC y su factura deben usar el mismo contenedor. La lista de productos aplica el mismo criterio para evitar mostrar cantidades duplicadas.
+
+La recepción física mantiene el circuito de **factura confirmada → remito de compra** hacia un depósito real. Sincronizar nuevamente después de recibir no vuelve a ingresar unidades ya registradas. No se puede anular o desasociar un comprobante que respalde movimientos en tránsito o de recepción sin regularizar primero esos movimientos.
+
 ## Reglas y consideraciones
 
 - El **número de contenedor** es obligatorio.

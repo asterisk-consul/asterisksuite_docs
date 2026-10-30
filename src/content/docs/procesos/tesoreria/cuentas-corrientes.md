@@ -13,6 +13,7 @@ Las **cuentas corrientes** muestran los **saldos** de cada tercero: cuánto te d
 
 :::note[Permisos necesarios]
 - Ver cuentas corrientes (y permisos de pagos/cobros para registrar movimientos).
+- Solo OWNER o ADMIN puede eliminar un ajuste manual de corrección de saldo.
 :::
 
 ## Vistas y filtros
@@ -44,6 +45,10 @@ Al abrir un tercero (`/erp/treasury/current-accounts/[partyId]`), el **resumen d
 
 - **Detalle de la cuenta**: historial de movimientos, seleccionado por defecto al entrar.
 - **Análisis de la cuenta**: evolución y composición de los movimientos.
+
+Al abrir un movimiento y volver al detalle, se conserva la pestaña activa y la posición de scroll.
+
+OWNER y ADMIN pueden eliminar un **ajuste manual de corrección de saldo** desde su fila. Se envía a la papelera y el saldo corrido de la cuenta se recalcula. Esta opción no aparece para facturas ni pagos: esos movimientos deben anularse desde el módulo que los originó para conservar su trazabilidad.
 
 ## Reglas y consideraciones
 

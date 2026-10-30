@@ -7,12 +7,12 @@ sidebar:
 
 ## Para qué sirve
 
-El **pago** registra la cancelación de las facturas de compra. Se gestiona desde **Tesorería → Pagos** (`/erp/treasury/payments`) y se inicia con **Pagar** o en **Nuevo pago** (`/erp/treasury/payments/create?type=PAYMENT`).
+El **pago** registra la cancelación de las facturas de compra y de los vales pendientes de empleados. Se gestiona desde **Tesorería → Pagos** (`/erp/treasury/payments`) y se inicia con **Pagar** desde el documento pendiente o en **Nuevo pago** (`/erp/treasury/payments/create?type=PAYMENT`).
 
 ## Permisos necesarios
 
 :::note[Permisos necesarios]
-- Ver pagos · Crear pagos · Editar pagos · Confirmar pagos · Anular pagos
+- Ver pagos (`payments.read`) · Crear (`payments.create`) · Editar (`payments.update`) · Confirmar (`payments.confirm`) · Marcar como pagado (`payments.mark_as_paid`) · Rechazar (`payments.reject`) · Anular (`payments.reverse`)
 - Según la forma de pago pueden intervenir permisos de cajas, bancos, cheques y tarjetas.
 :::
 
@@ -29,19 +29,19 @@ import { Steps } from '@astrojs/starlight/components'
 
 1. **Iniciá el pago**
 
-   Desde la factura/OC usar **Pagar**, o ir a **Nuevo pago** con tipo **Pago (PAYMENT)**.
+   Desde una factura/OC o desde un vale confirmado de empleado usar **Pagar**, o ir a **Nuevo pago** con tipo **Pago (PAYMENT)**.
 
 2. **Elegí proveedor y moneda**
 
 3. **Elegí la forma de pago**
 
-   Efectivo, transferencia bancaria, cheque o tarjeta.
+   Efectivo, transferencia bancaria, cheque o tarjeta. También podés combinar efectivo, transferencias y cheques en un solo pago: agregá los medios, indicá el importe de cada uno y seleccioná la caja, la cuenta y los cheques que correspondan. La suma debe cubrir el neto después de retenciones. Las tarjetas y los gastos bancarios detallados se registran por separado.
 
    Si elegís varios cheques, el formulario conserva el orden de selección.
 
 4. **Aplicá a los documentos**
 
-   Seleccioná las facturas de compra pendientes y el **importe aplicado**.
+   Buscá por número, referencia, proveedor o tipo de documento. Usá las pestañas para filtrar por tipo y **Seleccionados** para revisar lo que ya agregaste. Elegí las facturas de compra o vales pendientes y el **importe aplicado**. Para un vale, el pago debe usar la misma moneda del documento.
 
 5. **Revisá las retenciones**
 
@@ -53,9 +53,17 @@ import { Steps } from '@astrojs/starlight/components'
 
 </Steps>
 
+## Atajos de teclado
+
+- En el listado **Tesorería → Pagos**, `Alt + N` abre un nuevo pago/cobro si tenés permiso para crearlo.
+- En las pantallas de crear o editar un borrador, `Ctrl + S` guarda y `Esc` cancela desde cualquier parte de la página. Si hay un diálogo, menú o selector abierto, `Esc` lo cierra primero.
+- En el detalle de un pago, `Alt + C` abre **Confirmar** (borrador), `Alt + P` abre **Marcar pagado** (confirmado), `Alt + R` abre **Rechazar** (confirmado) y `Alt + A` abre **Anular** (confirmado o pagado). Se muestran según el estado y tus permisos. Si cambiaste la fecha, guardá el borrador antes de confirmar. Los atajos no actúan mientras escribís en un campo o hay un diálogo o selector abierto.
+
 ## Confirmar el pago
 
-Al confirmar, se actualiza la **cuenta corriente del proveedor** y el **saldo** de las facturas aplicadas.
+Las **remuneraciones por trabajo de socios** se pagan con el mismo circuito que los vales de empleados: se selecciona el documento pendiente y el pago reduce el saldo de RRHH por el importe aplicado. Los retiros de aportes se registran directamente desde RRHH y están limitados a los aportes disponibles del socio.
+
+Al confirmar, se actualiza la **cuenta corriente** y el **saldo** de los documentos aplicados. Cuando se paga un vale de empleado, también se reduce el saldo de su cuenta RRHH por el importe aplicado; un pago parcial deja el resto pendiente. Si se revierte el pago, el importe vuelve a quedar pendiente. El movimiento de caja o banco se registra una sola vez desde Tesorería.
 
 ## Consultar pagos y documentos aplicados
 
@@ -63,7 +71,7 @@ En **Tesorería → Pagos** (`/erp/treasury/payments`), la tabla permite filtrar
 
 ## Editar un pago
 
-Mientras el pago esté en **Borrador**, podés editar sus datos, incluida la **fecha**, desde el campo o el calendario. En la pantalla de edición hay dos acciones distintas: **Guardar borrador** persiste los cambios; **Confirmar** aplica el pago usando los datos ya guardados. Si modificaste la fecha, primero hacé clic en **Guardar borrador**: el sistema no permite confirmar hasta que guardes esa fecha. Al confirmar, los datos quedan de solo lectura porque afectan los movimientos de tesorería y la cuenta corriente. Si necesitás corregir una operación ya procesada, revertí/anulá el movimiento y registralo nuevamente con la fecha correcta.
+Mientras el pago esté en **Borrador**, podés editar sus datos, incluida la **fecha**. Al confirmar, la fecha, el medio y los documentos aplicados quedan de solo lectura. Un usuario OWNER/ADMIN o con `payments.update` puede ajustar las **retenciones** y la **cuenta contable** de pagos confirmados o pagados por efectivo o transferencia, incluidos los **Gastos varios**. Si un gasto todavía no tiene proveedor o entidad, se puede asociar desde esta sección para habilitar las retenciones y reflejarlas en su cuenta corriente; el tercero asociado no se puede reemplazar después. El importe bruto aplicado a cada factura se conserva; el sistema actualiza el importe neto del pago y el movimiento original de caja o banco, y recalcula sus saldos y la cuenta corriente. No agrega un movimiento separado de ajuste ni modifica el total de la factura. El sistema no crea asientos de mayor automáticamente. Las retenciones con certificado, remesa o imputación fiscal activa quedan protegidas y deben regularizarse primero desde su circuito fiscal.
 
 ## Reglas y validaciones
 
@@ -76,7 +84,7 @@ Mientras el pago esté en **Borrador**, podés editar sus datos, incluida la **f
 
 | Mensaje / síntoma | Causa | Solución |
 |---|---|---|
-| La factura no aparece para pagar | No está confirmada o ya está saldada. | Verificá su estado y saldo. |
+| La factura o el vale no aparece para pagar | No está confirmado o ya está saldado. | Verificá su estado y saldo. Los vales se pagan desde que están confirmados. |
 | No puedo pagar en efectivo | No hay caja abierta. | Abrí una sesión de caja. |
 | No se sugieren retenciones | Falta configuración o el medio no las genera. | Revisá [Reglas y alícuotas](/configuracion/impuestos/reglas-y-alicuotas/). |
 

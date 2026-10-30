@@ -74,7 +74,11 @@ Solo los usuarios con rol **OWNER** o **ADMIN** pueden editar; el resto ve el fo
 
 ## Seleccionar o cambiar de empresa
 
-Si el usuario pertenece a más de una empresa, desde **Seleccionar empresa** (`/select-company`) puede elegir con qué empresa trabajar. La empresa activa define qué datos, documentos y permisos se muestran en todo el sistema.
+Si el usuario pertenece a más de una empresa, desde **Seleccionar empresa** (`/select-company`) o el selector del menú puede elegir con qué empresa trabajar. En direcciones compartidas, la selección se conserva al recargar; al ingresar por el subdominio de una empresa, se activa esa empresa. No es necesario borrar la caché del navegador para cambiar entre empresas. Si se muestra la pantalla de selección, elegí una empresa disponible; puede ocurrir al iniciar sesión sin un contexto anterior válido. Al cambiar, el sistema vuelve a cargar el espacio de trabajo para iniciar con los datos, documentos y permisos de la empresa elegida. Los formularios y operaciones de la empresa anterior no se continúan en la nueva.
+
+Antes de registrar pagos, documentos, movimientos de caja/banco o cambios de stock, verificá el nombre de la empresa activa en el selector del menú. Cada empresa trabaja con sus propios registros; los datos de otra empresa no deben usarse en la operación actual.
+
+Para trabajar con dos empresas en paralelo, abrí cada una en una pestaña usando su propio subdominio. Si ambas pestañas usan un host compartido, la selección de empresa también se comparte y no sirve como contexto independiente por pestaña.
 
 ## Estados y reglas de negocio
 

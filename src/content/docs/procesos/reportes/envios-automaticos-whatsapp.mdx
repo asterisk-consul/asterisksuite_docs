@@ -1,0 +1,94 @@
+---
+title: Envíos automáticos por WhatsApp
+description: Configuración empresarial de reportes PDF semanales con OpenWA y ejecución desde un cron externo.
+---
+
+## Para qué sirve
+
+Un usuario **OWNER o ADMIN** puede configurar reportes semanales en **Configuración → Comunicaciones → Reportes por WhatsApp**. El consolidado y el informe de inventario pueden enviarse a grupos distintos. Ambos usan el alcance de empresas elegido y adjuntan un PDF de la semana completa anterior (lunes a domingo, hora de Argentina).
+
+La integración usa una sesión de [OpenWA](https://docs.open-wa.org/) compartida por la empresa. La API key queda en el backend y no se envía al navegador.
+
+## Configurar el backend
+
+Agregá estas variables al `.env` del backend, reiniciá el proceso y completá los valores de OpenWA:
+
+```dotenv
+WHATSAPP_REPORTS_ENABLED=false
+OPENWA_BASE_URL=https://whatsapp.asterisksuite.cloud
+OPENWA_API_KEY=
+OPENWA_SESSION_ID=
+OPENWA_MAX_REPORT_PDF_BYTES=15728640
+```
+
+- Usá una API key de OpenWA con permisos de operador o superiores y el **ID** de una sesión conectada.
+- `OPENWA_BASE_URL` admite el dominio de OpenWA; el backend agrega la ruta `/api`.
+- El límite predeterminado es 15 MiB por PDF para mantener acotado el envío codificado en base64. OpenWA también puede tener su propio límite de tamaño.
+- El `.env` también debe tener `DATABASE_URL_PUBLIC` y `DATABASE_URL_BASE` apuntando a tus bases locales; el reporte lee las bases tenant de forma secuencial.
+- Mantené la API key en el `.env` del backend. No la agregues a `NUXT_PUBLIC_*` ni al frontend.
+
+## Aplicar la migración
+
+La configuración y el historial se guardan en la base pública. Aplicá la migración una sola vez apuntando `DATABASE_URL_PUBLIC` a la base local correcta:
+
+```powershell
+cd asterisksuite_backend
+pnpm run migrate:whatsapp-reports:dev
+```
+
+En producción, después de desplegar el backend compilado, ejecutá una sola vez `pnpm run migrate:whatsapp-reports` dentro del contenedor de la aplicación. El comando requiere que exista la tabla pública `companies`. La migración es idempotente. No ejecutes el comando local con las variables apuntando a producción.
+
+## Seleccionar grupos y probar
+
+1. Iniciá el backend y el frontend local.
+2. Abrí **Configuración → Comunicaciones → Reportes por WhatsApp** como OWNER o ADMIN.
+3. Usá **Probar conexión y cargar grupos**. El número conectado debe ser miembro de los grupos de destino.
+4. Seleccioná las empresas y asigná un grupo al consolidado y, si se usará, otro al informe de inventario.
+5. Usá **Guardar y enviar mensaje de prueba** para confirmar el grupo con un texto.
+6. Usá **Guardar y enviar PDF de prueba** para generar y enviar al grupo el informe real de la última semana completa, con las empresas seleccionadas. El mensaje incluye un saludo, el nombre de la empresa —o la cantidad de empresas seleccionadas— y las fechas del período. La prueba no activa el cron y el PDF contiene datos operativos reales.
+7. Activá el envío semanal y guardá la configuración.
+
+Las pruebas manuales no se agregan al historial; allí aparecen las ejecuciones del cron.
+
+Cada empresa guarda su propia configuración en la base pública. El alcance puede incluir hasta 20 empresas a las que el usuario configurador esté asociado.
+
+## Ejecutar una vez en local
+
+Primero generá el backend y aplicá la migración. Luego podés generar el reporte sin enviarlo:
+
+```powershell
+cd asterisksuite_backend
+pnpm run whatsapp:weekly-reports:dev -- --dry-run --company-id UUID_DE_EMPRESA
+```
+
+La simulación genera los PDFs y muestra su tamaño, pero no llama a OpenWA ni escribe ejecuciones en el historial. Para enviar a los grupos guardados, omití `--dry-run` después de configurar las variables y activar la opción en la pantalla:
+
+```powershell
+pnpm run whatsapp:weekly-reports:dev -- --company-id UUID_DE_EMPRESA
+```
+
+Quitá `--company-id` para procesar todas las empresas activas configuradas. El comando termina al completar; no deja un scheduler residente dentro de NestJS.
+
+## Programar en un cron externo
+
+En Windows, configurá el Programador de tareas para ejecutar el comando semanalmente. Por ejemplo, todos los lunes a las 08:00 (hora de Argentina):
+
+- **Programa:** `C:\Windows\System32\cmd.exe`
+- **Argumentos:** `/c pnpm run whatsapp:weekly-reports:dev`
+- **Iniciar en:** `C:\proyectos\Asterisk_Suite\asterisksuite_backend`
+
+El proceso toma el `.env` de esa carpeta. Confirmá que apunte a la base local y que `WHATSAPP_REPORTS_ENABLED=true`.
+
+En Dokploy, agregá un **Scheduled Job** al despliegue del backend, con la periodicidad semanal deseada. El comando de producción es:
+
+```sh
+node dist/src/modules/erp/whatsapp-reports/run-weekly-reports.js
+```
+
+El job debe usar las mismas variables de entorno del backend y conectarse a la base pública compartida. No inicia otro servidor Nest ni mantiene todos los clientes Prisma abiertos: procesa las empresas una por una y el proceso termina al finalizar. La selección de empresas, grupos e informes queda persistida en la base pública, por lo que el job no requiere valores específicos por tenant.
+
+## Reintentos e historial
+
+El historial de la pantalla muestra hasta 20 ejecuciones. El sistema registra cada informe y período de forma única para evitar duplicados si el cron se ejecuta dos veces; una ejecución fallida se puede volver a intentar en la próxima ejecución. El período enviado siempre es la semana completa anterior.
+
+Si falla la carga de grupos, la pantalla muestra el código HTTP y el mensaje breve que devuelva OpenWA. Usá ese detalle para revisar el ID de la sesión y el alcance/permisos de la API key; no compartas la clave. Para fallos al enviar, revisá también que el número conectado pertenezca al grupo, el límite de tamaño y el error que aparece en el historial.

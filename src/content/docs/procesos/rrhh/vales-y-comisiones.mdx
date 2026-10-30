@@ -53,7 +53,15 @@ Los **vales** registran movimientos con empleados y socios (sueldos, adelantos, 
 
    El vale queda en **Borrador** y se puede **Confirmar** (o cancelar).
 
+   Al confirmar un vale de empleado o una **Remuneración por trabajo** de un socio, queda como saldo pendiente. Desde la fila del vale confirmado podés usar **Pagar** para abrir Tesorería con el documento ya seleccionado. El pago se registra desde allí eligiendo caja, banco u otro medio disponible.
+
 </Steps>
+
+## Anular un retiro de socio
+
+La tabla muestra la persona y su tipo (socio o empleado), la descripción, quién registró el vale y, para los movimientos de socios, la caja o banco afectado. La anulación se inicia desde **RRHH → Vales**, usando la acción de anular en el retiro. Si el retiro ya estaba confirmado, se revierte en una sola operación el saldo de la cuenta del socio, el documento interno y el efecto de tesorería. Para caja o banco se registra un movimiento inverso en la **misma cuenta utilizada al confirmar**; el movimiento original permanece en el historial y el vale queda visible con estado **Anulado**.
+
+Si el documento interno tiene pagos activos asociados, primero hay que anular esos pagos. En **Tesorería → Pagos y Cobros**, el registro original del vale anulado se consulta con **Mostrar anulados**; es de solo lectura y no vuelve a afectar el saldo.
 
 ## Comisiones
 
@@ -104,6 +112,12 @@ La pestaña **Devengadas y liquidación** muestra, para el período elegido:
 
 - El vale requiere **contraparte**, **tipo**, **monto**, **moneda** y **fecha**.
 - Un vale debe **confirmarse** para impactar la cuenta corriente.
+- Los vales pendientes de empleados aparecen entre los documentos para pagar en Tesorería. El vale aumenta el saldo de la cuenta RRHH y cada pago aplicado lo reduce por el importe aplicado; si se paga parcialmente, el resto continúa pendiente. Al revertir el pago, el saldo y el estado pendiente se restauran.
+- La salida de caja o banco se registra una sola vez al confirmar el pago en Tesorería. Los aportes, retiros, reembolsos y préstamos de socios se registran directamente en caja/banco al confirmarse. Las remuneraciones del socio se pagan desde Tesorería.
+- El retiro de aportes de un socio no puede superar sus aportes disponibles en la misma moneda. No se puede anular un aporte si deja retiros sin respaldo. Ver [Aportes, retiros y remuneraciones](/procesos/rrhh/socios/#aportes-retiros-y-remuneraciones).
+- No se puede anular un vale con pagos asociados activos. Primero anulá o revertí esos pagos; cuando todos estén anulados o revertidos, se podrá anular el vale.
+- En **RRHH → Cuentas corrientes**, el historial identifica los movimientos como **Vale empleado**, **Retiro**, **Aporte**, **Reembolso**, **Préstamo** o **Vale socio**, según la persona y el concepto. Los vales confirmados pendientes llevan la indicación **A pagar**; los ya pagados conservan el nombre del vale sin esa indicación. También muestra su estado y la caja o banco desde donde se pagaron. Los gráficos y la exportación usan los mismos conceptos; los importes y gráficos usan la moneda propia de la cuenta y las anulaciones aparecen como movimientos de reversión.
+- El historial de cuentas corrientes de RRHH abre con los movimientos más recientes arriba. Si comparten fecha, se muestra primero el registrado más recientemente. Se puede cambiar el orden desde la tabla; los saldos anterior y posterior conservan los valores de cada movimiento.
 - Para asignar vendedores se necesita `commissions.manage`; para liquidar, `commissions.settle`.
 - La **participación** de un documento debe sumar **100%** y los vendedores no pueden repetirse.
 - La **regla** inicial (Facturar/Cobrar) y la **comisión %** se toman de la ficha del empleado, y se pueden ajustar por documento.

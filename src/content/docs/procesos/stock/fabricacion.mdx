@@ -9,7 +9,9 @@ import { Steps } from '@astrojs/starlight/components'
 
 ## Para qué sirve
 
-Registra una **fabricación**: a partir de la **lista de materiales (BOM)** de un producto compuesto, **descuenta los insumos** y **ingresa el producto terminado** al depósito. Se ejecuta en **Fabricación → Fabricar** (`/fabricacion/fabricar`) y su historial está en **Fabricación → Historial** (`/fabricacion/historial`).
+Registra una **fabricación**: a partir de la **lista de materiales (BOM)** de un producto compuesto, **descuenta los insumos** y **ingresa el producto terminado** al depósito. Se ejecuta en **Stock → Fabricación → Fabricar** (`/fabricacion/fabricar`) y su historial está en **Stock → Fabricación → Historial** (`/fabricacion/historial`).
+
+La portada de **Fabricación** (`/fabricacion`) resume las fabricaciones registradas y las unidades ingresadas, tanto históricamente como en los últimos 30 días. También muestra las últimas operaciones cuando el usuario tiene permiso para consultar el historial. Los indicadores se calculan desde los movimientos reales de ingreso por fabricación.
 
 ## Permisos necesarios
 
@@ -31,7 +33,7 @@ Registra una **fabricación**: a partir de la **lista de materiales (BOM)** de u
 
 1. **Abrí Fabricar**
 
-   Ir a **Fabricación → Fabricar**.
+   Ir a **Stock → Fabricación → Fabricar**.
 
 2. **Elegí el producto**
 

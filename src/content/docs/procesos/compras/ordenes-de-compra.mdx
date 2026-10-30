@@ -11,6 +11,10 @@ import { Steps } from '@astrojs/starlight/components'
 
 La **Orden de Compra (OC)** es la solicitud de mercadería al proveedor. Se administra en **Compras → Órdenes de Compra** (`/erp/purchases/orders`) y se crea en **Nueva Orden de Compra** (`/erp/purchases/orders/new`).
 
+En el listado, el interruptor **Mostrar anuladas** permite incluir o esconder las órdenes anuladas. Si elegís ese estado, se muestran automáticamente.
+
+La información de recepción de la OC se completa en un bloque plegable. En la tabla, el filtro avanzado de **Estado** permite seleccionar *Borrador*, *Pendiente*, *Confirmada* o *Anulada* por su nombre.
+
 ## Permisos necesarios
 
 :::note[Permisos necesarios]
@@ -21,6 +25,7 @@ La **Orden de Compra (OC)** es la solicitud de mercadería al proveedor. Se admi
 ## Configuración previa
 
 - El **proveedor** debe existir (Contrapartes).
+- En el selector, escribí al menos **2 caracteres** para buscar en toda la lista por nombre, razón social o CUIT; no hace falta recorrer la lista completa.
 - Los **productos** deben tener precio de compra/costo.
 - Debe existir un **tipo de documento** de categoría Orden (compra) y su **secuencia**.
 
@@ -38,9 +43,11 @@ La **Orden de Compra (OC)** es la solicitud de mercadería al proveedor. Se admi
 
 3. **Agregá los productos**
 
-   Ítems con producto, cantidad y precio.
+   Ítems con producto, cantidad y precio. El selector muestra el código y nombre del producto; el precio y la cantidad se editan directamente en cada renglón. Podés usar **F2** para abrir el selector, recorrer los campos con **Tab**, agregar el producto con **Ctrl + Enter** y guardar con **Ctrl + S**.
 
 4. **Completá la información de recepción**
+
+   La información de recepción aparece entre los datos generales y el detalle de productos para tenerla a mano durante la carga.
 
    - **Prioridad**: Baja, Media, Alta o Urgente.
    - **Fecha estimada de entrega**.
@@ -49,7 +56,7 @@ La **Orden de Compra (OC)** es la solicitud de mercadería al proveedor. Se admi
 
 5. **Guardá**
 
-   Presionar **Guardar Orden de Compra**. La OC se crea en estado **Borrador**.
+   Presionar **Guardar Orden de Compra** o usar **Ctrl + S**. La OC se crea en estado **Borrador**.
 
 </Steps>
 
@@ -68,6 +75,8 @@ Desde la OC se puede **Confirmar**, **Anular** y generar los documentos siguient
 ## Reglas y validaciones
 
 - La OC debe tener **proveedor** y al menos un **ítem**.
+- El formulario indica qué dato falta antes de guardar; revisá proveedor, tipo, fecha, punto de venta si hay varias opciones y cantidades mayores que cero.
+- Si aparece un error inesperado del servidor, verificá si la orden quedó creada antes de volver a intentar.
 - La **secuencia** define el número del documento.
 - Una OC confirmada no se edita; se avanza de estado o se anula.
 - La factura solo puede originarse en una OC **confirmada y activa**: *La orden de compra debe estar confirmada y activa*.

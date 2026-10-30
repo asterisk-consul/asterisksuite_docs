@@ -1,0 +1,33 @@
+---
+title: Conceptos comerciales reutilizables
+description: Configurar plantillas de descuentos y bonificaciones para facturas de venta y compra.
+sidebar:
+  order: 3
+---
+
+## Para qué sirven
+
+El catálogo permite reutilizar nombres y valores predeterminados de descuentos o bonificaciones sin crear productos ficticios ni convertirlos en impuestos. Cada empresa mantiene su propio catálogo.
+
+## Dónde configurarlos
+
+Abrí **Configuración → Documentos → Conceptos comerciales**. También se puede llegar desde el Centro de configuración, en el grupo **Documentos**. Para consultar y elegir plantillas hace falta el permiso **Ver conceptos comerciales reutilizables**. Para crear se necesita **Crear conceptos comerciales reutilizables**; para cambiar o activar/desactivar se necesita **Editar conceptos comerciales reutilizables**.
+
+Al crear cada plantilla, definí:
+
+- **Nombre** y una descripción opcional.
+- Si está disponible para **ventas**, **compras** o **ambas**.
+- El tipo: **porcentaje** o **importe fijo**.
+- La base: **neto antes de impuestos** (recomendada) o **total con impuestos**.
+- Un valor sugerido opcional. Si es porcentaje, puede ir de 0,01 a 100. Un importe fijo se expresa en la moneda del comprobante y se permite modificarlo al cargarlo.
+- El orden en que se presenta dentro del selector de la factura.
+
+Se pueden desactivar las plantillas que ya no deban proponerse en nuevas facturas; no hace falta borrarlas.
+
+## Aplicarlas en una factura
+
+En una factura de venta o compra, dentro de **Descuentos y bonificaciones**, buscá una plantilla activa y presioná **Agregar**. Sus valores se copian al formulario, donde se pueden revisar y cambiar antes de guardar. Para casos puntuales, **Manual** permite cargar un concepto sin plantilla.
+
+El sistema aplica los conceptos seleccionados en el orden mostrado y recalcula bases, impuestos y total. La plantilla no se aplica sola: solo agregá descuentos que ya hayan sido otorgados al emitir. Un descuento por pronto pago condicionado no debe restarse antes de que se cumpla esa condición.
+
+Cada factura conserva una copia de los conceptos y de sus efectos calculados. Cambiar o desactivar una plantilla no modifica facturas anteriores. El uso actual está disponible para facturas de venta y compra; no para órdenes ni notas de crédito/débito.

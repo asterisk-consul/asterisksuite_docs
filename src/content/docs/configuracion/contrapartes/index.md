@@ -33,6 +33,8 @@ Consecuencias de tener varios roles:
 - La contraparte **aparece en las listas de cada rol** que tenga activo (clientes, proveedores, empleados, socios…).
 - Los módulos que filtran por tipo (ventas, compras, tesorería, RRHH) la muestran según el rol correspondiente.
 - Se mantiene **una sola ficha** (un solo CUIT/identificación) compartiendo direcciones, contactos y cuentas.
+- El listado general muestra todos los tipos; los listados de Clientes, Proveedores y RRHH muestran solo su tipo o rol activo. El mismo CUIT/CUIL/documento no se puede duplicar entre esas altas.
+- Los entes impositivos, como ARCA, se identifican por su nombre y no requieren cargar CUIT o documento en la ficha.
 
 ## Datos generales
 

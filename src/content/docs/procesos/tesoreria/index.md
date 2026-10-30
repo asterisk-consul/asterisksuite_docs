@@ -9,12 +9,15 @@ sidebar:
 
 **Tesorería** administra el dinero de la empresa: cajas (efectivo), cuentas bancarias, cheques, tarjetas, inversiones y cuentas corrientes. Incluye el registro de **pagos y cobros**.
 
+Los movimientos de caja o banco originados al confirmar vales de socios también aparecen en **Pagos y Cobros**. Los vales anulados se consultan activando **Mostrar anulados**; su fila conserva el registro original y permite ver el medio y la cuenta afectados, sin repetir el movimiento de reversión.
+
 ## Componentes
 
 | Componente | Para qué |
 |---|---|
 | **Cajas** | Movimientos de efectivo por caja y sesión, con ingresos y egresos manuales auditables. |
 | **Bancos** | Cuentas bancarias propias, movimientos y gastos bancarios. |
+| **Transferencias** | Envíos entre cajas y bancos, con seguimiento del origen y destino. |
 | **Cheques** | Cheques emitidos y recibidos; al depositar o cobrar se elige banco o caja y todo queda con movimientos vinculados. |
 | **Tarjetas** | Tarjetas corporativas, cobros y liquidaciones. |
 | **Cuentas corrientes** | Saldos por cliente y proveedor. |
@@ -26,6 +29,7 @@ sidebar:
 
 - [Cajas](/procesos/tesoreria/cajas/)
 - [Bancos](/procesos/tesoreria/bancos/)
+- [Transferencias entre cajas y bancos](/procesos/tesoreria/transferencias/)
 - [Cheques](/procesos/tesoreria/cheques/)
 - [Tarjetas](/procesos/tesoreria/tarjetas/)
 - [Inversiones](/procesos/tesoreria/inversiones/)
@@ -33,6 +37,7 @@ sidebar:
 - [Cuentas corrientes](/procesos/tesoreria/cuentas-corrientes/)
 - [Reportes de tesorería](/procesos/tesoreria/reportes/)
 - [Capturas](/procesos/tesoreria/capturas/)
+- [Archivos adjuntos](/procesos/tesoreria/archivos-adjuntos/)
 
 ## Permisos necesarios
 

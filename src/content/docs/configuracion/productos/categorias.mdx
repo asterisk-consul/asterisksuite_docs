@@ -9,7 +9,7 @@ import { Steps } from '@astrojs/starlight/components'
 
 ## Para qué sirve
 
-Las **categorías** permiten organizar el catálogo de productos en una estructura **jerárquica** (categorías y subcategorías). La pantalla está en **Configuración → Productos → Categorías** (`/productos/settings/categorias`).
+Las **categorías** permiten organizar el catálogo de productos en una estructura **jerárquica** (categorías y subcategorías). Abrí **Stock → Categorías** en el menú (`/productos/settings/categorias`) para ver y administrar las existentes.
 
 ## Permisos necesarios
 
@@ -38,6 +38,10 @@ Para crear una **subcategoría**, usar el botón **+** sobre la categoría padre
 - **Editar**: presionar el ícono de edición de la categoría para cambiar su nombre.
 - **Mover / reordenar**: arrastrar y soltar la categoría dentro del árbol para cambiar su **categoría padre** o su posición entre hermanas. El cambio se guarda automáticamente.
 
+## Filtrar productos por categoría
+
+En **Stock → Productos** (`/productos`), usá el selector **Categoría** que aparece sobre la tabla para acotar el listado. El selector permite buscar por nombre y muestra la ruta de cada subcategoría (por ejemplo, `Ferretería › Tornillos`). Elegí **Todas las categorías** para quitar este filtro. También podés combinarlo con la búsqueda por nombre o SKU y con otros filtros de la tabla.
+
 ## Reglas y validaciones
 
 - El **nombre** es obligatorio.
@@ -48,7 +52,7 @@ Para crear una **subcategoría**, usar el botón **+** sobre la categoría padre
 ## Notas
 
 - Las categorías se asignan al producto **después** de crearlo (desde la pantalla del producto).
-- Un producto puede pertenecer a una categoría; usá la jerarquía para agrupar de forma general y específica.
+- Un producto puede pertenecer a una o varias categorías; usá la jerarquía para agrupar de forma general y específica.
 
 ## Problemas frecuentes
 

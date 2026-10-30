@@ -16,7 +16,18 @@ Reúne el control de **stock** por depósito, el análisis de **disponibilidad c
 - **Fabricación**: registro de producción, descuento de materiales e historial.
 - **Picking y pallets**: preparación y movimiento dentro del depósito (Logística).
 
-Los accesos de la portada muestran **conteos reales**: el badge de **Productos** refleja la cantidad de productos activos (el servidor devuelve además el de inactivos) sin descargar el catálogo completo, y se mantiene correcto aunque navegues listados paginados.
+## Portada de Stock
+
+La página **Stock** reúne los datos de consulta rápida y los accesos del menú lateral. Según los permisos de la persona, muestra:
+
+- Productos activos y cantidad total del catálogo.
+- Depósitos activos y cantidad total.
+- Productos que requieren reposición, separados entre críticos y para reponer.
+- Productos inventariables que todavía no tienen una política de reposición.
+
+El panel **Reposición prioritaria** presenta hasta cinco productos críticos o por debajo del punto de reposición, con su disponibilidad actual. Desde **Estado de reposición** se puede abrir el informe filtrado por cada estado. Los accesos se agrupan en **Catálogo** (productos, categorías, etiquetas, unidades, plantillas de costo y productos por contraparte) y **Operación** (depósitos, disponibilidad, reposición y fabricación); solo se muestran los destinos habilitados para los permisos de la persona.
+
+**Fabricación** está dentro del menú **Stock**. Sus opciones mantienen permisos independientes: consultar el resumen, ejecutar fabricaciones, consultar el historial y administrar los BOM requieren sus permisos de producción correspondientes.
 
 ## Páginas de esta sección
 

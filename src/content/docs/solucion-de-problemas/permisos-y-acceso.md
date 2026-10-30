@@ -41,6 +41,10 @@ Cada versión puede incorporar permisos nuevos (por ejemplo, los permisos para r
 
 **Solución**: ejecutá el seed de RBAC del backend (`pnpm run seed:rbac`, indicando el tenant de la empresa si corresponde) para incorporar los permisos nuevos al catálogo, y luego agregá esos permisos a los roles que los necesiten en **Roles y permisos**. Aunque el permiso exista en el catálogo, cada rol debe incluirlo explícitamente.
 
+### No puedo marcar un pago confirmado como pagado
+
+El rol de negocio debe tener el permiso **`payments.mark_as_paid`**. Si ya está asignado y el botón no aparece, recargá la pantalla para volver a consultar los permisos efectivos. La operación también valida el permiso en el backend.
+
 ## Ver también
 
 - [Usuarios, roles y permisos](/administracion/usuarios-roles-permisos/).

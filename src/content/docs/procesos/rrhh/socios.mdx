@@ -48,6 +48,28 @@ Los **socios** son los participantes de la empresa. Se administran en **RRHH →
 - Cada socio tiene **cuenta corriente** (`/erp/rrhh/current-accounts`).
 - Hay reportes de **socios**, **movimientos** y **saldos**.
 
+## Aportes, retiros y remuneraciones
+
+En **RRHH → Vales**, elegí **Socio** y el concepto según la operación:
+
+| Concepto | Cuándo usarlo | Efecto |
+|---|---|---|
+| **Aportar fondos** | El socio ingresa dinero a la empresa. | Aumenta los aportes disponibles y registra el ingreso en caja o banco al confirmar. |
+| **Retirar aportes** | Recupera parte de sus fondos aportados. | Reduce los aportes disponibles y registra la salida en caja o banco al confirmar. |
+| **Remuneración por trabajo** | Se reconoce un importe por su trabajo. | Genera un saldo pendiente que se paga desde Tesorería mediante **Pagar**. |
+| **Préstamo al socio** | Se le entrega dinero que deberá devolver. | Registra una salida independiente de sus aportes. |
+| **Reembolso** | Se le reintegra un gasto. | Registra una salida independiente de sus aportes. |
+
+El formulario muestra los aportes y retiros confirmados, el **disponible para retirar** y el saldo después del retiro. Las remuneraciones pendientes se muestran aparte, también en el detalle de la cuenta corriente.
+
+El disponible se calcula como **vales de aporte confirmados menos vales de retiro confirmados**, en la misma moneda. No combina ARS con USD ni utiliza automáticamente el dato de capital de la ficha del socio. Un retiro que supera el disponible se bloquea al confirmar, incluso si se inició desde un borrador o hay otra operación simultánea. Tampoco se puede anular un aporte si eso dejaría retiros sin respaldo.
+
+Los registros históricos se conservan. Si los retiros históricos superan los aportes registrados, el disponible es cero y se indica que deben revisarse los movimientos. La remuneración se paga en Tesorería y no consume ni aumenta los aportes disponibles.
+
+En el resumen de la cuenta del socio, un saldo negativo se muestra en rojo como **Saldo negativo del socio** y un saldo positivo en verde como **A favor del socio**. Las tarjetas **Reducciones de saldo** e **Incrementos de saldo** muestran los débitos y créditos con su efecto sobre esa cuenta. El detalle avisa cuando los retiros superan los aportes confirmados y distingue el caso en que no hay aportes registrados en esa moneda. Un aporte inicial faltante debe revisarse con el historial real antes de corregir los datos.
+
+El retiro reduce el saldo de aportes. Una remuneración por trabajo genera una deuda pendiente con el socio; su pago reduce esa deuda. El cambio de colores y textos no modifica importes ni incorpora aportes automáticamente.
+
 ## Reglas y consideraciones
 
 - El porcentaje de participación define la porción del socio.

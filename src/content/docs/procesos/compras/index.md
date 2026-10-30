@@ -39,9 +39,23 @@ El circuito es **lineal y trazable**: la factura de compra nace de la OC confirm
   - Factura de compra confirmada → **Crear NC** y **Crear ND**.
 - El backend **valida el circuito**: no se pueden saltar pasos (una factura exige OC confirmada; un remito exige factura confirmada) ni duplicar facturas o remitos activos para el mismo documento de origen.
 
-## Listado único de comprobantes
+## Resumen y listado de comprobantes
 
-En **Compras → Comprobantes** (`/erp/purchases`) se listan juntos órdenes, facturas, remitos y notas, con filtro por categoría y estado. Al abrir un registro, cada uno lleva a su **vista específica**: las órdenes a `/erp/purchases/orders/{id}`, los remitos a `/erp/purchases/remitos/{id}` y facturas y notas a `/erp/purchases/purchases-documents/{id}`.
+En **Compras → Resumen** (`/erp/purchases`) podés consultar la actividad de los últimos 7, 30 o 90 días: indicadores de facturas confirmadas, órdenes y remitos; un gráfico de líneas que compara por día facturas, notas de crédito/débito, órdenes y remitos de compra; e importe neto confirmado separado por moneda. Los importes consideran únicamente comprobantes confirmados e incluyen notas de crédito y débito; para revisar estados operativos y saldos, usá los módulos correspondientes.
+
+El listado único está en **Compras → Comprobantes** (`/erp/purchases/comprobantes`).
+
+En **Compras → Comprobantes** (`/erp/purchases/comprobantes`) se listan juntos órdenes, facturas, remitos y notas, con filtro por categoría y estado. Los enlaces anteriores con `?category=` siguen redirigiendo al listado filtrado. Al abrir un registro, cada uno lleva a su **vista específica**: las órdenes a `/erp/purchases/orders/{id}`, los remitos a `/erp/purchases/remitos/{id}` y facturas y notas a `/erp/purchases/purchases-documents/{id}`.
+
+En los listados de comprobantes, órdenes y remitos de compra, podés abrir cada documento haciendo clic en cualquier parte de su fila. Los botones y enlaces propios de la fila conservan su acción.
+
+Al abrir un comprobante y volver al listado se conservan la búsqueda, los filtros de tabla, el orden, la página y la posición de scroll. En los formularios, el buscador de proveedores permite encontrar registros antiguos por nombre, razón social, CUIT o correo.
+
+En la ficha de cada comprobante podés usar **Alt + M** para editar, **Alt + I** para imprimir y **Alt + C** para abrir la confirmación cuando la acción esté disponible. En las facturas con saldo pendiente, **Alt + P** abre el registro del pago. Al pasar el cursor o enfocar un botón, la ayuda muestra su atajo; confirmar siempre muestra primero el diálogo de revisión.
+
+La **referencia** cargada en el comprobante aparece destacada debajo de los datos principales de la ficha para identificarlo rápidamente.
+
+El botón **Crear nuevo comprobante** está disponible en el listado general y también en los listados de órdenes y remitos. Desde cualquiera de ellos se puede iniciar una orden de compra, factura, remito o nota de crédito/débito. El botón muestra **Alt + N**, que abre el menú. En el formulario, **F2** abre el selector de productos, **Tab** recorre los campos, **Ctrl + Enter** agrega el producto y **Ctrl + S** guarda. Las opciones se muestran según los permisos de creación del usuario.
 
 ## Páginas de esta sección
 

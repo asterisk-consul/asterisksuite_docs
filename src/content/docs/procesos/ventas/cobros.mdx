@@ -41,11 +41,13 @@ import { Steps } from '@astrojs/starlight/components'
    - **Cheque** (selecciona cheques disponibles).
    - **Tarjeta** (elige la tarjeta y el código de autorización).
 
+   También podés combinar efectivo, transferencias y cheques en un solo cobro. Agregá cada medio, indicá su importe y seleccioná la caja, la cuenta o los cheques correspondientes. La suma debe coincidir con el neto a cobrar después de retenciones. Las tarjetas se registran por separado.
+
    Si seleccionás varios cheques, el formulario conserva el orden elegido.
 
 4. **Aplicá a los documentos**
 
-   Seleccioná las facturas pendientes y el **importe aplicado** a cada una.
+   Buscá por número, referencia, cliente o tipo de documento. Usá las pestañas para filtrar por tipo y **Seleccionados** para revisar lo que ya agregaste. Elegí los comprobantes pendientes y el **importe aplicado** a cada uno.
 
 5. **Revisá las retenciones**
 
@@ -56,6 +58,12 @@ import { Steps } from '@astrojs/starlight/components'
    Mientras la operación está en curso, el formulario bloquea nuevos envíos para evitar registrar el cobro dos veces.
 
 </Steps>
+
+## Atajos de teclado
+
+- En el listado **Tesorería → Pagos**, `Alt + N` abre un nuevo pago/cobro si tenés permiso para crearlo.
+- En las pantallas de crear o editar un borrador, `Ctrl + S` guarda y `Esc` cancela desde cualquier parte de la página. Si hay un diálogo, menú o selector abierto, `Esc` lo cierra primero.
+- En el detalle de un cobro, `Alt + C` abre **Confirmar** (borrador), `Alt + P` abre **Marcar pagado** (confirmado), `Alt + R` abre **Rechazar** (confirmado) y `Alt + A` abre **Anular** (confirmado o pagado). Se muestran según el estado y tus permisos. Si cambiaste la fecha, guardá el borrador antes de confirmar. Los atajos no actúan mientras escribís en un campo o hay un diálogo o selector abierto.
 
 ## Confirmar el cobro
 
@@ -95,7 +103,7 @@ Si el proveedor acredita primero en su billetera (por ejemplo, Mercado Pago) y l
 
 ## Editar un cobro
 
-Mientras el cobro esté en **Borrador**, podés editar sus datos, incluida la **fecha**, desde el campo o el calendario. En la pantalla de edición hay dos acciones distintas: **Guardar borrador** persiste los cambios; **Confirmar** aplica el cobro usando los datos ya guardados. Si modificaste la fecha, primero hacé clic en **Guardar borrador**: el sistema no permite confirmar hasta que guardes esa fecha. Al confirmar, los datos quedan de solo lectura porque afectan los movimientos de tesorería y la cuenta corriente. Si necesitás corregir una operación ya procesada, revertí/anulá el movimiento y registralo nuevamente con la fecha correcta.
+Mientras el cobro esté en **Borrador**, podés editar sus datos, incluida la **fecha**. Al confirmar, la fecha, el medio y los documentos aplicados quedan de solo lectura. Un usuario OWNER/ADMIN o con `payments.update` puede ajustar las **retenciones** y la **cuenta contable** de cobros confirmados o pagados por efectivo o transferencia. El importe bruto aplicado a cada factura se conserva; el sistema actualiza el neto del cobro y el movimiento original de caja o banco, y recalcula sus saldos y la cuenta corriente, sin crear un movimiento separado de ajuste ni modificar el total de la factura. El sistema no crea asientos de mayor automáticamente. Las retenciones con certificado, remesa o imputación fiscal activa quedan protegidas y deben regularizarse primero desde su circuito fiscal.
 
 ## Reglas y validaciones
 

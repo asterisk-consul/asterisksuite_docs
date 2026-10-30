@@ -31,7 +31,7 @@ La **factura** es el comprobante fiscal de la venta. Se administra en **Ventas �
 
 1. **Partí de la OV o creá una nueva**
 
-   Desde la **OV** confirmada, usar **Crear Factura** (toma los ítems pendientes), o ir a **Nueva Factura**.
+   Desde la **OV** confirmada, usar **Crear Factura** (toma los ítems pendientes), o ir a **Nueva Factura**. Al generar la factura desde una OV, el sistema vuelve a calcular los impuestos con el tipo de factura y la configuración fiscal aplicable; no copia como definitivo el total de impuestos de la orden.
 
 2. **Completá los datos generales**
 
@@ -39,17 +39,25 @@ La **factura** es el comprobante fiscal de la venta. Se administra en **Ventas �
 
 3. **Agregá los productos**
 
-   Ítems con producto, cantidad y precio. Si el producto tiene **variantes**, elegí la **variante** (si hay una sola se selecciona sola).
+   Ítems con producto, cantidad y precio. El selector muestra el código y nombre del producto; el precio y la cantidad se editan directamente en cada renglón. Podés usar **F2** para abrir el selector, recorrer los campos con **Tab**, agregar el producto seleccionado con **Ctrl + Enter** y guardar con **Ctrl + S**. Si el producto tiene **variantes**, elegí la **variante** (si hay una sola se selecciona sola).
 
-4. **Revisá los impuestos**
+4. **Agregá bonificaciones si corresponden**
 
-   El sistema **calcula los impuestos** (IVA según la condición del emisor y del receptor) y muestra el detalle.
+   En **Descuentos y bonificaciones**, elegí una plantilla del catálogo y presioná **Agregar**, o usá **Manual** para un concepto puntual. La plantilla copia el nombre, tipo, base y valor sugerido; podés revisar y cambiar todo antes de guardar. Los porcentajes o importes fijos se calculan sobre el **neto antes de impuestos** (recomendado) o el total **con impuestos**. Podés cargar varios: se aplican en el orden mostrado. Solo aplicá descuentos ya concedidos; no uses este control para un pronto pago condicionado.
 
-5. **Guardá y confirmá**
+5. **Revisá los impuestos y el total**
 
-   Presionar **Guardar** y luego **Confirmar** para asignar número y CAE.
+   El sistema calcula los impuestos según la configuración fiscal del comprobante, los impuestos de los productos y la operación; revisá el desglose y el total.
+
+6. **Guardá y confirmá**
+
+   Presionar **Guardar** (o usar **Ctrl + S**) y luego **Confirmar** para asignar número y CAE.
 
 </Steps>
+
+El catálogo se configura por empresa en **Configuración → Documentos → Conceptos comerciales**. Para seleccionar plantillas necesitás el permiso **Ver conceptos comerciales reutilizables**; para crearlas o editarlas, **Crear** y **Editar conceptos comerciales reutilizables**. Se puede definir si una plantilla aplica a ventas, compras o ambas, su tipo y base, un valor sugerido opcional y su orden. No se aplica automáticamente: cada usuario elige qué conceptos fueron concedidos en esa factura.
+
+Cada factura guarda su propio snapshot de los conceptos aplicados. La vista y la impresión muestran el subtotal previo, cada bonificación, el subtotal neto, los impuestos recalculados y el total. En el detalle del documento y en la copia impresa también se muestran el porcentaje y el importe de la bonificación aplicada a cada ítem; el precio unitario neto y el total del renglón ya reflejan ese descuento. Si hubo pagos, la impresión indica además lo pagado y el saldo pendiente. Editar o desactivar una plantilla no cambia comprobantes existentes; la bonificación reduce el importe pendiente de la factura.
 
 Para las **notas de crédito/débito**, se selecciona el **documento de referencia** (la factura) y se ajustan los ítems.
 
@@ -82,6 +90,8 @@ Una vez confirmada no se edita; se ajusta con una **nota de crédito/débito** o
 ## Reglas y validaciones
 
 - La factura debe tener **cliente** y al menos un **ítem**.
+- El formulario identifica los campos faltantes o inválidos antes de enviar: cliente, tipo, fecha, punto de venta cuando hay varias opciones, factura de referencia para NC/ND y cantidades mayores que cero.
+- Los errores de validación del servidor se muestran junto al formulario como mensajes legibles; si ocurre un error inesperado, verificá el listado antes de reintentar.
 - El **IVA** se resuelve según **condición emisor × receptor**.
 - Si la factura es en **moneda extranjera**, debe existir la **cotización** vigente: si falta, el sistema muestra un error explícito en lugar de asumir un valor igual a uno.
 - La confirmación asigna **número** y **CAE**; el número anticipado es orientativo, la fuente de verdad es la serie.

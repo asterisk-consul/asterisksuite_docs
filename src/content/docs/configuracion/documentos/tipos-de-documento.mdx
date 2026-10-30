@@ -25,6 +25,7 @@ Se administran en **Tipos de Documento** (`/erp/settings/document-types`).
 - **Afecta libro de IVA**.
 - **Afecta pagos**.
 - **Calcula impuestos**.
+- **Acepta conceptos comerciales**: habilita descuentos o bonificaciones para este tipo de documento.
 - **Requiere CAE** y **Electrónico**.
 - **Activo**.
 - **Campos personalizados** (opcional): clave, etiqueta, tipo (Texto, Número, Fecha, Selección, Largo, Sí/No), requerido y placeholder.
@@ -57,6 +58,10 @@ Cuando el tipo tiene **categoría Orden** (orden de venta), el formulario muestr
 - La alerta aclara: **"OWNER, administradores y usuarios con sales.orders.view_amounts podrán ver los importes aun en estos estados."**
 
 Esto define qué estados ocultan importes en las OV (ver [Importes restringidos](/procesos/ventas/crear-orden-de-venta/#importes-restringidos)).
+
+## Conceptos comerciales y documentos vinculados
+
+Activá **Acepta conceptos comerciales** en cada tipo que deba permitir descuentos o bonificaciones. La opción se configura por separado para ventas y compras. Al crear un documento desde otro, los ajustes se copian como una instantánea independiente que puede editarse en el destino. En conversiones parciales, los importes fijos se prorratean según los ítems incluidos. Si el tipo de destino no acepta conceptos, el sistema rechaza la transferencia para evitar que se pierdan sin aviso.
 
 ## Reglas y validaciones
 

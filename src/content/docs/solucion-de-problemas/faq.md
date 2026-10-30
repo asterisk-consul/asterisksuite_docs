@@ -11,7 +11,7 @@ sidebar:
 Sí. Un usuario puede ser **OWNER de hasta 3 empresas**; cada empresa tiene su propia base de datos y datos aislados.
 
 **¿Cómo cambio de empresa?**
-Desde **Seleccionar empresa** (`/select-company`). La empresa activa define qué datos se muestran.
+Desde el selector del menú o **Seleccionar empresa** (`/select-company`). La empresa activa define qué datos se muestran; en una dirección compartida como `dev` se recuerda la última empresa elegida, mientras que en el subdominio propio se activa esa empresa. Entrar a `dev` no selecciona una empresa llamada “dev”; usá el selector para cambiar entre empresas. No hace falta borrar la caché. Si llegás a `/select-company`, seleccioná una de las empresas disponibles para fijar el contexto.
 
 ## Productos y precios
 

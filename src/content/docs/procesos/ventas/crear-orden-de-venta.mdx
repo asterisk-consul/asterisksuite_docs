@@ -13,6 +13,8 @@ La **Orden de Venta (OV)** es el compromiso de venta al cliente. Dispara la prep
 
 Se administran en **Ventas → Órdenes de Venta** (`/erp/orders`) y se crean en **Nueva OV** (`/erp/sales/new?category=ORDER`).
 
+En el listado, el interruptor **Mostrar cancelados** permite incluir o esconder las órdenes canceladas. Si elegís ese estado, se muestran automáticamente.
+
 ## Permisos necesarios
 
 :::note[Permisos necesarios]
@@ -24,8 +26,10 @@ Se administran en **Ventas → Órdenes de Venta** (`/erp/orders`) y se crean en
 ## Configuración previa
 
 - El **cliente** debe existir (Contrapartes).
+- En el selector, escribí al menos **2 caracteres** para buscar en toda la lista por nombre, razón social o CUIT; no hace falta recorrer la lista completa.
 - Los **productos** deben tener precio para la moneda.
 - Debe existir un **tipo de documento** de categoría Orden y su **secuencia** (punto de venta).
+- Si una serie de OV está configurada como **Mostrar la OV en neto**, solo esa secuencia no suma IVA al total de la orden. La factura posterior calcula sus impuestos normalmente según su tipo y configuración fiscal.
 - Opcionalmente, un **depósito** y **empleados marcados como vendedores** (se usan en la bandeja de comisiones).
 - En [Circuito de ventas](/procesos/ventas/circuito-de-ventas/) podés definir un **responsable sugerido** y si se **exige** asignarlo al confirmar.
 - Si el producto tiene **variantes**, cada ítem debe indicar una variante activa (ver [Variantes de producto](/configuracion/productos/variantes/)).
@@ -43,13 +47,15 @@ Se administran en **Ventas → Órdenes de Venta** (`/erp/orders`) y se crean en
 
    - **Cliente** (se puede crear uno nuevo desde el mismo formulario).
    - **Fecha**, **moneda**, **descripción** y **referencia**.
-   - Tipo de documento y punto de venta/secuencia.
+   - Tipo de documento y punto de venta/secuencia. Si la serie seleccionada está configurada para mostrar la OV en neto, el formulario lo indica junto al punto de venta.
 
 3. **Agregá los productos**
 
-   Agregar ítems indicando producto, cantidad y precio. Si el producto tiene **variantes**, elegí la **variante** en cada ítem (cuando hay una sola se selecciona sola) y, según el producto, el **depósito**.
+   Agregar ítems indicando producto, cantidad y precio. El selector muestra el código y nombre del producto; el precio y la cantidad se editan directamente en cada renglón. Si el producto tiene **variantes**, elegí la **variante** en cada ítem (cuando hay una sola se selecciona sola) y, según el producto, el **depósito**. Podés usar **F2** para abrir el selector, recorrer los campos con **Tab**, agregar el producto con **Ctrl + Enter** y guardar el documento con **Ctrl + S**.
 
 4. **Completá la información de entrega**
+
+   La información de entrega aparece entre los datos generales y el detalle de productos en un bloque plegable. Se abre automáticamente si la OV ya tiene datos guardados; también podés desplegarlo para completar dirección, contacto, transporte o fecha comprometida.
 
    - **Prioridad**: Baja, Media, Alta o Urgente.
    - **Fecha comprometida**.
@@ -62,7 +68,7 @@ Se administran en **Ventas → Órdenes de Venta** (`/erp/orders`) y se crean en
 
 6. **Guardá**
 
-   Presionar **Guardar Orden de Venta**. La OV se crea en estado **Borrador**.
+   Presionar **Guardar Orden de Venta** o usar **Ctrl + S**. La OV se crea en estado **Borrador**.
 
 </Steps>
 
@@ -89,7 +95,9 @@ La OV se edita con el botón **Editar** del detalle (`/erp/sales/{id}/edit`), di
 | 7 | **Cerrada** | Cerrada definitivamente. |
 | 8 | **Cancelada** | Cancelada. |
 
-En los **listados**, las OV confirmadas muestran además **estados comerciales derivados** según el avance real: *En preparación*, *Lista para despacho* y *Remito pendiente*.
+En los **listados** se muestra una sola etiqueta operativa: *En preparación* mientras falten condiciones del circuito, *Lista para despacho* cuando ya se pueda generar el remito y *Remito pendiente* cuando ya se generó y falta completarlo. El filtro **Estado** usa esa misma situación operativa: por ejemplo, una OV que todavía conserva el estado documental *En preparación* pero ya cumple las condiciones aparece al filtrar *Lista para despacho*.
+
+En la tabla, el filtro avanzado de la columna **Estado** permite elegir el nombre del estado (por ejemplo, *Borrador* o *Entregada*); no hace falta conocer su código interno.
 
 ## Confirmar y avanzar
 
@@ -110,12 +118,15 @@ Cada **tipo de documento** de OV define en qué estados los **precios, totales y
 ## Acciones relacionadas
 
 - **Crear Orden de Despacho** (disponible desde estados aprobados): genera la orden de despacho para planificar el viaje y luego el remito.
+- **Crear remito**: cuando la OV cumple las condiciones de entrega y todavía no tiene un remito asociado, se puede generarlo desde **Más → Crear remito**. Si ya existe un remito pendiente, el mismo menú permite abrirlo para completarlo.
 - **Crear Factura**: desde la OV se puede generar la factura con los ítems pendientes de facturar.
 - **Cobro**: desde el listado, generar el cobro de una OV facturada.
 
 ## Reglas y validaciones
 
 - La OV debe tener **cliente** y al menos un **ítem**.
+- Antes de guardar, el formulario señala los datos faltantes o inválidos; elegí el tipo, fecha y punto de venta cuando corresponda, y verificá que las cantidades sean mayores que cero.
+- Si el servidor rechaza el comprobante, el aviso muestra el detalle disponible. Ante un error inesperado, verificá el listado antes de reintentar para evitar duplicados.
 - La **secuencia** define el número del documento.
 - Un producto con **variantes** exige una variante activa en cada ítem.
 - Confirmar puede requerir **stock suficiente** según la política configurada.

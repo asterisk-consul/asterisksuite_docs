@@ -21,6 +21,7 @@ La **factura de compra** registra el comprobante del proveedor y es el eslabón 
 ## Configuración previa
 
 - El **proveedor** debe existir.
+- En el selector, escribí al menos **2 caracteres** para buscar en toda la lista por nombre, razón social o CUIT; no hace falta recorrer la lista completa.
 - **Tipo de documento** de categoría Factura (compra) y su **secuencia**.
 - **Impuestos** y **categorías fiscales** configurados (para el cálculo de IVA de compra).
 - Para originarla desde el circuito: la **OC de origen confirmada y activa**.
@@ -39,13 +40,17 @@ La **factura de compra** registra el comprobante del proveedor y es el eslabón 
 
 3. **Agregá los productos**
 
-   Ítems con producto, cantidad y precio.
+   Ítems con producto, cantidad y precio. En compras podés editar cantidad, precio unitario, bonificación porcentual o por importe y subtotal neto; los impuestos se calculan automáticamente y no se editan desde el renglón. Si ingresás una bonificación manual, determina el neto y recalcula los impuestos. También podés informar el **total de la factura del proveedor**: cualquier diferencia con el total calculado se muestra por separado, sin modificar los impuestos. Podés usar **F2** para abrir el selector, recorrer los campos con **Tab**, agregar un producto con **Ctrl + Enter** y guardar con **Ctrl + S**.
 
-4. **Revisá los impuestos**
+4. **Agregá bonificaciones si corresponden**
+
+   En **Descuentos y bonificaciones**, elegí una plantilla del catálogo y presioná **Agregar**, o usá **Manual** para un concepto puntual. La plantilla copia el nombre, tipo, base y valor sugerido; podés revisar y cambiar todo antes de guardar. Los porcentajes o importes fijos se calculan sobre el **neto antes de impuestos** (recomendado) o el total **con impuestos**. Podés cargar varios: se aplican en el orden mostrado y los importes fijos se conservan exactos al distribuirlos entre los renglones. En compras, las bonificaciones y los netos manuales por producto se conservan y se aplican antes de los conceptos. Mientras haya conceptos activos, esos importes quedan bloqueados para evitar cambios accidentales; la pantalla explica cómo volver a editarlos. Solo aplicá descuentos ya concedidos; no uses este control para un pronto pago condicionado.
+
+5. **Revisá los impuestos y el total**
 
    El sistema calcula los **impuestos** y el total.
 
-5. **Guardá y confirmá**
+6. **Guardá y confirmá**
 
    Al confirmar, el comprobante actualiza la **cuenta corriente del proveedor** (cuenta por pagar) y queda disponible para su **pago**.
 
@@ -54,6 +59,10 @@ La **factura de compra** registra el comprobante del proveedor y es el eslabón 
    Con la factura confirmada aparece **Crear remito** (o **Ver remito** si ya existe) para recepcionar la mercadería.
 
 </Steps>
+
+El catálogo se configura por empresa en **Configuración → Documentos → Conceptos comerciales**. Para seleccionar plantillas necesitás el permiso **Ver conceptos comerciales reutilizables**; para crearlas o editarlas, **Crear** y **Editar conceptos comerciales reutilizables**. Se puede definir si una plantilla aplica a ventas, compras o ambas, su tipo y base, un valor sugerido opcional y su orden. No se aplica automáticamente: elegí qué descuentos fueron concedidos en el comprobante.
+
+Cada factura guarda su propio snapshot de los conceptos aplicados. La vista y la impresión muestran el subtotal previo, cada bonificación, el subtotal neto, los impuestos recalculados y el total final. Si un ítem tiene una bonificación porcentual, la vista muestra el precio original, el precio unitario bonificado y el importe descontado. El subtotal del renglón se muestra sin impuestos y el total suma los impuestos una sola vez. Si hubo pagos, la impresión indica además lo pagado y el saldo pendiente. Editar o desactivar una plantilla no cambia comprobantes existentes.
 
 Para las **notas de crédito/débito** de compra, se selecciona el **documento de referencia** (la factura) y se ajustan los ítems.
 
@@ -79,6 +88,8 @@ Cada eslabón es un enlace a la vista específica del documento; si no tenés pe
 ## Reglas y validaciones
 
 - La factura debe tener **proveedor** y al menos un **ítem**.
+- El formulario identifica los campos faltantes o inválidos antes de enviar: proveedor, tipo, fecha, punto de venta cuando hay varias opciones, factura de referencia para NC/ND y cantidades mayores que cero.
+- Los errores de validación del servidor se muestran como mensajes legibles; si ocurre un error inesperado, verificá el listado antes de reintentar.
 - Si el comprobante es en **moneda extranjera**, debe existir la **cotización** vigente: si falta, el sistema muestra un error explícito en lugar de asumir un valor igual a uno.
 - La confirmación actualiza la **cuenta corriente**.
 - Los documentos confirmados no se editan; se ajustan con notas.

@@ -1,0 +1,40 @@
+---
+title: Transferencias entre cajas y bancos
+description: Registrar transferencias y adjuntar sus comprobantes en la empresa de origen.
+sidebar:
+  order: 2
+---
+
+import { Steps } from '@astrojs/starlight/components'
+
+## Para qué sirve
+
+Permite registrar el movimiento de fondos entre cajas y cuentas bancarias, tanto dentro de una empresa como entre empresas. La transferencia conserva el seguimiento del origen, el destino, el importe y su estado.
+
+## Cómo registrar una transferencia
+
+<Steps>
+
+1. Ir a **Tesorería → Transferencias** y elegir **Nueva transferencia**.
+2. Seleccionar el fondo de origen y el destino, indicar importe, moneda y los datos de referencia disponibles.
+3. Registrar la operación. Se abre el detalle de la transferencia pendiente con **Archivo del comprobante** desplegado para cargarlo en ese momento.
+4. Adjuntar una foto o un PDF antes de confirmar. En transferencias ya creadas, la sección aparece contraída y se despliega desde **Ver o adjuntar**.
+5. Revisar y confirmar la transferencia cuando corresponda.
+
+</Steps>
+
+## Quién puede ver los comprobantes
+
+Los comprobantes de una transferencia quedan asociados únicamente a la empresa de origen. Si la transferencia es entre empresas, el detalle en la empresa de destino informa que los archivos permanecen en origen; no se copian ni se exponen en la base de datos destino. Para verlos se necesitan los permisos **Ver transferencias** (`cash_box_transfers.read`) y **Ver archivos** (`media.read`).
+
+La carga y eliminación requieren **Subir archivos** (`media.upload`), **Crear transferencias** (`cash_box_transfers.create`) y acceso al fondo de origen cuando la empresa limita el acceso por caja o cuenta bancaria. La biblioteca general requiere **Ver archivos** (`media.read`). Los archivos admitidos en transferencias son imágenes (hasta 5 MB) y PDF (hasta 10 MB), con un máximo de 10 por transferencia.
+
+## Biblioteca de archivos
+
+La opción **Configuración → Archivos** permite buscar, ver y descargar los archivos adjuntos de la empresa seleccionada, junto con un enlace al documento o movimiento asociado cuando existe. La biblioteca respeta el aislamiento por empresa: no combina archivos de otros tenants.
+
+## Consideraciones
+
+- Crear la transferencia no confirma por sí solo la ejecución; el estado y las acciones del detalle indican el paso pendiente.
+- Los adjuntos pueden agregarse después de crear la transferencia.
+- El enlace de la biblioteca abre el detalle de la transferencia en la empresa donde se adjuntó el archivo.
