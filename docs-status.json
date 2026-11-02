@@ -1,11 +1,16 @@
 {
-  "documentedUpTo": "0.115.0-alpha",
-  "lastReview": "2026-10-30",
+  "documentedUpTo": "0.118.0-alpha",
+  "lastReview": "2026-11-02",
   "app": {
-    "version": "0.115.0-alpha",
-    "date": "2026-10-30"
+    "version": "0.118.1-alpha",
+    "date": "2026-11-02"
   },
   "pending": [],
-  "resolved": {},
+  "resolved": {
+    "0.118.1-alpha": {
+      "status": "skipped",
+      "note": "Correcciones de sesión y del encabezado; el acceso y la creación de planes ya están documentados en administración/planes-y-módulos."
+    }
+  },
   "notes": "Corte calculado el 2026-10-20 comparando los cambios de asterisksuite_frontend/versiones/versions.json contra el contenido de src/content/docs/: los módulos publicados hasta 0.71.0-alpha (inversiones, libro de movimientos bancarios, gastos bancarios, clientes internos, precancelación) están descriptos; de 0.72.0-alpha en adelante casi no hay rastro en los docs, con incorporaciones puntuales en 0.76.0-alpha (variantes) y 0.82.0-alpha (circuito de compras)."
 }

@@ -35,7 +35,6 @@ El panel **Reposición prioritaria** presenta hasta cinco productos críticos o 
 - [Reposición](/procesos/stock/reposicion/)
 - [Fabricación](/procesos/stock/fabricacion/)
 - [Picking y pallets](/procesos/stock/picking-y-pallets/)
-- [Combustible](/procesos/stock/combustible/)
 
 ## Permisos necesarios
 

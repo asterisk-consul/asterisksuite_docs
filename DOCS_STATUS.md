@@ -6,14 +6,23 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.115.0-alpha** (2026-10-30) |
-| Documentación al día hasta | **v0.115.0-alpha** |
-| Última revisión de docs | 2026-10-30 |
+| Última versión de la app | **v0.118.1-alpha** (2026-11-02) |
+| Documentación al día hasta | **v0.118.0-alpha** |
+| Última revisión de docs | 2026-11-02 |
 | Versiones pendientes de revisar | **0** |
 
 ## Pendientes
 
 ✅ La documentación cubre todas las versiones publicadas de la app.
+
+## Versiones resueltas sin actualizar docs
+
+### v0.118.1-alpha (2026-11-02) — sin cambios
+
+> Correcciones de sesión y del encabezado; el acceso y la creación de planes ya están documentados en administración/planes-y-módulos.
+
+- Incluir el rol global en la respuesta de sesión para mantener Planes y módulos visible al recargar
+- Mostrar Nuevo plan y otras acciones provistas por AppPageHeader
 
 ## Cómo actualizar este estado
 

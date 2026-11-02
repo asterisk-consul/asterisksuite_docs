@@ -11,6 +11,7 @@ Guías de administración del sistema: alta de empresas, gestión de usuarios, a
 
 - [Centro de configuración](/administracion/centro-de-configuracion/)
 - [Empresa](/administracion/empresa/)
+- [Planes y módulos por empresa](/administracion/planes-y-modulos/) — asignar áreas, estados y excepciones.
 - [Usuarios, roles y permisos](/administracion/usuarios-roles-permisos/) — modelo de acceso y gestión.
 - [Seguridad](/administracion/seguridad/) — cambio de contraseña.
 - [Notificaciones](/administracion/notificaciones/) — canales y avisos.

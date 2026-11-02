@@ -1,0 +1,25 @@
+---
+title: Ayuda contextual
+description: Consultar las guías del sistema desde cualquier pantalla.
+sidebar:
+  order: 5
+---
+
+## Abrir el asistente
+
+En la barra superior, junto a la campana, seleccioná **Preguntar a la ayuda**. El panel toma como contexto la pantalla abierta y muestra enlaces a las guías relacionadas. También podés elegir una pregunta sugerida o escribir una consulta.
+
+El asistente busca en las guías publicadas, muestra fragmentos relacionados y enlaza la página de origen para que puedas leer el procedimiento completo. Si no encuentra una coincidencia, ofrece la documentación de la sección actual.
+
+Al navegar a otra página, la conversación se reinicia y el asistente toma el contexto de la nueva pantalla. Así, las preguntas y respuestas anteriores no se mezclan con las guías de otra sección.
+
+## Alcance
+
+La versión actual sirve para localizar y consultar la documentación funcional. No ejecuta acciones, no consulta registros de la empresa y no modifica datos. Las respuestas se limitan al contenido publicado en el portal; si una guía no cubre el caso, revisá con el implementador y completá la documentación.
+
+El índice de búsqueda se genera desde el contenido del portal con `pnpm docs:help-index` en `asterisksuite-docs`. Regeneralo después de cambios en las guías para que el asistente encuentre la versión más reciente.
+
+## Ver también
+
+- [Notificaciones](/administracion/notificaciones/).
+- [Navegación general](/primeros-pasos/navegacion/).

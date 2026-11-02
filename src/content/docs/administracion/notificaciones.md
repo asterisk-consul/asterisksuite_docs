@@ -11,6 +11,8 @@ La campana de la barra superior reúne avisos dirigidos al usuario y alertas de 
 
 El descarte persistente requiere aplicar la migración `20261030_notification_dismissals` a cada base de datos de empresa.
 
+El botón **Preguntar a la ayuda**, junto a la campana, abre el asistente documental contextual. La campana concentra avisos; las preguntas sobre el uso del sistema se hacen desde el asistente. Consultá [Ayuda contextual](/administracion/ayuda-contextual/) para conocer su alcance.
+
 Las asignaciones generan un aviso con el nombre de quien asignó, el registro relacionado y un acceso directo. Actualmente se notifican las asignaciones de capturas, órdenes y tareas de mantenimiento, y pedidos de venta. Podés abrirlo, ocultarlo hasta mañana o eliminarlo definitivamente. **Ocultar avisos nuevos hasta mañana** aplica el mismo plazo a todas las notificaciones nuevas.
 
 ## Alertas de la empresa

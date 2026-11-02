@@ -10,7 +10,8 @@
     "preview": "astro preview",
     "docs:status": "node scripts/docs-status.mjs",
     "docs:report": "node scripts/docs-status.mjs report",
-    "docs:check": "node scripts/docs-status.mjs check"
+    "docs:check": "node scripts/docs-status.mjs check",
+    "docs:help-index": "node scripts/build-help-index.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.42.5",

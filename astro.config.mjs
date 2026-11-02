@@ -210,6 +210,7 @@ export default defineConfig({
             'administracion',
             'administracion/centro-de-configuracion',
             'administracion/empresa',
+            'administracion/planes-y-modulos',
             'administracion/seguridad',
             'administracion/conexiones-de-ia',
             'administracion/notificaciones',

@@ -59,7 +59,7 @@ Los **vales** registran movimientos con empleados y socios (sueldos, adelantos, 
 
 ## Anular un retiro de socio
 
-La tabla muestra la persona y su tipo (socio o empleado), la descripción, quién registró el vale y, para los movimientos de socios, la caja o banco afectado. La anulación se inicia desde **RRHH → Vales**, usando la acción de anular en el retiro. Si el retiro ya estaba confirmado, se revierte en una sola operación el saldo de la cuenta del socio, el documento interno y el efecto de tesorería. Para caja o banco se registra un movimiento inverso en la **misma cuenta utilizada al confirmar**; el movimiento original permanece en el historial y el vale queda visible con estado **Anulado**.
+La tabla muestra la persona y su tipo (socio o empleado), la descripción, quién registró el vale y, para los movimientos de socios, la caja o banco afectado. La anulación se inicia desde **RRHH → Vales**, usando la acción de anular en el retiro. Si el retiro ya estaba confirmado, se revierte en una sola operación el saldo de la cuenta del socio, el documento interno y el efecto de tesorería. Para caja o banco se registra un movimiento inverso en la **misma cuenta utilizada al confirmar**. El original y la reversión quedan disponibles mediante **Mostrar anulados**, pero no aparecen inicialmente en el historial operativo; el vale permanece visible con estado **Anulado**.
 
 Si el documento interno tiene pagos activos asociados, primero hay que anular esos pagos. En **Tesorería → Pagos y Cobros**, el registro original del vale anulado se consulta con **Mostrar anulados**; es de solo lectura y no vuelve a afectar el saldo.
 
