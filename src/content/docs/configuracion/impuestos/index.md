@@ -15,6 +15,7 @@ Reúne la configuración fiscal de la empresa: el catálogo de **impuestos**, el
 - **Configuración fiscal** — modo del motor, precios con IVA y país.
 - **Reglas y alícuotas** — percepción/retención por impuesto, sujeto, jurisdicción y vigencia.
 - **Autorizaciones fiscales** — CAI/CAE por tipo de documento y punto de venta.
+- **Conexión con ARCA** — credenciales de homologación y prueba de acceso a WSAA/WSFE.
 
 ## Permisos necesarios
 
@@ -29,6 +30,7 @@ Reúne la configuración fiscal de la empresa: el catálogo de **impuestos**, el
 - [Configuración fiscal](/configuracion/impuestos/configuracion-fiscal/)
 - [Reglas y alícuotas](/configuracion/impuestos/reglas-y-alicuotas/)
 - [Autorizaciones fiscales](/configuracion/impuestos/autorizaciones-fiscales/)
+- [Conexión con ARCA (homologación)](/configuracion/impuestos/arca-homologacion/)
 - [Retenciones](/configuracion/impuestos/retenciones/)
 
 ## Ver también

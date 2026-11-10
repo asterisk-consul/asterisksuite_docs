@@ -11,6 +11,8 @@ import { Steps } from '@astrojs/starlight/components'
 
 La **factura** es el comprobante fiscal de la venta. Se administra en **Ventas → Facturas** y se crea en **Nueva Factura** (`/erp/sales/new?category=INVOICE`). Las **notas de crédito** y **débito** ajustan una factura ya emitida.
 
+Para crear una **nota de crédito o débito**, abrí una **factura confirmada** y elegí **Crear NC** o **Crear ND**. El cliente y la relación de origen se toman de esa factura. Si abriste la pantalla de nota sin partir de una factura, el sistema te indica cómo volver al listado. Al editar un borrador podés cambiar la factura de referencia; el cliente se actualiza automáticamente y el servidor valida que coincida.
+
 ## Permisos necesarios
 
 :::note[Permisos necesarios]
@@ -51,7 +53,7 @@ La **factura** es el comprobante fiscal de la venta. Se administra en **Ventas �
 
 6. **Guardá y confirmá**
 
-   Presionar **Guardar** (o usar **Ctrl + S**) y luego **Confirmar** para asignar número y CAE.
+   Presionar **Guardar** (o usar **Ctrl + S**) y luego **Confirmar** para asignar número y CAE. En la confirmación, los usuarios con permiso de actualización de precios pueden elegir si la factura también actualiza el precio general de sus productos en la moneda del comprobante. La opción está desmarcada por defecto; no modifica costos ni el precio acordado para ese cliente.
 
 </Steps>
 
@@ -59,7 +61,7 @@ El catálogo se configura por empresa en **Configuración → Documentos → Con
 
 Cada factura guarda su propio snapshot de los conceptos aplicados. La vista y la impresión muestran el subtotal previo, cada bonificación, el subtotal neto, los impuestos recalculados y el total. En el detalle del documento y en la copia impresa también se muestran el porcentaje y el importe de la bonificación aplicada a cada ítem; el precio unitario neto y el total del renglón ya reflejan ese descuento. Si hubo pagos, la impresión indica además lo pagado y el saldo pendiente. Editar o desactivar una plantilla no cambia comprobantes existentes; la bonificación reduce el importe pendiente de la factura.
 
-Para las **notas de crédito/débito**, se selecciona el **documento de referencia** (la factura) y se ajustan los ítems.
+Las **notas de crédito/débito** se inician desde una factura confirmada y se ajustan sus ítems; al editar un borrador, se puede cambiar la factura de referencia.
 
 ## Confirmar la factura
 
@@ -87,6 +89,8 @@ Una vez confirmada no se edita; se ajusta con una **nota de crédito/débito** o
 | 2 | **Confirmada** | Confirmada con CAE válido. |
 | 3 | **Anulada** | Anulada. |
 
+El estado **Confirmada** describe el ciclo documental y no significa que la factura esté cobrada. En el encabezado del detalle se muestra además **Cobrada**, **Cobro parcial** o **Pendiente de cobro**, según los cobros aplicados.
+
 ## Reglas y validaciones
 
 - La factura debe tener **cliente** y al menos un **ítem**.
@@ -95,8 +99,15 @@ Una vez confirmada no se edita; se ajusta con una **nota de crédito/débito** o
 - El **IVA** se resuelve según **condición emisor × receptor**.
 - Si la factura es en **moneda extranjera**, debe existir la **cotización** vigente: si falta, el sistema muestra un error explícito en lugar de asumir un valor igual a uno.
 - La confirmación asigna **número** y **CAE**; el número anticipado es orientativo, la fuente de verdad es la serie.
+- Actualizar el precio general requiere el permiso `product-prices.update`; se usa el precio unitario de cada renglón. Si no se marca la opción, la lista general no cambia.
 - Un producto con variantes exige una variante activa en cada ítem.
 - Los documentos confirmados no se editan.
+- Las NC y ND nuevas deben iniciarse desde una factura confirmada. Al editar un borrador, elegí otra referencia por número, referencia o cliente; el cliente se actualizará automáticamente.
+- Una NC/ND confirmada se puede **anular aunque esté vinculada a una factura**. La anulación revierte su efecto en la cuenta corriente y conserva el vínculo documental. Si tiene cobros activos, primero hay que anularlos.
+- Si el importe de una nota confirmada es incorrecto, anulala y creá otra desde la factura con los datos correctos. Un borrador sí puede editarse.
+- Una nota manual anulada, sin autorización fiscal, pagos ni efectos activos puede enviarse a la papelera y eliminarse definitivamente si supera las validaciones de seguridad. Se permite conservar su vínculo de origen con la factura durante ese proceso; las notas con autorización fiscal u otras relaciones que deban conservarse permanecen anuladas en la cadena.
+- Una factura con notas, remitos u otros comprobantes hijos no puede enviarse a la papelera ni purgarse, incluso si los hijos ya están en la papelera. No se elimina toda la cadena en cascada: primero se resuelve cada hijo por separado; la factura solo queda habilitada cuando ya no tiene documentos relacionados y también cumple sus propias validaciones.
+- En la papelera, un comprobante de venta **manual** solo puede eliminarse definitivamente si está en **Borrador** o **Anulado**, se cargó por error y no conserva autorización fiscal, pagos ni movimientos activos. Los asientos de cuenta corriente deben estar inactivos; al purgar, se eliminan sin modificar el saldo. El vínculo padre de una NC/ND es la única relación que se admite en este caso especial; otros hijos, pagos, movimientos y relaciones operativas mantienen el bloqueo.
 
 ## Problemas frecuentes
 

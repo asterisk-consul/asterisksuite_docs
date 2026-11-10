@@ -9,7 +9,7 @@ import { Steps } from '@astrojs/starlight/components'
 
 ## Para qué sirve
 
-Los **vales** registran movimientos con empleados y socios (sueldos, adelantos, extras, retiros, aportes, reintegros y préstamos). Las **comisiones** liquidan las ventas de los vendedores. Se administran en **RRHH → Vales** (`/erp/rrhh/vales`) y en **RRHH → Reportes → Comisiones** (`/erp/rrhh/commissions`).
+Los **vales** registran movimientos con empleados y socios (sueldos, adelantos, extras, retiros, aportes, reintegros y préstamos). La bandeja de **Comisiones** liquida las comisiones de vendedores y la participación societaria devengada sobre ventas. Se administran en **RRHH → Vales** (`/erp/rrhh/vales`) y en **RRHH → Reportes → Comisiones** (`/erp/rrhh/commissions`).
 
 ## Permisos necesarios
 
@@ -30,6 +30,8 @@ Los **vales** registran movimientos con empleados y socios (sueldos, adelantos, 
 | **Aporte** | Aporte del empleado/socio. |
 | **Reembolso** | Reintegro de gastos. |
 | **Préstamo** | Otorgamiento de préstamo. |
+
+Para una persona con perfil **Inversionista**, las opciones se limitan a **Aporte de fondos** y **Devolución de inversión**. La devolución usa el saldo de aportes disponibles.
 
 ## Datos de un vale
 
@@ -57,15 +59,21 @@ Los **vales** registran movimientos con empleados y socios (sueldos, adelantos, 
 
 </Steps>
 
+En **RRHH → Vales**, podés buscar en la tabla por número o persona. El panel **Filtros** permite seleccionar el tipo y el estado del vale.
+
 ## Anular un retiro de socio
 
-La tabla muestra la persona y su tipo (socio o empleado), la descripción, quién registró el vale y, para los movimientos de socios, la caja o banco afectado. La anulación se inicia desde **RRHH → Vales**, usando la acción de anular en el retiro. Si el retiro ya estaba confirmado, se revierte en una sola operación el saldo de la cuenta del socio, el documento interno y el efecto de tesorería. Para caja o banco se registra un movimiento inverso en la **misma cuenta utilizada al confirmar**. El original y la reversión quedan disponibles mediante **Mostrar anulados**, pero no aparecen inicialmente en el historial operativo; el vale permanece visible con estado **Anulado**.
+La tabla muestra la persona y su tipo (socio o empleado), la descripción, quién registró el vale y, para los movimientos de socios, la caja o banco afectado. La anulación se inicia desde **RRHH → Vales**, usando la acción de anular en el retiro. Si el retiro ya estaba confirmado, se revierte en una sola operación el saldo de la cuenta del socio, el documento interno y el efecto de tesorería. Para caja o banco se registra un movimiento inverso en la **misma cuenta utilizada al confirmar**. El vale permanece visible con estado **Anulado**.
 
 Si el documento interno tiene pagos activos asociados, primero hay que anular esos pagos. En **Tesorería → Pagos y Cobros**, el registro original del vale anulado se consulta con **Mostrar anulados**; es de solo lectura y no vuelve a afectar el saldo.
 
+Los comprobantes que llegan a la **Papelera** quedan en **Borrador** si nunca se confirmaron o en **Anulado** si ya estaban confirmados. Si un vale ya anulado conserva efectos pendientes, la fila indica **Limpieza pendiente** y ofrece **Completar limpieza**. El detalle enumera si falta anular el comprobante, poner su saldo pagado en cero, retirar asientos activos de cuenta corriente, revertir Tesorería o varias de esas cosas. No se vuelve a anular el vale RRHH; caja o banco solo cambia si falta el movimiento opuesto. Si nunca hubo movimiento, no se modifica Tesorería; si la reversión ya existe, no se duplica. Los movimientos originales se conservan en el historial. Si queda un pago activo asociado, primero hay que anularlo.
+
 ## Comisiones
 
-Las comisiones se administran en la **bandeja mensual** de **RRHH → Reportes → Comisiones** (`/erp/rrhh/commissions`). Cada empleado marcado como **vendedor** tiene una **comisión por defecto (%)** y una **base** (*Facturar* o *Cobrar*) en su ficha; desde la bandeja se asignan vendedores y participación **documento por documento**. La **OV ya no define** comisiones.
+Las comisiones se administran en la **bandeja mensual** de **RRHH → Reportes → Comisiones** (`/erp/rrhh/commissions`). En la ficha de cada socio podés activar **Habilitar como vendedor** y definir su comisión predeterminada y base (*Facturar* o *Cobrar*). En **Configuración → Circuito de ventas** podés asignar esos socios junto con empleados vendedores predeterminados, con participación, porcentaje de comisión y base. Esas asignaciones se copian a las nuevas OV y aparecen pendientes de liquidación. También podés ajustarlas documento por documento desde RRHH. La asignación no crea un Vale.
+
+La participación societaria se calcula aparte de la comisión por venta. Cada nueva OV copia automáticamente a los socios activos que tienen participación, sin depender del vendedor seleccionado. En **Configuración → Circuito de ventas** elegí si se devenga por OV o por Facturación (OV es la opción inicial). Se calcula sobre el subtotal sin IVA y el porcentaje y la regla se guardan por OV; los cambios posteriores no modifican órdenes ya creadas. La opción Facturación acumula los subtotales de las facturas asociadas a la OV, hasta el subtotal de esa orden. El detalle de porcentajes y la generación del Vale se gestionan desde RR. HH. → Comisiones, no desde la OV.
 
 ### Cómo asignar vendedores a un período
 
@@ -73,7 +81,7 @@ Las comisiones se administran en la **bandeja mensual** de **RRHH → Reportes �
 
 1. **Elegí el período**
 
-   En el selector **Período** (formato `AAAA-MM`) se listan las Órdenes de Venta del mes con su **total**, su avance de **cobro** y los **vendedores** asignados.
+   En el selector **Período** (formato `AAAA-MM`) se listan las Órdenes de Venta del mes con su **total**, su avance de **cobro** y los **vendedores** asignados. Solo los socios activos vinculados a una contraparte y habilitados como vendedores se pueden asignar; la participación societaria también se calcula para socios que no venden.
 
 2. **Abrí el documento**
 
@@ -82,8 +90,8 @@ Las comisiones se administran en la **bandeja mensual** de **RRHH → Reportes �
 3. **Cargá los vendedores**
 
    En el modal **Asignar vendedores** se pueden agregar varios vendedores con **Agregar vendedor**. Para cada uno:
-   - **Vendedor** (se pre completa con los valores de su ficha de empleado).
-   - **Participación %**: debe **sumar 100%** entre todos.
+   - **Vendedor** (empleado o socio; se precargan la tasa y la regla de su ficha).
+   - **Participación %**: porcentaje de la venta sobre el que se calcula la comisión de este vendedor. Es independiente por vendedor; varios pueden tener 100%.
    - **Comisión %** (ajustable por documento).
    - **Se devenga al**: **Facturar** o **Cobrar**.
 
@@ -97,9 +105,9 @@ Las comisiones se administran en la **bandeja mensual** de **RRHH → Reportes �
 
 La pestaña **Devengadas y liquidación** muestra, para el período elegido:
 
-- **Base comisionable**, **comisión disponible** y **cantidad de documentos**.
-- Por cada vendedor: documentos, **base alcanzada**, **participación**, **regla** (Facturado o Cobrado) y **comisión** devengada.
-- El botón **Generar vale** crea un vale tipo **Extras** con el total comisionado del vendedor (permiso `commissions.settle`); luego se confirma como cualquier otro vale.
+- **Base acumulada por vendedor/socio**, comisiones pendientes y participación societaria pendiente, separadas por moneda.
+- Por cada persona: documentos, **base alcanzada**, tasa, regla y monto devengado, con la participación societaria diferenciada de la comisión del vendedor.
+- El botón **Generar vale** crea un Vale **COMISION** en estado **Borrador** con los conceptos pendientes de esa persona y moneda (permiso `commissions.settle`). Comisión y participación se suman en el importe del Vale, pero permanecen separadas en su detalle. No lo confirma: después se confirma como cualquier otro Vale. Para un socio, queda asociado a su contraparte como remuneración; no altera sus aportes disponibles.
 
 ## Reportes
 
@@ -115,12 +123,16 @@ La pestaña **Devengadas y liquidación** muestra, para el período elegido:
 - Los vales pendientes de empleados aparecen entre los documentos para pagar en Tesorería. El vale aumenta el saldo de la cuenta RRHH y cada pago aplicado lo reduce por el importe aplicado; si se paga parcialmente, el resto continúa pendiente. Al revertir el pago, el saldo y el estado pendiente se restauran.
 - La salida de caja o banco se registra una sola vez al confirmar el pago en Tesorería. Los aportes, retiros, reembolsos y préstamos de socios se registran directamente en caja/banco al confirmarse. Las remuneraciones del socio se pagan desde Tesorería.
 - El retiro de aportes de un socio no puede superar sus aportes disponibles en la misma moneda. No se puede anular un aporte si deja retiros sin respaldo. Ver [Aportes, retiros y remuneraciones](/procesos/rrhh/socios/#aportes-retiros-y-remuneraciones).
+- En **RRHH → Vales → Programar devolución**, se pueden cargar varias cuotas con vencimiento, importe y moneda. Se crea un Vale **RETIRO** en borrador por cuota y el monto total se reserva para impedir que retiros manuales superpuestos consuman el mismo aporte. Cada cuota se confirma por separado, con la caja o banco de salida. Anular una cuota todavía en borrador libera su reserva; el plan nunca mueve fondos por sí solo.
 - No se puede anular un vale con pagos asociados activos. Primero anulá o revertí esos pagos; cuando todos estén anulados o revertidos, se podrá anular el vale.
 - En **RRHH → Cuentas corrientes**, el historial identifica los movimientos como **Vale empleado**, **Retiro**, **Aporte**, **Reembolso**, **Préstamo** o **Vale socio**, según la persona y el concepto. Los vales confirmados pendientes llevan la indicación **A pagar**; los ya pagados conservan el nombre del vale sin esa indicación. También muestra su estado y la caja o banco desde donde se pagaron. Los gráficos y la exportación usan los mismos conceptos; los importes y gráficos usan la moneda propia de la cuenta y las anulaciones aparecen como movimientos de reversión.
 - El historial de cuentas corrientes de RRHH abre con los movimientos más recientes arriba. Si comparten fecha, se muestra primero el registrado más recientemente. Se puede cambiar el orden desde la tabla; los saldos anterior y posterior conservan los valores de cada movimiento.
 - Para asignar vendedores se necesita `commissions.manage`; para liquidar, `commissions.settle`.
-- La **participación** de un documento debe sumar **100%** y los vendedores no pueden repetirse.
-- La **regla** inicial (Facturar/Cobrar) y la **comisión %** se toman de la ficha del empleado, y se pueden ajustar por documento.
+- Cada vendedor puede tener una participación de hasta **100%** de la venta. No se exige que las participaciones sumen 100% entre vendedores y no se puede repetir la misma persona del mismo tipo.
+- La base acumulada suma la base asignada a cada vendedor. Si dos vendedores tienen 100%, la misma OV se cuenta una vez para cada uno.
+- En nuevas OV, los vendedores, la participación, la **comisión %** y la regla (Facturar/Cobrar) se copian de Circuito de ventas. Para asignaciones manuales, empleados y socios habilitados precargan la tasa y regla de su ficha. Los valores se pueden ajustar por documento.
+- La participación societaria se asigna a socios activos con porcentaje configurado al crear nuevas OV; no se agrega retroactivamente a órdenes existentes. La base elegida queda guardada en cada OV.
+- Las comisiones y la participación no se mezclan entre monedas; se muestran y liquidan en vales separados por moneda.
 
 ## Problemas frecuentes
 
@@ -128,7 +140,7 @@ La pestaña **Devengadas y liquidación** muestra, para el período elegido:
 |---|---|---|
 | El vale no impacta el saldo | Está en Borrador. | Confirmalo. |
 | No aparecen comisiones | El período no tiene OV o los documentos no tienen vendedores asignados. | Elegí el período correcto y asigná vendedores. |
-| "La participación debe sumar 100%" | Las participaciones no suman 100. | Ajustá los porcentajes hasta completar 100%. |
+| La participación supera el límite | El porcentaje individual supera 100%. | Ajustá la participación de cada vendedor a un valor entre 0,01% y 100%. |
 | "Un vendedor no puede repetirse" | Mismo vendedor en dos filas. | Quitá la fila duplicada o editala. |
 | No puedo asignar vendedores | No tenés `commissions.manage` y no sos OWNER/ADMIN. | Pedí el permiso o que lo haga un administrador. |
 | No puedo generar el vale | No tenés `commissions.settle` y no sos OWNER/ADMIN. | Pedí el permiso o que lo haga un administrador. |

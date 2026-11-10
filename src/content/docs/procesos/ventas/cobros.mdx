@@ -49,6 +49,8 @@ import { Steps } from '@astrojs/starlight/components'
 
    Buscá por número, referencia, cliente o tipo de documento. Usá las pestañas para filtrar por tipo y **Seleccionados** para revisar lo que ya agregaste. Elegí los comprobantes pendientes y el **importe aplicado** a cada uno.
 
+   Si cambiás la moneda del cobro de USD a ARS, el importe aplicado a una factura en dólares se convierte a pesos con la cotización guardada en esa factura. Si no tiene cotización, completá la que corresponda antes de guardar.
+
 5. **Revisá las retenciones**
 
    Al transferir, el sistema puede **sugerir retenciones** según el motor fiscal (se pueden ajustar, agregar o quitar).
@@ -68,6 +70,8 @@ import { Steps } from '@astrojs/starlight/components'
 ## Confirmar el cobro
 
 Al confirmar, el cobro queda registrado, se actualiza la **cuenta corriente** del cliente y el **saldo** de las facturas aplicadas.
+
+En el detalle de una factura, quienes tengan acceso de lectura a pagos (`payments.read`, o acceso administrativo) pueden consultar los pagos o cobros asociados y abrir cada operación desde su referencia.
 
 ## Cobro con tarjeta en una venta
 

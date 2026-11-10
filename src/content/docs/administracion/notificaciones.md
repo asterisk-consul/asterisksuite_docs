@@ -23,7 +23,7 @@ También se muestran productos que llegaron o bajaron del punto de reposición c
 
 Estas alertas se consultan al abrir la campana y llevan al módulo correspondiente. Requieren `stock.read` para reposición y `treasury.current_accounts.read` para saldos. Se actualizan al corregir el stock o registrar un movimiento en la cuenta corriente. Los cheques pendientes o confirmados también generan un aviso preventivo en la campana durante los dos días previos al vencimiento; al llegar la fecha, el aviso pasa al grupo de cheques que requiere una acción. Ambos abren la cartera filtrada. Los recordatorios desaparecen cuando el cheque se resuelve o sale del período de aviso.
 
-Cada alerta respeta los permisos del módulo de origen. Si no tenés acceso a Tesorería, tarjetas o autorizaciones fiscales, la campana no muestra las alertas de esa área.
+Cada alerta respeta los permisos del módulo de origen. Las alertas de impuestos y autorizaciones fiscales llegan a quienes tienen permisos para administrar impuestos o autorizaciones. Si ninguna persona tiene esos permisos, se muestran a los usuarios con rol **ADMIN** o **OWNER** de la empresa. Tener solo permiso de lectura no agrega a una persona a esa audiencia. Las alertas de otras obligaciones siguen el permiso de lectura de pagos. Si no tenés acceso a Tesorería, tarjetas o autorizaciones fiscales, la campana no muestra las alertas de esa área.
 
 ## Canales disponibles
 

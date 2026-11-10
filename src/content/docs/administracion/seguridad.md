@@ -34,6 +34,15 @@ Reglas:
 
 Desde **Configuración → Perfil** (`/settings/profile`) se editan los datos del usuario.
 
+## Mantener la sesión al iniciar
+
+En la pantalla de inicio de sesión (`/login`), **Recordarme** define cómo se conserva la sesión:
+
+- Si lo marcás, la sesión puede mantenerse al cerrar y volver a abrir el navegador, hasta siete días sin actividad.
+- Si lo dejás desmarcado, se usan cookies de sesión del navegador y el acceso no se conserva al cerrar la sesión del navegador.
+
+En ambos casos podés cerrar la sesión desde el menú de usuario. Si cambiás la contraseña, se cierran las sesiones activas.
+
 ## Problemas frecuentes
 
 | Mensaje / síntoma | Causa | Solución |

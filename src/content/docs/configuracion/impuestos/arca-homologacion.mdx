@@ -1,0 +1,85 @@
+---
+title: Conexión con ARCA (homologación)
+description: Guardar las credenciales de prueba y comprobar el acceso de una empresa a WSAA y WSFE.
+sidebar:
+  order: 5
+---
+
+import { Steps } from '@astrojs/starlight/components'
+
+## Alcance
+
+Esta pantalla configura el entorno de **homologación** para una empresa y comprueba el acceso a WSAA/WSFE. La prueba no emite comprobantes ni modifica la numeración de producción. La emisión de facturas desde Asterisk Suite es un paso posterior.
+
+Se encuentra en **Configuración → Fiscal e impuestos → Conexión con ARCA** (`/settings/arca`). Solo pueden administrarla usuarios con rol **OWNER** o **ADMIN**.
+
+## Activar o desactivar ARCA para una empresa
+
+ARCA se incorpora al catálogo de módulos de plataforma y queda **desactivado por defecto** en los planes existentes. Un **PLATFORM_OWNER** puede habilitarlo para un plan completo. Para activarlo solo en una empresa o apagarlo en una empresa puntual, un administrador de plataforma con acceso a esa empresa puede ir a **Configuración → Planes y módulos → Empresas y módulos** y cambiar la excepción de ARCA a **Habilitado** o **Deshabilitado**. La opción **Según el plan** elimina la excepción y vuelve a heredar el plan.
+
+Con ARCA desactivado, la opción desaparece del Centro de configuración, el acceso directo redirige a “Módulo no disponible” y la API rechaza las solicitudes. Si ya había credenciales guardadas, se conservan cifradas mientras el módulo esté apagado.
+
+## Requisitos previos
+
+- Tener habilitado el acceso a **WSASS** y generar un certificado para testing.
+- Autorizar el certificado a usar el servicio de facturación electrónica para el CUIT representado en homologación.
+- Contar con el certificado X.509 en PEM y su clave privada PEM sin contraseña. Cada archivo puede pesar hasta 64 KB.
+- En el backend local, definir `ARCA_CREDENTIALS_ENCRYPTION_KEY` con una clave hexadecimal de 64 caracteres y disponer de OpenSSL. Se puede generar la clave con:
+
+```bash
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
+Guardá esa clave en el `.env` del backend y no la compartas ni la cambies después de cifrar credenciales. Si se pierde o cambia, el backend no podrá descifrar los datos guardados.
+
+## Preparar la conexión local
+
+Antes de usar la pantalla por primera vez, aplicá la tabla de configuración en la base pública desde `asterisksuite_backend`:
+
+```bash
+pnpm migrate:arca-settings:dev
+```
+
+El comando requiere `DATABASE_URL_PUBLIC` configurada para la base compartida. También agrega ARCA al catálogo de módulos; no lo incorpora automáticamente a los planes existentes. Si ya habías aplicado esta migración antes de agregar el control por módulos, ejecutala de nuevo: el script es idempotente.
+
+### Probar la pantalla sin credenciales de ARCA
+
+Para recorrer la pantalla sin un certificado real, agregá al `.env` local del backend:
+
+```text
+ARCA_HOMOLOGATION_MOCK_ENABLED=true
+```
+
+Reiniciá el backend y verificá que ARCA esté habilitado para esa empresa desde **Planes y módulos → Empresas y módulos**. Entonces aparecerá **Simular con datos ficticios**. El botón muestra un resultado y puntos de venta de ejemplo sin subir archivos, guardar credenciales ni llamar a ARCA. La simulación solo se habilita cuando `NODE_ENV` no es `production`; al recargar la página, vuelve a mostrarse la configuración guardada.
+
+Este modo no prueba certificados, permisos WSASS, conectividad con ARCA ni emisión de comprobantes. Para validar eso necesitás credenciales reales de homologación.
+
+<Steps>
+
+1. Iniciá sesión en la empresa y abrí **Conexión con ARCA**.
+2. Ingresá el **CUIT emisor/representado** de homologación, sin guiones.
+3. Seleccioná el certificado y su clave privada PEM.
+4. Presioná **Guardar credenciales**. El sistema verifica que la clave corresponda al certificado y lo cifra antes de guardarlo.
+5. Presioná **Probar conexión con ARCA**. El backend solicita un ticket a WSAA y consulta los puntos de venta disponibles en WSFE.
+6. Elegí un punto de venta devuelto por ARCA y guardalo.
+
+</Steps>
+
+## Resultado y seguridad
+
+- **Conexión comprobada** indica que WSAA entregó el ticket y WSFE respondió la consulta de puntos de venta.
+- **No se pudo validar** muestra el último error recibido o una indicación de conectividad.
+- La clave privada y el ticket de acceso se guardan cifrados en la base pública. No se devuelven al frontend. El backend necesita la misma clave de cifrado para leerlos.
+- La prueba usa únicamente homologación. La conexión de producción y la emisión de comprobantes no están habilitadas desde esta pantalla.
+
+## Problemas frecuentes
+
+| Mensaje o síntoma | Posible causa | Qué revisar |
+|---|---|---|
+| No se pudo firmar la solicitud | OpenSSL no está instalado o no se encuentra en el `PATH`. | Instalá OpenSSL o configurá `OPENSSL_BIN` con la ruta al ejecutable. |
+| Certificado o clave inválidos | Formato no PEM, clave protegida con contraseña o archivos que no corresponden entre sí. | Volvé a exportar el certificado X.509 y la clave privada sin contraseña. |
+| Computador no autorizado | El certificado no está habilitado para WSFE en WSASS o se usó uno de producción. | Autorizá el certificado para facturación electrónica en homologación y verificá el entorno. |
+| No aparecen puntos de venta | El CUIT representado no tiene puntos de venta habilitados para WSFE en el entorno de prueba. | Revisá el CUIT y el alta de puntos de venta de homologación. |
+| No se pueden descifrar las credenciales | Cambió la clave `ARCA_CREDENTIALS_ENCRYPTION_KEY`. | Restaurá la clave con la que se guardaron esas credenciales. |
+
+ARCA documenta la gestión de certificados mediante [WSASS y el Administrador de Certificados](https://www.arca.gob.ar/ws/documentacion/certificados.asp), el flujo de autenticación en [WSAA](https://www.arca.gob.ar/ws/documentacion/wsaa.asp) y los servicios vigentes en [Webservices de factura electrónica](https://arca.gob.ar/ws/documentacion/ws-factura-electronica.asp).

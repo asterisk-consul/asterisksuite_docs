@@ -47,6 +47,8 @@ El listado único está en **Compras → Comprobantes** (`/erp/purchases/comprob
 
 En **Compras → Comprobantes** (`/erp/purchases/comprobantes`) se listan juntos órdenes, facturas, remitos y notas, con filtro por categoría y estado. Los enlaces anteriores con `?category=` siguen redirigiendo al listado filtrado. Al abrir un registro, cada uno lleva a su **vista específica**: las órdenes a `/erp/purchases/orders/{id}`, los remitos a `/erp/purchases/remitos/{id}` y facturas y notas a `/erp/purchases/purchases-documents/{id}`.
 
+Los **saldos iniciales** de cuentas corrientes no aparecen en este listado porque se administran desde la cuenta corriente y no son comprobantes de compra.
+
 En los listados de comprobantes, órdenes y remitos de compra, podés abrir cada documento haciendo clic en cualquier parte de su fila. Los botones y enlaces propios de la fila conservan su acción.
 
 Al abrir un comprobante y volver al listado se conservan la búsqueda, los filtros de tabla, el orden, la página y la posición de scroll. En los formularios, el buscador de proveedores permite encontrar registros antiguos por nombre, razón social, CUIT o correo.

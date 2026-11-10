@@ -26,6 +26,7 @@ Las **cuentas bancarias** representan las cuentas propias de la empresa. Permite
 - **Tipo de cuenta**.
 - **CBU**, **Alias** y **Número de cuenta** (opcionales).
 - **Moneda**.
+- **Cuenta contable del banco** (opcional para el uso diario; necesaria para importar movimientos con asiento).
 - **Saldo**.
 - **Activa**.
 
@@ -51,11 +52,31 @@ Desde la cuenta se registran **movimientos** (débitos y créditos), y se pueden
 
 En el historial, seleccioná una fila o usá el ícono del ojo —ubicado al inicio— para consultar el detalle sin recargar la tabla. El resaltado al pasar el cursor indica que la fila es interactiva. El tipo de movimiento y los estados se muestran en español, con el mismo color que el indicador del historial. Si proviene de un pago o cobro, el detalle muestra el tercero, el medio y estado del pago, los comprobantes e importes aplicados y, cuando corresponda, la información de los cheques asociados (banco, emisor, importe, vencimiento y estado). También muestra el desglose bruto, cargos, retenciones y neto cuando la operación lo informa.
 
+Podés buscar por **tipo** y **concepto**. Los filtros avanzados también permiten acotar por monto y saldos anterior y actual; los tipos se filtran por el nombre que ves en la tabla.
+
 Los movimientos originados por **pagos o vales anulados** y sus reversiones quedan ocultos inicialmente para no duplicar información en la vista operativa. La acción **Mostrar anulados** permite consultarlos para auditoría. La reversión no se elimina: continúa corrigiendo el saldo de la cuenta, mientras el pago o vale original conserva el estado **Anulado** en su módulo.
 
 También se registran **gastos bancarios** y comisiones.
 
 Los depósitos de **cheques de terceros** y los débitos de **cheques propios** generan movimientos bancarios **vinculados** al cheque y, cuando la operación pasa por caja, también al movimiento de caja correspondiente. Estos movimientos son los mismos sin importar si iniciaste la operación desde **Cheques**, desde **Bancos** o desde una **caja**.
+
+## Importar y exportar movimientos
+
+En el historial de cada cuenta podés **exportar a Excel** solo sus movimientos operativos. Los anulados se incluyen si está activada la opción **Mostrar anulados**. La primera hoja, **Instrucciones**, explica cómo leer los importes y qué columnas admite la importación; después aparecen **Movimientos** y **Guía de tipos**. La guía traduce los códigos internos al español y explica el sentido de cada tipo. En la lista general de Bancos, **Exportar cuentas** descarga las cuentas filtradas; el historial de movimientos se exporta desde el detalle de una cuenta.
+
+También podés **importar un extracto** en formato CSV, XLS o XLSX desde el detalle de la cuenta que querés conciliar. La app busca una hoja de datos compatible e ignora las hojas **Instrucciones** y **Guía**; intenta detectar fecha, descripción e importes. Si el banco usa otros encabezados, seleccioná las columnas correspondientes. Se admite un importe con signo, columnas separadas para débitos y créditos o una columna adicional que indique el sentido. Al guardar el formato, la asociación de columnas queda en este navegador para la misma cuenta y encabezados.
+
+La vista previa compara los importes en la moneda de la cuenta y sugiere coincidencias por importe, sentido y fecha. Las referencias ayudan a reconocer cada operación. Si hay más de una opción, queda indicada para revisión y no se ofrece como faltante automático. Podés exportar la comparación a Excel; la primera hoja es **Instrucciones**, seguida por **Comparación**, **Movimientos sistema** y **Guía de tipos**.
+
+Para registrar faltantes, asigná un **concepto bancario** a cada fila sin coincidencia y elegí hasta 50 filas por envío. La cuenta bancaria debe tener asociada una cuenta contable activa de tipo **Activo**; cada concepto también necesita una cuenta contable activa y debe afectar el saldo. Los conceptos que exigen adjuntar un comprobante no se ofrecen en esta importación. La app crea el movimiento y un asiento balanceado asociado al movimiento con la cuenta contable del banco y la cuenta del concepto; los créditos debitan el banco y acreditan el concepto, y los débitos hacen lo inverso. El asiento se consulta desde el detalle del movimiento. El saldo bancario se recalcula dentro de la misma operación. Para cuentas en moneda distinta de la moneda base, se usa la cotización oficial registrada para la fecha del movimiento.
+
+Estos asientos quedan vinculados al movimiento bancario y visibles en su detalle. No se envían todavía a un libro diario general ni a reportes de mayor contable.
+
+La acción **Registrar seleccionados** sí cambia el saldo y crea asientos asociados al movimiento. Comparar o exportar no tiene efectos. Si se vuelve a enviar el mismo archivo, las filas ya registradas se omiten. Anular uno de estos movimientos revierte el saldo y genera el asiento inverso, conservando ambos registros para auditoría. Se aceptan archivos de hasta 10 MB y 20.000 filas; se procesan hasta 50 filas por envío.
+
+La herramienta propone coincidencias y permite registrar los faltantes, pero no marca todavía las coincidencias como una conciliación cerrada o aprobada.
+
+En los archivos, el **código de tipo** describe qué clase de operación es (por ejemplo, `PAYMENT` = pago o `TRANSFER` = transferencia). La **naturaleza** es independiente: `DEBIT` resta del saldo y `CREDIT` suma. Una transferencia puede ser débito o crédito según el sentido.
 
 ## Uso en pagos y cobros
 
@@ -65,6 +86,7 @@ Al pagar o cobrar por **transferencia bancaria**, se elige la cuenta; el movimie
 
 - El **nombre**, **banco**, **tipo de cuenta** y **moneda** son obligatorios.
 - Los movimientos afectan el **saldo** de la cuenta.
+- Para registrar desde extractos, vinculá la cuenta bancaria con una cuenta contable activa de tipo **Activo** y configurá una cuenta contable en cada concepto a utilizar.
 - Los movimientos anulados y sus reversiones quedan registrados, aunque se oculten inicialmente en el historial.
 
 ## Problemas frecuentes

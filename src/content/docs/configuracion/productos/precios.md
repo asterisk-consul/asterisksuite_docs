@@ -38,6 +38,8 @@ Para cada moneda se pueden definir:
 
 Se agregan filas por moneda, se editan y se eliminan. Cada cambio queda registrado en el **historial**.
 
+Al confirmar una factura de venta, un usuario con permiso `product-prices.update` puede elegir actualizar el precio general de los productos incluidos. Se toma el precio unitario de cada renglón y la moneda de la factura; la opción se presenta desmarcada. Esto no cambia el costo ni reemplaza el precio acordado por cliente.
+
 ## Costo manual
 
 Si el producto no calcula su costo automáticamente, se puede cargar un **costo unitario** indicando:

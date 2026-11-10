@@ -1,0 +1,53 @@
+---
+title: Tareas por empresa
+description: Organiza el trabajo en tableros Kanban y vincula tareas con clientes.
+---
+
+La sección **Tareas** permite organizar el seguimiento operativo de una empresa en tableros y columnas. Una tarea puede ser general o quedar vinculada a un cliente, asignarse a un usuario de la empresa y tener prioridad y fecha de vencimiento.
+
+## Abrir el tablero
+
+1. En el menú lateral, entra en **Tareas**.
+2. Elige un tablero o crea uno. Al crearlo puedes asociarlo a un cliente; puedes tener varios tableros para el mismo cliente. Si no indicas columnas, se preparan **Pendiente**, **En curso**, **En revisión** y **Finalizada**.
+3. Usa el filtro de cliente para ver las tareas relacionadas con una cuenta específica.
+4. Desde la ficha de un cliente, el botón **Tareas** abre esta vista ya filtrada.
+
+## Crear y organizar tareas
+
+Completa un título y, si hace falta, agrega descripción, cliente, responsable, prioridad, vencimiento y etiquetas. En el detalle, **Cliente**, **Etiquetas**, **Fechas**, **Checklist** y **Miembros** abren una ventana para cambiar esos datos sin ocupar el formulario principal. Al terminar, guarda la tarea para aplicar los cambios. La checklist se crea desde su propia ventana; sus elementos guardan progreso, responsable y fecha. También se pueden adjuntar imágenes o PDF de hasta 5 MB, abrirlos y descargarlos desde la misma tarjeta.
+
+La descripción vacía se muestra como un campo compacto. Haz clic para abrir el editor con formato; si ya tiene contenido, verás la descripción y podrás hacer clic para editarla. La barra agrupa títulos, estilos, listas, enlaces e imágenes; el menú **+** ofrece menciones a integrantes, emojis, bloques de código y citas. Una mención seleccionada guarda el usuario asociado y genera un aviso en la campanita. En una tarea existente, **Guardar** aplica los cambios y **Cancelar** descarta la edición. El círculo junto al título permite completar o reabrir la tarea si tienes permiso para modificarla; también puedes hacerlo desde el círculo de la tarjeta.
+
+## Notificaciones
+
+La campanita avisa al responsable cuando se le asigna una tarea, a las personas relacionadas cuando alguien comenta y a cada integrante nuevo que se menciona en la descripción. Los comentarios avisan al responsable y a quien creó la tarea; quien escribe el comentario no recibe su propio aviso. Una mención repetida en una edición no vuelve a notificar a esa persona. Los avisos abren directamente el tablero y la tarea correspondiente.
+
+Las personas con rol **OWNER** o **ADMIN** pueden pausar o reactivar las notificaciones de tareas en la tarjeta **Avisos de tareas**. Esa preferencia controla solamente la campanita y se guarda por empresa.
+
+WhatsApp se configura por separado en **Configuración → WhatsApp → Avisos operativos**. Activa la categoría **Asignaciones, comentarios y menciones de tareas** y los avisos generales de WhatsApp. Cada usuario destinatario también debe tener un número válido y haber aceptado recibir mensajes. Los avisos entran en la cola habitual, que agrupa mensajes próximos y procesa un destinatario por vez. El entorno del backend debe tener `WHATSAPP_NOTIFICATIONS_ENABLED=true`.
+
+Las etiquetas se pueden reutilizar en otras tareas de la empresa. Abre una tarjeta para consultar y agregar comentarios con autor y fecha. Puedes mover una tarjeta a otra columna arrastrándola; el cambio se guarda en el tablero. Con el círculo de la tarjeta puedes marcarla como completada o reabrirla: al completarla pasa a una columna finalizada y, al reabrirla, vuelve a la primera columna abierta. Al pie de cada lista, **Añade una tarjeta** abre la carga rápida; el botón cuadrado junto a ella abre el formulario con todos los detalles.
+
+Desde el botón **Añade otra lista** puedes sumar columnas al tablero. Cada columna ajusta su alto al número de tarjetas que contiene; las columnas vacías conservan un área pequeña para soltar tareas. El menú de tres puntos de cada lista permite añadir una tarjeta rápidamente, copiar la lista con sus tarjetas, cambiar su posición, mover todas sus tarjetas a otra lista, fijarla o seguirla. Fijar y seguir son preferencias personales.
+
+Las tareas pertenecen a la empresa activa. El responsable debe ser un usuario activo de esa misma empresa. Los tableros y tareas de otra empresa no se mezclan. El acceso también depende del módulo de plataforma **CRM y tareas**, tanto para la navegación como para la API; este módulo requiere **Núcleo** y **Datos maestros**. `LEGACY_FULL` lo incluye para conservar el acceso de las empresas históricas.
+
+## Permisos
+
+El módulo usa permisos independientes:
+
+- `tasks.read`: consultar tableros y tareas.
+- `tasks.create`: crear tableros y tareas.
+- `tasks.update`: modificar, completar y reabrir tareas, y moverlas entre columnas.
+- `tasks.delete`: eliminar tareas.
+- `tasks.comment`: agregar comentarios a tareas.
+
+Asigna estos permisos desde la configuración de roles de la empresa. El acceso al botón **Tareas** de la ficha del cliente depende de `tasks.read`.
+
+Las personas con rol de empresa **OWNER** tienen el mismo acceso que reconoce el backend y no necesitan asignaciones RBAC individuales.
+
+## Límites de la primera versión
+
+El tablero muestra hasta 100 tareas por columna y hasta 200 tareas en la lista de un cliente por consulta. El contador de cada lista indica el total real, aunque haya más tarjetas que las visibles. Copiar una lista admite hasta 500 tarjetas y mover todas admite hasta 1.000 por operación.
+
+Para habilitar el módulo en empresas existentes, aplica primero las migraciones de tareas del backend (`20261109_company_task_boards` y `20261109130000_task_checklists_start_date`) y `20261110170000_crm_task_notifications` en las bases con schemas `public` y `tenant`. El cambio agrega CRM al catálogo y a `LEGACY_FULL`, una preferencia interna de notificaciones por empresa y el control de WhatsApp. Los planes distintos de `LEGACY_FULL` requieren activar CRM desde administración de módulos. Las nuevas claves de permisos deben incorporarse con el seed RBAC aditivo. Las empresas nuevas incorporan las tablas al inicializar su schema desde Prisma.

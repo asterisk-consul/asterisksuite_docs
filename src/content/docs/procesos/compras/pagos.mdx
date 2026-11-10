@@ -43,6 +43,10 @@ import { Steps } from '@astrojs/starlight/components'
 
    Buscá por número, referencia, proveedor o tipo de documento. Usá las pestañas para filtrar por tipo y **Seleccionados** para revisar lo que ya agregaste. Elegí las facturas de compra o vales pendientes y el **importe aplicado**. Para un vale, el pago debe usar la misma moneda del documento.
 
+   Si aplicás un comprobante en **USD** y el pago se realiza en **ARS**, ingresá la cotización ARS por USD. El formulario propone la guardada en la factura, pero podés reemplazarla por la cotización efectiva del pago. No se puede guardar ni confirmar el pago sin una cotización válida; si falta en la factura, se intenta usar la cotización del sistema para la fecha del pago.
+
+   Si cambiás la moneda del pago de USD a ARS, el importe aplicado a la factura se convierte a pesos con su cotización guardada. Si la factura no tiene cotización, completá la que corresponda antes de guardar.
+
 5. **Revisá las retenciones**
 
    El sistema puede **sugerir retenciones** practicadas según el motor fiscal (se pueden ajustar).
@@ -69,9 +73,11 @@ Al confirmar, se actualiza la **cuenta corriente** y el **saldo** de los documen
 
 En **Tesorería → Pagos** (`/erp/treasury/payments`), la tabla permite filtrar rápidamente por número, tercero y documento o concepto pagado. En **Filtros** también se puede acotar por fecha, tipo, medio, importe, cuenta y estado. La columna **Documento / concepto pagado** muestra el comprobante y el importe aplicado; cuando es una factura de ventas o compras, podés abrirla haciendo clic en su referencia. Si se pagó un servicio u obligación, muestra su descripción y período. Para ver todos los comprobantes asociados a un pago, abrí su detalle desde el número del pago.
 
+En el detalle de una factura, quienes tengan acceso de lectura a pagos (`payments.read`, o acceso administrativo) pueden consultar los pagos o cobros asociados y abrir cada operación desde su referencia.
+
 ## Editar un pago
 
-Mientras el pago esté en **Borrador**, podés editar sus datos, incluida la **fecha**. Al confirmar, la fecha, el medio y los documentos aplicados quedan de solo lectura. Un usuario OWNER/ADMIN o con `payments.update` puede ajustar las **retenciones** y la **cuenta contable** de pagos confirmados o pagados por efectivo o transferencia, incluidos los **Gastos varios**. Si un gasto todavía no tiene proveedor o entidad, se puede asociar desde esta sección para habilitar las retenciones y reflejarlas en su cuenta corriente; el tercero asociado no se puede reemplazar después. El importe bruto aplicado a cada factura se conserva; el sistema actualiza el importe neto del pago y el movimiento original de caja o banco, y recalcula sus saldos y la cuenta corriente. No agrega un movimiento separado de ajuste ni modifica el total de la factura. El sistema no crea asientos de mayor automáticamente. Las retenciones con certificado, remesa o imputación fiscal activa quedan protegidas y deben regularizarse primero desde su circuito fiscal.
+Mientras el pago esté en **Borrador**, podés editar sus datos, incluida la **fecha**. Al confirmar, la fecha, el medio y los documentos aplicados quedan de solo lectura. Un usuario OWNER/ADMIN o con `payments.update` puede corregir la **cotización** de cualquier pago confirmado o pagado en ARS aplicado a una factura en USD. La corrección actualiza el dato del pago y sus movimientos relacionados, sin cambiar el importe en pesos ni el importe aplicado a la factura. Para pagos en efectivo o por transferencia, ese mismo permiso también permite ajustar **retenciones** y **cuenta contable**; si un gasto todavía no tiene proveedor o entidad, se puede asociar desde esta sección para habilitar retenciones y reflejarlas en su cuenta corriente. El tercero asociado no se puede reemplazar después. Si se modifican retenciones, el importe bruto aplicado a cada factura se conserva; el sistema actualiza el importe neto del pago y el movimiento original de caja o banco, y recalcula sus saldos y la cuenta corriente. No agrega un movimiento separado de ajuste ni modifica el total de la factura. El sistema no crea asientos de mayor automáticamente. Las retenciones con certificado, remesa o imputación fiscal activa quedan protegidas y deben regularizarse primero desde su circuito fiscal.
 
 ## Reglas y validaciones
 

@@ -47,6 +47,14 @@ Permite dar de alta y editar cualquier **contraparte** (tercero) del sistema, ju
 
 </Steps>
 
+## Formularios desde cada módulo
+
+Los formularios de **Terceros**, **Clientes**, **Proveedores**, **Empleados** y **Socios** reutilizan el mismo formulario para los datos compartidos (identificación, direcciones, contactos y cuentas). Al crear desde un módulo específico, el tipo queda fijado para evitar cargar, por ejemplo, un proveedor desde **Socios**. Desde **Terceros** se puede elegir el tipo principal.
+
+Al crear o editar un empleado o socio desde **RR. HH.**, también se guarda la ficha común de la contraparte. Luego aparece en **Terceros** con el tipo correspondiente; si la ficha ya estaba abierta, al volver a la lista se actualiza desde el servidor.
+
+Cuando el tipo es **Socio**, desde cualquiera de las dos rutas se editan el perfil (socio/inversionista), la participación y la habilitación como vendedor con su comisión. Los cambios quedan reflejados tanto en **Terceros** como en **RR. HH. → Socios**.
+
 ## Roles y rol doble
 
 Un tercero puede cumplir **varios roles** además de su tipo principal. El caso más común es un **Empleado que también es Cliente interno**:

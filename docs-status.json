@@ -1,15 +1,35 @@
 {
-  "documentedUpTo": "0.118.0-alpha",
-  "lastReview": "2026-11-02",
+  "documentedUpTo": "0.135.0-alpha",
+  "lastReview": "2026-11-05",
   "app": {
-    "version": "0.118.1-alpha",
-    "date": "2026-11-02"
+    "version": "0.142.0-alpha",
+    "date": "2026-11-10"
   },
-  "pending": [],
+  "pending": [
+    "0.142.0-alpha",
+    "0.141.0-alpha",
+    "0.140.2-alpha",
+    "0.140.1-alpha",
+    "0.140.0-alpha",
+    "0.139.0-alpha",
+    "0.138.2-alpha",
+    "0.138.1-alpha",
+    "0.138.0-alpha",
+    "0.137.1-alpha",
+    "0.136.0-alpha"
+  ],
   "resolved": {
-    "0.118.1-alpha": {
+    "0.135.1-alpha": {
       "status": "skipped",
-      "note": "Correcciones de sesión y del encabezado; el acceso y la creación de planes ya están documentados en administración/planes-y-módulos."
+      "note": "Ajuste exclusivamente visual y responsive del inicio de sesión; no cambia el flujo ni los requisitos de acceso."
+    },
+    "0.135.2-alpha": {
+      "status": "skipped",
+      "note": "Ajuste visual del login y rótulo del subdominio activo; no modifica los pasos ni permisos de inicio de sesión."
+    },
+    "0.138.3-alpha": {
+      "status": "skipped",
+      "note": "Cambios internos de dependencias, documentación y cliente HTTP de prueba; no modifican funciones ni flujos para usuarios."
     }
   },
   "notes": "Corte calculado el 2026-10-20 comparando los cambios de asterisksuite_frontend/versiones/versions.json contra el contenido de src/content/docs/: los módulos publicados hasta 0.71.0-alpha (inversiones, libro de movimientos bancarios, gastos bancarios, clientes internos, precancelación) están descriptos; de 0.72.0-alpha en adelante casi no hay rastro en los docs, con incorporaciones puntuales en 0.76.0-alpha (variantes) y 0.82.0-alpha (circuito de compras)."

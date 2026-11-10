@@ -64,7 +64,7 @@ El catálogo se configura por empresa en **Configuración → Documentos → Con
 
 Cada factura guarda su propio snapshot de los conceptos aplicados. La vista y la impresión muestran el subtotal previo, cada bonificación, el subtotal neto, los impuestos recalculados y el total final. Si un ítem tiene una bonificación porcentual, la vista muestra el precio original, el precio unitario bonificado y el importe descontado. El subtotal del renglón se muestra sin impuestos y el total suma los impuestos una sola vez. Si hubo pagos, la impresión indica además lo pagado y el saldo pendiente. Editar o desactivar una plantilla no cambia comprobantes existentes.
 
-Para las **notas de crédito/débito** de compra, se selecciona el **documento de referencia** (la factura) y se ajustan los ítems.
+Para crear una **nota de crédito o débito** de compra, abrí una **factura confirmada** y elegí **Crear NC** o **Crear ND**. El sistema toma de ella el proveedor, los datos y la relación de origen. Si abriste la pantalla de nota sin partir de una factura, te indica cómo volver al listado. Al editar un borrador sí podés elegir otra factura: el proveedor se actualiza con el de la nueva referencia y se valida que coincida. La nota puede ajustar solo una parte de la factura.
 
 ## Cadena de documentos
 
@@ -85,6 +85,8 @@ Cada eslabón es un enlace a la vista específica del documento; si no tenés pe
 | 2 | **Confirmada** | Confirmada. |
 | 3 | **Anulada** | Anulada. |
 
+El estado **Confirmada** describe el ciclo del comprobante; no indica si ya se pagó. En el encabezado del detalle también se muestra **Pagada**, **Pago parcial** o **Pendiente de pago**, según las aplicaciones registradas. Así se conserva la trazabilidad documental y se ve el saldo de un vistazo.
+
 ## Reglas y validaciones
 
 - La factura debe tener **proveedor** y al menos un **ítem**.
@@ -98,7 +100,14 @@ Cada eslabón es un enlace a la vista específica del documento; si no tenés pe
 - Solo puede existir **una factura activa** por OC: *La orden de compra ya tiene una factura activa asociada*.
 - El remito solo nace de una factura confirmada y **una sola vez**: *La factura de compra ya tiene un remito activo asociado*.
 - El proveedor de la factura debe coincidir con el de la OC referenciada.
-- NC y ND solo pueden referenciar una factura: *Solo se puede referenciar una factura*.
+- Las NC y ND nuevas deben iniciarse desde una factura confirmada.
+- Al editar un borrador, podés cambiar la factura en **Factura de referencia** buscando por número, referencia o proveedor; la búsqueda muestra hasta 50 coincidencias recientes.
+- Al cambiar la referencia, el proveedor se actualiza automáticamente. El servidor valida que coincida con la factura.
+- Una NC/ND confirmada se puede **anular aunque esté vinculada a una factura**. La anulación revierte su efecto en la cuenta corriente y conserva el vínculo documental. Si tiene pagos activos, primero hay que anularlos.
+- Si el importe de una nota confirmada es incorrecto, anulala y creá otra desde la factura con los datos correctos. Un borrador sí puede editarse.
+- Una nota manual anulada, sin autorización fiscal, pagos ni efectos activos puede enviarse a la papelera y eliminarse definitivamente si supera las validaciones de seguridad. Se permite conservar su vínculo de origen con la factura durante ese proceso; las notas con autorización fiscal u otras relaciones que deban conservarse permanecen anuladas en la cadena.
+- Una factura con notas, remitos u otros comprobantes hijos no puede enviarse a la papelera ni purgarse, incluso si los hijos ya están en la papelera. No se elimina toda la cadena en cascada: primero se resuelve cada hijo por separado; la factura solo queda habilitada cuando ya no tiene documentos relacionados y también cumple sus propias validaciones.
+- En la papelera, un comprobante de compra **manual** solo puede eliminarse definitivamente si está en **Borrador** o **Anulado**, se cargó por error y no conserva autorización fiscal, pagos ni movimientos activos. Los asientos de cuenta corriente deben estar inactivos; al purgar, se eliminan sin modificar el saldo. El vínculo padre de una NC/ND es la única relación que se admite en este caso especial; otros hijos, pagos, movimientos y relaciones operativas mantienen el bloqueo.
 
 ## Problemas frecuentes
 
@@ -111,6 +120,8 @@ Cada eslabón es un enlace a la vista específica del documento; si no tenés pe
 | *La factura de compra debe originarse en una orden de compra* | El documento de origen referenciado no es una OC. | Partí de la OC con **Crear Factura**. |
 | *La orden de compra ya tiene una factura activa asociada* | Ya existe una factura activa de esa OC. | Abrila desde la cadena de documentos o anulala. |
 | *La factura de compra ya tiene un remito activo asociado* | Ya hay un remito (borrador o confirmado) de esta factura. | Abrilo con **Ver remito** o anulalo. |
+| *El proveedor seleccionado debe coincidir con el de la factura de referencia* | La nota y la factura tienen proveedores distintos. | Elegí la factura correcta; el proveedor se toma de esa referencia. |
+| No puedo anular una NC/ND | Tiene pagos activos asociados. | Anulá primero los pagos y luego anulá la nota; el vínculo con la factura se conserva. |
 | No aparece **Crear remito** | La factura no está confirmada o falta el permiso *Crear remitos de compras*. | Confirmá la factura o pedí el permiso. |
 
 ## Ver también

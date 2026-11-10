@@ -1,6 +1,6 @@
 ---
 title: Conceptos comerciales reutilizables
-description: Configurar plantillas de descuentos y bonificaciones para facturas de venta y compra.
+description: Configurar plantillas de descuentos y bonificaciones para documentos compatibles de venta y compra.
 sidebar:
   order: 3
 ---
@@ -24,10 +24,12 @@ Al crear cada plantilla, definí:
 
 Se pueden desactivar las plantillas que ya no deban proponerse en nuevas facturas; no hace falta borrarlas.
 
-## Aplicarlas en una factura
+## Aplicarlas en un comprobante
 
-En una factura de venta o compra, dentro de **Descuentos y bonificaciones**, buscá una plantilla activa y presioná **Agregar**. Sus valores se copian al formulario, donde se pueden revisar y cambiar antes de guardar. Para casos puntuales, **Manual** permite cargar un concepto sin plantilla.
+En un comprobante compatible, dentro de **Descuentos y bonificaciones**, buscá una plantilla activa y presioná **Agregar**. Sus valores se copian al formulario, donde se pueden revisar y cambiar antes de guardar. Para casos puntuales, **Manual** permite cargar un concepto sin plantilla.
 
-El sistema aplica los conceptos seleccionados en el orden mostrado y recalcula bases, impuestos y total. La plantilla no se aplica sola: solo agregá descuentos que ya hayan sido otorgados al emitir. Un descuento por pronto pago condicionado no debe restarse antes de que se cumpla esa condición.
+En ventas, los tipos **Factura**, **Orden de Venta** y **Presupuesto** pueden aceptar estos conceptos. En compras, la opción se habilita por tipo de documento. Revisá **Acepta conceptos comerciales** en la configuración del tipo antes de cargar el comprobante.
 
-Cada factura conserva una copia de los conceptos y de sus efectos calculados. Cambiar o desactivar una plantilla no modifica facturas anteriores. El uso actual está disponible para facturas de venta y compra; no para órdenes ni notas de crédito/débito.
+Los descuentos por ítem se aplican primero; después, el sistema aplica los conceptos globales en el orden mostrado y recalcula bases, impuestos y total. Un concepto global puede ser un **porcentaje** o un **importe fijo** en la moneda del comprobante, calculado sobre el **neto antes de impuestos** o el **total con impuestos**. La plantilla no se aplica sola: solo agregá descuentos que ya hayan sido otorgados al emitir. Un descuento por pronto pago condicionado no debe restarse antes de que se cumpla esa condición.
+
+Cada comprobante conserva una copia de los conceptos y de sus efectos calculados. Cambiar o desactivar una plantilla no modifica comprobantes anteriores. Las bonificaciones por ítem y las globales pueden coexistir; verificá que no estés cargando dos veces el mismo descuento. La configuración del tipo de documento determina en qué otras categorías se pueden usar.

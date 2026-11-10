@@ -17,9 +17,20 @@ El sistema es **multi-empresa**: siempre trabajás dentro de una **empresa activ
 
 - El **menú lateral** agrupa los módulos por área (ERP, Stock, Logística, etc.).
 - Al seleccionar una sección con subopciones, se abre su primera página disponible; por ejemplo, **Configuración** abre el **Centro de configuración**. Las páginas sin subopciones abren directamente su destino. Las opciones se filtran según los permisos del usuario.
-- Las secciones se pueden **colapsar/expandir**.
+- El botón con el ícono de panel, junto al título de la página, cambia el menú lateral entre la vista completa y la vista compacta de íconos. Al pasar el cursor o enfocarlo, el tooltip indica **Contraer menú lateral** o **Expandir menú lateral**.
 - El **Centro de configuración** (`/settings`) reúne todos los parámetros.
 - El buscador global se abre con **Ctrl+K** (o **⌘+K** en Mac). Busca las páginas de forma recursiva, agrupa los resultados por módulo y muestra la sección de origen para distinguir destinos con nombres iguales, como **Comprobantes**. También encuentra palabras aunque se escriban sin tilde y solo ofrece páginas permitidas para tu rol.
+- Cuando existe una pantalla anterior dentro de la aplicación, la barra superior muestra **Volver** y podés usar **Esc**. Si estás escribiendo o hay un diálogo, menú o selector abierto, **Esc** actúa primero sobre ese contexto y no cambia de página.
+
+## Crear un registro con el teclado
+
+En las páginas que tienen una única acción principal **Nuevo** o **Nueva**, presioná **Alt + N** para abrir la misma pantalla o formulario que abre el botón. En Stock funciona en el resumen y el listado de productos, categorías, etiquetas, atributos, unidades, depósitos, listas de precios, templates/componentes de costo y BOM. En la pantalla de costos, la acción sigue la pestaña seleccionada. También se aplica a partes interesadas, cheques, pagos y cobros, clientes, proveedores, socios, empleados y configuraciones de tesorería.
+
+Cuando el atajo está disponible, el botón de creación muestra **Alt N** al pasar el cursor o enfocarlo con el teclado. El acceso global **Crear** de la barra superior aparece cuando complementa la acción principal; si repetiría un botón de creación que ya está destacado en la pantalla, se oculta y el atajo permanece junto a ese botón. En pantallas táctiles la indicación permanece visible. El atajo ejecuta el mismo botón y conserva las validaciones y permisos aplicados por esa pantalla. Para evitar acciones accidentales, **Alt + N** no actúa mientras escribís en un campo, editás contenido o tenés un diálogo abierto. Si una pantalla ofrece varias creaciones distintas, el atajo solo se habilita cuando existe una acción principal definida.
+
+El mismo indicador se usa en otros botones con atajos, como **Guardar**, **Confirmar**, **Marcar pagado**, **Rechazar**, **Anular** e **Imprimir**. La combinación aparece al pasar el cursor o enfocar el botón y el tooltip también informa el atajo disponible.
+
+En los detalles de ventas, compras y otros registros, **Alt + Shift + M** abre el menú **Más** cuando hay acciones secundarias disponibles. Cada opción habilitada muestra un número del **1** al **9**; mientras el menú está abierto, presioná ese número para elegirla. Las opciones que modifican o anulan información mantienen sus confirmaciones habituales.
 
 ## Perfil y cuenta
 

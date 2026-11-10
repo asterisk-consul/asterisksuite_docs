@@ -201,6 +201,10 @@ export default defineConfig({
           items: [{ autogenerate: { directory: 'procesos/rrhh' } }]
         },
         {
+          label: 'Tareas',
+          items: [{ autogenerate: { directory: 'procesos/tareas' } }]
+        },
+        {
           label: 'Reportes gerenciales',
           items: [{ autogenerate: { directory: 'procesos/reportes' } }]
         },

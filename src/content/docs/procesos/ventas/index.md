@@ -39,6 +39,8 @@ En **Ventas → Resumen** (`/erp/sales`) podés consultar la actividad de los ú
 
 El listado combinado está en **Ventas → Comprobantes** (`/erp/sales/comprobantes`). Reúne los comprobantes de venta y permite filtrar por categoría y estado. En **Todos**, el filtro avanzado **Estado** identifica cada opción por tipo de comprobante (por ejemplo, *Factura · Pendiente* u *Orden de venta · Lista para despacho*); al seleccionar una categoría, muestra sus estados sin prefijo. Los enlaces anteriores con `?category=` siguen redirigiendo al listado filtrado.
 
+Los **saldos iniciales** de cuentas corrientes no aparecen en este listado porque se administran desde la cuenta corriente y no son comprobantes de venta.
+
 En los listados de presupuestos, órdenes de venta, remitos y comprobantes, podés abrir el documento haciendo clic en cualquier parte de su fila. Los botones y enlaces propios de la fila conservan su acción. Al volver con la navegación del navegador se restaura la posición del listado y, en comprobantes, la categoría que estabas consultando.
 
 Al abrir un comprobante y volver al listado se conservan la búsqueda, los filtros de tabla, el orden, la página y la posición de scroll. En los formularios, el buscador de clientes permite encontrar registros antiguos por nombre, razón social, CUIT o correo.

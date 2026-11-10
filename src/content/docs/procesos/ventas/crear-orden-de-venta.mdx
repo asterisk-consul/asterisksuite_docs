@@ -30,8 +30,9 @@ En el listado, el interruptor **Mostrar cancelados** permite incluir o esconder 
 - Los **productos** deben tener precio para la moneda.
 - Debe existir un **tipo de documento** de categoría Orden y su **secuencia** (punto de venta).
 - Si una serie de OV está configurada como **Mostrar la OV en neto**, solo esa secuencia no suma IVA al total de la orden. La factura posterior calcula sus impuestos normalmente según su tipo y configuración fiscal.
-- Opcionalmente, un **depósito** y **empleados marcados como vendedores** (se usan en la bandeja de comisiones).
+- Opcionalmente, un **depósito** y **empleados activos marcados como vendedores** para atribuir las OVs.
 - En [Circuito de ventas](/procesos/ventas/circuito-de-ventas/) podés definir un **responsable sugerido** y si se **exige** asignarlo al confirmar.
+- En **Circuito de ventas** también podés elegir empleados y socios predeterminados para comisiones; sus porcentajes se copian a las nuevas OV para revisarlos en RRHH.
 - Si el producto tiene **variantes**, cada ítem debe indicar una variante activa (ver [Variantes de producto](/configuracion/productos/variantes/)).
 - El **tipo de documento** puede ocultar precios, totales y comisiones según el estado (ver [Tipos de documento](/configuracion/documentos/tipos-de-documento/)).
 
@@ -51,9 +52,17 @@ En el listado, el interruptor **Mostrar cancelados** permite incluir o esconder 
 
 3. **Agregá los productos**
 
-   Agregar ítems indicando producto, cantidad y precio. El selector muestra el código y nombre del producto; el precio y la cantidad se editan directamente en cada renglón. Si el producto tiene **variantes**, elegí la **variante** en cada ítem (cuando hay una sola se selecciona sola) y, según el producto, el **depósito**. Podés usar **F2** para abrir el selector, recorrer los campos con **Tab**, agregar el producto con **Ctrl + Enter** y guardar el documento con **Ctrl + S**.
+   Agregar ítems indicando producto, cantidad y precio. El selector muestra el código y nombre del producto; el precio y la cantidad se editan directamente en cada renglón. Si corresponde, cada renglón también puede llevar una bonificación porcentual. Si el producto tiene **variantes**, elegí la **variante** en cada ítem (cuando hay una sola se selecciona sola) y, según el producto, el **depósito**. Para un producto con requisitos particulares, abrí **Agregar medidas e indicaciones** debajo de su nombre y escribí, por ejemplo, “Largo 120 cm, ancho 80 cm; perforaciones a 10 cm”. El texto queda asociado a ese producto y aparece también en el detalle y la impresión del remito. Podés usar **F2** para abrir el selector, recorrer los campos con **Tab**, agregar el producto con **Ctrl + Enter** y guardar el documento con **Ctrl + S**.
 
-4. **Completá la información de entrega**
+4. **Aplicá una bonificación global si corresponde**
+
+   En **Descuentos y bonificaciones**, agregá un concepto manual o elegí una plantilla. Podés indicar un porcentaje o un importe fijo, calculado sobre el neto o sobre el total con impuestos. El descuento global se aplica después de las bonificaciones por renglón y actualiza el cálculo de impuestos. Para habilitarlo, el tipo de Orden de Venta debe tener activa la opción **Acepta conceptos comerciales** en Configuración → Documentos → Tipos de Documento. Las bonificaciones por ítem y globales pueden convivir; verificá que no se duplique el mismo descuento.
+
+5. **Indicá el vendedor de la venta**
+
+   Seleccioná un empleado activo marcado como vendedor. Si tu usuario está vinculado a uno, se preselecciona al crear la OV. Este dato permite consultar las ventas atribuidas a esa persona; es independiente de los vendedores de comisión que se copian desde Circuito de ventas.
+
+6. **Completá la información de entrega**
 
    La información de entrega aparece entre los datos generales y el detalle de productos en un bloque plegable. Se abre automáticamente si la OV ya tiene datos guardados; también podés desplegarlo para completar dirección, contacto, transporte o fecha comprometida.
 
@@ -62,11 +71,9 @@ En el listado, el interruptor **Mostrar cancelados** permite incluir o esconder 
    - **Dirección de entrega**, **contacto**, **teléfono** y **tiempo de entrega**.
    - **Transporte** e **instrucciones de entrega**.
 
-5. **Revisá vendedor y comisión**
+   Estas instrucciones generales describen cómo entregar el pedido. Las medidas específicas de un producto se cargan en su renglón, separadas de esta información.
 
-   El formulario **no pide** vendedor ni comisión: se asignan por período en la bandeja de comisiones de RRHH (ver [Vales y comisiones](/procesos/rrhh/vales-y-comisiones/)). Si la OV ya tiene vendedor y comisión cargados, al editar se **conservan**.
-
-6. **Guardá**
+7. **Guardá**
 
    Presionar **Guardar Orden de Venta** o usar **Ctrl + S**. La OV se crea en estado **Borrador**.
 
@@ -76,10 +83,16 @@ En el listado, el interruptor **Mostrar cancelados** permite incluir o esconder 
 
 La OV se edita con el botón **Editar** del detalle (`/erp/sales/{id}/edit`), disponible mientras esté en **Borrador** o **Aprobada**:
 
-- La edición **conserva la categoría** del documento (no se convierte en factura ni en remito) y mantiene el **vendedor** y la **comisión** ya cargados.
+- La edición **conserva la categoría** del documento (no se convierte en factura ni en remito). Podés actualizar el vendedor y los demás datos de la OV.
+- Los vendedores de comisión se copian desde **Circuito de ventas** y pueden revisarse o ajustarse desde **RR. HH. → Reportes → Comisiones**. La asignación no genera un Vale; la liquidación se inicia por separado desde RRHH.
 - Se pueden actualizar los **datos de entrega**, los ítems y los datos generales.
+- Si dejás vacío un dato de entrega que ya estaba guardado, el sistema pide confirmación antes de borrarlo. Si solo guardás otros cambios y un campo llega vacío por accidente, se conserva el dato existente.
 - Si otra persona modificó el documento mientras lo editabas, el guardado se cancela con el aviso *"Este documento fue modificado por otra persona. Recargá la página antes de guardar…"*; recargá y volvé a intentar.
 - Desde **En Preparación** en adelante la OV **no se edita**: solo se avanza de estado o se anula.
+
+## Confirmar una OV
+
+Al confirmar, se vuelve a revisar la información de entrega guardada. Si la dirección es obligatoria y falta, la confirmación se bloquea hasta que se complete. Si la dirección es opcional y está activo el aviso de datos de entrega vacíos, se solicita una confirmación explícita cuando todos los campos de entrega están vacíos; también se puede volver a editar la OV antes de confirmar.
 
 ## Estados de la OV
 
@@ -128,6 +141,8 @@ Cada **tipo de documento** de OV define en qué estados los **precios, totales y
 - Antes de guardar, el formulario señala los datos faltantes o inválidos; elegí el tipo, fecha y punto de venta cuando corresponda, y verificá que las cantidades sean mayores que cero.
 - Si el servidor rechaza el comprobante, el aviso muestra el detalle disponible. Ante un error inesperado, verificá el listado antes de reintentar para evitar duplicados.
 - La **secuencia** define el número del documento.
+- El vendedor debe ser un empleado activo habilitado como vendedor; se puede dejar sin asignar. Este dato se usa para atribuir y consultar ventas.
+- En **Ventas → Órdenes de Venta**, el filtro **Filtrar por vendedor** muestra solo las OVs atribuidas a esa persona; **Todos los vendedores** quita el filtro.
 - Un producto con **variantes** exige una variante activa en cada ítem.
 - Confirmar puede requerir **stock suficiente** según la política configurada.
 - Si el circuito **exige responsable**, la confirmación requiere asignar una persona.
@@ -142,6 +157,7 @@ Cada **tipo de documento** de OV define en qué estados los **precios, totales y
 | El producto no tiene precio | Falta precio para esa moneda. | Cargá el precio en Productos. |
 | No puedo confirmar la OV | Falta stock y la política bloquea. | Reponé stock o ajustá la política. |
 | "Falta asignar un responsable" | El circuito exige responsable al confirmar. | Elegí el responsable en el modal de confirmación o desactivá **Exigir responsable**. |
+| No aparece un vendedor | No hay empleados activos habilitados como vendedores. | Habilitá **Es vendedor** en los datos laborales del empleado. |
 | No puedo editar la OV | Ya salió de Borrador/Aprobada. | Cambiá de estado o anulá y recreá. |
 | Los importes aparecen "Restringido" | El tipo de OV oculta importes en ese estado y no tenés el permiso. | Pedí `sales.orders.view_amounts` o ajustá la *Visibilidad de importes* del tipo de documento. |
 | "Seleccioná una variante para todos los productos que tienen variantes" | El producto tiene variantes activas. | Elegí la variante en el ítem. |

@@ -19,13 +19,18 @@ Al cambiar las condiciones para remitir, el sistema vuelve a evaluar las órdene
   - **OV y luego factura** — la OV genera deuda provisoria y la factura la reemplaza sin duplicarla.
 - **El cobro se puede aplicar a**: Factura, Orden de venta u **OV o factura**.
 - **Condición para remitir**: porcentaje mínimo cobrado y/o factura confirmada. Al cambiar estas reglas, se recalcula la disponibilidad de entrega de las OV que aún no tienen remito.
+- **Dirección de entrega en la OV**: puede ser opcional u obligatoria. Si es obligatoria, se valida al guardar y al confirmar; el resto de los datos de entrega sigue siendo opcional. Si queda opcional, podés activar o desactivar los avisos cuando toda la sección está vacía: al guardar se pide confirmación para crearla sin datos y, al confirmar una OV, se vuelve a advertir antes de permitir continuar.
 - **Reserva de stock**: cuándo la mercadería queda comprometida (reservada) para una venta, sin descontarla físicamente.
 - **Responsable de la Orden de Venta**:
   - **Responsable sugerido**: se preselecciona al confirmar una OV que todavía no tenga responsable (o *Sin responsable predeterminado*, si querés que se elija cada vez).
   - **Preguntar al confirmar**: si la OV no está asignada, muestra el selector y advierte que nadie recibirá la tarea.
   - **Exigir responsable**: impide confirmar una OV sin seleccionar a una persona responsable.
+- **Auditor de seguimiento**: podés elegir una persona sugerida para nuevas OV o asignarla desde el documento. No reemplaza al responsable: recibe avisos dentro de la app cuando cambian el estado del documento o la condición para remitir. El historial persistente solo lo pueden consultar el auditor asignado y el propietario (`OWNER`) de la empresa. Al transformar una OV, el auditor y el responsable se copian a los remitos y facturas derivados.
+- **Vendedor de la venta**: se puede elegir un empleado o un socio activo habilitado como vendedor. Si el usuario actual está vinculado a un empleado habilitado, se lo preselecciona. El listado de Órdenes de Venta permite filtrar y ver el vendedor de cada OV. Las comisiones se gestionan desde RR. HH.
+- **Vendedores predeterminados de comisión**: podés asignar empleados vendedores y socios activos habilitados como vendedores, definir su participación, porcentaje de comisión y si se devenga al facturar o cobrar. Se copian a cada nueva OV y quedan pendientes en RR. HH.; no generan ni confirman un vale automáticamente.
+- **Participación societaria en ventas**: los socios activos con porcentaje cargado se incluyen automáticamente en cada nueva OV, independientemente de quién figure como vendedor. Elegí si su porcentaje se calcula por **Orden de Venta** (opción inicial) o por **Facturación**. Se aplica sobre el subtotal sin IVA y tanto el porcentaje como la base elegida quedan guardados internamente por OV para que RR. HH. calcule y genere el Vale; ese porcentaje se consulta desde RR. HH., no desde la OV.
 
-> El **vendedor** y el **responsable** son datos diferentes: el vendedor conserva la relación comercial; el responsable recibe la OV para continuar su preparación o seguimiento.
+> El **vendedor de la venta**, los **vendedores de comisión** y el **responsable** son datos diferentes: el primero atribuye la operación, los segundos definen cómo se reparte la comisión y el responsable recibe la OV para continuar su preparación o seguimiento.
 
 Al guardar, se **sincronizan** los indicadores de las OV y facturas de venta, y se mantienen **sincronizados los tipos documentales** (factura sola, OV sola o ambos según el modo).
 
@@ -35,15 +40,26 @@ Al guardar, se **sincronizan** los indicadores de las OV y facturas de venta, y 
 2. Elegir **de dónde nace la deuda**.
 3. Elegir **a qué documento se aplica el cobro**.
 4. Definir la **reserva de stock**.
-5. Definir el **responsable sugerido** de la OV y si se **pregunta** o se **exige** al confirmar.
-6. Guardar. Los cambios de deuda y aplicación de cobros se usan en las nuevas OV; las condiciones de entrega también se recalculan en las OV sin remito.
+5. Elegir si la **dirección de entrega** de la OV será opcional u obligatoria. Si es opcional, decidir si se solicita confirmación al guardar o confirmar sin datos de entrega.
+6. Definir el **responsable sugerido** de la OV y si se **pregunta** o se **exige** al confirmar.
+7. Definir el **auditor sugerido** para las nuevas OV, si corresponde.
+8. En **Vendedores predeterminados de comisión**, agregar empleados habilitados como vendedores y socios activos que tengan **Habilitar como vendedor** activado. Ajustar para cada uno el porcentaje de venta sobre el que comisiona, la comisión y la base de cálculo.
+9. En **Participación societaria en ventas**, elegir si el porcentaje del socio se devenga por OV o por Facturación.
+10. Guardar cada sección. Los cambios de deuda, cobro, vendedores predeterminados y base de participación se usan en nuevas OV; las condiciones de entrega también se recalculan en las OV sin remito.
 
 ## Reglas y consideraciones
 
 - La base de deuda y aplicación de cobros queda guardada en cada **nueva OV**; las condiciones de entrega se actualizan también en las OV que todavía no tienen remito.
 - Si exigís un porcentaje cobrado, una OV solo queda **Lista para despacho** cuando alcanza ese porcentaje. Con un requisito del 100 %, debe estar cobrada por completo.
+- Cuando el circuito registra la deuda y los cobros en la OV, su detalle muestra **Cobrado**, **Cobro parcial** o **Pendiente de cobro**. Este indicador es independiente del estado de entrega/despacho; si la deuda se registra desde la factura, la OV no muestra estado de cobro.
+- Si la dirección es obligatoria, se exige al crear, editar y confirmar una OV; contacto, teléfono, fecha, horario, transporte e instrucciones siguen siendo opcionales. Si la dirección es opcional y el aviso está activo, se pide confirmación cuando todos esos campos están vacíos tanto al guardar como al confirmar.
 - El modo condiciona qué documentos están activos (factura, OV o ambos).
+- Los vendedores predeterminados solo se copian a nuevas OV. Cambiar la configuración no altera órdenes existentes; sus asignaciones se pueden revisar desde **RRHH → Reportes → Comisiones**.
+- La participación es independiente para cada vendedor: cada porcentaje se aplica a la venta y puede ser del 100% para varios vendedores. No se reparte un único 100% entre ellos. La tasa de comisión y la base (*Facturar* o *Cobrar*) también se guardan por vendedor.
+- La asignación queda pendiente hasta generar el Vale desde RRHH. Generarlo crea un Vale **COMISION** en borrador; la confirmación sigue siendo un paso separado.
+- La participación societaria queda separada de la comisión del vendedor. En RRHH puede liquidarse junto con ella en un mismo Vale, con el detalle de ambos conceptos. Si hay distintas monedas, se genera un Vale por moneda. Cambiar la base o los porcentajes no modifica OV existentes.
 - El **responsable** se elige en el modal de confirmación de la OV (con el sugerido precargado) y puede cambiarlo luego desde la acción **Asignar responsable**.
+- El **auditor de seguimiento** se asigna en el encabezado de cada documento de venta. La sección **Seguimiento y auditoría** muestra los eventos de ese documento únicamente al auditor asignado y al `OWNER` de la empresa; se registran desde que se habilita esta función y no reconstruye cambios anteriores.
 - La configuración **normaliza** los registros guardados: no quedan valores vacíos incompatibles con los selectores.
 
 ## Problemas frecuentes
@@ -54,6 +70,8 @@ Al guardar, se **sincronizan** los indicadores de las OV y facturas de venta, y 
 | No puedo cobrar contra la OV | El cobro se aplica solo a facturas. | Cambiá "El cobro se puede aplicar a". |
 | El stock no se reserva | Modo de reserva desactivado. | Configurá la reserva de stock. |
 | "Falta asignar un responsable" al confirmar | Está activa la opción **Exigir responsable**. | Elegí una persona o desactivá la opción. |
+| No se puede guardar una OV sin dirección | Está activa la opción **Exigir dirección de entrega en la OV**. | Completá la dirección o desactivá la opción en Circuito de ventas. |
+| No se puede confirmar una OV sin dirección | La dirección es obligatoria y falta en la orden. | Editá la OV y completá la dirección de entrega. |
 | El selector de responsable no trae a nadie | No hay usuarios en la empresa o no hay responsable sugerido. | Cargá los usuarios y elegí el sugerido. |
 
 ## Ver también

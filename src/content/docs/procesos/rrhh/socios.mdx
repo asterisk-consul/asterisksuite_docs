@@ -21,7 +21,9 @@ Los **socios** son los participantes de la empresa. Se administran en **RRHH →
 
 - **Nombre** y **apellido**.
 - **Documento**.
+- **Perfil**: Socio o Inversionista.
 - **Porcentaje de participación**.
+- **Habilitar como vendedor**, con comisión predeterminada y base para devengarla.
 - **Activo**.
 - Datos de **contraparte** (direcciones, contactos, cuentas bancarias).
 
@@ -35,13 +37,19 @@ Los **socios** son los participantes de la empresa. Se administran en **RRHH →
 
 2. **Completá los datos**
 
-   Nombre, apellido, documento y porcentaje de participación.
+   Nombre, apellido, documento y perfil. Para un socio, configurá el porcentaje de participación y, si también vende, activá **Habilitar como vendedor**. Para una persona que solo aporta capital, elegí **Inversionista**.
 
 3. **Guardá**
 
-   Al crear un socio, el sistema crea su **contraparte** (tipo Socio) y puede vincularse a un **usuario**.
+   El formulario comparte los datos generales de **Terceros**, pero deja fijado el tipo **Socio**. Al guardar, se crea el socio y su ficha común; esa ficha también aparece en **Terceros**. Opcionalmente, se puede vincular a un **usuario**.
 
 </Steps>
+
+## Participación societaria en ventas
+
+El porcentaje de participación de la ficha se mantiene separado de la comisión por vender. En **Configuración → Circuito de ventas** se elige si la participación se devenga por **Orden de Venta** o por **Facturación**; la opción inicial es **Orden de Venta**. En ambos casos se calcula sobre el subtotal sin IVA. La base y el porcentaje quedan guardados en cada nueva OV, por lo que los cambios posteriores no recalculan órdenes anteriores.
+
+La participación devengada aparece en **RRHH → Reportes → Comisiones**, separada de la comisión de vendedor. Se puede generar un Vale **COMISION** con ambos importes y el detalle de cada concepto. Si hay saldos en distintas monedas, se generan vales separados. El saldo se paga desde Tesorería y no aumenta ni consume los aportes disponibles del socio. Las órdenes creadas antes de habilitar esta función no reciben participación retroactiva.
 
 ## Cuenta corriente y reportes
 
@@ -70,9 +78,22 @@ En el resumen de la cuenta del socio, un saldo negativo se muestra en rojo como 
 
 El retiro reduce el saldo de aportes. Una remuneración por trabajo genera una deuda pendiente con el socio; su pago reduce esa deuda. El cambio de colores y textos no modifica importes ni incorpora aportes automáticamente.
 
+## Inversionistas y devolución en cuotas
+
+Un **Inversionista** se usa para una persona que aporta dinero y no participa de las ventas. Su ficha no habilita porcentaje societario ni comisión de vendedor. Registrá cada ingreso confirmado como **Aporte** en **RRHH → Vales**; el campo informativo **Capital Aportado** de la ficha no reemplaza esos movimientos.
+
+El capital se puede devolver de dos maneras:
+
+- Crear un **Retiro** por cada importe que se paga. El sistema valida el disponible en la moneda seleccionada.
+- En **RRHH → Vales**, usar **Programar devolución**, elegir la moneda y cargar el vencimiento y el importe de cada cuota. Se crea un Vale **RETIRO** en borrador por cuota y el total queda reservado para que un retiro manual no lo consuma.
+
+Cada cuota programada sigue pendiente hasta que se confirma el vale, se elige la caja o cuenta bancaria y se registra la salida. Si se anula un vale en borrador, el importe se libera para otros retiros. El plan no genera pagos automáticos y no puede superar los aportes disponibles menos las cuotas ya reservadas.
+
 ## Reglas y consideraciones
 
 - El porcentaje de participación define la porción del socio.
+- La participación societaria y la comisión de vendedor son conceptos independientes; un socio habilitado como vendedor puede recibir ambos.
+- **Capital Aportado** es un dato de la ficha: no se suma a la participación por ventas ni reemplaza los aportes registrados en Vales.
 - Un socio puede tener **usuario** de acceso vinculado.
 
 ## Problemas frecuentes

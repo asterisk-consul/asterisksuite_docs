@@ -50,6 +50,8 @@ Al abrir un movimiento y volver al detalle, se conserva la pestaña activa y la 
 
 OWNER y ADMIN pueden eliminar un **ajuste manual de corrección de saldo** desde su fila. Se envía a la papelera y el saldo corrido de la cuenta se recalcula. Esta opción no aparece para facturas ni pagos: esos movimientos deben anularse desde el módulo que los originó para conservar su trazabilidad.
 
+Una **NC/ND confirmada sin factura de origen** también puede anularse y enviarse a la papelera desde Compras o Ventas si no tiene pagos, documentos relacionados ni otros movimientos. Se retira su movimiento activo y se recalcula la cuenta corriente en la misma operación; el comprobante se conserva en la papelera para auditoría y restauración.
+
 ## Reglas y consideraciones
 
 - Los saldos se expresan en la **moneda base**.
