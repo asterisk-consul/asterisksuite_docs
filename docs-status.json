@@ -2,10 +2,12 @@
   "documentedUpTo": "0.135.0-alpha",
   "lastReview": "2026-11-05",
   "app": {
-    "version": "0.142.0-alpha",
+    "version": "0.144.0-alpha",
     "date": "2026-11-10"
   },
   "pending": [
+    "0.144.0-alpha",
+    "0.143.0-alpha",
     "0.142.0-alpha",
     "0.141.0-alpha",
     "0.140.2-alpha",
@@ -30,6 +32,14 @@
     "0.138.3-alpha": {
       "status": "skipped",
       "note": "Cambios internos de dependencias, documentación y cliente HTTP de prueba; no modifican funciones ni flujos para usuarios."
+    },
+    "0.144.0-alpha": {
+      "status": "partial",
+      "note": "La eliminación definitiva de empresas desde la plataforma está documentada; quedan versiones anteriores pendientes de revisar."
+    },
+    "0.143.1-alpha": {
+      "status": "skipped",
+      "note": "Ajuste visual de la animación del título en las tarjetas; no cambia el flujo ni los pasos de uso."
     }
   },
   "notes": "Corte calculado el 2026-10-20 comparando los cambios de asterisksuite_frontend/versiones/versions.json contra el contenido de src/content/docs/: los módulos publicados hasta 0.71.0-alpha (inversiones, libro de movimientos bancarios, gastos bancarios, clientes internos, precancelación) están descriptos; de 0.72.0-alpha en adelante casi no hay rastro en los docs, con incorporaciones puntuales en 0.76.0-alpha (variantes) y 0.82.0-alpha (circuito de compras)."

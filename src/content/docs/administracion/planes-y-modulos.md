@@ -49,6 +49,12 @@ La asignación solo habilita la gestión de planes, estados y módulos de esas e
 
 Al asignar el rol, la persona debe volver a iniciar sesión para que la interfaz cargue el nuevo rol. Los cambios de alcance de un administrador existente se aplican inmediatamente en el backend. Al revocar, se restaura su rol de plataforma anterior y se conservan sus membresías y roles tenant.
 
+## Eliminar una empresa
+
+La eliminación definitiva está reservada a **PLATFORM_OWNER**. En **Configuración → Planes y módulos → Empresas y módulos**, elegí **Eliminar** junto a la empresa y escribí su subdominio para confirmar.
+
+Esta acción elimina la base de datos tenant, la suscripción y las relaciones de esa empresa con sus usuarios y administradores. Las cuentas globales de usuario se conservan, por lo que las personas pueden seguir accediendo a otras empresas a las que pertenezcan. La eliminación es permanente y no se puede deshacer.
+
 El alta pública de `/register` y `/create-company` continúa disponible y conserva la asignación histórica `LEGACY_FULL` cuando existe. El alta manual desde plataforma permite elegir un plan desde el inicio.
 
 Los módulos esenciales se mantienen habilitados. Las dependencias también se aplican automáticamente: si falta una dependencia, el módulo dependiente queda deshabilitado; si la dependencia está en solo lectura, el módulo dependiente también pasa a solo lectura.

@@ -6,20 +6,34 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.142.0-alpha** (2026-11-10) |
+| Última versión de la app | **v0.144.0-alpha** (2026-11-10) |
 | Documentación al día hasta | **v0.135.0-alpha** |
 | Última revisión de docs | 2026-11-05 |
-| Versiones pendientes de revisar | **11** (0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
+| Versiones pendientes de revisar | **13** (0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
 
 ## Pendientes
 
 Cada entrada es una versión de la app que todavía no se revisó contra los contenidos de `src/content/docs/`.
+
+### v0.144.0-alpha (2026-11-10) — parcial
+
+> La eliminación definitiva de empresas desde la plataforma está documentada; quedan versiones anteriores pendientes de revisar.
+
+- Eliminar empresas y sus bases tenant desde la plataforma
+- Documentar la eliminación definitiva de una empresa
+
+### v0.143.0-alpha (2026-11-10) — pendiente
+
+- Asociar varios miembros con roles a una tarea
+- Avisar cuando agregan una persona a una tarea
+- Documentar miembros, roles y migración tenant
 
 ### v0.142.0-alpha (2026-11-10) — pendiente
 
 - Notificar asignaciones, comentarios y menciones de tareas
 - Agregar avisos opcionales de tareas con consentimiento y cola agrupada
 - Agregar CRM y Tareas al catálogo y proteger rutas por empresa
+- Mantener visible el tablero y abrir la configuración de avisos desde el encabezado
 - Documentar notificaciones y activación del módulo CRM
 
 ### v0.141.0-alpha (2026-11-10) — pendiente
@@ -76,6 +90,12 @@ Cada entrada es una versión de la app que todavía no se revisó contra los con
 - Conservar los datos y el perfil de socios en el formulario unificado de partes interesadas
 
 ## Versiones resueltas sin actualizar docs
+
+### v0.143.1-alpha (2026-11-10) — sin cambios
+
+> Ajuste visual de la animación del título en las tarjetas; no cambia el flujo ni los pasos de uso.
+
+- Mover solo el título al mostrar el control de completado
 
 ### v0.138.3-alpha (2026-11-06) — sin cambios
 
