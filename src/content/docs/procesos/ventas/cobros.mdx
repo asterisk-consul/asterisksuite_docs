@@ -71,6 +71,8 @@ import { Steps } from '@astrojs/starlight/components'
 
 Al confirmar, el cobro queda registrado, se actualiza la **cuenta corriente** del cliente y el **saldo** de las facturas aplicadas.
 
+El saldo que se puede cobrar ya descuenta las **notas de crédito de venta confirmadas y vigentes**. Una factura saldada por NC no aparece entre los documentos pendientes; ese crédito no se cuenta como dinero cobrado. Si anulás la NC, el importe vuelve a quedar pendiente.
+
 En el detalle de una factura, quienes tengan acceso de lectura a pagos (`payments.read`, o acceso administrativo) pueden consultar los pagos o cobros asociados y abrir cada operación desde su referencia.
 
 ## Cobro con tarjeta en una venta
@@ -111,7 +113,7 @@ Mientras el cobro esté en **Borrador**, podés editar sus datos, incluida la **
 
 ## Reglas y validaciones
 
-- El **importe aplicado** no puede superar el **saldo pendiente** del documento.
+- El **importe aplicado** no puede superar el **saldo pendiente** del documento después de descontar cobros y notas de crédito confirmadas vigentes.
 - Se requiere **caja abierta** (efectivo) o **cuenta** (transferencia) según el medio.
 - Las **retenciones** sugeridas dependen del motor fiscal y del medio de pago.
 - Un documento ya saldado no aparece entre los pendientes.
@@ -121,7 +123,7 @@ Mientras el cobro esté en **Borrador**, podés editar sus datos, incluida la **
 
 | Mensaje / síntoma | Causa | Solución |
 |---|---|---|
-| "El documento ya no tiene saldo pendiente" | La factura ya fue cobrada. | Verificá los cobros existentes. |
+| "El documento ya no tiene saldo pendiente" | La factura ya fue cobrada o quedó saldada por notas de crédito. | Revisá los cobros y las NC confirmadas vinculadas. |
 | No puedo cobrar en efectivo | No hay caja abierta. | Abrí una sesión de caja. |
 | No aparecen retenciones | El medio no las genera o falta configuración. | Revisá [Reglas y alícuotas](/configuracion/impuestos/reglas-y-alicuotas/). |
 

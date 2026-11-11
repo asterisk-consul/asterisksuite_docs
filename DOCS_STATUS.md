@@ -6,14 +6,35 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.144.0-alpha** (2026-11-10) |
+| Última versión de la app | **v0.145.0-alpha** (2026-11-10) |
 | Documentación al día hasta | **v0.135.0-alpha** |
 | Última revisión de docs | 2026-11-05 |
-| Versiones pendientes de revisar | **13** (0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
+| Versiones pendientes de revisar | **15** (0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
 
 ## Pendientes
 
 Cada entrada es una versión de la app que todavía no se revisó contra los contenidos de `src/content/docs/`.
+
+### v0.145.0-alpha (2026-11-10) — parcial
+
+> Documentados la configuración, el toast posterior, la exclusión de NC/ND y el saldo de compras; las versiones anteriores siguen pendientes de revisión.
+
+- Configurar actualizaciones automáticas de precios por contraparte y globales
+- Ingresar precios de NC con IVA incluido y recalcular la base
+- Descontar NC aplicadas del saldo y marcar la factura saldada
+- Evitar que las NC y ND actualicen precios o costos
+- Mostrar el resultado en un toast con acceso directo a la configuración
+- Documentar los cuatro controles y el aviso posterior a la confirmación
+
+### v0.144.1-alpha (2026-11-10) — parcial
+
+> Las notas de crédito de ventas y compras precargan el saldo pendiente; versiones anteriores siguen pendientes de revisión.
+
+- Descontar notas de crédito del saldo pendiente y precargar ese saldo en nuevas NC
+- Calcular el saldo pendiente de compras y precargarlo en nuevas NC
+- Impedir cobros por encima del saldo después de notas de crédito
+- Explicar la diferencia entre cobrada y saldada por NC
+- Documentar la precarga de NC de compra según saldo pendiente
 
 ### v0.144.0-alpha (2026-11-10) — parcial
 

@@ -64,7 +64,9 @@ En la fila del precio específico, usar la acción **Volver al precio general** 
 
 El historial registra cada cambio: precio anterior, nuevo, **origen** (Manual, Venta confirmada, Compra confirmada, Tarifa de despacho, Proveedor existente) y fecha.
 
-Al confirmar una venta, el precio unitario también actualiza el precio acordado para ese cliente. En las facturas, quien tenga `product-prices.update` puede marcar además **Actualizar los precios generales al confirmar**. Esa opción cambia la lista general en la moneda de la factura; no modifica costos ni reemplaza el precio específico del cliente.
+Al confirmar una factura, el precio acordado de cliente o proveedor se actualiza según los interruptores de [Actualización de precios](/configuracion/productos/precios/). La misma configuración controla por separado el precio general de venta y el costo global de compra. Después de confirmar, un toast informa los cambios y permite abrir directamente esa configuración.
+
+Las notas de crédito y débito no actualizan los precios acordados ni los precios o costos globales, y no generan avisos de actualización.
 
 ## Reglas y validaciones
 

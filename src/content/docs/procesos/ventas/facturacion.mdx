@@ -53,7 +53,7 @@ Para crear una **nota de crédito o débito**, abrí una **factura confirmada** 
 
 6. **Guardá y confirmá**
 
-   Presionar **Guardar** (o usar **Ctrl + S**) y luego **Confirmar** para asignar número y CAE. En la confirmación, los usuarios con permiso de actualización de precios pueden elegir si la factura también actualiza el precio general de sus productos en la moneda del comprobante. La opción está desmarcada por defecto; no modifica costos ni el precio acordado para ese cliente.
+   Presionar **Guardar** (o usar **Ctrl + S**) y luego **Confirmar** para asignar número y CAE. Las actualizaciones del precio acordado con el cliente y del precio general se controlan por separado en **Configuración → Productos, stock y precios → Actualización de precios**. Después de confirmar, un toast informa qué se actualizó y ofrece el botón **Cambiar configuración**. El precio general requiere el permiso `product-prices.update`; si falta, la factura se confirma y el toast indica que no se modificó.
 
 </Steps>
 
@@ -61,7 +61,7 @@ El catálogo se configura por empresa en **Configuración → Documentos → Con
 
 Cada factura guarda su propio snapshot de los conceptos aplicados. La vista y la impresión muestran el subtotal previo, cada bonificación, el subtotal neto, los impuestos recalculados y el total. En el detalle del documento y en la copia impresa también se muestran el porcentaje y el importe de la bonificación aplicada a cada ítem; el precio unitario neto y el total del renglón ya reflejan ese descuento. Si hubo pagos, la impresión indica además lo pagado y el saldo pendiente. Editar o desactivar una plantilla no cambia comprobantes existentes; la bonificación reduce el importe pendiente de la factura.
 
-Las **notas de crédito/débito** se inician desde una factura confirmada y se ajustan sus ítems; al editar un borrador, se puede cambiar la factura de referencia.
+Las **notas de crédito/débito** se inician desde una factura confirmada y se ajustan sus ítems; al editar un borrador, se puede cambiar la factura de referencia. Al crear una **NC de venta**, los ítems se precargan para reflejar el saldo pendiente de la factura, descontando cobros y notas de crédito confirmadas vigentes. Revisá el total y los ítems antes de guardar; podés modificarlos si el motivo de la nota requiere otro importe.
 
 ## Confirmar la factura
 
@@ -89,7 +89,7 @@ Una vez confirmada no se edita; se ajusta con una **nota de crédito/débito** o
 | 2 | **Confirmada** | Confirmada con CAE válido. |
 | 3 | **Anulada** | Anulada. |
 
-El estado **Confirmada** describe el ciclo documental y no significa que la factura esté cobrada. En el encabezado del detalle se muestra además **Cobrada**, **Cobro parcial** o **Pendiente de cobro**, según los cobros aplicados.
+El estado **Confirmada** describe el ciclo documental y no significa que la factura esté cobrada. En el encabezado del detalle se muestra además **Cobrada**, **Cobro parcial**, **Pendiente de cobro** o **Saldada por NC**. Esta última indica que las notas de crédito confirmadas cubrieron el saldo; no representa dinero cobrado. La vista y la impresión muestran por separado los importes cobrados y cubiertos por notas de crédito. Si anulás una NC, su crédito deja de descontarse y vuelve a aparecer como saldo pendiente.
 
 ## Reglas y validaciones
 
@@ -99,7 +99,9 @@ El estado **Confirmada** describe el ciclo documental y no significa que la fact
 - El **IVA** se resuelve según **condición emisor × receptor**.
 - Si la factura es en **moneda extranjera**, debe existir la **cotización** vigente: si falta, el sistema muestra un error explícito en lugar de asumir un valor igual a uno.
 - La confirmación asigna **número** y **CAE**; el número anticipado es orientativo, la fuente de verdad es la serie.
-- Actualizar el precio general requiere el permiso `product-prices.update`; se usa el precio unitario de cada renglón. Si no se marca la opción, la lista general no cambia.
+- Al confirmar una factura, las actualizaciones del precio acordado con el cliente y del precio general se realizan según **Configuración → Productos, stock y precios → Actualización de precios**. El precio general requiere `product-prices.update`; si está habilitado pero la persona que confirma no tiene ese permiso, la factura se confirma y el toast indica que el precio general no cambió.
+- Después de confirmar, el toast informa qué precios se actualizaron o quedaron sin cambios y ofrece **Cambiar configuración**.
+- En una nota de crédito, el campo de precio unitario se ingresa con IVA incluido; el formulario separa la base y vuelve a calcular los impuestos. Las notas de crédito y débito no modifican precios de productos ni muestran avisos de actualización.
 - Un producto con variantes exige una variante activa en cada ítem.
 - Los documentos confirmados no se editan.
 - Las NC y ND nuevas deben iniciarse desde una factura confirmada. Al editar un borrador, elegí otra referencia por número, referencia o cliente; el cliente se actualizará automáticamente.

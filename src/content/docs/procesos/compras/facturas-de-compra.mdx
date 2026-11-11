@@ -52,7 +52,7 @@ La **factura de compra** registra el comprobante del proveedor y es el eslabón 
 
 6. **Guardá y confirmá**
 
-   Al confirmar, el comprobante actualiza la **cuenta corriente del proveedor** (cuenta por pagar) y queda disponible para su **pago**.
+   Al confirmar, el comprobante actualiza la **cuenta corriente del proveedor** (cuenta por pagar) y queda disponible para su **pago**. La actualización del precio acordado con el proveedor y del costo global se configura por separado en **Configuración → Productos, stock y precios → Actualización de precios**. Después de confirmar, un toast informa qué se actualizó y ofrece **Cambiar configuración**.
 
 6. **Generá el remito de compra**
 
@@ -64,7 +64,7 @@ El catálogo se configura por empresa en **Configuración → Documentos → Con
 
 Cada factura guarda su propio snapshot de los conceptos aplicados. La vista y la impresión muestran el subtotal previo, cada bonificación, el subtotal neto, los impuestos recalculados y el total final. Si un ítem tiene una bonificación porcentual, la vista muestra el precio original, el precio unitario bonificado y el importe descontado. El subtotal del renglón se muestra sin impuestos y el total suma los impuestos una sola vez. Si hubo pagos, la impresión indica además lo pagado y el saldo pendiente. Editar o desactivar una plantilla no cambia comprobantes existentes.
 
-Para crear una **nota de crédito o débito** de compra, abrí una **factura confirmada** y elegí **Crear NC** o **Crear ND**. El sistema toma de ella el proveedor, los datos y la relación de origen. Si abriste la pantalla de nota sin partir de una factura, te indica cómo volver al listado. Al editar un borrador sí podés elegir otra factura: el proveedor se actualiza con el de la nueva referencia y se valida que coincida. La nota puede ajustar solo una parte de la factura.
+Para crear una **nota de crédito o débito** de compra, abrí una **factura confirmada** y elegí **Crear NC** o **Crear ND**. El sistema toma de ella el proveedor, los datos y la relación de origen. Al crear una **NC**, los ítems se precargan según el **saldo pendiente**: se descuentan los pagos y las NC confirmadas vigentes vinculadas. Revisá el total y los ítems antes de guardar; podés modificarlos si la nota debe cubrir otro importe. Si abriste la pantalla de nota sin partir de una factura, te indica cómo volver al listado. Al editar un borrador sí podés elegir otra factura: el proveedor se actualiza con el de la nueva referencia y se valida que coincida. La nota puede ajustar solo una parte de la factura.
 
 ## Cadena de documentos
 
@@ -85,7 +85,7 @@ Cada eslabón es un enlace a la vista específica del documento; si no tenés pe
 | 2 | **Confirmada** | Confirmada. |
 | 3 | **Anulada** | Anulada. |
 
-El estado **Confirmada** describe el ciclo del comprobante; no indica si ya se pagó. En el encabezado del detalle también se muestra **Pagada**, **Pago parcial** o **Pendiente de pago**, según las aplicaciones registradas. Así se conserva la trazabilidad documental y se ve el saldo de un vistazo.
+El estado **Confirmada** describe el ciclo del comprobante; no indica si ya se pagó. En el encabezado y en la lista también se muestra **Pagada**, **Pago parcial**, **Pendiente de pago** o **Saldada por NC**. Las notas de crédito confirmadas se descuentan del saldo pendiente; si cubren todo el resto, la factura deja de ofrecer la acción para pagar. Anular una NC devuelve ese importe al saldo pendiente.
 
 ## Reglas y validaciones
 
@@ -94,6 +94,8 @@ El estado **Confirmada** describe el ciclo del comprobante; no indica si ya se p
 - Los errores de validación del servidor se muestran como mensajes legibles; si ocurre un error inesperado, verificá el listado antes de reintentar.
 - Si el comprobante es en **moneda extranjera**, debe existir la **cotización** vigente: si falta, el sistema muestra un error explícito en lugar de asumir un valor igual a uno.
 - La confirmación actualiza la **cuenta corriente**.
+- La actualización del precio acordado con el proveedor y del costo global se controla por separado en **Configuración → Productos, stock y precios → Actualización de precios**. Las notas de crédito y débito no actualizan precios ni costos y no generan avisos de actualización.
+- En una nota de crédito, ingresá el precio unitario con IVA incluido; el formulario separa la base y recalcula los impuestos.
 - Los documentos confirmados no se editan; se ajustan con notas.
 - Si la factura referencia un documento de origen, debe ser una OC: *La factura de compra debe originarse en una orden de compra*.
 - La OC debe estar confirmada y activa: *La orden de compra debe estar confirmada y activa*.

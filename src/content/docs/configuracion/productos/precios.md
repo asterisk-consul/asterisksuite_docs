@@ -38,7 +38,20 @@ Para cada moneda se pueden definir:
 
 Se agregan filas por moneda, se editan y se eliminan. Cada cambio queda registrado en el **historial**.
 
-Al confirmar una factura de venta, un usuario con permiso `product-prices.update` puede elegir actualizar el precio general de los productos incluidos. Se toma el precio unitario de cada renglón y la moneda de la factura; la opción se presenta desmarcada. Esto no cambia el costo ni reemplaza el precio acordado por cliente.
+## Actualización automática al confirmar facturas
+
+En **Configuración → Productos, stock y precios → Actualización de precios** se pueden habilitar por separado cuatro opciones. También se encuentra buscando **Actualización de precios** en el Centro de configuración:
+
+- **Precio acordado con el cliente** al confirmar facturas de venta.
+- **Precio general de venta** al confirmar facturas de venta.
+- **Precio acordado con el proveedor** al confirmar facturas de compra.
+- **Costo global de compra** al confirmar facturas de compra.
+
+El precio acordado se guarda para la contraparte y moneda del comprobante. El precio general o el costo global se actualiza en el producto o su variante. Por defecto se mantienen activos los precios por contraparte y el costo global de compra; el precio general de venta empieza desactivado.
+
+Después de confirmar una factura, un toast resume qué opciones cambiaron, cuáles estaban desactivadas y si faltó el permiso para modificar el precio general de venta. Su botón **Cambiar configuración** lleva directamente a los cuatro interruptores. Para editar la configuración se necesita `product-prices.update`; actualizar el precio general de venta también requiere ese permiso al confirmar.
+
+Las notas de crédito y débito no actualizan precios ni costos de productos y no generan avisos de actualización.
 
 ## Costo manual
 
