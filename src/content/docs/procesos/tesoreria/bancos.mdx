@@ -82,6 +82,12 @@ En los archivos, el **código de tipo** describe qué clase de operación es (po
 
 Al pagar o cobrar por **transferencia bancaria**, se elige la cuenta; el movimiento impacta su saldo y puede disparar el cálculo de **retenciones** (en pagos a proveedores).
 
+### Usar una cuenta bancaria desde otra empresa
+
+Al editar una cuenta bancaria, abrí **Uso entre empresas** para autorizar empresas vinculadas a tu usuario. Al crear una cuenta nueva, primero guardala; luego la aplicación abre su ficha para configurar el uso. Elegí por separado si pueden usarla para **Pagos y sueldos**, **Cobros** o **Vales de socios**. La cuenta compartida aparece en el selector de transferencia cuando coincide su moneda con la operación.
+
+La cuenta y el movimiento bancario quedan en la empresa titular. El pago, cobro o vale se registra en la empresa que lo carga; la tabla del historial bancario muestra una insignia con la empresa que originó cada movimiento interempresa. En pagos y cobros también aparece una insignia con la empresa titular de la cuenta compartida. La descripción del movimiento titular conserva su referencia. La reversión genera un movimiento compensatorio, conserva la trazabilidad y no elimina el movimiento original. Compartir una cuenta no genera automáticamente asientos de compensación entre las empresas.
+
 ## Reglas y validaciones
 
 - El **nombre**, **banco**, **tipo de cuenta** y **moneda** son obligatorios.

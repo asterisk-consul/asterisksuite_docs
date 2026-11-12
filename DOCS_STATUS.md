@@ -6,14 +6,49 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.153.3-alpha** (2026-11-11) |
+| Última versión de la app | **v0.156.0-alpha** (2026-11-12) |
 | Documentación al día hasta | **v0.135.0-alpha** |
 | Última revisión de docs | 2026-11-05 |
-| Versiones pendientes de revisar | **31** (0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
+| Versiones pendientes de revisar | **35** (0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
 
 ## Pendientes
 
 Cada entrada es una versión de la app que todavía no se revisó contra los contenidos de `src/content/docs/`.
+
+### v0.156.0-alpha (2026-11-12) — pendiente
+
+- Buscar y reutilizar ubicaciones del catálogo desde una orden de venta
+- Asociar ubicaciones existentes a la ficha del cliente con el permiso correspondiente
+- Guardar direcciones y contactos reutilizables desde el modal de entrega
+- Conservar los teléfonos agregados al sincronizar el formulario de entrega
+- Excluir ubicaciones dadas de baja del buscador
+- Documentar búsqueda, asociación y permisos de datos de entrega
+
+### v0.155.1-alpha (2026-11-12) — parcial
+
+> Se documentaron los estados de OV y la lectura de cobros; el corte general mantiene versiones anteriores pendientes.
+
+- Incluir OV aprobadas y posteriores en ventas y saldo por cobrar
+- Mostrar cobros completos, parciales y pendientes en el resumen y detalle
+- Filtrar el resumen y los subreportes por uno o varios estados de OV
+- Presentar los estados de OV en un selector múltiple junto a Moneda
+- Desplazar la vista al subreporte al abrir un importe
+- Actualizar los criterios de lectura de OV del reporte
+
+### v0.155.0-alpha (2026-11-12) — pendiente
+
+- Configurar qué empresas pueden usar cada caja o cuenta bancaria
+- Usar fondos compartidos en pagos y cobros simples o mixtos
+- Registrar vales de socios desde fondos compartidos
+- Documentar configuración, uso y reversión de fondos compartidos
+
+### v0.154.0-alpha (2026-11-12) — parcial
+
+> Se documentó el nuevo reporte de resultado y composición; el corte general sigue pendiente de versiones anteriores.
+
+- Agregar el reporte multiempresa de resultado y composición por cuenta contable
+- Abrir la composición y los documentos desde cada importe del resumen
+- Documentar los criterios y el alcance del reporte de resultado
 
 ### v0.153.3-alpha (2026-11-11) — pendiente
 

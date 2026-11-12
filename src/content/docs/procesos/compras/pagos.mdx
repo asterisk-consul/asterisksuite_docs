@@ -35,7 +35,7 @@ import { Steps } from '@astrojs/starlight/components'
 
 3. **Elegí la forma de pago**
 
-   Efectivo, transferencia bancaria, cheque o tarjeta. También podés combinar efectivo, transferencias y cheques en un solo pago: agregá los medios, indicá el importe de cada uno y seleccioná la caja, la cuenta y los cheques que correspondan. La suma debe cubrir el neto después de retenciones. Las tarjetas y los gastos bancarios detallados se registran por separado.
+   Efectivo, transferencia bancaria, cheque o tarjeta. También podés combinar efectivo, transferencias y cheques en un solo pago: agregá los medios, indicá el importe de cada uno y seleccioná la caja, la cuenta y los cheques que correspondan. Los importes de cheques y fondos representan el neto que efectivamente se entrega; las retenciones completan el bruto aplicado a las facturas. Las tarjetas y los gastos bancarios detallados se registran por separado.
 
    Si elegís varios cheques, el formulario conserva el orden de selección.
 
@@ -49,7 +49,7 @@ import { Steps } from '@astrojs/starlight/components'
 
 5. **Revisá las retenciones**
 
-   El sistema puede **sugerir retenciones** practicadas según el motor fiscal (se pueden ajustar). Al agregar una retención manual, la base se completa con el total de las facturas seleccionadas, convertido a la moneda del pago; podés modificarla. Si cargás una alícuota, el importe se calcula automáticamente. También podés ingresar directamente el importe retenido.
+   El sistema puede **sugerir retenciones** practicadas según el motor fiscal (se pueden ajustar). Al agregar una retención manual, la base se completa con el total bruto aplicado a las facturas seleccionadas, convertido a la moneda del pago; podés modificarla. Si cargás una alícuota, el importe se calcula automáticamente. También podés ingresar directamente el importe retenido. El cheque conserva su valor neto; la factura recibe el bruto cubierto entre el cheque y las retenciones.
 
 6. **Guardá y confirmá**
 
@@ -91,9 +91,9 @@ Mientras el pago esté en **Borrador**, podés editar sus datos, incluida la **f
 
 ## Recuperar un pago anulado como borrador
 
-En el detalle de un pago **Anulado** en efectivo o por transferencia, alguien con permiso `payments.update` puede usar **Volver a borrador** para corregirlo. La acción conserva los movimientos de reversión de caja/banco y cuenta corriente, y recalcula el saldo de cada comprobante considerando los otros pagos todavía confirmados o pagados. El pago no vuelve a impactar hasta que se confirme nuevamente. Las retenciones anuladas vuelven a quedar como **Calculadas** para poder revisarlas o editarlas; al confirmar, se aplican una sola vez junto con el importe bruto de los comprobantes.
+En el detalle de un pago **Anulado** en efectivo, por transferencia o con cheques, alguien con permiso `payments.update` puede usar **Volver a borrador** para corregirlo. También se permite en pagos mixtos que incluyan cheques. La acción conserva las reversiones de caja/banco y cuenta corriente, y recalcula el saldo de cada comprobante considerando los otros pagos todavía confirmados o pagados. Los cheques se liberan para volver a seleccionarlos en el borrador; si al anular elegiste cancelarlos, permanecen cancelados. El pago no vuelve a impactar hasta que se confirme nuevamente. Las retenciones anuladas vuelven a quedar como **Calculadas** para poder revisarlas o editarlas; al confirmar, se aplican una sola vez junto con el importe bruto de los comprobantes.
 
-No se puede recuperar desde esta acción un pago mixto, con cheque o tarjeta, ni uno con retenciones certificadas, remitidas o con imputaciones fiscales activas. En esos casos, primero hay que resolver el circuito relacionado.
+No se puede recuperar desde esta acción un pago con tarjeta ni uno con retenciones certificadas, remitidas o con imputaciones fiscales activas. Tampoco se puede recuperar si uno de sus cheques ya tuvo otro movimiento o quedó asociado a otro pago. En esos casos, primero hay que resolver el circuito relacionado.
 
 ## Reglas y validaciones
 

@@ -41,7 +41,7 @@ import { Steps } from '@astrojs/starlight/components'
    - **Cheque** (selecciona cheques disponibles).
    - **Tarjeta** (elige la tarjeta y el código de autorización).
 
-   También podés combinar efectivo, transferencias y cheques en un solo cobro. Agregá cada medio, indicá su importe y seleccioná la caja, la cuenta o los cheques correspondientes. La suma debe coincidir con el neto a cobrar después de retenciones. Las tarjetas se registran por separado.
+   También podés combinar efectivo, transferencias y cheques en un solo cobro. Agregá cada medio, indicá su importe y seleccioná la caja, la cuenta o los cheques correspondientes. Los importes de cheques y fondos representan el neto efectivamente recibido; las retenciones completan el bruto aplicado a las facturas. Las tarjetas se registran por separado.
 
    Si seleccionás varios cheques, el formulario conserva el orden elegido.
 
@@ -53,7 +53,7 @@ import { Steps } from '@astrojs/starlight/components'
 
 5. **Revisá las retenciones**
 
-   Al transferir, el sistema puede **sugerir retenciones** según el motor fiscal (se pueden ajustar, agregar o quitar). Al agregar una retención manual, la base se completa con el total de los comprobantes seleccionados, convertido a la moneda del cobro; podés modificarla. Si cargás una alícuota, el importe se calcula automáticamente. También podés ingresar directamente el importe retenido.
+   El sistema puede **sugerir retenciones** según el motor fiscal (se pueden ajustar, agregar o quitar). Al agregar una retención manual, la base se completa con el total bruto aplicado a los comprobantes seleccionados, convertido a la moneda del cobro; podés modificarla. Si cargás una alícuota, el importe se calcula automáticamente. También podés ingresar directamente el importe retenido. El cheque conserva su valor neto; la factura recibe el bruto cubierto entre el cheque y las retenciones.
 
 6. **Guardá y confirmá**
 

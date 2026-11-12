@@ -67,6 +67,14 @@ Las **cajas** controlan el **efectivo**. Cada caja tiene una **moneda** y un **s
 - **Cerrar sesión**: al finalizar, se cierra con el recuento.
 - **Rendiciones** y **transferencias entre cajas** según los permisos.
 
+## Compartir una caja con otras empresas
+
+Al editar una caja, una persona con permiso de edición puede abrir **Uso entre empresas** y habilitar empresas vinculadas a su usuario. Al crear una caja nueva, primero hay que guardarla; luego la aplicación abre su ficha para configurar el uso. Para cada empresa se pueden autorizar por separado **Pagos y sueldos**, **Cobros** y **Vales de socios**. Si se desactiva una empresa o se quita un uso, deja de aparecer como opción para nuevas operaciones.
+
+La empresa titular conserva la caja y su saldo. La caja compartida aparece en los formularios de pagos/cobros y, si se autorizan vales, en los movimientos directos de socios. Para usarla debe estar activa, tener la misma moneda de la operación y mantener una sesión abierta. Los sueldos se pagan desde el formulario habitual de Tesorería; la opción **Vales de socios** aplica a los retiros, aportes y demás vales que impactan directamente caja o banco.
+
+El pago, cobro o vale y sus efectos comerciales quedan en la empresa donde se carga la operación; el movimiento de efectivo queda en el historial de la empresa titular y muestra desde qué empresa se originó. La reversión conserva ambos registros. Para revertir un egreso de caja compartida se necesita una sesión abierta en la caja titular; para revertir un cobro, el saldo de esa caja debe alcanzar para devolver el importe. La función no crea automáticamente asientos de cuentas puente entre empresas.
+
 En el historial, seleccioná una fila o usá el ícono del ojo —ubicado al inicio— para consultar el detalle. El resaltado al pasar el cursor indica que la fila es interactiva. Se muestran el tipo en español, sus saldos y la sesión relacionada; si corresponde a un pago o cobro, también aparecen el tercero, el medio y estado, los comprobantes aplicados y los cheques asociados. Los tipos usan los mismos colores que sus indicadores en la tabla. Al volver desde un movimiento se conservan la pestaña del historial y la posición de la página.
 
 ## Cómo registrar un movimiento manual

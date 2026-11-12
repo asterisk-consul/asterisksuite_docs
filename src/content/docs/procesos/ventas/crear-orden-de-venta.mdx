@@ -21,6 +21,7 @@ En el listado, el interruptor **Mostrar cancelados** permite incluir o esconder 
 - Ver ventas · Crear ventas · Editar ventas · Confirmar ventas · Anular ventas
 - También aplican los permisos por tipo de documento (órdenes de venta) si tu empresa los usa.
 - **Ver precios, totales y comisiones de órdenes de venta restringidas** (`sales.orders.view_amounts`): habilita ver los importes cuando el tipo de documento los oculta en un estado. Los roles `admin` y `manager` ya lo tienen; OWNER y ADMIN lo ignoran (siempre ven importes).
+- Para buscar en el catálogo de ubicaciones se requiere `locations.read`. Para asociar una ubicación existente a la ficha del cliente se requiere `business_parties.update`; para crear y asociar una nueva, también `locations.create`. Para guardar un contacto se requiere `contacts.create`. Sin permiso de edición, una ubicación del catálogo igual se puede copiar a la OV sin asociarla al cliente.
 :::
 
 ## Configuración previa
@@ -68,8 +69,10 @@ En el listado, el interruptor **Mostrar cancelados** permite incluir o esconder 
 
    - **Prioridad**: Baja, Media, Alta o Urgente.
    - **Fecha comprometida**.
-   - **Dirección de entrega**, **contacto**, **teléfono** y **tiempo de entrega**.
-   - **Transporte** e **instrucciones de entrega**.
+   - **Dirección de entrega** (hasta 300 caracteres) y **contacto** (hasta 100). Usá **Buscar o agregar** para buscar en el catálogo de ubicaciones y en las direcciones asociadas al cliente, o elegir uno de sus contactos. Al seleccionar una ubicación se copia a la OV; si tenés permiso también queda asociada a la ficha del cliente. Desde el mismo modal podés guardar una nueva dirección o contacto para reutilizarlo. También podés completar el dato manualmente para esta OV sin guardarlo en la ficha.
+   - Podés cargar hasta **10 teléfonos de contacto**, con un máximo de **30 caracteres por número**. Usá **Agregar teléfono** para incorporar otro y el botón de quitar para eliminarlo.
+   - **Tiempo de entrega** y **transporte** admiten hasta 100 caracteres cada uno. Las **instrucciones de entrega** no tienen un límite de caracteres definido por el documento.
+   - La fecha comprometida se valida como fecha; los errores de los campos aparecen junto al dato que debés corregir.
 
    Estas instrucciones generales describen cómo entregar el pedido. Las medidas específicas de un producto se cargan en su renglón, separadas de esta información.
 
@@ -139,6 +142,7 @@ Cada **tipo de documento** de OV define en qué estados los **precios, totales y
 
 - La OV debe tener **cliente** y al menos un **ítem**.
 - Antes de guardar, el formulario señala los datos faltantes o inválidos; elegí el tipo, fecha y punto de venta cuando corresponda, y verificá que las cantidades sean mayores que cero.
+- Los límites de entrega se indican debajo de cada campo: dirección 300 caracteres, contacto 100, cada teléfono 30 (hasta 10 teléfonos), tiempo y transporte 100. Si la dirección es obligatoria por el Circuito de ventas, completala antes de guardar.
 - Si el servidor rechaza el comprobante, el aviso muestra el detalle disponible. Ante un error inesperado, verificá el listado antes de reintentar para evitar duplicados.
 - La **secuencia** define el número del documento.
 - El vendedor debe ser un empleado activo habilitado como vendedor; se puede dejar sin asignar. Este dato se usa para atribuir y consultar ventas.

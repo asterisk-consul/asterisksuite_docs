@@ -30,6 +30,7 @@ A diferencia de los [reportes de tesorería](/procesos/tesoreria/reportes/), est
 | Menú | Vista | URL | Qué muestra |
 |---|---|---|---|
 | **Consolidado de empresas** | `consolidado` | `/erp/reports/consolidated` | Indicadores globales, comparativo por empresa y detalle por área. |
+| **Resultado y composición** | `resultado` | `/erp/reports/financial-results` | Resumen por empresa y moneda, con navegación a cuentas contables y documentos. |
 | **Clientes** | `clientes` | `/erp/reports/consolidated?view=customers` | Cobros, cuentas de clientes con saldo y documentación comercial. |
 | **Proveedores** | `proveedores` | `/erp/reports/consolidated?view=suppliers` | Pagos, deuda, obligaciones del período y documentos de compra. |
 | **Empleados y socios** | `rrhh` | `/erp/reports/consolidated?view=hr` | Personas, vales, retiros y saldos pendientes. |
@@ -69,6 +70,24 @@ El mismo menú incluye **Resumen gerencial** (`/erp/reports/management`), un rep
 
 La sección de evolución y composición por moneda está oculta por el momento. El resumen gerencial conserva el desempeño por vendedor; ya no calcula rankings ni carga datos detallados de productos para esas tarjetas. El filtro por producto sigue disponible. Para analizar artículos, **Ver reporte de productos** abre `/erp/sales/sales-reports/salesProducts` con las mismas fechas *Desde* y *Hasta*. A diferencia del consolidado, el resumen gerencial nunca mezcla empresas.
 
+## Resultado y composición por empresa
+
+El reporte **Resultado y composición** (`/erp/reports/financial-results`) compara las empresas asociadas al usuario en un período. Todas las monedas se mantienen separadas, sin conversión ni suma entre monedas. Se pueden seleccionar hasta 20 empresas por consulta; el período inicial va desde el primer día del mes actual hasta hoy.
+
+La tabla presenta una fila por empresa y moneda, más el total de las empresas seleccionadas en esa misma moneda. Los importes subrayados abren el subreporte de esa empresa: primero la composición por cuenta contable y tipo; después, los documentos que forman cada importe. Desde el documento se abre su pantalla del ERP y, en las órdenes y comprobantes comerciales, se pueden desplegar las partidas. La búsqueda del detalle admite número, UUID, tercero y concepto.
+
+| Indicador | Criterio |
+|---|---|
+| Ventas · OV aprobadas | Órdenes de venta en estados 1 a 7, desde Aprobada hasta Cerrada, por fecha de la OV. Cada total se separa según el cobro acumulado actual y el pendiente; se indica cuántas están cobradas, parciales o sin cobro. |
+| Compras / gastos facturados | Facturas de compra confirmadas (estado 2), por fecha del comprobante. |
+| Facturas de venta | Facturas de venta confirmadas (estado 2); se comparan con las OV aprobadas. |
+| Pagos realizados | Pagos y gastos en estado pagado, agrupados por cuenta contable y tipo. |
+| Cobros realizados | Cobros en estado pagado, presentados por separado de los pagos. |
+| Saldo de OV por cobrar | Saldo positivo de las OV en estados 1 a 7; no se distribuye entre cuentas de ingreso. |
+| Ventas − facturas / Cobros − pagos | Diferencias comparativas. No son utilidad contable ni saldo de caja o banco. |
+
+Las facturas y los pagos pueden describir partes del mismo circuito; no sumes indicadores diferentes como si fueran ingresos independientes. El reporte no es un estado contable oficial: no incorpora devengamientos, costo de ventas ni notas de crédito o débito. Para la composición de facturas usa la cuenta de ingreso o gasto actualmente asignada al producto; la diferencia entre el total del comprobante y sus partidas queda visible como impuestos, ajustes o importes sin ítems activos. Si el producto no tiene cuenta asignada, sus renglones aparecen en **Sin cuenta contable asignada**.
+
 ## Reportes de productos de ventas y compras
 
 Los reportes **Productos vendidos** (`/erp/sales/sales-reports/salesProducts`) y **Productos comprados** (`/erp/purchases/purchases-reports/purchasesProducts`) analizan la empresa activa. Elegí un período y un tipo de documento —facturas, notas de crédito o débito, órdenes, presupuestos o remitos según el circuito— y aplicá los filtros. Por defecto se muestran las órdenes (OV en ventas y órdenes de compra en compras). La ruta anterior `/productdash` sigue disponible para productos comprados.
@@ -82,6 +101,7 @@ Para acceder se necesita lectura de ventas o compras, según el reporte. La info
 ## Páginas de esta sección
 
 - [Reporte consolidado](/procesos/reportes/consolidado/)
+- [Resultado y composición por empresa](/procesos/reportes/resultado-y-composicion/)
 - [Envíos automáticos por WhatsApp](/procesos/reportes/envios-automaticos-whatsapp/)
 - [Clientes, proveedores, empleados y socios](/procesos/reportes/partes-interesadas/)
 - [Bancos, cajas y cheques](/procesos/reportes/tesoreria/)

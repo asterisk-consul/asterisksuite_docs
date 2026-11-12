@@ -1,0 +1,49 @@
+---
+title: Resultado y composición por empresa
+description: Resumen multiempresa con desglose de cuentas contables, documentos y partidas.
+sidebar:
+  order: 2
+---
+
+## Abrir el reporte
+
+Desde **ERP → Reportes → Resultado y composición**, elegí una o varias empresas asociadas a tu usuario, definí las fechas y seleccioná **Generar reporte**. Se pueden consultar hasta 20 empresas a la vez. Por defecto se toma el mes en curso y se preseleccionan las primeras 20 empresas disponibles.
+
+Al generar el reporte, el selector múltiple **Estados de OV** aparece junto a **Moneda**. Podés elegir uno o varios estados, desde **Aprobada** hasta **Cerrada**; los siete vienen seleccionados por defecto. Después de elegirlos, presioná **Aplicar** para actualizar los importes de ventas de OV, su cobrado y su saldo por cobrar, y los subreportes de esas columnas. Las facturas, pagos y cobros se calculan con sus criterios propios. Debe quedar al menos un estado de OV seleccionado para aplicar el filtro.
+
+Cada empresa se muestra por separado. Si hay más de una moneda, aparece una fila por moneda; el filtro permite mostrar una moneda puntual. El total de selección suma sólo importes de la misma moneda y nunca los convierte.
+
+## Abrir la composición y el origen
+
+1. Hacé clic en un importe subrayado de una empresa para abrir su subreporte. La pantalla se desplaza automáticamente hasta el detalle.
+2. La primera sección muestra las cuentas contables, o la clasificación que corresponda al movimiento. Seleccioná una cuenta para filtrar los documentos de abajo.
+3. En **Documentos y partidas**, filtrá las OV por **Sin cobrar**, **Cobro parcial** o **Cobradas**; también podés buscar por número, UUID, tercero o concepto. Los resultados se cargan paginados.
+4. Hacé clic en el número para abrir el documento en el ERP. En documentos comerciales, usá **Ver partidas** para desplegar sus renglones sin salir del subreporte.
+5. Usá **Cerrar detalle** para volver al resumen.
+
+Para pagos, gastos y cobros, la composición usa la cuenta contable del movimiento. Para facturas, toma la cuenta de ingreso (ventas) o gasto (compras) actualmente asignada al producto. Si no hay cuenta, el renglón queda agrupado bajo **Sin cuenta contable asignada**. En una factura, la diferencia entre el total del encabezado y las partidas activas se presenta como **Impuestos / ajustes / sin ítems** para facilitar la conciliación.
+
+## Qué incluye cada indicador
+
+| Indicador | Incluye |
+|---|---|
+| Ventas · OV aprobadas | Órdenes de venta en estados 1 a 7, desde Aprobada hasta Cerrada, según la fecha de la OV. El total se muestra junto con el importe cobrado, el pendiente y la cantidad de OV cobradas, parciales y sin cobrar. |
+| Compras / gastos facturados | Facturas de compra confirmadas, estado 2, según la fecha del comprobante. |
+| Facturas de venta | Facturas de venta confirmadas, estado 2; se usan para comparar con las OV aprobadas. |
+| Pagos realizados | Pagos y gastos con estado **Pagado**; el detalle conserva su tipo y cuenta. |
+| Cobros realizados | Cobros con estado **Pagado**, en una columna independiente. |
+| Saldo de OV por cobrar | OV en estados 1 a 7 con total mayor al importe cobrado. Se informa el saldo pendiente del documento. |
+| Ventas − facturas | OV aprobadas menos facturas de venta, por moneda. |
+| Cobros − pagos | Cobros pagados menos pagos y gastos pagados, por moneda. |
+
+Las dos diferencias son comparaciones entre los grupos listados. No representan utilidad contable ni saldo bancario. El saldo pendiente de una OV no se asigna a cuentas de ingreso ni a productos: corresponde al total de la orden menos lo cobrado. En el detalle de cada OV se muestran el total, el cobro aplicado, el saldo y su estado de cobro. El cobrado de la OV es el acumulado actual al generar el reporte; la columna de cobros realizados corresponde a movimientos del período elegido.
+
+## Alcance y precauciones
+
+- Cada indicador tiene su criterio de estado y fecha; revisá el período y los filtros antes de comparar.
+- No sumes ventas, facturas, pagos y cobros entre sí como si fueran conceptos independientes: pueden ser etapas diferentes de una misma operación.
+- El reporte no es un estado de resultados contable oficial. No incluye devengamientos, costo de ventas ni notas de crédito o débito.
+- La asignación de cuenta de los renglones comerciales es la que tiene el producto en la actualidad; no es una fotografía histórica de la cuenta al momento del comprobante.
+- Los documentos comerciales se consultan dentro de su empresa de origen. El reporte procesa las empresas de forma secuencial y libera cada conexión al terminar esa empresa.
+
+Volvé a [Reportes gerenciales](/procesos/reportes/) para consultar el resto de los reportes.
