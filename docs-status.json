@@ -2,10 +2,26 @@
   "documentedUpTo": "0.135.0-alpha",
   "lastReview": "2026-11-05",
   "app": {
-    "version": "0.145.0-alpha",
-    "date": "2026-11-10"
+    "version": "0.153.3-alpha",
+    "date": "2026-11-11"
   },
   "pending": [
+    "0.153.3-alpha",
+    "0.153.2-alpha",
+    "0.153.1-alpha",
+    "0.153.0-alpha",
+    "0.152.0-alpha",
+    "0.151.3-alpha",
+    "0.151.1-alpha",
+    "0.151.0-alpha",
+    "0.150.0-alpha",
+    "0.149.0-alpha",
+    "0.148.5-alpha",
+    "0.148.4-alpha",
+    "0.148.3-alpha",
+    "0.148.0-alpha",
+    "0.147.0-alpha",
+    "0.146.0-alpha",
     "0.145.0-alpha",
     "0.144.1-alpha",
     "0.144.0-alpha",
@@ -49,7 +65,67 @@
     },
     "0.145.0-alpha": {
       "status": "partial",
-      "note": "Documentados la configuración, el toast posterior, la exclusión de NC/ND y el saldo de compras; las versiones anteriores siguen pendientes de revisión."
+      "note": "Documentados precios, NC/ND, saldos y anticipos con tercero, documentos enlazados y cotización; versiones anteriores siguen pendientes de revisión."
+    },
+    "0.146.0-alpha": {
+      "status": "partial",
+      "note": "Anticipos disponibles y su aplicación están documentados en pagos y cobros; el corte general sigue pendiente de versiones anteriores."
+    },
+    "0.147.0-alpha": {
+      "status": "partial",
+      "note": "Documentada la precarga de la base en pagos y cobros; el corte general sigue pendiente de versiones anteriores."
+    },
+    "0.147.1-alpha": {
+      "status": "skipped",
+      "note": "Ajuste visual del aviso de solo lectura; no cambia el proceso ni las reglas de edición."
+    },
+    "0.148.0-alpha": {
+      "status": "partial",
+      "note": "El reporte gerencial está documentado en 0.149.0; quedan pendientes las instrucciones de filtros y selección múltiple de productos en comprobantes."
+    },
+    "0.148.1-alpha": {
+      "status": "skipped",
+      "note": "Ajuste visual de tarjetas y ubicación de filtros existentes; no cambia las reglas ni los pasos del proceso."
+    },
+    "0.148.2-alpha": {
+      "status": "skipped",
+      "note": "Ajuste visual de tarjetas y rótulos de filtros existentes; no modifica reglas ni pasos de los circuitos."
+    },
+    "0.149.0-alpha": {
+      "status": "partial",
+      "note": "Documentadas las bases de OV, presupuesto y factura, la lectura de cobros y el enlace al reporte de productos; las versiones anteriores siguen pendientes."
+    },
+    "0.148.3-alpha": {
+      "status": "partial",
+      "note": "Actualizadas las guías de ventas y compras sobre los filtros por estado; quedan versiones anteriores pendientes de revisión global."
+    },
+    "0.148.5-alpha": {
+      "status": "partial",
+      "note": "Documentado el filtro de vendedor en la tabla de órdenes de venta; quedan versiones anteriores pendientes de revisión global."
+    },
+    "0.150.0-alpha": {
+      "status": "partial",
+      "note": "La guía ya explica los filtros de estado propios de OV, presupuestos y facturas, además de la salida de los rankings de productos. El corte global sigue pendiente de versiones anteriores."
+    },
+    "0.151.0-alpha": {
+      "status": "partial",
+      "note": "La recuperación de pagos y cobros anulados y el cálculo bruto/neto están documentados; el corte global sigue pendiente de versiones anteriores."
+    },
+    "0.151.1-alpha": {
+      "status": "partial",
+      "note": "La guía indica que el período y el estado quedan visibles, y que los filtros de agrupación y comerciales se despliegan bajo Más filtros. El corte global sigue pendiente de versiones anteriores."
+    },
+    "0.151.2-alpha": {
+      "status": "skipped",
+      "note": "Corrección de la conversión del parámetro de estado en la API; el uso del filtro no cambia."
+    },
+    "0.151.3-alpha": {
+      "status": "partial",
+      "note": "Documentada la visualización de secciones editadas y el guardado antes de confirmar pagos y cobros; el corte global sigue pendiente de versiones anteriores."
+    },
+    "0.153.0-alpha": {
+      "status": "partial",
+      "note": "La guía de cuentas corrientes explica el registro sugerido o manual, el impacto fiscal y de saldo, y la imputación opcional al saldo inicial; versiones anteriores siguen pendientes de revisión."
     }
   },
   "notes": "Corte calculado el 2026-10-20 comparando los cambios de asterisksuite_frontend/versiones/versions.json contra el contenido de src/content/docs/: los módulos publicados hasta 0.71.0-alpha (inversiones, libro de movimientos bancarios, gastos bancarios, clientes internos, precancelación) están descriptos; de 0.72.0-alpha en adelante casi no hay rastro en los docs, con incorporaciones puntuales en 0.76.0-alpha (variantes) y 0.82.0-alpha (circuito de compras)."

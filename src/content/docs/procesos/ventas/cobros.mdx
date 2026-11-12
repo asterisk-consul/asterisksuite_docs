@@ -53,7 +53,7 @@ import { Steps } from '@astrojs/starlight/components'
 
 5. **Revisá las retenciones**
 
-   Al transferir, el sistema puede **sugerir retenciones** según el motor fiscal (se pueden ajustar, agregar o quitar).
+   Al transferir, el sistema puede **sugerir retenciones** según el motor fiscal (se pueden ajustar, agregar o quitar). Al agregar una retención manual, la base se completa con el total de los comprobantes seleccionados, convertido a la moneda del cobro; podés modificarla. Si cargás una alícuota, el importe se calcula automáticamente. También podés ingresar directamente el importe retenido.
 
 6. **Guardá y confirmá**
 
@@ -61,11 +61,13 @@ import { Steps } from '@astrojs/starlight/components'
 
 </Steps>
 
+En un cobro en borrador, si modificás datos, comprobantes, medios o retenciones, el formulario indica qué secciones cambiaron y muestra **Guardar borrador**. Después de guardar, cuando no quedan cambios pendientes, muestra **Confirmar**. Las retenciones cargadas pero no guardadas no se aplican ni generan movimientos en la cuenta corriente; guardá el borrador antes de confirmar.
+
 ## Atajos de teclado
 
 - En el listado **Tesorería → Pagos**, `Alt + N` abre un nuevo pago/cobro si tenés permiso para crearlo.
-- En las pantallas de crear o editar un borrador, `Ctrl + S` guarda y `Esc` cancela desde cualquier parte de la página. Si hay un diálogo, menú o selector abierto, `Esc` lo cierra primero.
-- En el detalle de un cobro, `Alt + C` abre **Confirmar** (borrador), `Alt + P` abre **Marcar pagado** (confirmado), `Alt + R` abre **Rechazar** (confirmado) y `Alt + A` abre **Anular** (confirmado o pagado). Se muestran según el estado y tus permisos. Si cambiaste la fecha, guardá el borrador antes de confirmar. Los atajos no actúan mientras escribís en un campo o hay un diálogo o selector abierto.
+- En las pantallas de crear o editar un borrador, `Ctrl + S` guarda (en un borrador existente, cuando hay cambios pendientes) y `Esc` cancela desde cualquier parte de la página. Si hay un diálogo, menú o selector abierto, `Esc` lo cierra primero.
+- En el detalle de un cobro, `Alt + C` abre **Confirmar** (borrador), `Alt + P` abre **Marcar pagado** (confirmado), `Alt + R` abre **Rechazar** (confirmado) y `Alt + A` abre **Anular** (confirmado o pagado). Se muestran según el estado y tus permisos. Si hay cambios pendientes, guardá el borrador antes de confirmar. Los atajos no actúan mientras escribís en un campo o hay un diálogo o selector abierto.
 
 ## Confirmar el cobro
 
@@ -73,7 +75,15 @@ Al confirmar, el cobro queda registrado, se actualiza la **cuenta corriente** de
 
 El saldo que se puede cobrar ya descuenta las **notas de crédito de venta confirmadas y vigentes**. Una factura saldada por NC no aparece entre los documentos pendientes; ese crédito no se cuenta como dinero cobrado. Si anulás la NC, el importe vuelve a quedar pendiente.
 
-En el detalle de una factura, quienes tengan acceso de lectura a pagos (`payments.read`, o acceso administrativo) pueden consultar los pagos o cobros asociados y abrir cada operación desde su referencia.
+### Aplicar un cobro anticipado más tarde
+
+Al crear el cobro, elegí **A cuenta (anticipo)** y confirmalo sin asociar un documento. Después, abrí su detalle y presioná **Aplicar anticipo**. El selector respeta la base de pagos del circuito de ventas: puede ofrecer la OV o la factura, según la configuración de la operación, para no duplicar saldos. Solo muestra documentos confirmados, pendientes y del mismo cliente; no permite trasladar el anticipo a otro cliente. Al elegir uno, muestra el total, lo ya aplicado y el saldo; el importe sugerido no supera el saldo disponible del anticipo ni el saldo del documento. Si las monedas difieren entre ARS y USD, el importe se ingresa en la moneda del anticipo y se convierte con la cotización guardada en el cobro o, en su defecto, en la factura. Sin una cotización válida no se puede aplicar. También podés usar **Aplicar máximo**.
+
+Al confirmar el anticipo, su saldo disponible aparece como crédito en la cuenta corriente del cliente. Cada aplicación reduce ese disponible y registra el cobro en la OV o factura elegida, de acuerdo con el circuito, sin duplicar el efecto sobre el saldo. Si quitás una aplicación, el importe vuelve a quedar disponible. Los anticipos anteriores se regularizan con su saldo pendiente cuando se aplican.
+
+Si no aparece un documento, verificá que pertenezca al mismo cliente, esté confirmado y tenga saldo pendiente. En ventas, revisá también la base de pagos configurada para la operación, que determina si el saldo se cobra sobre la OV o sobre la factura.
+
+En el detalle de una factura, quienes tengan acceso de lectura a pagos (`payments.read`, o acceso administrativo) pueden consultar los pagos o cobros asociados y abrir cada operación desde su referencia. En el detalle del cobro, el cliente aparece en la parte superior y los documentos aplicados se pueden abrir desde su número.
 
 ## Cobro con tarjeta en una venta
 
@@ -110,6 +120,12 @@ Si el proveedor acredita primero en su billetera (por ejemplo, Mercado Pago) y l
 ## Editar un cobro
 
 Mientras el cobro esté en **Borrador**, podés editar sus datos, incluida la **fecha**. Al confirmar, la fecha, el medio y los documentos aplicados quedan de solo lectura. Un usuario OWNER/ADMIN o con `payments.update` puede ajustar las **retenciones** y la **cuenta contable** de cobros confirmados o pagados por efectivo o transferencia. El importe bruto aplicado a cada factura se conserva; el sistema actualiza el neto del cobro y el movimiento original de caja o banco, y recalcula sus saldos y la cuenta corriente, sin crear un movimiento separado de ajuste ni modificar el total de la factura. El sistema no crea asientos de mayor automáticamente. Las retenciones con certificado, remesa o imputación fiscal activa quedan protegidas y deben regularizarse primero desde su circuito fiscal.
+
+## Recuperar un cobro anulado como borrador
+
+En el detalle de un cobro **Anulado** en efectivo o por transferencia, alguien con permiso `payments.update` puede usar **Volver a borrador** para corregirlo. La acción conserva los movimientos de reversión de caja/banco y cuenta corriente, y recalcula el saldo de cada comprobante considerando los otros cobros todavía confirmados o pagados. El cobro no vuelve a impactar hasta que se confirme nuevamente. Las retenciones anuladas vuelven a quedar como **Calculadas** para poder revisarlas o editarlas; al confirmar, se aplican una sola vez junto con el importe bruto de los comprobantes. El cobro mantiene el mismo cliente.
+
+No se puede recuperar desde esta acción un cobro mixto, con cheque o tarjeta, ni uno con retenciones certificadas, remitidas o con imputaciones fiscales activas. En esos casos, primero hay que resolver el circuito relacionado.
 
 ## Reglas y validaciones
 

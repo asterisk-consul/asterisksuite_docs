@@ -65,7 +65,19 @@ Todas las vistas comparten la misma pantalla: al elegir una opción del menú se
 
 ## Resumen gerencial (una sola empresa)
 
-El mismo menú incluye **Resumen gerencial** (`/erp/reports/management`), un reporte de la empresa activa que analiza **una fuente por vez** —órdenes de venta, facturas o cobros— con agrupaciones (mes, día, cliente, vendedor o moneda), filtros comerciales, gráficos de evolución y rankings de productos y vendedores. A diferencia del consolidado, el resumen gerencial nunca mezcla empresas.
+El mismo menú incluye **Resumen gerencial** (`/erp/reports/management`), un reporte de la empresa activa que permite elegir **una categoría por vez**: órdenes de venta (OV), presupuestos o facturas. Los cobros se reflejan en la OV o factura a la que fueron aplicados; no se presentan como una categoría separada. Las facturas y las OV muestran sus importes cobrados y pendientes. El detalle se puede agrupar por mes, día, cliente, vendedor o moneda y filtrar por cliente, producto, punto de venta y estado de cobro según la categoría. El filtro **Estado del documento** ofrece los estados propios de cada tipo y, por defecto, incluye todos: las OV incluyen borrador, aprobada, preparación, despacho, entrega parcial o completa, facturada, cerrada y cancelada; los presupuestos, borrador, enviado, aprobado, rechazado, vencido, convertido y cancelado; y las facturas, borrador, pendiente, confirmada y anulada. El estado también aparece en cada fila del detalle. El período y el estado documental quedan a mano; agrupación, moneda, cobro, cliente, vendedor, producto, punto de venta y avance de la OV se reúnen en **Más filtros**. El contador del botón indica cuántos filtros adicionales están activos.
+
+La sección de evolución y composición por moneda está oculta por el momento. El resumen gerencial conserva el desempeño por vendedor; ya no calcula rankings ni carga datos detallados de productos para esas tarjetas. El filtro por producto sigue disponible. Para analizar artículos, **Ver reporte de productos** abre `/erp/sales/sales-reports/salesProducts` con las mismas fechas *Desde* y *Hasta*. A diferencia del consolidado, el resumen gerencial nunca mezcla empresas.
+
+## Reportes de productos de ventas y compras
+
+Los reportes **Productos vendidos** (`/erp/sales/sales-reports/salesProducts`) y **Productos comprados** (`/erp/purchases/purchases-reports/purchasesProducts`) analizan la empresa activa. Elegí un período y un tipo de documento —facturas, notas de crédito o débito, órdenes, presupuestos o remitos según el circuito— y aplicá los filtros. Por defecto se muestran las órdenes (OV en ventas y órdenes de compra en compras). La ruta anterior `/productdash` sigue disponible para productos comprados.
+
+La pestaña **Productos por categoría** agrupa los artículos y permite desplegar los comprobantes justo debajo de cada producto. Hacé clic en el nombre para abrir su ficha y en el número del comprobante para abrir su documento: OV, presupuestos y remitos usan su pantalla de detalle; facturas y notas abren el comprobante de ventas o compras correspondiente. El detalle muestra fecha, tipo y número, estado, cliente o proveedor, cantidad, neto y total; se pagina de a 25 renglones. La pestaña **Gráficos** muestra las cantidades por artículo y conserva el ranking de importes y la distribución por producto; los importes gráficos se visualizan de a una moneda. La búsqueda permite encontrar un producto por nombre, código o categoría y el CSV exporta el resultado filtrado.
+
+Los importes quedan separados por moneda y las cantidades por unidad de medida. El neto suma una sola vez el subtotal guardado en cada renglón; no representa cobros. Se incluyen todos los estados documentales y el estado se muestra al abrir el detalle. **Todos los tipos** combina etapas del circuito; una OV, un remito y una factura pueden describir la misma operación, por eso es preferible elegir un tipo cuando se comparan importes.
+
+Para acceder se necesita lectura de ventas o compras, según el reporte. La información proviene únicamente de la empresa activa.
 
 ## Páginas de esta sección
 

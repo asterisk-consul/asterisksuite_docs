@@ -34,10 +34,21 @@ El saldo se compone de movimientos como:
 - **Ajuste**.
 - **Transferencia**.
 - **Cheque emitido**, **cheque recibido** y **cheque rechazado**.
+- **Retenciones** practicadas a proveedores o sufridas de clientes.
+
+Al confirmar un anticipo, el saldo disponible se registra en la cuenta corriente del cliente o proveedor. Cuando se aplica a una factura o a una OV permitida por el circuito, disminuye el disponible y se registra la imputación en el comprobante sin duplicar el saldo. Si se quita la aplicación, el importe vuelve a quedar disponible.
 
 ## Saldo inicial
 
 Desde la pantalla se puede registrar un **saldo inicial** por tercero, para migrar cuentas existentes.
+
+## Retenciones en cuenta corriente
+
+Desde **Acciones de cuenta → Registrar retención** podés cargar retenciones sugeridas por el motor fiscal o agregarlas manualmente. Está disponible para clientes, proveedores y entidades habilitadas. Se registra la retención en el módulo fiscal y se descuenta de la cuenta corriente; no crea un pago o cobro ni genera movimientos de caja o banco.
+
+La moneda y el tipo de cambio se informan igual que en pagos y cobros. Si la retención se aplica al **saldo inicial**, el sistema también aumenta el importe pagado de ese documento y reduce su pendiente convertido a la moneda del saldo inicial. Si no seleccionás el saldo inicial, el movimiento afecta solo la cuenta corriente y el registro fiscal.
+
+Las retenciones practicadas aparecen entre las retenciones pendientes de asociar a un VEP. Las retenciones sufridas se muestran en la vista **Sufridas** del módulo fiscal.
 
 ## Detalle por tercero
 
@@ -55,7 +66,8 @@ Una **NC/ND confirmada sin factura de origen** también puede anularse y enviars
 ## Reglas y consideraciones
 
 - Los saldos se expresan en la **moneda base**.
-- Los movimientos se generan desde pagos, cobros y cheques.
+- Los movimientos se generan desde documentos, pagos, cobros y cheques.
+- Para incorporar anticipos confirmados anteriores a este comportamiento, ejecutar una vez `prisma/repairs/20261111_backfill_advance_current_accounts.sql` en cada base tenant. El script solo agrega el saldo aún disponible y recalcula la cuenta corriente; no modifica documentos, aplicaciones, caja ni bancos.
 - Un saldo positivo/negativo indica a favor o contra el tercero según el tipo.
 
 ## Problemas frecuentes

@@ -47,6 +47,8 @@ El listado único está en **Compras → Comprobantes** (`/erp/purchases/comprob
 
 En **Compras → Comprobantes** (`/erp/purchases/comprobantes`) se listan juntos órdenes, facturas, remitos y notas, con filtro por categoría y estado. Los enlaces anteriores con `?category=` siguen redirigiendo al listado filtrado. Al abrir un registro, cada uno lleva a su **vista específica**: las órdenes a `/erp/purchases/orders/{id}`, los remitos a `/erp/purchases/remitos/{id}` y facturas y notas a `/erp/purchases/purchases-documents/{id}`.
 
+En **Comprobantes**, elegí **Tipo de documento** y **Estado** en los selectores superiores. En los listados de **Órdenes de Compra** y **Remitos de Compra**, usá **Filtros** en la tabla y agregá una condición sobre **Estado**. Para consultar anulados, activá **Mostrar anulados** o elegí *Anulada* en el filtro de estado.
+
 Los **saldos iniciales** de cuentas corrientes no aparecen en este listado porque se administran desde la cuenta corriente y no son comprobantes de compra.
 
 En los listados de comprobantes, órdenes y remitos de compra, podés abrir cada documento haciendo clic en cualquier parte de su fila. Los botones y enlaces propios de la fila conservan su acción.
@@ -57,7 +59,9 @@ En la ficha de cada comprobante podés usar **Alt + M** para editar, **Alt + I**
 
 La **referencia** cargada en el comprobante aparece destacada debajo de los datos principales de la ficha para identificarlo rápidamente.
 
-El botón **Crear nuevo comprobante** está disponible en el listado general y también en los listados de órdenes y remitos. Desde cualquiera de ellos se puede iniciar una orden de compra, factura, remito o nota de crédito/débito. El botón muestra **Alt + N**, que abre el menú. En el formulario, **F2** abre el selector de productos, **Tab** recorre los campos, **Ctrl + Enter** agrega el producto y **Ctrl + S** guarda. Las opciones se muestran según los permisos de creación del usuario.
+En el detalle de órdenes, remitos, facturas y notas, hacé clic en el nombre de un producto para abrir su ficha. Los productos libres, sin ficha asociada, se muestran como texto.
+
+El botón **Crear nuevo comprobante** está disponible en el listado general y también en los listados de órdenes y remitos. Desde cualquiera de ellos se puede iniciar una orden de compra, factura, remito o nota de crédito/débito. El botón muestra **Alt + N**, que abre el menú. En el formulario, **F2** abre el selector de productos, **Tab** recorre los campos, **Ctrl + Enter** agrega los productos seleccionados y **Ctrl + S** guarda. Podés filtrar por categorías y etiquetas, seleccionar varios artículos y agregarlos juntos; cada uno comienza con cantidad 1 y luego podés modificarla en su renglón. Si elegís varias categorías o etiquetas, el producto debe coincidir con al menos una opción de cada filtro activo. Las opciones se muestran según los permisos de creación del usuario.
 
 ## Páginas de esta sección
 

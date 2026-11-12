@@ -6,25 +6,149 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.145.0-alpha** (2026-11-10) |
+| Última versión de la app | **v0.153.3-alpha** (2026-11-11) |
 | Documentación al día hasta | **v0.135.0-alpha** |
 | Última revisión de docs | 2026-11-05 |
-| Versiones pendientes de revisar | **15** (0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
+| Versiones pendientes de revisar | **31** (0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
 
 ## Pendientes
 
 Cada entrada es una versión de la app que todavía no se revisó contra los contenidos de `src/content/docs/`.
 
-### v0.145.0-alpha (2026-11-10) — parcial
+### v0.153.3-alpha (2026-11-11) — pendiente
 
-> Documentados la configuración, el toast posterior, la exclusión de NC/ND y el saldo de compras; las versiones anteriores siguen pendientes de revisión.
+- Abrir la ficha del producto desde los renglones de los comprobantes
+
+### v0.153.2-alpha (2026-11-11) — pendiente
+
+- Abrir la ficha del producto desde el nombre en la tabla
+- Navegar desde cada renglón al comprobante de ventas o compras correspondiente
+- Mantener el control del sidebar en el encabezado global del reporte
+
+### v0.153.1-alpha (2026-11-11) — pendiente
+
+- Calcular cada importe con el subtotal del renglón sin volver a multiplicarlo por la cantidad
+- Agregar una pestaña de gráficos para cantidades y distribución por artículo
+- Mostrar comprobantes expandidos debajo del producto correspondiente
+- Incluir el control para plegar el sidebar en el encabezado global
+
+### v0.153.0-alpha (2026-11-11) — parcial
+
+> La guía de cuentas corrientes explica el registro sugerido o manual, el impacto fiscal y de saldo, y la imputación opcional al saldo inicial; versiones anteriores siguen pendientes de revisión.
+
+- Registrar retenciones desde la cuenta corriente sin generar un pago o cobro
+- Imputar retenciones al saldo inicial y descontar su pendiente en la moneda del documento
+- Permitir incluir en un VEP las retenciones practicadas registradas desde la cuenta corriente
+- Documentar el registro y la imputación de retenciones en cuentas corrientes
+
+### v0.152.0-alpha (2026-11-11) — pendiente
+
+- Agrupar productos vendidos por categoría y filtrar por comprobante
+- Incorporar el reporte agrupado de productos comprados
+- Abrir los renglones documentales de cada producto con paginación
+- Separar importes por moneda y agrupar cantidades por unidad
+- Documentar los reportes de productos de ventas y compras
+
+### v0.151.3-alpha (2026-11-11) — parcial
+
+> Documentada la visualización de secciones editadas y el guardado antes de confirmar pagos y cobros; el corte global sigue pendiente de versiones anteriores.
+
+- Alternar Guardar borrador y Confirmar según los cambios pendientes
+- Mostrar qué secciones del pago o cobro fueron editadas
+- Evitar guardar un borrador limpio desde el atajo Ctrl + S
+- Documentar el guardado previo a confirmar pagos y cobros
+
+### v0.151.1-alpha (2026-11-11) — parcial
+
+> La guía indica que el período y el estado quedan visibles, y que los filtros de agrupación y comerciales se despliegan bajo Más filtros. El corte global sigue pendiente de versiones anteriores.
+
+- Compactar los filtros para dar prioridad a los datos del reporte
+- Mostrar filtros adicionales solo cuando se despliegan e indicar los activos
+- Documentar la organización de filtros del reporte
+
+### v0.151.0-alpha (2026-11-11) — parcial
+
+> La recuperación de pagos y cobros anulados y el cálculo bruto/neto están documentados; el corte global sigue pendiente de versiones anteriores.
+
+- Recuperar pagos y cobros anulados como borrador
+- Recalcular saldos de comprobantes con pagos vigentes al reabrir
+- Mostrar las retenciones como descuento único del importe bruto aplicado
+- Documentar la recuperación de pagos y cobros anulados
+
+### v0.150.0-alpha (2026-11-11) — parcial
+
+> La guía ya explica los filtros de estado propios de OV, presupuestos y facturas, además de la salida de los rankings de productos. El corte global sigue pendiente de versiones anteriores.
+
+- Retirar los rankings de productos del reporte gerencial
+- Reducir los datos de productos consultados por el reporte
+- Filtrar OV, presupuestos y facturas por su estado documental
+- Documentar estados disponibles por tipo de documento
+
+### v0.149.0-alpha (2026-11-11) — parcial
+
+> Documentadas las bases de OV, presupuesto y factura, la lectura de cobros y el enlace al reporte de productos; las versiones anteriores siguen pendientes.
+
+- Agregar presupuestos como base y reflejar cobros en OV o facturas
+- Ocultar temporalmente evolución y composición por moneda
+- Abrir el reporte de productos conservando las fechas del período
+- Documentar categorías y navegación del reporte gerencial
+
+### v0.148.5-alpha (2026-11-11) — parcial
+
+> Documentado el filtro de vendedor en la tabla de órdenes de venta; quedan versiones anteriores pendientes de revisión global.
+
+- Integrar el filtro de vendedor en los filtros de la tabla de OV
+- Documentar el filtro de vendedor de órdenes de venta
+
+### v0.148.4-alpha (2026-11-11) — pendiente
+
+- Mostrar solo el último movimiento de un cheque redepositado
+
+### v0.148.3-alpha (2026-11-11) — parcial
+
+> Actualizadas las guías de ventas y compras sobre los filtros por estado; quedan versiones anteriores pendientes de revisión global.
+
+- Corregir selectores y unificar el filtro de estado en las tablas
+- Documentar los filtros de estado en los listados de ventas y compras
+
+### v0.148.0-alpha (2026-11-11) — parcial
+
+> El reporte gerencial está documentado en 0.149.0; quedan pendientes las instrucciones de filtros y selección múltiple de productos en comprobantes.
+
+- Filtrar productos por categorías y etiquetas al cargar comprobantes
+- Seleccionar y agregar varios productos en ventas y compras
+- Documentar filtros y selección múltiple en los circuitos de ventas y compras
+
+### v0.147.0-alpha (2026-11-11) — parcial
+
+> Documentada la precarga de la base en pagos y cobros; el corte general sigue pendiente de versiones anteriores.
+
+- Precargar la base imponible de retenciones manuales con el total de los comprobantes seleccionados
+- Documentar la precarga de la base y las opciones para calcular el importe retenido
+
+### v0.146.0-alpha (2026-11-11) — parcial
+
+> Anticipos disponibles y su aplicación están documentados en pagos y cobros; el corte general sigue pendiente de versiones anteriores.
+
+- Mostrar anticipos confirmados en la cuenta corriente de clientes y proveedores
+- Descontar aplicaciones del saldo disponible sin duplicar movimientos
+- Restituir el saldo del anticipo al quitar una aplicación
+- Incorporar anticipos existentes con un backfill idempotente por empresa
+- Documentar el impacto de anticipos en cuentas corrientes
+
+### v0.145.0-alpha (2026-11-11) — parcial
+
+> Documentados precios, NC/ND, saldos y anticipos con tercero, documentos enlazados y cotización; versiones anteriores siguen pendientes de revisión.
 
 - Configurar actualizaciones automáticas de precios por contraparte y globales
 - Ingresar precios de NC con IVA incluido y recalcular la base
 - Descontar NC aplicadas del saldo y marcar la factura saldada
 - Evitar que las NC y ND actualicen precios o costos
 - Mostrar el resultado en un toast con acceso directo a la configuración
+- Aplicar anticipos entre ARS y USD con cotización y respetar el mismo tercero
+- Mostrar cliente o proveedor en el detalle y enlazar comprobantes aplicados
 - Documentar los cuatro controles y el aviso posterior a la confirmación
+- Documentar cómo aplicar un anticipo a una factura pendiente
 
 ### v0.144.1-alpha (2026-11-10) — parcial
 
@@ -111,6 +235,30 @@ Cada entrada es una versión de la app que todavía no se revisó contra los con
 - Conservar los datos y el perfil de socios en el formulario unificado de partes interesadas
 
 ## Versiones resueltas sin actualizar docs
+
+### v0.151.2-alpha (2026-11-11) — sin cambios
+
+> Corrección de la conversión del parámetro de estado en la API; el uso del filtro no cambia.
+
+- Convertir el estado documental antes de validarlo en la consulta
+
+### v0.148.2-alpha (2026-11-11) — sin cambios
+
+> Ajuste visual de tarjetas y rótulos de filtros existentes; no modifica reglas ni pasos de los circuitos.
+
+- Etiquetar filtros y compactar tarjetas en las listas de comprobantes
+
+### v0.148.1-alpha (2026-11-11) — sin cambios
+
+> Ajuste visual de tarjetas y ubicación de filtros existentes; no cambia las reglas ni los pasos del proceso.
+
+- Compactar las tarjetas y unificar los filtros de comprobantes
+
+### v0.147.1-alpha (2026-11-11) — sin cambios
+
+> Ajuste visual del aviso de solo lectura; no cambia el proceso ni las reglas de edición.
+
+- Compactar el aviso de edición limitada en el detalle de pagos y cobros
 
 ### v0.143.1-alpha (2026-11-10) — sin cambios
 

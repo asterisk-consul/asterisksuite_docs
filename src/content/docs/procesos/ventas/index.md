@@ -39,6 +39,8 @@ En **Ventas → Resumen** (`/erp/sales`) podés consultar la actividad de los ú
 
 El listado combinado está en **Ventas → Comprobantes** (`/erp/sales/comprobantes`). Reúne los comprobantes de venta y permite filtrar por categoría y estado. En **Todos**, el filtro avanzado **Estado** identifica cada opción por tipo de comprobante (por ejemplo, *Factura · Pendiente* u *Orden de venta · Lista para despacho*); al seleccionar una categoría, muestra sus estados sin prefijo. Los enlaces anteriores con `?category=` siguen redirigiendo al listado filtrado.
 
+En **Presupuestos**, **Órdenes de Venta** y **Remitos**, abrí **Filtros** en la tabla y agregá una condición sobre **Estado** para elegirlo por nombre. En **Órdenes de Venta**, también podés filtrar por **Vendedor**, incluidos empleados, socios y órdenes sin vendedor. Para ver cancelados, activá antes **Mostrar cancelados**; al elegir ese estado desde el filtro, el listado lo habilita automáticamente.
+
 Los **saldos iniciales** de cuentas corrientes no aparecen en este listado porque se administran desde la cuenta corriente y no son comprobantes de venta.
 
 En los listados de presupuestos, órdenes de venta, remitos y comprobantes, podés abrir el documento haciendo clic en cualquier parte de su fila. Los botones y enlaces propios de la fila conservan su acción. Al volver con la navegación del navegador se restaura la posición del listado y, en comprobantes, la categoría que estabas consultando.
@@ -49,9 +51,11 @@ En la ficha de cada comprobante podés usar **Alt + M** para editar, **Alt + I**
 
 La **referencia** cargada en el comprobante aparece destacada debajo de los datos principales de la ficha para identificarlo rápidamente.
 
+En el detalle de presupuestos, órdenes, remitos y comprobantes, hacé clic en el nombre de un producto para abrir su ficha. Los productos libres, sin ficha asociada, se muestran como texto.
+
 ## Crear comprobantes desde cualquier listado
 
-El botón **Crear nuevo comprobante** aparece en **Ventas → Comprobantes** (`/erp/sales/comprobantes`) y en los listados de **Presupuestos** (`/erp/budgets`), **Órdenes de Venta** (`/erp/orders`) y **Remitos** (`/erp/remitos`). Permite iniciar cualquiera de esos comprobantes, una factura o una nota de crédito/débito sin importar desde cuál listado lo abriste. El botón muestra **Alt + N**, que abre el menú. En los formularios, los atajos se muestran junto a su acción: **F2** abre el selector de productos, **Tab** recorre los campos, **Ctrl + Enter** agrega el producto y **Ctrl + S** guarda. Las opciones disponibles respetan los permisos de creación de cada tipo.
+El botón **Crear nuevo comprobante** aparece en **Ventas → Comprobantes** (`/erp/sales/comprobantes`) y en los listados de **Presupuestos** (`/erp/budgets`), **Órdenes de Venta** (`/erp/orders`) y **Remitos** (`/erp/remitos`). Permite iniciar cualquiera de esos comprobantes, una factura o una nota de crédito/débito sin importar desde cuál listado lo abriste. El botón muestra **Alt + N**, que abre el menú. En los formularios, los atajos se muestran junto a su acción: **F2** abre el selector de productos, **Tab** recorre los campos, **Ctrl + Enter** agrega los productos seleccionados y **Ctrl + S** guarda. Podés filtrar el selector por categorías y etiquetas, marcar varios productos y agregarlos juntos; cada uno comienza con cantidad 1 y podés ajustarla en su renglón. Si seleccionás más de una categoría o etiqueta, basta con que el producto coincida con una opción de cada filtro activo. Las opciones disponibles respetan los permisos de creación de cada tipo.
 
 ## Páginas de esta sección
 

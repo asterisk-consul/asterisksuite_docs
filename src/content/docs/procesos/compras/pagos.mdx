@@ -49,7 +49,7 @@ import { Steps } from '@astrojs/starlight/components'
 
 5. **Revisá las retenciones**
 
-   El sistema puede **sugerir retenciones** practicadas según el motor fiscal (se pueden ajustar).
+   El sistema puede **sugerir retenciones** practicadas según el motor fiscal (se pueden ajustar). Al agregar una retención manual, la base se completa con el total de las facturas seleccionadas, convertido a la moneda del pago; podés modificarla. Si cargás una alícuota, el importe se calcula automáticamente. También podés ingresar directamente el importe retenido.
 
 6. **Guardá y confirmá**
 
@@ -57,11 +57,13 @@ import { Steps } from '@astrojs/starlight/components'
 
 </Steps>
 
+En un pago o cobro en borrador, si modificás datos, comprobantes, medios o retenciones, el formulario indica qué secciones cambiaron y muestra **Guardar borrador**. Después de guardar, cuando no quedan cambios pendientes, muestra **Confirmar**. Las retenciones cargadas pero no guardadas no se aplican ni generan movimientos en la cuenta corriente; guardá el borrador antes de confirmar.
+
 ## Atajos de teclado
 
 - En el listado **Tesorería → Pagos**, `Alt + N` abre un nuevo pago/cobro si tenés permiso para crearlo.
-- En las pantallas de crear o editar un borrador, `Ctrl + S` guarda y `Esc` cancela desde cualquier parte de la página. Si hay un diálogo, menú o selector abierto, `Esc` lo cierra primero.
-- En el detalle de un pago, `Alt + C` abre **Confirmar** (borrador), `Alt + P` abre **Marcar pagado** (confirmado), `Alt + R` abre **Rechazar** (confirmado) y `Alt + A` abre **Anular** (confirmado o pagado). Se muestran según el estado y tus permisos. Si cambiaste la fecha, guardá el borrador antes de confirmar. Los atajos no actúan mientras escribís en un campo o hay un diálogo o selector abierto.
+- En las pantallas de crear o editar un borrador, `Ctrl + S` guarda (en un borrador existente, cuando hay cambios pendientes) y `Esc` cancela desde cualquier parte de la página. Si hay un diálogo, menú o selector abierto, `Esc` lo cierra primero.
+- En el detalle de un pago, `Alt + C` abre **Confirmar** (borrador), `Alt + P` abre **Marcar pagado** (confirmado), `Alt + R` abre **Rechazar** (confirmado) y `Alt + A` abre **Anular** (confirmado o pagado). Se muestran según el estado y tus permisos. Si hay cambios pendientes, guardá el borrador antes de confirmar. Los atajos no actúan mientras escribís en un campo o hay un diálogo o selector abierto.
 
 ## Confirmar el pago
 
@@ -69,15 +71,29 @@ Las **remuneraciones por trabajo de socios** se pagan con el mismo circuito que 
 
 Al confirmar, se actualiza la **cuenta corriente** y el **saldo** de los documentos aplicados. Cuando se paga un vale de empleado, también se reduce el saldo de su cuenta RRHH por el importe aplicado; un pago parcial deja el resto pendiente. Si se revierte el pago, el importe vuelve a quedar pendiente. El movimiento de caja o banco se registra una sola vez desde Tesorería.
 
+### Aplicar un pago anticipado más tarde
+
+Al crear el pago, elegí **A cuenta (anticipo)** y confirmalo sin asociar una factura. Cuando tengas la factura del proveedor, abrí el detalle del pago y presioná **Aplicar anticipo**. El selector busca las facturas de compra confirmadas y pendientes del mismo proveedor; al elegir una muestra el total, lo ya aplicado y el saldo. El importe sugerido no supera ni el saldo disponible del anticipo ni el saldo de la factura. Si las monedas difieren entre ARS y USD, el importe se ingresa en la moneda del anticipo y se convierte con la cotización guardada en el pago o, en su defecto, en la factura. Sin una cotización válida no se puede aplicar. También podés usar **Aplicar máximo**.
+
+Al confirmar el anticipo, su saldo disponible aparece en la cuenta corriente del proveedor. Cada aplicación reduce ese disponible y registra el pago en la factura sin duplicar el efecto sobre el saldo. Si quitás una aplicación, el importe vuelve a quedar disponible. Los anticipos anteriores se regularizan con su saldo pendiente cuando se aplican.
+
+Si no aparece una factura, verificá que pertenezca al mismo proveedor, esté confirmada y tenga saldo pendiente.
+
 ## Consultar pagos y documentos aplicados
 
-En **Tesorería → Pagos** (`/erp/treasury/payments`), la tabla permite filtrar rápidamente por número, tercero y documento o concepto pagado. En **Filtros** también se puede acotar por fecha, tipo, medio, importe, cuenta y estado. La columna **Documento / concepto pagado** muestra el comprobante y el importe aplicado; cuando es una factura de ventas o compras, podés abrirla haciendo clic en su referencia. Si se pagó un servicio u obligación, muestra su descripción y período. Para ver todos los comprobantes asociados a un pago, abrí su detalle desde el número del pago.
+En **Tesorería → Pagos** (`/erp/treasury/payments`), la tabla permite filtrar rápidamente por número, tercero y documento o concepto pagado. En **Filtros** también se puede acotar por fecha, tipo, medio, importe, cuenta y estado. La columna **Documento / concepto pagado** muestra el comprobante y el importe aplicado; cuando es una factura de ventas o compras, podés abrirla haciendo clic en su referencia. Si se pagó un servicio u obligación, muestra su descripción y período. Para ver todos los comprobantes asociados, abrí el detalle del pago: ahí se muestra el cliente o proveedor en la parte superior y podés abrir cada factura desde su número.
 
 En el detalle de una factura, quienes tengan acceso de lectura a pagos (`payments.read`, o acceso administrativo) pueden consultar los pagos o cobros asociados y abrir cada operación desde su referencia.
 
 ## Editar un pago
 
 Mientras el pago esté en **Borrador**, podés editar sus datos, incluida la **fecha**. Al confirmar, la fecha, el medio y los documentos aplicados quedan de solo lectura. Un usuario OWNER/ADMIN o con `payments.update` puede corregir la **cotización** de cualquier pago confirmado o pagado en ARS aplicado a una factura en USD. La corrección actualiza el dato del pago y sus movimientos relacionados, sin cambiar el importe en pesos ni el importe aplicado a la factura. Para pagos en efectivo o por transferencia, ese mismo permiso también permite ajustar **retenciones** y **cuenta contable**; si un gasto todavía no tiene proveedor o entidad, se puede asociar desde esta sección para habilitar retenciones y reflejarlas en su cuenta corriente. El tercero asociado no se puede reemplazar después. Si se modifican retenciones, el importe bruto aplicado a cada factura se conserva; el sistema actualiza el importe neto del pago y el movimiento original de caja o banco, y recalcula sus saldos y la cuenta corriente. No agrega un movimiento separado de ajuste ni modifica el total de la factura. El sistema no crea asientos de mayor automáticamente. Las retenciones con certificado, remesa o imputación fiscal activa quedan protegidas y deben regularizarse primero desde su circuito fiscal.
+
+## Recuperar un pago anulado como borrador
+
+En el detalle de un pago **Anulado** en efectivo o por transferencia, alguien con permiso `payments.update` puede usar **Volver a borrador** para corregirlo. La acción conserva los movimientos de reversión de caja/banco y cuenta corriente, y recalcula el saldo de cada comprobante considerando los otros pagos todavía confirmados o pagados. El pago no vuelve a impactar hasta que se confirme nuevamente. Las retenciones anuladas vuelven a quedar como **Calculadas** para poder revisarlas o editarlas; al confirmar, se aplican una sola vez junto con el importe bruto de los comprobantes.
+
+No se puede recuperar desde esta acción un pago mixto, con cheque o tarjeta, ni uno con retenciones certificadas, remitidas o con imputaciones fiscales activas. En esos casos, primero hay que resolver el circuito relacionado.
 
 ## Reglas y validaciones
 
