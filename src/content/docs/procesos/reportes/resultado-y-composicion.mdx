@@ -9,34 +9,41 @@ sidebar:
 
 Desde **ERP → Reportes → Resultado y composición**, elegí una o varias empresas asociadas a tu usuario, definí las fechas y seleccioná **Generar reporte**. Se pueden consultar hasta 20 empresas a la vez. Por defecto se toma el mes en curso y se preseleccionan las primeras 20 empresas disponibles.
 
-Al generar el reporte, el selector múltiple **Estados de OV** aparece junto a **Moneda**. Podés elegir uno o varios estados, desde **Aprobada** hasta **Cerrada**; los siete vienen seleccionados por defecto. Después de elegirlos, presioná **Aplicar** para actualizar los importes de ventas de OV, su cobrado y su saldo por cobrar, y los subreportes de esas columnas. Las facturas, pagos y cobros se calculan con sus criterios propios. Debe quedar al menos un estado de OV seleccionado para aplicar el filtro.
+Al generar el reporte, el selector múltiple **Estados de OV** aparece junto a **Moneda**. Podés elegir uno o varios estados, desde **Aprobada** hasta **Cerrada**; los siete vienen seleccionados por defecto. Después de elegirlos, presioná **Aplicar** para actualizar los importes de OV, su cobrado y su saldo por cobrar, y los subreportes de esas columnas. Las facturas de compra, los pagos y los cobros se calculan con sus criterios propios. Debe quedar al menos un estado de OV seleccionado para aplicar el filtro.
 
 Cada empresa se muestra por separado. Si hay más de una moneda, aparece una fila por moneda; el filtro permite mostrar una moneda puntual. El total de selección suma sólo importes de la misma moneda y nunca los convierte.
 
+## Leer el resumen
+
+El resumen usa una sola tabla por empresa y moneda, agrupada en **Ventas** y **Compras/Gastos**. En Ventas muestra OV aprobadas, cobros realizados, cobrado aplicado a las OV y saldo de las OV por cobrar. En Compras/Gastos muestra facturas de compra, su saldo pendiente y **Egresos realizados**.
+
+Por defecto, **Egresos realizados** aparece en una única columna. El botón **Separar egresos** permite abrir columnas independientes para pagos (`PAYMENT`), gastos (`EXPENSE`) y vales u obligaciones. **Unificar egresos** vuelve a la presentación resumida. Los cobros (`COLLECTION`) siguen en Ventas y no se mezclan con los egresos.
+
+La conciliación de compras cumple **Total de facturas = Importe pagado + Saldo pendiente**. La de OV cumple **Total de OV = Cobrado aplicado + Saldo por cobrar**. Los importes pagados y cobrados son acumulados actuales registrados en cada documento; pueden incluir aplicaciones hechas fuera del período seleccionado. Los movimientos de pago, gasto y cobro se filtran por la fecha del movimiento.
+
 ## Abrir la composición y el origen
 
-1. Hacé clic en un importe subrayado de una empresa para abrir su subreporte. La pantalla se desplaza automáticamente hasta el detalle.
-2. La primera sección muestra las cuentas contables, o la clasificación que corresponda al movimiento. Seleccioná una cuenta para filtrar los documentos de abajo.
-3. En **Documentos y partidas**, filtrá las OV por **Sin cobrar**, **Cobro parcial** o **Cobradas**; también podés buscar por número, UUID, tercero o concepto. Los resultados se cargan paginados.
-4. Hacé clic en el número para abrir el documento en el ERP. En documentos comerciales, usá **Ver partidas** para desplegar sus renglones sin salir del subreporte.
+1. Hacé clic en un importe de la empresa para abrir su composición. La pantalla se desplaza automáticamente hasta el detalle.
+2. La composición agrupa por cuenta contable u origen. Seleccioná una cuenta para filtrar los documentos; la búsqueda también actualiza la composición y el detalle.
+3. En **Documentos y partidas**, filtrá las OV por **Sin cobrar**, **Cobro parcial** o **Cobradas**. Para facturas de compra, elegí **Todas**, **Sin pagar**, **Pago parcial** o **Pagadas**. Cada factura se muestra una sola vez y presenta total, importe pagado, saldo pendiente y estado de pago. También podés buscar por número, UUID, tercero o concepto. Los resultados se cargan paginados.
+4. Hacé clic en el documento para abrirlo en el ERP; el saldo inicial abre la cuenta corriente del cliente. En documentos comerciales, usá **Ver partidas** para desplegar sus renglones sin salir del subreporte.
 5. Usá **Cerrar detalle** para volver al resumen.
 
-Para pagos, gastos y cobros, la composición usa la cuenta contable del movimiento. Para facturas, toma la cuenta de ingreso (ventas) o gasto (compras) actualmente asignada al producto. Si no hay cuenta, el renglón queda agrupado bajo **Sin cuenta contable asignada**. En una factura, la diferencia entre el total del encabezado y las partidas activas se presenta como **Impuestos / ajustes / sin ítems** para facilitar la conciliación.
+Para pagos, gastos y cobros, la composición usa la cuenta contable del movimiento y el detalle conserva fecha, cuenta, tercero y referencia. Al separar egresos, pagos (`PAYMENT`) y gastos (`EXPENSE`) tienen detalles independientes; los cobros (`COLLECTION`) siempre se consultan aparte. Los vales de empleados y las obligaciones pagadas sin un movimiento `PAYMENT` asociado se incluyen en el egreso para no duplicar importes. Para facturas de compra, la composición toma la cuenta de gasto actualmente asignada al producto. Si no hay cuenta, el renglón queda agrupado bajo **Sin cuenta contable asignada**. En una factura, la diferencia entre el total del encabezado y las partidas activas se presenta como **Impuestos / ajustes / sin ítems** para facilitar la conciliación. Si filtrás por una cuenta, el importe corresponde a esa cuenta; sin ese filtro, ves una fila por factura.
 
 ## Qué incluye cada indicador
 
 | Indicador | Incluye |
 |---|---|
-| Ventas · OV aprobadas | Órdenes de venta en estados 1 a 7, desde Aprobada hasta Cerrada, según la fecha de la OV. El total se muestra junto con el importe cobrado, el pendiente y la cantidad de OV cobradas, parciales y sin cobrar. |
-| Compras / gastos facturados | Facturas de compra confirmadas, estado 2, según la fecha del comprobante. |
-| Facturas de venta | Facturas de venta confirmadas, estado 2; se usan para comparar con las OV aprobadas. |
-| Pagos realizados | Pagos y gastos con estado **Pagado**; el detalle conserva su tipo y cuenta. |
+| OV confirmadas | Órdenes de venta en los estados seleccionados, según la fecha de la OV. Las facturas asociadas no se suman ni se restan, aunque tengan el mismo importe; así la misma operación no se cuenta dos veces. El detalle permite consultar el cobrado, pendiente y estado de cobro de cada OV. |
+| Compras facturadas | Total de facturas de compra confirmadas, estado 2, según la fecha del comprobante. El detalle muestra cada factura una vez, con total, importe pagado, saldo pendiente y estado de pago. |
+| Saldo pendiente de facturas | Saldo de las facturas de compra confirmadas: total menos paid_amount, sin permitir importes pagados por encima del total ni saldos negativos. |
+| Egresos realizados | Por defecto, movimientos **PAYMENT** y **EXPENSE** pagados, más vales de empleados y obligaciones pagadas sin un movimiento PAYMENT asociado. El botón **Separar egresos** muestra los tipos por separado. |
 | Cobros realizados | Cobros con estado **Pagado**, en una columna independiente. |
-| Saldo de OV por cobrar | OV en estados 1 a 7 con total mayor al importe cobrado. Se informa el saldo pendiente del documento. |
-| Ventas − facturas | OV aprobadas menos facturas de venta, por moneda. |
-| Cobros − pagos | Cobros pagados menos pagos y gastos pagados, por moneda. |
+| Saldo de OV por cobrar | OV en los estados elegidos con total mayor al importe cobrado aplicado. El resumen deja a la vista total, cobrado aplicado y saldo pendiente. |
+| Saldo inicial por cobrar | Saldos iniciales positivos de clientes, cargados hasta la fecha final y todavía pendientes al momento de consultar. Se muestra separado de las OV. |
 
-Las dos diferencias son comparaciones entre los grupos listados. No representan utilidad contable ni saldo bancario. El saldo pendiente de una OV no se asigna a cuentas de ingreso ni a productos: corresponde al total de la orden menos lo cobrado. En el detalle de cada OV se muestran el total, el cobro aplicado, el saldo y su estado de cobro. El cobrado de la OV es el acumulado actual al generar el reporte; la columna de cobros realizados corresponde a movimientos del período elegido.
+Los egresos son movimientos pagados del período; no representan un estado de resultados contable ni el saldo bancario. El saldo pendiente de una OV no se asigna a cuentas de ingreso ni a productos: corresponde al total de la orden menos lo cobrado. El saldo inicial tampoco se distribuye por producto o cuenta. El importe pagado de una factura y el cobro aplicado a una OV son acumulados actuales al generar el reporte; los movimientos de pago, gasto y cobro corresponden al período elegido. Las facturas de compra y las OV se muestran como bases distintas del circuito y no deben sumarse entre sí como si fueran operaciones independientes.
 
 ## Alcance y precauciones
 

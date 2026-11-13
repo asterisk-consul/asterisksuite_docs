@@ -6,14 +6,82 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.156.0-alpha** (2026-11-12) |
+| Última versión de la app | **v0.162.0-alpha** (2026-11-13) |
 | Documentación al día hasta | **v0.135.0-alpha** |
 | Última revisión de docs | 2026-11-05 |
-| Versiones pendientes de revisar | **35** (0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
+| Versiones pendientes de revisar | **42** (0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
 
 ## Pendientes
 
 Cada entrada es una versión de la app que todavía no se revisó contra los contenidos de `src/content/docs/`.
+
+### v0.162.0-alpha (2026-11-13) — parcial
+
+> Guía de resultado y composición actualizada para el resumen agrupado, egresos unificados por defecto y opción de desglose; quedan versiones anteriores pendientes de revisión global.
+
+- Agrupar el resumen por empresa y período en Ventas y Compras/Gastos
+- Mostrar egresos realizados en una columna con opción para separar pagos, gastos, vales y obligaciones
+- Evitar duplicar egresos cuando vales u obligaciones ya tienen un movimiento de pago asociado
+- Actualizar la composición y los documentos al buscar en el detalle
+- Documentar el resumen agrupado y la presentación unificada o separada de egresos
+
+### v0.161.0-alpha (2026-11-13) — parcial
+
+> El reporte financiero ya documenta pagos, gastos y cobros separados, así como la conciliación de facturas y OV; el corte general conserva versiones anteriores pendientes de revisión.
+
+- Separar pagos PAYMENT, gastos EXPENSE y cobros COLLECTION en el resumen y sus detalles
+- Mostrar total, importe pagado, saldo y estado de cada factura de compra
+- Agregar filtros de facturas sin pagar, con pago parcial y pagadas
+- Conciliar el total de las OVs con cobros aplicados y saldo por cobrar
+- Calcular el neto como cobros menos pagos y gastos sin combinar sus columnas
+- Documentar criterios, filtros y conciliaciones del reporte financiero
+
+### v0.160.0-alpha (2026-11-13) — parcial
+
+> Documentado el desglose en línea por categoría, artículo y OV paginada; el corte general conserva versiones anteriores pendientes.
+
+- Agrupar los productos vendidos por categoría y artículo en el desglose multiempresa
+- Abrir las OVs de cada artículo debajo de su fila, con paginación y enlaces directos
+- Separar la vista jerárquica de productos de la vista por punto de venta
+- Documentar la expansión de categorías, artículos y OVs en el reporte
+
+### v0.159.0-alpha (2026-11-13) — parcial
+
+> Documentado el reporte de productos vendidos por empresa, sus filtros, conciliación y Excel; el corte general conserva versiones anteriores pendientes.
+
+- Agregar el reporte de productos vendidos por empresa, moneda, categoría y punto de venta
+- Abrir los renglones paginados de cada grupo con enlaces a OV y productos
+- Exportar resumen, desgloses, movimientos y conciliación en siete hojas de Excel
+- Analizar solo órdenes de venta para no duplicar sus facturas y remitos
+- Documentar filtros, estados, cálculo de importes y exportación del reporte
+
+### v0.158.1-alpha (2026-11-13) — parcial
+
+> Se actualizaron los resúmenes compactos y el comportamiento inicial de las categorías; el corte general conserva versiones anteriores pendientes.
+
+- Compactar y diferenciar por color los resúmenes de productos vendidos y comprados
+- Iniciar las categorías cerradas y reducir la altura de las filas de productos
+- Documentar la apertura manual de categorías en el reporte de productos
+
+### v0.158.0-alpha (2026-11-13) — parcial
+
+> Se documentó el reporte por punto de venta; el corte general mantiene versiones anteriores pendientes.
+
+- Filtrar el reporte por punto de venta por tipo documental y período
+- Abrir documentos y artículos con cantidades desde cada punto de venta
+- Separar importes por moneda y descontar notas de crédito
+- Compactar el resumen y alinearlo con la estética del sistema
+- Documentar el reporte de ventas por punto de venta
+
+### v0.157.0-alpha (2026-11-12) — parcial
+
+> Se documentaron el uso de datos de entrega en OV, la anulación de transferencias y la disponibilidad de conceptos bancarios; siguen pendientes versiones anteriores.
+
+- Usar direcciones y contactos solo en la OV y conservar el texto ingresado al abrir la búsqueda
+- Comprobar el saldo del destino antes de anular una transferencia y conservarla completada si no alcanza
+- Mostrar solo conceptos bancarios habilitados en pagos y cobros y explicar cómo activarlos
+- Habilitar o quitar conceptos bancarios para pagos y cobros desde sus tarjetas
+- Actualizar las guías de entrega en OV, transferencias y conceptos bancarios
 
 ### v0.156.0-alpha (2026-11-12) — pendiente
 

@@ -37,7 +37,7 @@ En los roles de sistema el **código no se puede editar**.
 ## Cómo asignar permisos a un rol
 
 1. Presionar el ícono de llave (Permisos) en la fila del rol.
-2. Se abre la lista de permisos **agrupada por módulo** (Acceso, Documentos, Maestros, Ingeniería y Costos, Logística, Capturas, Tesorería, RRHH, Sistema).
+2. Se abre la lista de permisos **agrupada por módulo** (Acceso, Documentos, Maestros, Ingeniería y Costos, Reportes, Logística, Capturas, Tesorería, RRHH, Sistema).
 3. Marcar/desmarcar permisos:
    - El checkbox de cada módulo selecciona/desmarca todos sus permisos.
    - Botones **Todos** y **Ninguno** para el conjunto completo.
@@ -65,6 +65,12 @@ Dos familias de permisos merecen atención al armar los roles:
 ### Permisos de pagos y cobros
 
 Las acciones de **Tesorería → Pagos y cobros** se habilitan por permiso del rol de negocio: `payments.read`, `payments.create`, `payments.update`, `payments.confirm`, `payments.mark_as_paid`, `payments.reject`, `payments.reverse` y `payments.delete`. Por ejemplo, para que una persona pueda marcar una operación confirmada como pagada, su rol debe incluir **`payments.mark_as_paid`**. La pantalla oculta las acciones que el rol no tenga y la API valida el mismo permiso al ejecutar cada operación.
+
+### Permisos individuales de reportes
+
+En el grupo **Reportes**, cada vista tiene su propio permiso de lectura: resumen gerencial, consolidado, resultado y composición, productos vendidos, clientes, proveedores, RR. HH., tesorería, documentos e inventario y logística. Al quitar un permiso, esa entrada deja de aparecer en el menú y la API también rechaza la consulta directa. La exportación usa el mismo permiso que la vista.
+
+El permiso heredado **`management_reports.read`** habilita todos los reportes. Para limitar un rol, quitá ese permiso general y asigná los permisos individuales que necesite. El acceso a la pantalla de **Roles y permisos** se controla por separado. La membresía **OWNER** mantiene acceso total y no se limita con permisos de rol.
 
 ## Cómo eliminar un rol
 

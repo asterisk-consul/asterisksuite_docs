@@ -15,6 +15,7 @@ Las **cajas** controlan el **efectivo**. Cada caja tiene una **moneda** y un **s
 
 :::note[Permisos necesarios]
 - Ver cajas · Crear cajas · Editar cajas · Eliminar cajas
+- Configurar el uso de una caja en otras empresas: Owner/Admin o permiso para editar cajas
 - Abrir sesión de caja · Cerrar sesión de caja
 - Ver movimientos de caja (`cash_box_movements.read`)
 - Registrar ingresos y egresos manuales de caja (`cash_box_movements.create_manual`)
@@ -69,7 +70,7 @@ Las **cajas** controlan el **efectivo**. Cada caja tiene una **moneda** y un **s
 
 ## Compartir una caja con otras empresas
 
-Al editar una caja, una persona con permiso de edición puede abrir **Uso entre empresas** y habilitar empresas vinculadas a su usuario. Al crear una caja nueva, primero hay que guardarla; luego la aplicación abre su ficha para configurar el uso. Para cada empresa se pueden autorizar por separado **Pagos y sueldos**, **Cobros** y **Vales de socios**. Si se desactiva una empresa o se quita un uso, deja de aparecer como opción para nuevas operaciones.
+Al editar una caja, el Owner, el Admin o una persona con permiso para editar cajas puede abrir **Uso entre empresas** y habilitar empresas vinculadas a su usuario. Al crear una caja nueva, primero hay que guardarla; luego la aplicación abre su ficha para configurar el uso. Para cada empresa se pueden autorizar por separado **Pagos y sueldos**, **Cobros** y **Vales de socios**. Si se desactiva una empresa o se quita un uso, deja de aparecer como opción para nuevas operaciones.
 
 La empresa titular conserva la caja y su saldo. La caja compartida aparece en los formularios de pagos/cobros y, si se autorizan vales, en los movimientos directos de socios. Para usarla debe estar activa, tener la misma moneda de la operación y mantener una sesión abierta. Los sueldos se pagan desde el formulario habitual de Tesorería; la opción **Vales de socios** aplica a los retiros, aportes y demás vales que impactan directamente caja o banco.
 

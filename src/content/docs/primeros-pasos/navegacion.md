@@ -17,7 +17,7 @@ El sistema es **multi-empresa**: siempre trabajás dentro de una **empresa activ
 
 - El **menú lateral** agrupa los módulos por área (ERP, Stock, Logística, etc.).
 - Al seleccionar una sección con subopciones, se abre su primera página disponible; por ejemplo, **Configuración** abre el **Centro de configuración**. Las páginas sin subopciones abren directamente su destino. Las opciones se filtran según los permisos del usuario.
-- El botón con el ícono de panel, junto al título de la página, cambia el menú lateral entre la vista completa y la vista compacta de íconos. Al pasar el cursor o enfocarlo, el tooltip indica **Contraer menú lateral** o **Expandir menú lateral**.
+- El botón con el ícono de panel está en el encabezado de la página, junto al título. En pantallas amplias cambia el menú lateral entre la vista completa y la vista compacta de íconos; en pantallas pequeñas abre o cierra el menú. Al pasar el cursor o enfocarlo, el tooltip indica la acción disponible.
 - El **Centro de configuración** (`/settings`) reúne todos los parámetros.
 - El buscador global se abre con **Ctrl+K** (o **⌘+K** en Mac). Busca las páginas de forma recursiva, agrupa los resultados por módulo y muestra la sección de origen para distinguir destinos con nombres iguales, como **Comprobantes**. También encuentra palabras aunque se escriban sin tilde y solo ofrece páginas permitidas para tu rol.
 - Cuando existe una pantalla anterior dentro de la aplicación, la barra superior muestra **Volver** y podés usar **Esc**. Si estás escribiendo o hay un diálogo, menú o selector abierto, **Esc** actúa primero sobre ese contexto y no cambia de página.
