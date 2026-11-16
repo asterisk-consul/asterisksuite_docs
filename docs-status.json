@@ -2,10 +2,13 @@
   "documentedUpTo": "0.135.0-alpha",
   "lastReview": "2026-11-05",
   "app": {
-    "version": "0.162.0-alpha",
-    "date": "2026-11-13"
+    "version": "0.164.1-alpha",
+    "date": "2026-11-16"
   },
   "pending": [
+    "0.164.1-alpha",
+    "0.164.0-alpha",
+    "0.163.0-alpha",
     "0.162.0-alpha",
     "0.161.0-alpha",
     "0.160.0-alpha",
@@ -173,6 +176,14 @@
     "0.162.0-alpha": {
       "status": "partial",
       "note": "Guía de resultado y composición actualizada para el resumen agrupado, egresos unificados por defecto y opción de desglose; quedan versiones anteriores pendientes de revisión global."
+    },
+    "0.164.0-alpha": {
+      "status": "partial",
+      "note": "Documentados el cambio de tipo de usuario, sus restricciones y el estado de WhatsApp; versiones anteriores siguen pendientes de revisión."
+    },
+    "0.164.1-alpha": {
+      "status": "partial",
+      "note": "Guía de Tareas actualizada para la previsualización de adjuntos y el formulario; versiones anteriores siguen pendientes de revisión."
     }
   },
   "notes": "Corte calculado el 2026-10-20 comparando los cambios de asterisksuite_frontend/versiones/versions.json contra el contenido de src/content/docs/: los módulos publicados hasta 0.71.0-alpha (inversiones, libro de movimientos bancarios, gastos bancarios, clientes internos, precancelación) están descriptos; de 0.72.0-alpha en adelante casi no hay rastro en los docs, con incorporaciones puntuales en 0.76.0-alpha (variantes) y 0.82.0-alpha (circuito de compras)."

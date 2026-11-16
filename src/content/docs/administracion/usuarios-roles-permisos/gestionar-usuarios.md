@@ -38,8 +38,10 @@ El email debe ser único en todo el sistema. Un usuario solo puede quedar vincul
 ## Cómo editar un usuario
 
 1. En la fila del usuario, presionar el ícono de lápiz.
-2. Modificar **Nombre** y/o **Email**.
-3. Guardar. Si cambiás el email, debe seguir siendo único.
+2. Modificar **Nombre**, **Email** o el tipo de usuario de esa empresa (**Usuario** o **Administrador**).
+3. Guardar. Si cambiás el email, debe seguir siendo único. El rol **Propietario** se muestra como solo lectura y no se cambia desde este formulario. Tampoco podés cambiar tu propio tipo de usuario.
+
+Junto a **Teléfono de WhatsApp**, el ícono de estado explica si el número está cargado y si la persona aceptó recibir avisos. Cambiar el número requiere que vuelva a aceptar el consentimiento desde **Notificaciones**; cargarlo no activa los avisos por sí solo.
 
 ## Cómo cambiar la contraseña
 
@@ -60,7 +62,7 @@ El listado muestra una etiqueta con el empleado o socio vinculado, o "Sin emplea
 2. Marcar los roles deseados (se pueden combinar varios).
 3. Guardar.
 
-Los roles de negocio otorgan los permisos granulares. Se suman entre sí y son distintos del **Rol** de empresa elegido al crear el usuario (membresía).
+Los roles de negocio otorgan los permisos granulares. Se suman entre sí y son distintos del **Tipo de usuario** de empresa (**Usuario**, **Administrador** o **Propietario**). El tipo de empresa se configura al crear el usuario y también se puede cambiar al editarlo; el propietario no se modifica desde este formulario.
 
 ## Reglas y validaciones
 

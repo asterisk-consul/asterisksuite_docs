@@ -1,0 +1,32 @@
+---
+title: Entre empresas
+description: Consultar fondos recibidos, rendiciones y saldo de tesorería entre empresas.
+sidebar:
+  order: 4
+---
+
+## Cuándo aparece
+
+**Tesorería → Cajas y bancos → Entre empresas** (`/erp/treasury/intercompany`) aparece si la empresa activa tiene una caja o cuenta bancaria compartida, o conserva movimientos entre empresas. No depende de cuántas empresas tenga el usuario. Se necesita permiso para ver pagos o transferencias; los permisos también se comprueban al consultar la información.
+
+El **Resumen de Tesorería** muestra un acceso rápido cuando hay saldo pendiente o a favor.
+
+## Cómo leer el saldo
+
+La pantalla separa los importes por **empresa y moneda**. Un saldo **Por rendir** significa que la empresa activa conserva fondos que corresponden a la otra empresa; **A favor** significa que la otra empresa debe rendir fondos a la activa.
+
+Por ejemplo, si B registra un cobro por una OV y el dinero ingresa en el banco de A, la OV y el cobro quedan en B, mientras A ve el importe **Por rendir a B**. Si A transfiere una parte a B como **Rendición de fondos**, el pendiente disminuye. La transferencia no vuelve a cobrar ni modifica la OV de B.
+
+El resumen también considera pagos, cheques y vales de una empresa realizados con fondos compartidos de otra. Cada empresa ve el mismo movimiento desde su propia perspectiva; el historial conserva una descripción breve, como **Cobro de OV #123**, cuando el origen permite identificarla. Las operaciones anuladas permanecen en el historial, pero no afectan el saldo vigente.
+
+## Transferir y clasificar
+
+Al crear una transferencia entre empresas en **Tesorería → Cajas y bancos → Transferencias**, elegí el motivo **Rendición de fondos** cuando la entrega de dinero deba reducir el saldo entre ellas. Desde el formulario general se inicia en **Otra transferencia** para evitar descontar fondos por error; el botón **Transferir a esta empresa** abre el formulario con **Rendición de fondos** seleccionado. La descripción y la referencia pueden identificar brevemente el motivo; se ven en ambas empresas.
+
+Las transferencias anteriores a esta clasificación quedan visibles, pero no reducen el pendiente por suposición. Desde la empresa de origen, una persona con permiso para confirmar transferencias puede marcar una transferencia completada como rendición o quitarle esa marca. La clasificación se actualiza en los registros de origen y destino. Las transferencias anuladas no se suman al saldo.
+
+El botón **Transferir a esta empresa** abre el formulario habitual con la empresa destino seleccionada. Solo aparece si el usuario también tiene acceso a esa empresa. Crear la transferencia la deja pendiente; el saldo entre empresas cambia cuando se confirma.
+
+## Alcance
+
+Este saldo corresponde a **movimientos de tesorería entre empresas**. No incorpora facturas entre empresas, aportes de capital ni asientos contables automáticos. Los saldos de distintas monedas no se combinan; las transferencias con conversión conservan el importe y la moneda de origen para esta cuenta, y muestran el importe convertido en la transferencia.

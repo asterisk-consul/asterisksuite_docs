@@ -6,14 +6,38 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.162.0-alpha** (2026-11-13) |
+| Última versión de la app | **v0.164.1-alpha** (2026-11-16) |
 | Documentación al día hasta | **v0.135.0-alpha** |
 | Última revisión de docs | 2026-11-05 |
-| Versiones pendientes de revisar | **42** (0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
+| Versiones pendientes de revisar | **45** (0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
 
 ## Pendientes
 
 Cada entrada es una versión de la app que todavía no se revisó contra los contenidos de `src/content/docs/`.
+
+### v0.164.1-alpha (2026-11-16) — parcial
+
+> Guía de Tareas actualizada para la previsualización de adjuntos y el formulario; versiones anteriores siguen pendientes de revisión.
+
+- Abrir imágenes y PDF adjuntos en una previsualización autenticada y permitir descargar otros formatos
+- Unificar el desplazamiento del detalle y mostrar categoría y fechas al inicio del formulario
+- Actualizar la guía del CRM con la vista de adjuntos y el formulario de tareas
+
+### v0.164.0-alpha (2026-11-13) — parcial
+
+> Documentados el cambio de tipo de usuario, sus restricciones y el estado de WhatsApp; versiones anteriores siguen pendientes de revisión.
+
+- Cambiar el tipo de usuario de una empresa desde la edición de usuarios
+- Impedir cambios del propietario o del propio tipo de usuario
+- Mostrar el estado del teléfono y del consentimiento de WhatsApp junto al campo
+- Documentar la edición y las restricciones del tipo de usuario
+
+### v0.163.0-alpha (2026-11-13) — pendiente
+
+- Controlar cada reporte con un permiso propio y validar el acceso también en el backend
+- Agregar al catálogo tenant los permisos de reportes faltantes al abrir la configuración de roles
+- Expandir el grupo Reportes y explicar el permiso general heredado
+- Documentar la activación individual de reportes desde los roles
 
 ### v0.162.0-alpha (2026-11-13) — parcial
 

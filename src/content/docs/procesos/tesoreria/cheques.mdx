@@ -43,7 +43,7 @@ import { Steps } from '@astrojs/starlight/components'
 
 3. **Indicá si es propio**
 
-   Marcá si el cheque es **propio** (emitido por la empresa) o de un tercero.
+   Marcá si el cheque es **propio** (emitido por la empresa) o de un tercero. Para el cheque propio, elegí la cuenta bancaria que se debitará: puede ser de esta empresa o una cuenta compartida por otra empresa para **Pagos y sueldos**. La moneda de la cuenta debe coincidir con la del cheque.
 
 4. **Guardá**
 
@@ -95,7 +95,7 @@ Al depositar un cheque de terceros podés elegir el **destino**:
 
 2. **Elegí el destino**
 
-   - **Cuenta bancaria**: acreditar el cheque en la cuenta elegida (se muestran las cuentas activas en la **misma moneda** que el cheque).
+   - **Cuenta bancaria**: acreditar el cheque en una cuenta activa de la **misma moneda**. También aparecen las cuentas de otras empresas que autorizaron **Cobros**. El selector indica la empresa titular.
    - **Caja**: cobrar el cheque e **ingresar su importe en efectivo en una caja**. El selector muestra **solo cajas abiertas, autorizadas y compatibles con la moneda del cheque**.
 
 3. **Completá fecha e importe** y confirmá.
@@ -104,7 +104,7 @@ Al depositar un cheque de terceros podés elegir el **destino**:
 
 ## Cómo procesar un cheque propio
 
-Un cheque propio debe estar asociado a un pago confirmado para quedar **Confirmado**. No se confirma manualmente desde la cartera. Al vencer, aparece **Procesar débito**; se requiere `checks.deposit` para registrar el débito o el pago desde caja.
+Un cheque propio debe estar asociado a un pago confirmado para quedar **Confirmado**. No se confirma manualmente desde la cartera. Al vencer, aparece **Procesar débito**; se requiere `checks.deposit` para registrar el débito o el pago desde caja. El débito bancario usa la cuenta elegida al crear o editar el cheque, incluida una cuenta compartida de otra empresa si estaba autorizada para **Pagos y sueldos**.
 
 Al procesar (debitar) un cheque propio también podés elegir la **fuente**:
 
@@ -127,12 +127,15 @@ Al procesar (debitar) un cheque propio también podés elegir la **fuente**:
 
 Caja, banco y cheque utilizan los **mismos movimientos vinculados**, sin importar desde qué pantalla se inicie la operación: podés empezar desde la **cartera de cheques** o desde el **detalle de una caja** y el resultado es idéntico (el cheque queda cobrado/debitado y los movimientos de caja y banco quedan enlazados entre sí y con el cheque).
 
+Si el banco pertenece a otra empresa, el cheque y su pago o cobro permanecen en la empresa que los registró. El depósito o débito cambia el saldo de la **cuenta titular** y su historial indica qué empresa originó el movimiento. Revertir el cheque registra el movimiento compensatorio en esa misma cuenta. El banco debe tener saldo suficiente para debitar un cheque propio o para revertir el depósito de un cheque de terceros.
+
 ## Reglas y validaciones
 
 - El **número**, **banco**, **emisor**, **monto** (mayor a 0), **moneda** y **fechas** son obligatorios.
 - Para **depositar** hay que elegir una **cuenta bancaria** (activa y en la moneda del cheque).
+- Las cuentas compartidas solo se ofrecen cuando la empresa titular habilitó el uso correspondiente: **Cobros** para depositar un cheque de terceros o **Pagos y sueldos** para debitar uno propio. El depósito toma el importe disponible completo del cheque.
 - Para **cobrar en caja** o **pagar con efectivo de caja** hay que elegir una caja **abierta**, a la que tengas acceso y en la **moneda del cheque**; se requiere además una **sesión abierta** y saldo suficiente en caso de egreso.
-- Las operaciones validan sesión, permisos, moneda y saldo dentro de una **única transacción**: si algo falla, no se registra ninguna parte.
+- Las operaciones locales validan sesión, permisos, moneda y saldo dentro de una **única transacción**. En una cuenta compartida, cada empresa conserva su propio registro y el sistema intenta compensar en la cuenta titular si falla el guardado del cheque después del movimiento bancario.
 - Un cheque rechazado queda registrado y afecta la cuenta corriente correspondiente.
 
 ## Problemas frecuentes
