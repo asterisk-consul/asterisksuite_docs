@@ -2,10 +2,16 @@
   "documentedUpTo": "0.135.0-alpha",
   "lastReview": "2026-11-05",
   "app": {
-    "version": "0.164.1-alpha",
-    "date": "2026-11-16"
+    "version": "0.168.1-alpha",
+    "date": "2026-11-17"
   },
   "pending": [
+    "0.168.1-alpha",
+    "0.168.0-alpha",
+    "0.167.0-alpha",
+    "0.166.0-alpha",
+    "0.165.1-alpha",
+    "0.165.0-alpha",
     "0.164.1-alpha",
     "0.164.0-alpha",
     "0.163.0-alpha",
@@ -184,6 +190,22 @@
     "0.164.1-alpha": {
       "status": "partial",
       "note": "Guía de Tareas actualizada para la previsualización de adjuntos y el formulario; versiones anteriores siguen pendientes de revisión."
+    },
+    "0.165.0-alpha": {
+      "status": "partial",
+      "note": "Guía de Bancos actualizada para la resolución de movimientos durante la conciliación; el corte global permanece en 0.135.0-alpha por versiones anteriores pendientes de revisión."
+    },
+    "0.165.1-alpha": {
+      "status": "partial",
+      "note": "La guía de Bancos aclara que se pueden asignar conceptos antes de configurar la cuenta contable y que el registro requiere una cuenta activa de tipo Activo; el corte global permanece en 0.135.0-alpha por versiones anteriores pendientes."
+    },
+    "0.167.0-alpha": {
+      "status": "partial",
+      "note": "La guía de Bancos documenta la página separada, la fecha y el saldo final desde el extracto y la comparación de totales; el corte global sigue en 0.135.0-alpha porque hay versiones anteriores pendientes."
+    },
+    "0.168.1-alpha": {
+      "status": "partial",
+      "note": "Las guías de Bancos y Cajas explican que al anular pagos o cobros se retira el movimiento original y se recalcula el saldo; Transferencias describe la eliminación coordinada de ambos movimientos. El corte global sigue en 0.135.0-alpha por versiones anteriores pendientes."
     }
   },
   "notes": "Corte calculado el 2026-10-20 comparando los cambios de asterisksuite_frontend/versiones/versions.json contra el contenido de src/content/docs/: los módulos publicados hasta 0.71.0-alpha (inversiones, libro de movimientos bancarios, gastos bancarios, clientes internos, precancelación) están descriptos; de 0.72.0-alpha en adelante casi no hay rastro en los docs, con incorporaciones puntuales en 0.76.0-alpha (variantes) y 0.82.0-alpha (circuito de compras)."

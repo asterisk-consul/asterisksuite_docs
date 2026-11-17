@@ -64,7 +64,7 @@ Las **cajas** controlan el **efectivo**. Cada caja tiene una **moneda** y un **s
 
 - **Abrir sesión**: una caja debe estar **abierta** para registrar movimientos.
 - **Movimientos de caja**: ingresos y egresos de efectivo (manuales, de pagos/cobros o de cheques).
-- **Pagos o vales anulados**: sus movimientos y reversiones se ocultan inicialmente en las listas de hoy e historial. La acción **Mostrar anulados** permite consultarlos; no elimina registros ni cambia el saldo de la caja.
+- **Pagos o cobros anulados**: sus movimientos de caja vinculados se quitan del historial y se recalculan el saldo y los saldos corridos. El pago o cobro permanece con estado **Anulado** en su módulo y no se agrega un movimiento compensatorio. Los movimientos de cheques conservan su ciclo propio.
 - **Cerrar sesión**: al finalizar, se cierra con el recuento.
 - **Rendiciones** y **transferencias entre cajas** según los permisos.
 
@@ -74,7 +74,7 @@ Al editar una caja, el Owner, el Admin o una persona con permiso para editar caj
 
 La empresa titular conserva la caja y su saldo. La caja compartida aparece en los formularios de pagos/cobros y, si se autorizan vales, en los movimientos directos de socios. Para usarla debe estar activa, tener la misma moneda de la operación y mantener una sesión abierta. Los sueldos se pagan desde el formulario habitual de Tesorería; la opción **Vales de socios** aplica a los retiros, aportes y demás vales que impactan directamente caja o banco.
 
-El pago, cobro o vale y sus efectos comerciales quedan en la empresa donde se carga la operación; el movimiento de efectivo queda en el historial de la empresa titular y muestra desde qué empresa se originó. La reversión conserva ambos registros. Para revertir un egreso de caja compartida se necesita una sesión abierta en la caja titular; para revertir un cobro, el saldo de esa caja debe alcanzar para devolver el importe. La función no crea automáticamente asientos de cuentas puente entre empresas.
+El pago, cobro o vale y sus efectos comerciales quedan en la empresa donde se carga la operación; el movimiento de efectivo queda en el historial de la empresa titular y muestra desde qué empresa se originó. Al anular un pago o cobro, se retira su movimiento original de la caja titular y se recalcula el saldo; la operación conserva el estado **Anulado** donde se registró. Para anular un cobro, el saldo de esa caja debe alcanzar para retirar el importe recibido. La función no crea automáticamente asientos de cuentas puente entre empresas.
 
 En el historial, seleccioná una fila o usá el ícono del ojo —ubicado al inicio— para consultar el detalle. El resaltado al pasar el cursor indica que la fila es interactiva. Se muestran el tipo en español, sus saldos y la sesión relacionada; si corresponde a un pago o cobro, también aparecen el tercero, el medio y estado, los comprobantes aplicados y los cheques asociados. Los tipos usan los mismos colores que sus indicadores en la tabla. Al volver desde un movimiento se conservan la pestaña del historial y la posición de la página.
 

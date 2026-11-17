@@ -40,6 +40,7 @@ La opción **Configuración → Archivos** permite buscar, ver y descargar los a
 - Crear la transferencia no confirma por sí solo la ejecución; el estado y las acciones del detalle indican el paso pendiente.
 - Una transferencia completada se puede **anular** desde el registro de origen con el permiso `cash_box_transfers.cancel`.
 - Al anularla, se eliminan lógicamente los movimientos originales de caja o cuenta bancaria en el origen y el destino. Se recalculan los saldos; no se agregan movimientos inversos. La transferencia queda como **Anulada** en este listado hasta que alguien elimine su registro.
+- Si ambos fondos pertenecen a la misma empresa, la anulación es atómica: si no se puede retirar uno de los movimientos, ninguno de los dos fondos cambia.
 - En transferencias entre empresas, también se actualiza el registro espejo de destino. Al eliminar una transferencia anulada desde el origen, se elimina también ese registro espejo.
 - Si el fondo destino ya no tiene saldo suficiente para quitar el movimiento, no se modifica ninguno de los fondos: la transferencia sigue **Completada** y se puede anular cuando haya saldo. Si una anulación entre empresas se interrumpe después de quitar un movimiento, queda marcada para reintento; los movimientos ya eliminados no se procesan de nuevo.
 - Los adjuntos pueden agregarse después de crear la transferencia.

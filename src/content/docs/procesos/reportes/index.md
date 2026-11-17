@@ -5,6 +5,8 @@ sidebar:
   order: 1
 ---
 
+La portada `/erp/reports` muestra tarjetas para **Resultado y composición por empresa** y **Productos vendidos por empresa** cuando tu usuario tiene el permiso correspondiente. El acceso a cada informe también permanece en el menú lateral; los informes sin permisos activos se ocultan allí.
+
 ## Para qué sirve
 
 El módulo de **Reportes gerenciales** permite analizar una o varias empresas del mismo grupo en un **período común**, con vistas específicas por área y exportación a PDF, Excel y CSV agrupada por empresa. Se accede desde **Reportes** en el menú del ERP.
@@ -115,7 +117,7 @@ Los importes quedan separados por moneda y las cantidades por unidad de medida. 
 
 El reporte **Productos vendidos por empresa** (`/erp/reports/sales-products`) compara una o varias empresas asociadas al usuario en un mismo período. Requiere el permiso `management_reports.read` y admite hasta 20 empresas por consulta. Por defecto usa las OV en estado **Aprobada, Parcial entregada, Entregada y Cerrada** (códigos 1, 4, 5 y 7); podés cambiar los estados antes de generarlo. También permite buscar por producto, SKU, cliente, número o UUID de OV, punto de venta e importes.
 
-El resumen presenta cada empresa y moneda por separado. En **Productos por categoría**, expandí una categoría para ver sus artículos y un artículo para consultar sus OVs directamente debajo, dentro de la misma tabla. Los comprobantes se muestran de a 25 por página; el artículo queda cerrado cuando abrís otro. El nombre del artículo abre su ficha y el número de OV abre el documento. La vista **Puntos de venta** conserva su desglose independiente y permite abrir las OVs de cada punto. La cantidad corresponde a la cantidad del renglón de la OV, no a la cantidad entregada.
+El resumen presenta cada empresa y moneda por separado. Por defecto, **Estados de OV** muestra todos los estados disponibles seleccionados; podés desmarcar los que no quieras incluir. En **Productos por categoría**, expandí una categoría para ver sus artículos y un artículo para consultar sus OVs directamente debajo, dentro de la misma tabla. Los comprobantes se muestran de a 25 por página; el artículo queda cerrado cuando abrís otro. El nombre del artículo abre su ficha y el número de OV abre el documento en otra pestaña. La vista **Puntos de venta** conserva su desglose independiente y permite abrir las OVs de cada punto. Al abrir una OV o un artículo, el sistema usa la empresa de origen y deja el reporte abierto en la pestaña actual. La cantidad corresponde a la cantidad del renglón de la OV, no a la cantidad entregada.
 
 Este reporte toma **solo órdenes de venta**. No suma facturas ni remitos del mismo circuito, para evitar contar dos veces una operación cuando la OV se convierte en otro documento. Las monedas no se convierten ni se mezclan.
 

@@ -6,14 +6,59 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.164.1-alpha** (2026-11-16) |
+| Última versión de la app | **v0.168.1-alpha** (2026-11-17) |
 | Documentación al día hasta | **v0.135.0-alpha** |
 | Última revisión de docs | 2026-11-05 |
-| Versiones pendientes de revisar | **45** (0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
+| Versiones pendientes de revisar | **51** (0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
 
 ## Pendientes
 
 Cada entrada es una versión de la app que todavía no se revisó contra los contenidos de `src/content/docs/`.
+
+### v0.168.1-alpha (2026-11-17) — parcial
+
+> Las guías de Bancos y Cajas explican que al anular pagos o cobros se retira el movimiento original y se recalcula el saldo; Transferencias describe la eliminación coordinada de ambos movimientos. El corte global sigue en 0.135.0-alpha por versiones anteriores pendientes.
+
+- Retirar los movimientos de bancos y cajas al anular pagos o cobros y recalcular sus saldos
+- Anular ambos lados de una transferencia interna entre fondos dentro de una única transacción
+- Documentar la anulación de pagos, cobros y transferencias sin movimientos compensatorios
+
+### v0.168.0-alpha (2026-11-17) — pendiente
+
+- Filtrar un tablero por uno o varios clientes
+- Documentar el filtro por varios clientes en el tablero
+
+### v0.167.0-alpha (2026-11-17) — parcial
+
+> La guía de Bancos documenta la página separada, la fecha y el saldo final desde el extracto y la comparación de totales; el corte global sigue en 0.135.0-alpha porque hay versiones anteriores pendientes.
+
+- Abrir la conciliación de extractos en una página dedicada por cuenta bancaria
+- Completar fecha y saldo final desde el extracto y comparar créditos, débitos y neto con el sistema
+- Documentar la pantalla de conciliación, la carga automática del saldo y los totales comparados
+
+### v0.166.0-alpha (2026-11-17) — pendiente
+
+- Ocultar listas finalizadas con una preferencia activada por defecto y filtrarlas por prioridad
+- Mantener accesibles todas las opciones del filtro en pantallas de menor altura
+- Recuperar tamaño y contenido de adjuntos desde el almacenamiento de la empresa cuando la ruta registrada no está disponible
+- Documentar la preferencia para ocultar listas finalizadas y el filtro de prioridad
+
+### v0.165.1-alpha (2026-11-17) — parcial
+
+> La guía de Bancos aclara que se pueden asignar conceptos antes de configurar la cuenta contable y que el registro requiere una cuenta activa de tipo Activo; el corte global permanece en 0.135.0-alpha por versiones anteriores pendientes.
+
+- Permitir asignar conceptos a filas sin coincidencia aunque la cuenta contable del banco todavía no esté configurada
+- Explicar el requisito contable y abrir la configuración de bancos conservando la selección
+- Aclarar la selección de conceptos y el requisito para registrar asientos
+
+### v0.165.0-alpha (2026-11-17) — parcial
+
+> Guía de Bancos actualizada para la resolución de movimientos durante la conciliación; el corte global permanece en 0.135.0-alpha por versiones anteriores pendientes de revisión.
+
+- Abrir el flujo de pago/cobro desde una fila sin coincidencia y precargar fecha, cuenta, moneda, importe y referencia
+- Exigir comprobante en modo normal y ofrecer el anticipo como decisión explícita
+- Vincular o crear cheques y registrar su impacto solo cuando el pago/cobro asociado está confirmado
+- Documentar la resolución de pagos, anticipos, cheques y conceptos durante la conciliación
 
 ### v0.164.1-alpha (2026-11-16) — parcial
 
