@@ -2,10 +2,14 @@
   "documentedUpTo": "0.135.0-alpha",
   "lastReview": "2026-11-05",
   "app": {
-    "version": "0.168.1-alpha",
-    "date": "2026-11-17"
+    "version": "0.171.0-alpha",
+    "date": "2026-11-19"
   },
   "pending": [
+    "0.171.0-alpha",
+    "0.170.0-alpha",
+    "0.169.0-alpha",
+    "0.168.2-alpha",
     "0.168.1-alpha",
     "0.168.0-alpha",
     "0.167.0-alpha",
@@ -206,6 +210,18 @@
     "0.168.1-alpha": {
       "status": "partial",
       "note": "Las guías de Bancos y Cajas explican que al anular pagos o cobros se retira el movimiento original y se recalcula el saldo; Transferencias describe la eliminación coordinada de ambos movimientos. El corte global sigue en 0.135.0-alpha por versiones anteriores pendientes."
+    },
+    "0.169.0-alpha": {
+      "status": "partial",
+      "note": "Documentada la agenda personal en el inicio y su navegación diaria; el corte general del portal sigue pendiente de versiones anteriores."
+    },
+    "0.170.0-alpha": {
+      "status": "partial",
+      "note": "Los cambios de visibilidad de estados están documentados en las guías de ventas y compras; el corte general sigue en 0.135.0-alpha por versiones anteriores pendientes de revisión."
+    },
+    "0.171.0-alpha": {
+      "status": "partial",
+      "note": "La agenda diaria y el permiso audit.read están documentados en las guías de auditoría y roles; el corte general sigue en 0.135.0-alpha por versiones anteriores pendientes de revisión."
     }
   },
   "notes": "Corte calculado el 2026-10-20 comparando los cambios de asterisksuite_frontend/versiones/versions.json contra el contenido de src/content/docs/: los módulos publicados hasta 0.71.0-alpha (inversiones, libro de movimientos bancarios, gastos bancarios, clientes internos, precancelación) están descriptos; de 0.72.0-alpha en adelante casi no hay rastro en los docs, con incorporaciones puntuales en 0.76.0-alpha (variantes) y 0.82.0-alpha (circuito de compras)."

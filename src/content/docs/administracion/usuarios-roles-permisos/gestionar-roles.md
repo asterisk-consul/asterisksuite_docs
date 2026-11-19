@@ -37,7 +37,7 @@ En los roles de sistema el **código no se puede editar**.
 ## Cómo asignar permisos a un rol
 
 1. Presionar el ícono de llave (Permisos) en la fila del rol.
-2. Se abre la lista de permisos **agrupada por módulo** (Acceso, Documentos, Maestros, Ingeniería y Costos, Reportes, Logística, Capturas, Tesorería, RRHH, Sistema).
+2. Se abre la lista de permisos **agrupada por módulo** (Acceso, Auditoría, Documentos, Maestros, Ingeniería y Costos, Reportes, Logística, Capturas, Tesorería, RRHH, Sistema).
 3. Marcar/desmarcar permisos:
    - El checkbox de cada módulo selecciona/desmarca todos sus permisos.
    - Botones **Todos** y **Ninguno** para el conjunto completo.
@@ -45,6 +45,10 @@ En los roles de sistema el **código no se puede editar**.
 4. Presionar **Guardar cambios** (o **Guardar** arriba).
 
 La barra inferior indica si hay cambios sin guardar y cuántos permisos están seleccionados.
+
+### Acceso a la auditoría de cambios
+
+El permiso **Auditoría → Ver auditoría de cambios** (`audit.read`) habilita la agenda de la empresa en **Configuración → Usuarios y seguridad → Auditoría de cambios**. Asignalo únicamente a los roles que deban consultar los movimientos y sus diferencias. La membresía **OWNER** conserva acceso total; los usuarios de plataforma mantienen las restricciones de pertenencia y alcance de empresa.
 
 ### Permisos generales de documentos
 

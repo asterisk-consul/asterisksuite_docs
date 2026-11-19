@@ -6,14 +6,47 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.168.1-alpha** (2026-11-17) |
+| Última versión de la app | **v0.171.0-alpha** (2026-11-19) |
 | Documentación al día hasta | **v0.135.0-alpha** |
 | Última revisión de docs | 2026-11-05 |
-| Versiones pendientes de revisar | **51** (0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
+| Versiones pendientes de revisar | **55** (0.171.0-alpha, 0.170.0-alpha, 0.169.0-alpha, 0.168.2-alpha, 0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
 
 ## Pendientes
 
 Cada entrada es una versión de la app que todavía no se revisó contra los contenidos de `src/content/docs/`.
+
+### v0.171.0-alpha (2026-11-19) — parcial
+
+> La agenda diaria y el permiso audit.read están documentados en las guías de auditoría y roles; el corte general sigue en 0.135.0-alpha por versiones anteriores pendientes de revisión.
+
+- Navegar la auditoría por fecha y resumir movimientos por usuario y acción
+- Asignar la consulta de auditoría mediante el permiso audit.read
+- Documentar la agenda diaria y la asignación de acceso a auditoría
+
+### v0.170.0-alpha (2026-11-19) — parcial
+
+> Los cambios de visibilidad de estados están documentados en las guías de ventas y compras; el corte general sigue en 0.135.0-alpha por versiones anteriores pendientes de revisión.
+
+- Configurar la visibilidad de estados en comprobantes, presupuestos, OV, OC y remitos
+- Ocultar estados terminales por defecto y guardar la selección por empresa, usuario y listado
+- Mostrar Cancelada entre los estados disponibles de las órdenes de venta
+- Iniciar apagados los filtros Mostrar cobrados y Mostrar pagados
+- Documentar los filtros de estados y su preferencia guardada
+
+### v0.169.0-alpha (2026-11-19) — parcial
+
+> Documentada la agenda personal en el inicio y su navegación diaria; el corte general del portal sigue pendiente de versiones anteriores.
+
+- Resumir actividad diaria, tareas resueltas y pendientes personales en el inicio
+- Convertir Mis pendientes en una agenda diaria con navegación por fecha y enlaces a los registros
+- Evitar desbordes en los filtros y limitar el alto de las listas de actividad y pendientes con scroll interno
+- Documentar el widget Mi actividad y la agenda diaria personal
+
+### v0.168.2-alpha (2026-11-19) — pendiente
+
+- Acceder desde las tablas a edición, cobros o pagos, facturas, remitos, NC/ND y anulación según el estado
+- Ubicar el menú de acciones al inicio de las tablas y priorizar Duplicar cuando está disponible
+- Documentar las acciones contextuales en las tablas de comprobantes, órdenes y remitos
 
 ### v0.168.1-alpha (2026-11-17) — parcial
 

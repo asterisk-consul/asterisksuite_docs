@@ -47,7 +47,7 @@ El listado único está en **Compras → Comprobantes** (`/erp/purchases/comprob
 
 En **Compras → Comprobantes** (`/erp/purchases/comprobantes`) se listan juntos órdenes, facturas, remitos y notas, con filtro por categoría y estado. Los enlaces anteriores con `?category=` siguen redirigiendo al listado filtrado. Al abrir un registro, cada uno lleva a su **vista específica**: las órdenes a `/erp/purchases/orders/{id}`, los remitos a `/erp/purchases/remitos/{id}` y facturas y notas a `/erp/purchases/purchases-documents/{id}`.
 
-En **Comprobantes**, elegí **Tipo de documento** y **Estado** en los selectores superiores. En los listados de **Órdenes de Compra** y **Remitos de Compra**, usá **Filtros** en la tabla y agregá una condición sobre **Estado**. Para consultar anulados, activá **Mostrar anulados** o elegí *Anulada* en el filtro de estado.
+En **Comprobantes**, elegí **Tipo de documento** y **Estado** en los selectores superiores. El interruptor **Mostrar pagados** arranca apagado y permite incluir documentos ya saldados. En **Comprobantes**, **Órdenes de Compra** y **Remitos de Compra**, el menú de interruptores **Estados** permite mostrar u ocultar estados. Los estados finales arrancan ocultos y la selección queda guardada por usuario, empresa y listado. También podés usar **Filtros** en la tabla y agregar una condición sobre **Estado**.
 
 Los **saldos iniciales** de cuentas corrientes no aparecen en este listado porque se administran desde la cuenta corriente y no son comprobantes de compra.
 

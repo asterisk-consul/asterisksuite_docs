@@ -11,9 +11,11 @@ import { Steps } from '@astrojs/starlight/components'
 
 El **remito** documenta la entrega de la mercadería al cliente y registra la **salida de stock**. Se administra en **Ventas → Remitos** (`/erp/remitos`).
 
-En el listado, el interruptor **Mostrar cancelados** permite incluir o esconder los remitos cancelados. Si elegís el estado **Anulado**, se muestran automáticamente.
+En el listado, **Estados** abre un menú con interruptores para mostrar u ocultar estados. **Entregado** y **Cancelado** arrancan ocultos; podés encenderlos cuando los necesites. La selección queda guardada por usuario, empresa y listado.
 
 El filtro avanzado de la columna **Estado** permite elegir por nombre (*Borrador*, *En tránsito*, *Entregado* o *Anulado*).
+
+El menú de acciones está al inicio de la tabla. Permite editar los remitos en borrador o en tránsito y anular un borrador con confirmación; para confirmar, imprimir o gestionar el estado, abrí el remito desde ese menú. Las acciones se muestran según tus permisos.
 
 ## Permisos necesarios
 
@@ -26,7 +28,7 @@ El filtro avanzado de la columna **Estado** permite elegir por nombre (*Borrador
 
 - La **OV** (o el documento de origen) debe existir.
 - Deben existir los **depósitos** de salida.
-- Para **remitos fiscales**, se requiere una **autorización fiscal (CAI)** vigente.
+- Para remitos de venta, el requisito de **CAI** se configura en el tipo de documento o se hereda de la política fiscal general.
 
 ## Cómo crear un remito
 
@@ -64,9 +66,15 @@ Las **medidas e indicaciones de cada producto** se copian desde el renglón de l
 
 Al **Confirmar**, el sistema **registra la salida de mercadería** del depósito:
 
-- Cada ítem debe tener **depósito** asignado; si falta, no se puede confirmar.
-- Puede haber un **control fiscal** (CAI) que **bloquee** la confirmación si la autorización no es válida.
-- Se descuenta el stock del depósito indicado.
+- Cada producto que maneja stock debe tener **depósito** asignado; si falta, no se puede confirmar.
+- El tipo de documento define si el CAI es requerido. Si lo requiere, la confirmación se bloquea cuando falta una autorización válida.
+- Se descuenta el stock del depósito indicado para los productos que tienen activo **Maneja stock**. Los demás productos no requieren depósito y no generan movimientos de stock.
+
+La exigencia se configura en **Ajustes → Tipos de documentos**, dentro del tipo de remito de venta. Podés usar la política fiscal general, exigir CAI para ese tipo o indicar que no lo requiere.
+
+### Asociar o reemplazar el CAI
+
+En un remito **en borrador o en tránsito**, el botón **Elegir CAI** permite asociar una autorización activa del mismo tipo y punto de venta, vigente en la fecha del remito. Si el número queda fuera del rango autorizado, el sistema pide una confirmación explícita. La asociación requiere el permiso **Reemplazar autorización fiscal (CAI) de remitos**. Un remito confirmado conserva su autorización; para corregirlo hay que anularlo y emitir uno nuevo.
 
 ### Alerta de CAI por vencer
 
@@ -88,7 +96,7 @@ Si el remito es **fiscal** y su CAI está a **5 días o menos** del vencimiento 
 
 ## Reglas y validaciones
 
-- Todos los ítems deben tener **depósito** asignado para confirmar.
+- Los productos con **Maneja stock** activo deben tener **depósito** asignado para confirmar; los productos sin control de stock no requieren depósito.
 - Un producto con **variantes** exige una variante activa en cada ítem; la variante elegida se conserva al editar y al generar el remito desde la OV.
 - La confirmación **descuenta stock**.
 - El control fiscal puede **bloquear** la confirmación.
@@ -100,8 +108,10 @@ Si el remito es **fiscal** y su CAI está a **5 días o menos** del vencimiento 
 
 | Mensaje / síntoma | Causa | Solución |
 |---|---|---|
-| "productos no tienen depósito" | Faltó asignar depósito en algún ítem. | Completá los depósitos desde el remito o su edición. |
-| "No se puede confirmar fiscalmente" | CAI faltante o vencido. | Registrá/renová la autorización fiscal. |
+| "productos no tienen depósito" | Falta depósito en uno o más productos que manejan stock. | Completá los depósitos desde el remito o su edición. |
+| "No se puede confirmar fiscalmente" | El tipo exige CAI y falta una autorización válida. | Asociá un CAI desde el remito o configurá el requisito en **Ajustes → Tipos de documentos**. |
+| El remito no requiere CAI | El tipo está configurado como **No requiere CAI**. | Se confirma sin autorización fiscal; el ajuste está en **Ajustes → Tipos de documentos**. |
+| No aparece **Elegir CAI** | El tipo está configurado sin CAI, el remito ya está confirmado o tu rol no tiene permiso para reemplazar el CAI. | Revisá el tipo de documento y el permiso **Reemplazar autorización fiscal (CAI) de remitos**. Los confirmados deben anularse y reemitirse. |
 | Aviso "El CAI vence en N día(s)" | El CAI del remito vence en 5 días o menos. | Presionar **Cargar nuevo CAI**, guardar la renovación y volverás al remito. |
 | "Seleccioná una variante para todos los productos que tienen variantes" | El producto tiene variantes activas. | Elegí la variante en el ítem. |
 | No veo un remito que se generó | Estás con membresía **Usuario** y el remito no te está asignado ni lo creaste vos. | Pedí que te lo asigne el responsable de la OV. |

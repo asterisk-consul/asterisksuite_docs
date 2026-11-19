@@ -34,9 +34,9 @@ Son hasta **4 tarjetas** de resumen; cada una abre su listado al hacer clic:
 | **Cheques próximos** | Cantidad de cheques a vencer y su importe | Cheques (`/erp/treasury/checks`) | Ver cheques |
 | **Alertas de stock** | Productos por debajo del mínimo y total de productos con stock | Stock (`/stock`) | Ver productos |
 | **Órdenes de venta** | OVs **pendientes de entrega**, total de OV e importe | Órdenes de venta (`/erp/orders`) | Ver documentos |
-| **Mis pendientes** | Sólo aparece si no se completan las cuatro anteriores: documentos por completar | Inicio (`/`) | Sin permiso (tu actividad personal) |
+| **Mi actividad** | Registros cargados hoy, tareas resueltas y pendientes actuales | Mi actividad (`/erp/mis-pendientes`) | Sin permiso (tu actividad personal) |
 
-En **Mis pendientes** (`/erp/mis-pendientes`) podés buscar por tipo y número de documento, contraparte, referencia/descripción, estado o fecha; cada palabra puede coincidir con un campo distinto. La referencia se muestra separada del nombre de la contraparte cuando el documento tiene una cargada.
+En **Mi actividad** (`/erp/mis-pendientes`) podés revisar lo que cargaste y las tareas que resolviste en un día. La vista abre en hoy, permite avanzar o retroceder por fecha y buscar dentro de la actividad del día. Los cheques, comprobantes, pagos, productos y tareas enlazan con sus registros cuando corresponde. Las listas largas tienen desplazamiento propio para mantener acotada la altura de cada panel. La sección **Pendientes** permanece visible al cambiar de fecha y reúne documentos asignados o creados por vos, capturas por completar y tareas abiertas que te corresponden. Las tareas y su actividad sólo aparecen cuando CRM está activo y tu usuario tiene `tasks.read` o es OWNER de la empresa.
 
 :::note
 **Órdenes de venta** reemplazó a **Viajes activos** en el resumen superior del inicio. El widget de viajes sigue disponible en el catálogo de widgets (sección siguiente).
@@ -48,7 +48,7 @@ Debajo de las tarjetas KPI se ordenan los **widgets**, bloques de detalle con gr
 
 | Widget (nombre en *Personalizar inicio*) | Qué muestra | Categoría | Permiso |
 |---|---|---|---|
-| **Mi actividad** | Tu actividad personal | personal | Siempre visible |
+| **Mi actividad** | Resumen diario de registros creados, tareas resueltas y pendientes actuales | personal | Siempre visible |
 | **Accesos directos** | Atajos a los módulos | personal | Siempre visible |
 | **Dólar del día** | Cotización oficial y blue | tesorería | Ver documentos, Ver pagos, Ver tipos de cambio **o** Ver operaciones internacionales (basta uno) |
 | **Finanzas** | Saldos bancarios y cajas, pagos y cobros | tesorería | Ver cuentas bancarias |

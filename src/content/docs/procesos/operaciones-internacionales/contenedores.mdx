@@ -67,7 +67,9 @@ La OC y la factura vinculada mediante su documento de origen representan la mism
 
 Al crear una factura desde una OC internacional, hereda su contenedor, categoría y cotización; debe conservar la moneda de la OC para esa asociación. La OC y su factura deben usar el mismo contenedor. La lista de productos aplica el mismo criterio para evitar mostrar cantidades duplicadas.
 
-La recepción física mantiene el circuito de **factura confirmada → remito de compra** hacia un depósito real. Sincronizar nuevamente después de recibir no vuelve a ingresar unidades ya registradas. No se puede anular o desasociar un comprobante que respalde movimientos en tránsito o de recepción sin regularizar primero esos movimientos.
+La recepción física mantiene el circuito de **factura confirmada → remito de compra** hacia un depósito real. Sincronizar nuevamente después de recibir no vuelve a ingresar unidades ya registradas.
+
+Al desasociar una OC o factura de mercadería, se muestra una confirmación. Si el documento generó un ingreso directo al depósito de tránsito, el sistema puede revertirlo cuando las unidades siguen disponibles y las reservas quedan cubiertas. La OC o factura no se anula ni modifica. Si ya hubo recepción, una salida posterior, stock insuficiente o documentos de la misma mercadería todavía asociados, la acción se bloquea para que primero regularices esos movimientos.
 
 ## Reglas y consideraciones
 

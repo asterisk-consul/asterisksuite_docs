@@ -39,7 +39,7 @@ En **Ventas → Resumen** (`/erp/sales`) podés consultar la actividad de los ú
 
 El listado combinado está en **Ventas → Comprobantes** (`/erp/sales/comprobantes`). Reúne los comprobantes de venta y permite filtrar por categoría y estado. En **Todos**, el filtro avanzado **Estado** identifica cada opción por tipo de comprobante (por ejemplo, *Factura · Pendiente* u *Orden de venta · Lista para despacho*); al seleccionar una categoría, muestra sus estados sin prefijo. Los enlaces anteriores con `?category=` siguen redirigiendo al listado filtrado.
 
-En **Presupuestos**, **Órdenes de Venta** y **Remitos**, abrí **Filtros** en la tabla y agregá una condición sobre **Estado** para elegirlo por nombre. En **Órdenes de Venta**, también podés filtrar por **Vendedor**, incluidos empleados, socios y órdenes sin vendedor. Para ver cancelados, activá antes **Mostrar cancelados**; al elegir ese estado desde el filtro, el listado lo habilita automáticamente.
+En **Comprobantes**, el interruptor **Mostrar cobrados** arranca apagado y permite incluir documentos ya saldados. En **Comprobantes**, **Presupuestos**, **Órdenes de Venta** y **Remitos**, el menú de interruptores **Estados** permite mostrar u ocultar estados. Los estados finales arrancan ocultos y la selección queda guardada por usuario, empresa y listado. También podés abrir **Filtros** en la tabla y agregar una condición sobre **Estado** para elegirlo por nombre. En **Órdenes de Venta**, también podés filtrar por **Vendedor**, incluidos empleados, socios y órdenes sin vendedor.
 
 Los **saldos iniciales** de cuentas corrientes no aparecen en este listado porque se administran desde la cuenta corriente y no son comprobantes de venta.
 

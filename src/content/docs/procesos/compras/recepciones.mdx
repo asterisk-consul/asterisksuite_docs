@@ -11,7 +11,9 @@ import { Steps } from '@astrojs/starlight/components'
 
 La **recepción** (remito de compra) documenta el ingreso de la mercadería del proveedor y da **entrada de stock**. Es el último eslabón del circuito: **Orden de compra → Factura de compra → Remito de compra**. Se administra en **Compras → Remitos de Compra** (`/erp/purchases/remitos`).
 
-En el listado de remitos, el interruptor **Mostrar anulados** permite incluir o esconder los anulados. Si elegís ese estado, se muestran automáticamente.
+En el listado de remitos, **Estados** abre un menú con interruptores para mostrar u ocultar estados. **Entregado** y **Cancelado** arrancan ocultos; podés encenderlos cuando los necesites. La selección queda guardada por usuario, empresa y listado.
+
+El menú de acciones está al inicio de la tabla. Permite editar los remitos en borrador o en tránsito y anular un borrador con confirmación; para confirmar, imprimir o gestionar el estado, abrí el remito desde ese menú. Las acciones se muestran según tus permisos.
 
 El remito es una pantalla **operativa**: registra cantidades, variantes y depósitos de ingreso, **sin precios ni totales**. Los importes viven en la factura de compra.
 
@@ -25,7 +27,7 @@ El remito es una pantalla **operativa**: registra cantidades, variantes y depós
 ## Configuración previa
 
 - Para seguirla por el circuito: la **factura de compra** de origen debe existir y estar **confirmada**. Si el remito referencia un documento que no es una factura, el sistema responde *El remito de compra debe originarse en una factura de compra*.
-- Debe existir el **depósito receptor** de la mercadería (Depósitos).
+- Para recibir productos con **Maneja stock** activo, debe existir un **depósito receptor** (Depósitos).
 
 ## Cómo registrar una recepción
 
@@ -39,7 +41,7 @@ En el formulario de recepción, **Ctrl + S** guarda el borrador. Podés usar **F
 
 2. **Elegí el depósito de ingreso**
 
-   Cargá el **Depósito receptor** del documento; si cada producto entra a un depósito distinto, activá **Depósito por producto** y completá la columna **Depósito de ingreso** de cada ítem.
+   Para los productos que tienen activo **Maneja stock**, cargá el **Depósito receptor** del documento; si cada producto entra a un depósito distinto, activá **Depósito por producto** y completá la columna **Depósito de ingreso** de cada ítem. Los productos sin control de stock no necesitan depósito.
 
 3. **Revisá cantidades y variantes**
 
@@ -47,13 +49,13 @@ En el formulario de recepción, **Ctrl + S** guarda el borrador. Podés usar **F
 
 4. **Guardá y confirmá**
 
-   Al **Confirmar remito** (*Se sumará el stock en los depósitos seleccionados*), el sistema registra la **entrada de stock** en cada depósito indicado y la cantidad pasa a *Cantidad recibida*.
+   Al **Confirmar remito**, el sistema registra la **entrada de stock** en cada depósito indicado para los productos que manejan stock y la cantidad pasa a *Cantidad recibida*.
 
 </Steps>
 
 ## Confirmar la recepción
 
-Mientras algún producto quede **sin depósito**, la vista del remito muestra el aviso **Falta seleccionar un depósito de ingreso** (con el botón **Completar depósitos**) y **Confirmar remito** queda deshabilitado. Recién al confirmar se ingresa el stock.
+Mientras algún producto que maneja stock quede **sin depósito**, la vista del remito muestra el aviso **Falta seleccionar un depósito de ingreso** (con el botón **Completar depósitos**) y **Confirmar remito** queda deshabilitado. Los productos sin control de stock no generan movimientos ni bloquean la confirmación.
 
 La vista también muestra la **cadena de documentos** (factura de origen → remito actual) con enlaces a cada eslabón, según tus permisos.
 
@@ -68,8 +70,8 @@ La vista también muestra la **cadena de documentos** (factura de origen → rem
 
 ## Reglas y validaciones
 
-- Cada producto debe tener depósito: se resuelve con el **depósito del ítem** o, en su defecto, con el **Depósito receptor** general del remito.
-- Sin depósito no hay ingreso: *Seleccioná el depósito receptor antes de confirmar el remito*. El remito no puede confirmarse ni ingresar stock mientras haya productos sin depósito general o individual.
+- Cada producto que maneja stock debe tener depósito: se resuelve con el **depósito del ítem** o, en su defecto, con el **Depósito receptor** general del remito.
+- Sin depósito no hay ingreso para productos inventariables: *Seleccioná el depósito receptor antes de confirmar el remito*. Los productos con **Maneja stock** desactivado no requieren depósito y no ingresan al inventario.
 - El depósito elegido debe existir y estar activo: *El depósito seleccionado no existe o está inactivo*.
 - Solo se confirman remitos en **borrador**: *Solo se puede confirmar un documento en borrador*.
 - Solo puede existir **un remito activo** por factura: *La factura de compra ya tiene un remito activo asociado*.
@@ -81,8 +83,8 @@ La vista también muestra la **cadena de documentos** (factura de origen → rem
 
 | Mensaje / síntoma | Causa | Solución |
 |---|---|---|
-| *Falta seleccionar un depósito de ingreso* / no puedo confirmar | Algún producto sin depósito general ni individual. | Completá los depósitos con **Completar depósitos**. |
-| *Seleccioná el depósito receptor antes de confirmar el remito* | Falta el Depósito receptor general o el depósito por producto. | Asigná depósitos antes de confirmar. |
+| *Falta seleccionar un depósito de ingreso* / no puedo confirmar | Algún producto que maneja stock no tiene depósito general ni individual. | Completá los depósitos con **Completar depósitos**. |
+| *Seleccioná el depósito receptor antes de confirmar el remito* | Falta depósito general o por producto en un artículo que maneja stock. | Asigná el depósito de ingreso antes de confirmar. |
 | *La factura de compra ya tiene un remito activo asociado* | Ya existe un remito (borrador o confirmado) de esa factura. | Abrilo con **Ver remito** o anulalo. |
 | *El remito de compra debe originarse en una factura de compra* | El documento de origen no es una factura de compra. | Partí de la factura con **Crear remito**. |
 | *La factura de compra debe estar confirmada* | La factura de origen sigue en borrador o pendiente. | Confirmá la factura primero. |

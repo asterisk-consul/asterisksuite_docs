@@ -11,6 +11,8 @@ import { Steps } from '@astrojs/starlight/components'
 
 La **factura** es el comprobante fiscal de la venta. Se administra en **Ventas → Facturas** y se crea en **Nueva Factura** (`/erp/sales/new?category=INVOICE`). Las **notas de crédito** y **débito** ajustan una factura ya emitida.
 
+En la tabla de comprobantes, el menú de acciones está en la primera columna. **Duplicar como borrador** aparece primero cuando está disponible; después podés editar, registrar un cobro, anular o crear una NC/ND desde una factura confirmada. Las acciones se muestran según el estado del documento y tus permisos. La anulación pide confirmación y valida los efectos asociados.
+
 Para crear una **nota de crédito o débito**, abrí una **factura confirmada** y elegí **Crear NC** o **Crear ND**. El cliente y la relación de origen se toman de esa factura. Si abriste la pantalla de nota sin partir de una factura, el sistema te indica cómo volver al listado. Al editar un borrador podés cambiar la factura de referencia; el cliente se actualiza automáticamente y el servidor valida que coincida.
 
 ## Permisos necesarios

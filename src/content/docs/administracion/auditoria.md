@@ -11,20 +11,27 @@ La auditoría permite consultar los cambios registrados para la empresa seleccio
 
 ## Quién puede consultar
 
-La pantalla está disponible en **Configuración → Usuarios y seguridad → Auditoría de cambios** para:
+La pantalla está disponible en **Configuración → Usuarios y seguridad → Auditoría de cambios** para el propietario de la empresa (**OWNER**) y para los usuarios cuyo rol tenga el permiso **Auditoría → Ver auditoría de cambios** (`audit.read`). Un usuario **OWNER** o **ADMIN** puede asignarlo desde **Configuración → Usuarios y seguridad → Roles y permisos**.
+
+En empresas existentes, el permiso se incorpora al catálogo al abrir **Roles y permisos**; no requiere una migración de base de datos.
+
+También pueden consultarla:
 
 - Usuarios `PLATFORM_ADMIN` que pertenezcan a la empresa y tengan esa empresa dentro de su alcance de plataforma.
 - Usuarios `PLATFORM_OWNER` que pertenezcan a la empresa seleccionada.
 
 La consulta queda limitada al tenant activo. Los roles de plataforma `SUPPORT` y `PLATFORM_USER` no obtienen acceso por el solo hecho de tener ese rol.
 
-## Cómo consultar los cambios
+## Cómo usar la agenda diaria
 
 1. Abrí **Centro de configuración** y elegí **Auditoría de cambios**.
-2. Buscá por entidad, ID del registro, acción o usuario. También podés usar los filtros de columnas y acotar el período.
-3. Seleccioná una fila o presioná **Ver cambios** para comparar el valor anterior con el nuevo.
+2. La agenda abre en el día actual de Argentina. Usá las flechas o el selector de fecha para ir a otro día.
+3. Revisá el total del día y las cantidades de altas, ediciones, bajas y restauraciones.
+4. En **Actividad por usuario**, elegí una persona para filtrar sus movimientos. Volvé a **Todos los usuarios** para quitar el filtro.
+5. Buscá por entidad, ID del registro, acción o usuario; también podés usar los filtros de columnas.
+6. Seleccioná una fila o presioná **Ver cambios** para comparar el valor anterior con el nuevo.
 
-La grilla pagina los resultados para permitir recorrer historiales extensos sin cargar todos los registros a la vez.
+La grilla muestra los movimientos de la fecha seleccionada y pagina los resultados para recorrer jornadas extensas sin cargar todos los registros a la vez. El resumen agrupa hasta los 100 usuarios con más movimientos del día.
 
 ## Datos registrados
 

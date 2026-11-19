@@ -11,7 +11,9 @@ import { Steps } from '@astrojs/starlight/components'
 
 La **Orden de Compra (OC)** es la solicitud de mercadería al proveedor. Se administra en **Compras → Órdenes de Compra** (`/erp/purchases/orders`) y se crea en **Nueva Orden de Compra** (`/erp/purchases/orders/new`).
 
-En el listado, el interruptor **Mostrar anuladas** permite incluir o esconder las órdenes anuladas. Si elegís ese estado, se muestran automáticamente.
+En el listado, **Estados** abre un menú con interruptores para mostrar u ocultar estados de las órdenes de compra. Los estados anulados, entregados, facturados y cerrados arrancan ocultos; podés encenderlos cuando los necesites. La selección queda guardada por usuario, empresa y listado.
+
+El menú de acciones está al inicio de la tabla. **Duplicar como borrador** aparece primero; también podés editar, crear una factura desde una OC confirmada o anularla cuando el estado y tus permisos lo permiten. La anulación pide confirmación y valida los efectos asociados.
 
 La información de recepción de la OC se completa en un bloque plegable. En la tabla, el filtro avanzado de **Estado** permite seleccionar *Borrador*, *Pendiente*, *Confirmada* o *Anulada* por su nombre.
 

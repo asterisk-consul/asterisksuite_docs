@@ -11,6 +11,8 @@ import { Steps } from '@astrojs/starlight/components'
 
 La **factura de compra** registra el comprobante del proveedor y es el eslabón central del circuito: nace de una **OC confirmada** y a su vez origina el **remito de compra** y el pago. Se administra en **Compras → Comprobantes** (`/erp/purchases`), se crea en **Nuevo Comprobante de Compra** (`/erp/purchases/purchases-documents/new`) y se consulta en su vista (`/erp/purchases/purchases-documents/{id}`). Las **notas de crédito/débito** de compra ajustan una factura.
 
+En la tabla de comprobantes, el menú de acciones está en la primera columna. **Duplicar como borrador** aparece primero cuando está disponible; después podés editar, pagar, anular o crear una NC/ND desde una factura confirmada. Las acciones dependen del estado del documento y tus permisos. La anulación pide confirmación y valida los efectos asociados.
+
 ## Permisos necesarios
 
 :::note[Permisos necesarios]
