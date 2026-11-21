@@ -15,21 +15,19 @@ El módulo de **Productos** es la base del catálogo de Asterisk Suite. Cada pro
 
 ### Ficha y edición
 
-La ficha (`/productos/{id}`) muestra un **resumen** del producto y **accesos operativos** (**Ver disponibilidad** y **Editar producto**), con **General** como sección por defecto; **Ingeniería** solo aparece en productos compuestos y **Costos** solo si hay plantilla o costos cargados. En los listados de **depósitos** y de **disponibilidad**, el nombre del producto abre directamente su edición (`/productos/{id}/edit`).
+La ficha (`/productos/{id}`) abre en **General** y organiza la información en secciones compactas: identificación y uso, inventario y operación, categorías y etiquetas, atributos, precios, impuestos, cuentas, variantes y fechas de registro. Si el producto tiene una foto, se muestra junto al nombre y se puede seleccionar para ampliarla. La cabecera permite **Ver disponibilidad** y **Editar producto**. **Ingeniería** aparece en productos compuestos. **Costos** aparece cuando el producto tiene costos registrados o un costo vigente; tener solo un template asignado no alcanza para mostrar esa sección. En los listados de **depósitos** y de **disponibilidad**, el nombre del producto abre directamente su edición (`/productos/{id}/edit`).
 
 ### Listado y filtros
 
-En **Stock → Productos** (`/productos`), la tabla muestra las categorías y etiquetas asignadas. Desde **Filtros** se puede elegir una categoría o una etiqueta para acotar los resultados; la búsqueda se aplica antes de paginar.
+En **Stock → Productos** (`/productos`), la tabla muestra una miniatura cuando el producto tiene una foto. El menú de tres puntos de cada fila permite abrir la ficha o editar el producto. Para eliminar productos, seleccioná una o varias filas y usá la acción de eliminación de la tabla; quedan en la Papelera y se pueden recuperar desde Ajustes.
+
+Sobre la tabla podés filtrar por categoría o etiqueta. Ambos selectores permiten buscar escribiendo. El de categorías muestra el árbol con sangría y la categoría padre, para distinguir nombres repetidos; el de etiquetas ofrece una búsqueda directa. Estos filtros se pueden combinar con la búsqueda por nombre o SKU y con los filtros de la tabla.
 
 El botón **Importar / Exportar** abre una ayuda con los requisitos de importación. La flecha contigua despliega las acciones disponibles según los permisos del usuario.
 
-Las opciones de categoría muestran primero la categoría seleccionada y después su ruta superior, para distinguir subcategorías con nombres parecidos.
-
-Los selectores de categoría y etiqueta permiten buscar escribiendo parte del nombre.
-
 ### Configuración del catálogo
 
-- **Categorías** y **Etiquetas** tienen accesos directos en el menú **Stock** para consultar, crear y administrar sus catálogos.
+- **Categorías**, **Etiquetas** y **Unidades de medida** están agrupadas dentro del submenú **Stock → Productos**; desde allí podés consultar y administrar cada catálogo según tus permisos.
 - [Unidades de medida](/configuracion/productos/unidades/).
 - [Categorías](/configuracion/productos/categorias/).
 - [Tags](/configuracion/productos/tags/).

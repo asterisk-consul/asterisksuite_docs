@@ -94,6 +94,12 @@ En los archivos, el **código de tipo** describe qué clase de operación es (po
 
 Al pagar o cobrar por **transferencia bancaria**, se elige la cuenta; el movimiento impacta su saldo y puede disparar el cálculo de **retenciones** (en pagos a proveedores).
 
+### Cargos bancarios automáticos
+
+En **Tesorería → Conceptos bancarios** (`/erp/treasury/bank-concepts`), podés activar **Calcula automáticamente** en un concepto e indicar su porcentaje, si se aplica a **débitos**, **créditos** o ambos, y si alcanza a **todas las cuentas** o solo a cuentas seleccionadas. Si elegís cuentas específicas, seleccioná al menos una.
+
+Al registrar un movimiento bancario alcanzado —por ejemplo, una transferencia de pago o cobro, o el depósito o débito de un cheque— el sistema calcula el cargo sobre el importe original y lo registra como un **débito** en esa misma cuenta. Por eso también reduce el saldo cuando se origina en un crédito bancario, como un cobro o un cheque depositado. La regla se aplica a movimientos nuevos; no modifica los ya registrados. El concepto debe estar activo y tener un porcentaje mayor que cero para que se calcule.
+
 Los **gastos y descuentos bancarios** del formulario usan el mismo catálogo de **Tesorería → Conceptos bancarios** (`/erp/treasury/bank-concepts`). La cantidad de conceptos del catálogo puede ser mayor que la disponible en pagos: cada tarjeta indica si está activa y si admite **Pagos y cobros**. Para habilitar uno, usá **Habilitar en pagos y cobros** en su tarjeta o abrilo y activá **Pagos y cobros**; dejá también **Concepto activo** encendido. Los conceptos creados manualmente comienzan sin ese uso habilitado. Después de guardar, volvé al formulario y elegí **Actualizar lista**; también podés abrir la configuración desde el aviso junto al selector. El concepto se elige para cada gasto agregado manualmente; las sugerencias dependen de las reglas configuradas.
 
 ### Usar una cuenta bancaria desde otra empresa

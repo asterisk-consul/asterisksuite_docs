@@ -2,10 +2,24 @@
   "documentedUpTo": "0.135.0-alpha",
   "lastReview": "2026-11-05",
   "app": {
-    "version": "0.171.0-alpha",
-    "date": "2026-11-19"
+    "version": "0.179.0-alpha",
+    "date": "2026-11-21"
   },
   "pending": [
+    "0.179.0-alpha",
+    "0.178.3-alpha",
+    "0.178.1-alpha",
+    "0.178.0-alpha",
+    "0.177.0-alpha",
+    "0.176.1-alpha",
+    "0.176.0-alpha",
+    "0.175.0-alpha",
+    "0.174.0-alpha",
+    "0.173.3-alpha",
+    "0.173.2-alpha",
+    "0.173.1-alpha",
+    "0.173.0-alpha",
+    "0.172.0-alpha",
     "0.171.0-alpha",
     "0.170.0-alpha",
     "0.169.0-alpha",
@@ -222,6 +236,70 @@
     "0.171.0-alpha": {
       "status": "partial",
       "note": "La agenda diaria y el permiso audit.read están documentados en las guías de auditoría y roles; el corte general sigue en 0.135.0-alpha por versiones anteriores pendientes de revisión."
+    },
+    "0.172.0-alpha": {
+      "status": "partial",
+      "note": "La guía de Productos cubre las miniaturas, el menú de acciones, la eliminación múltiple y los filtros de categoría y etiqueta; siguen pendientes versiones anteriores de revisar."
+    },
+    "0.173.0-alpha": {
+      "status": "partial",
+      "note": "La ficha de producto y el submenú Productos están documentados; siguen pendientes versiones anteriores de revisar."
+    },
+    "0.173.1-alpha": {
+      "status": "partial",
+      "note": "La guía de Productos describe la foto principal y su ampliación; el corte general sigue pendiente de versiones anteriores."
+    },
+    "0.173.2-alpha": {
+      "status": "partial",
+      "note": "La guía de variantes usa el nombre actual de la pestaña; el rediseño visual de la ficha no cambia el flujo. El corte general continúa pendiente de versiones anteriores."
+    },
+    "0.173.3-alpha": {
+      "status": "partial",
+      "note": "La guía de facturas de compra aclara que la cadena muestra los estados propios de cada documento, incluida la anulación; el corte general sigue pendiente de versiones anteriores."
+    },
+    "0.174.0-alpha": {
+      "status": "partial",
+      "note": "La creación conjunta de operación y primer contenedor y la descripción editable con numeración sugerida quedaron documentadas en las guías de operaciones internacionales y contenedores."
+    },
+    "0.174.1-alpha": {
+      "status": "skipped",
+      "note": "Solo se reorganiza visualmente el formulario; no cambian los campos, el proceso ni la configuración documentada."
+    },
+    "0.175.0-alpha": {
+      "status": "partial",
+      "note": "Se documentó cómo configurar el prefijo y el próximo número de descripción de contenedores. Las versiones históricas anteriores aún tienen documentación pendiente."
+    },
+    "0.176.0-alpha": {
+      "status": "partial",
+      "note": "Se documentaron los filtros y accesos a presupuestos de operaciones internacionales; el corte general sigue pendiente por versiones anteriores."
+    },
+    "0.176.1-alpha": {
+      "status": "partial",
+      "note": "La tarjeta abre el presupuesto y el menú reúne ver detalle, edición con permiso y desasociación; el corte general sigue pendiente de versiones anteriores."
+    },
+    "0.177.0-alpha": {
+      "status": "partial",
+      "note": "Se documentaron la protección contra anular presupuestos vinculados y las acciones para liberarlos desde la operación internacional; las versiones anteriores siguen pendientes."
+    },
+    "0.178.0-alpha": {
+      "status": "partial",
+      "note": "La versión documenta los adjuntos en presupuestos internacionales; otras versiones anteriores del portal siguen pendientes de revisión."
+    },
+    "0.178.1-alpha": {
+      "status": "partial",
+      "note": "Se documentó el paso para adjuntar al crear y la liberación de presupuestos ya anulados sin quitar la OC activa; las versiones históricas previas siguen pendientes de revisión."
+    },
+    "0.178.2-alpha": {
+      "status": "skipped",
+      "note": "Se reemplazaron los diálogos nativos por modales y avisos del sistema; no cambiaron las reglas ni los pasos del circuito documentado."
+    },
+    "0.178.3-alpha": {
+      "status": "partial",
+      "note": "Se documentaron los accesos filtrados a facturas y NC/ND en Ventas y Compras; el corte general sigue pendiente por versiones anteriores."
+    },
+    "0.179.0-alpha": {
+      "status": "partial",
+      "note": "La configuración de cargos automáticos por cuenta y movimiento quedó documentada en Bancos; la revisión global sigue pendiente de versiones anteriores."
     }
   },
   "notes": "Corte calculado el 2026-10-20 comparando los cambios de asterisksuite_frontend/versiones/versions.json contra el contenido de src/content/docs/: los módulos publicados hasta 0.71.0-alpha (inversiones, libro de movimientos bancarios, gastos bancarios, clientes internos, precancelación) están descriptos; de 0.72.0-alpha en adelante casi no hay rastro en los docs, con incorporaciones puntuales en 0.76.0-alpha (variantes) y 0.82.0-alpha (circuito de compras)."

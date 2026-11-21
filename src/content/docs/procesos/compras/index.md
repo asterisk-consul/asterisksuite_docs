@@ -43,9 +43,7 @@ El circuito es **lineal y trazable**: la factura de compra nace de la OC confirm
 
 En **Compras → Resumen** (`/erp/purchases`) podés consultar la actividad de los últimos 7, 30 o 90 días: indicadores de facturas confirmadas, órdenes y remitos; un gráfico de líneas que compara por día facturas, notas de crédito/débito, órdenes y remitos de compra; e importe neto confirmado separado por moneda. Los importes consideran únicamente comprobantes confirmados e incluyen notas de crédito y débito; para revisar estados operativos y saldos, usá los módulos correspondientes.
 
-El listado único está en **Compras → Comprobantes** (`/erp/purchases/comprobantes`).
-
-En **Compras → Comprobantes** (`/erp/purchases/comprobantes`) se listan juntos órdenes, facturas, remitos y notas, con filtro por categoría y estado. Los enlaces anteriores con `?category=` siguen redirigiendo al listado filtrado. Al abrir un registro, cada uno lleva a su **vista específica**: las órdenes a `/erp/purchases/orders/{id}`, los remitos a `/erp/purchases/remitos/{id}` y facturas y notas a `/erp/purchases/purchases-documents/{id}`.
+El menú ofrece accesos directos a **Facturas** (`/erp/purchases/comprobantes?category=INVOICE`) y **NC y ND** (`/erp/purchases/comprobantes?category=NOTES`). **Todos los comprobantes** (`/erp/purchases/comprobantes`) conserva el listado completo de órdenes, facturas, remitos y notas, con filtros por categoría y estado. Al abrir un registro, cada uno lleva a su **vista específica**: las órdenes a `/erp/purchases/orders/{id}`, los remitos a `/erp/purchases/remitos/{id}` y facturas y notas a `/erp/purchases/purchases-documents/{id}`.
 
 En **Comprobantes**, elegí **Tipo de documento** y **Estado** en los selectores superiores. El interruptor **Mostrar pagados** arranca apagado y permite incluir documentos ya saldados. En **Comprobantes**, **Órdenes de Compra** y **Remitos de Compra**, el menú de interruptores **Estados** permite mostrar u ocultar estados. Los estados finales arrancan ocultos y la selección queda guardada por usuario, empresa y listado. También podés usar **Filtros** en la tabla y agregar una condición sobre **Estado**.
 

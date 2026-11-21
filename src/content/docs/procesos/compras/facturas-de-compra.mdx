@@ -9,7 +9,7 @@ import { Steps } from '@astrojs/starlight/components'
 
 ## Para qué sirve
 
-La **factura de compra** registra el comprobante del proveedor y es el eslabón central del circuito: nace de una **OC confirmada** y a su vez origina el **remito de compra** y el pago. Se administra en **Compras → Comprobantes** (`/erp/purchases`), se crea en **Nuevo Comprobante de Compra** (`/erp/purchases/purchases-documents/new`) y se consulta en su vista (`/erp/purchases/purchases-documents/{id}`). Las **notas de crédito/débito** de compra ajustan una factura.
+La **factura de compra** registra el comprobante del proveedor y es el eslabón central del circuito: nace de una **OC confirmada** y a su vez origina el **remito de compra** y el pago. Se consulta desde **Compras → Facturas** (`/erp/purchases/comprobantes?category=INVOICE`), se crea en **Nuevo Comprobante de Compra** (`/erp/purchases/purchases-documents/new`) y se abre en su vista (`/erp/purchases/purchases-documents/{id}`). Las **notas de crédito/débito** de compra ajustan una factura y se consultan desde **Compras → NC y ND** (`/erp/purchases/comprobantes?category=NOTES`).
 
 En la tabla de comprobantes, el menú de acciones está en la primera columna. **Duplicar como borrador** aparece primero cuando está disponible; después podés editar, pagar, anular o crear una NC/ND desde una factura confirmada. Las acciones dependen del estado del documento y tus permisos. La anulación pide confirmación y valida los efectos asociados.
 
@@ -74,7 +74,7 @@ La vista de la factura muestra la **cadena de documentos** con:
 
 - **Origen**: la OC de la que nació.
 - **Actual**: la factura en pantalla, con su estado.
-- **Generado**: el remito de compra, las notas y demás documentos hijos, con su estado (*Borrador* o *Confirmado*).
+- **Generado**: el remito de compra, las notas y demás documentos hijos, con el estado correspondiente a su tipo, por ejemplo *Borrador*, *Confirmado* o *Anulada*.
 
 Cada eslabón es un enlace a la vista específica del documento; si no tenés permiso para abrir ese tipo de comprobante, aparece marcado con un candado. El remito también se abre desde su acción **Ver remito**.
 

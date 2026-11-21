@@ -6,14 +6,127 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.171.0-alpha** (2026-11-19) |
+| Última versión de la app | **v0.179.0-alpha** (2026-11-21) |
 | Documentación al día hasta | **v0.135.0-alpha** |
 | Última revisión de docs | 2026-11-05 |
-| Versiones pendientes de revisar | **55** (0.171.0-alpha, 0.170.0-alpha, 0.169.0-alpha, 0.168.2-alpha, 0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
+| Versiones pendientes de revisar | **69** (0.179.0-alpha, 0.178.3-alpha, 0.178.1-alpha, 0.178.0-alpha, 0.177.0-alpha, 0.176.1-alpha, 0.176.0-alpha, 0.175.0-alpha, 0.174.0-alpha, 0.173.3-alpha, 0.173.2-alpha, 0.173.1-alpha, 0.173.0-alpha, 0.172.0-alpha, 0.171.0-alpha, 0.170.0-alpha, 0.169.0-alpha, 0.168.2-alpha, 0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
 
 ## Pendientes
 
 Cada entrada es una versión de la app que todavía no se revisó contra los contenidos de `src/content/docs/`.
+
+### v0.179.0-alpha (2026-11-21) — parcial
+
+> La configuración de cargos automáticos por cuenta y movimiento quedó documentada en Bancos; la revisión global sigue pendiente de versiones anteriores.
+
+- Configurar cargos automáticos por cuenta y naturaleza del movimiento bancario
+- Mostrar las cuentas configuradas en los conceptos automáticos
+- Documentar la configuración y el efecto de los cargos bancarios automáticos
+
+### v0.178.3-alpha (2026-11-21) — parcial
+
+> Se documentaron los accesos filtrados a facturas y NC/ND en Ventas y Compras; el corte general sigue pendiente por versiones anteriores.
+
+- Separar los accesos a facturas y notas de crédito/débito en los menús
+- Documentar los accesos filtrados y el listado completo de comprobantes
+
+### v0.178.1-alpha (2026-11-21) — parcial
+
+> Se documentó el paso para adjuntar al crear y la liberación de presupuestos ya anulados sin quitar la OC activa; las versiones históricas previas siguen pendientes de revisión.
+
+- Permitir liberar un presupuesto ya anulado aunque su OC siga activa
+- Ofrecer adjuntar imágenes y PDF al terminar de crear un presupuesto
+- Documentar adjuntos al crear y liberar presupuestos anulados
+
+### v0.178.0-alpha (2026-11-21) — parcial
+
+> La versión documenta los adjuntos en presupuestos internacionales; otras versiones anteriores del portal siguen pendientes de revisión.
+
+- Consultar y adjuntar archivos en presupuestos desde la operación
+- Documentar los adjuntos de presupuestos por operación
+
+### v0.177.0-alpha (2026-11-20) — parcial
+
+> Se documentaron la protección contra anular presupuestos vinculados y las acciones para liberarlos desde la operación internacional; las versiones anteriores siguen pendientes.
+
+- Bloquear la anulación de presupuestos asociados a operaciones internacionales
+- Anular y desasociar presupuestos cuando el comprobante generado ya está resuelto
+- Mostrar el estado Anulado en el detalle de presupuestos de compra
+- Documentar las reglas para anular y desasociar presupuestos
+
+### v0.176.1-alpha (2026-11-20) — parcial
+
+> La tarjeta abre el presupuesto y el menú reúne ver detalle, edición con permiso y desasociación; el corte general sigue pendiente de versiones anteriores.
+
+- Abrir el presupuesto desde su tarjeta y ordenar las acciones secundarias en un menú
+- Documentar la apertura de propuestas y sus acciones secundarias
+
+### v0.176.0-alpha (2026-11-20) — parcial
+
+> Se documentaron los filtros y accesos a presupuestos de operaciones internacionales; el corte general sigue pendiente por versiones anteriores.
+
+- Unificar los filtros jerárquicos de categorías y etiquetas en listados y selectores
+- Filtrar productos del presupuesto por categoría y etiqueta
+- Abrir y editar el presupuesto desde la propuesta asociada
+- Documentar los filtros y accesos a presupuestos asociados
+
+### v0.175.0-alpha (2026-11-20) — parcial
+
+> Se documentó cómo configurar el prefijo y el próximo número de descripción de contenedores. Las versiones históricas anteriores aún tienen documentación pendiente.
+
+- Configurar el prefijo y la secuencia numérica de contenedores
+- Documentar la configuración de descripciones y numeración
+
+### v0.174.0-alpha (2026-11-20) — parcial
+
+> La creación conjunta de operación y primer contenedor y la descripción editable con numeración sugerida quedaron documentadas en las guías de operaciones internacionales y contenedores.
+
+- Crear la operación y el primer contenedor en una sola acción
+- Guardar una descripción editable y sugerir la numeración consecutiva de contenedores
+- Organizar los datos principales del contenedor y plegar los campos adicionales
+- Documentar la creación conjunta y la descripción de contenedores
+
+### v0.173.3-alpha (2026-11-20) — parcial
+
+> La guía de facturas de compra aclara que la cadena muestra los estados propios de cada documento, incluida la anulación; el corte general sigue pendiente de versiones anteriores.
+
+- Mostrar el estado específico de cada documento relacionado, incluidas las anulaciones
+- Aclarar que la cadena indica el estado propio de cada documento generado
+
+### v0.173.2-alpha (2026-11-20) — parcial
+
+> La guía de variantes usa el nombre actual de la pestaña; el rediseño visual de la ficha no cambia el flujo. El corte general continúa pendiente de versiones anteriores.
+
+- Ajustar la distribución de la ficha al contenido y mejorar la lectura de sus datos
+- Usar el nombre Variantes en la pestaña de edición del producto
+- Actualizar el nombre de la pestaña en la guía de variantes
+
+### v0.173.1-alpha (2026-11-20) — parcial
+
+> La guía de Productos describe la foto principal y su ampliación; el corte general sigue pendiente de versiones anteriores.
+
+- Cargar la foto principal del producto con alternativas de visualización si falla el enlace
+- Ampliar la foto desde la ficha y compactar las secciones de información
+- Documentar la vista y ampliación de la foto en la ficha del producto
+
+### v0.173.0-alpha (2026-11-20) — parcial
+
+> La ficha de producto y el submenú Productos están documentados; siguen pendientes versiones anteriores de revisar.
+
+- Ampliar General con los datos comerciales, logísticos, fiscales y técnicos del producto
+- Ocultar Costos cuando solo hay un template asignado y no existe costo registrado
+- Organizar la ficha general en secciones compactas y adaptables
+- Agrupar categorías, etiquetas y unidades de medida en el submenú Productos
+- Documentar la información de la ficha general y la disponibilidad de Costos
+
+### v0.172.0-alpha (2026-11-20) — parcial
+
+> La guía de Productos cubre las miniaturas, el menú de acciones, la eliminación múltiple y los filtros de categoría y etiqueta; siguen pendientes versiones anteriores de revisar.
+
+- Mostrar miniaturas y abrir la ficha o edición desde las acciones de cada producto
+- Seleccionar productos para enviarlos a la papelera en lote
+- Ordenar el selector de categorías y agregar búsqueda rápida por etiqueta
+- Actualizar la guía del catálogo y sus filtros
 
 ### v0.171.0-alpha (2026-11-19) — parcial
 
@@ -440,6 +553,19 @@ Cada entrada es una versión de la app que todavía no se revisó contra los con
 - Conservar los datos y el perfil de socios en el formulario unificado de partes interesadas
 
 ## Versiones resueltas sin actualizar docs
+
+### v0.178.2-alpha (2026-11-21) — sin cambios
+
+> Se reemplazaron los diálogos nativos por modales y avisos del sistema; no cambiaron las reglas ni los pasos del circuito documentado.
+
+- Unificar las confirmaciones de operaciones y contenedores en modales del sistema
+- Mostrar la validación de cotización dentro del modal de asociación de documentos
+
+### v0.174.1-alpha (2026-11-20) — sin cambios
+
+> Solo se reorganiza visualmente el formulario; no cambian los campos, el proceso ni la configuración documentada.
+
+- Compactar y adaptar la distribución del formulario de operación
 
 ### v0.151.2-alpha (2026-11-11) — sin cambios
 
