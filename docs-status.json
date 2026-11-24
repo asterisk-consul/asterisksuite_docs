@@ -2,10 +2,18 @@
   "documentedUpTo": "0.135.0-alpha",
   "lastReview": "2026-11-05",
   "app": {
-    "version": "0.179.0-alpha",
-    "date": "2026-11-21"
+    "version": "0.182.0-alpha",
+    "date": "2026-11-24"
   },
   "pending": [
+    "0.182.0-alpha",
+    "0.181.1-alpha",
+    "0.181.0-alpha",
+    "0.180.4-alpha",
+    "0.180.3-alpha",
+    "0.180.2-alpha",
+    "0.180.1-alpha",
+    "0.180.0-alpha",
     "0.179.0-alpha",
     "0.178.3-alpha",
     "0.178.1-alpha",
@@ -300,6 +308,34 @@
     "0.179.0-alpha": {
       "status": "partial",
       "note": "La configuración de cargos automáticos por cuenta y movimiento quedó documentada en Bancos; la revisión global sigue pendiente de versiones anteriores."
+    },
+    "0.180.0-alpha": {
+      "status": "partial",
+      "note": "Se documentó la aplicación múltiple de anticipos y la consulta de pagos vinculados a saldos iniciales, incluidos vínculos históricos anulados; el corte general sigue pendiente por versiones anteriores."
+    },
+    "0.180.1-alpha": {
+      "status": "partial",
+      "note": "Se documentó la conservación de búsqueda, filtros, tipo de operación, anulados y ordenamiento al volver al listado; la revisión general sigue pendiente por versiones anteriores."
+    },
+    "0.180.2-alpha": {
+      "status": "partial",
+      "note": "Se documentó la visualización de cheques asociados y la advertencia si falta el vínculo; la revisión general sigue pendiente por versiones anteriores."
+    },
+    "0.180.3-alpha": {
+      "status": "partial",
+      "note": "Se documentó la distinción entre retiros manuales y pagos en el historial bancario; la revisión general sigue pendiente por versiones anteriores."
+    },
+    "0.180.4-alpha": {
+      "status": "partial",
+      "note": "Se documentó la etiqueta Retiro de socio para débitos asociados a vales; la revisión general sigue pendiente por versiones anteriores."
+    },
+    "0.181.0-alpha": {
+      "status": "partial",
+      "note": "Se documentó el formato físico/eCheq, la acreditación automática al vencimiento en cuentas locales o compartidas autorizadas para Cobros y el uso del concepto de crédito de la empresa titular; el corte global sigue pendiente por versiones anteriores."
+    },
+    "0.182.0-alpha": {
+      "status": "partial",
+      "note": "Se documentan los avisos de acreditación automática y fallos; el registro de Asterisk no confirma el impacto bancario."
     }
   },
   "notes": "Corte calculado el 2026-10-20 comparando los cambios de asterisksuite_frontend/versiones/versions.json contra el contenido de src/content/docs/: los módulos publicados hasta 0.71.0-alpha (inversiones, libro de movimientos bancarios, gastos bancarios, clientes internos, precancelación) están descriptos; de 0.72.0-alpha en adelante casi no hay rastro en los docs, con incorporaciones puntuales en 0.76.0-alpha (variantes) y 0.82.0-alpha (circuito de compras)."

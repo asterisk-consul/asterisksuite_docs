@@ -36,11 +36,13 @@ El saldo se compone de movimientos como:
 - **Cheque emitido**, **cheque recibido** y **cheque rechazado**.
 - **Retenciones** practicadas a proveedores o sufridas de clientes.
 
-Al confirmar un anticipo, el saldo disponible se registra en la cuenta corriente del cliente o proveedor. Cuando se aplica a una factura o a una OV permitida por el circuito, disminuye el disponible y se registra la imputación en el comprobante sin duplicar el saldo. Si se quita la aplicación, el importe vuelve a quedar disponible.
+Al confirmar un pago o cobro **A cuenta**, el saldo disponible se registra en la cuenta corriente del cliente o proveedor. Cuando se aplica a una factura, a un saldo inicial o a una OV permitida por el circuito, disminuye el disponible y se registra la imputación en el comprobante sin duplicar el saldo. En el detalle de la cuenta, estos movimientos se identifican como **A cuenta**. Si se quita la aplicación, el importe vuelve a quedar disponible.
 
 ## Saldo inicial
 
 Desde la pantalla se puede registrar un **saldo inicial** por tercero, para migrar cuentas existentes.
+
+Desde su movimiento en el detalle de la cuenta corriente podés abrir el saldo inicial. En el comprobante, la sección **Pagos y cobros asociados** muestra los movimientos vinculados, el estado, la fecha, el medio, el importe aplicado y el total del pago o cobro. Los movimientos anulados o revertidos se identifican como vínculos históricos y no se consideran vigentes para el saldo. Si tenés `payments.read`, podés abrir cada movimiento desde esa sección.
 
 ## Retenciones en cuenta corriente
 
@@ -56,6 +58,8 @@ Al abrir un tercero (`/erp/treasury/current-accounts/[partyId]`), el **resumen d
 
 - **Detalle de la cuenta**: historial de movimientos, seleccionado por defecto al entrar.
 - **Análisis de la cuenta**: evolución y composición de los movimientos.
+
+En **Historial de movimientos**, el botón del ojo abre el detalle del movimiento. Para pagos y cobros muestra el medio utilizado, los comprobantes asociados y, si corresponde, los cheques. Al exportar el estado de cuenta a Excel, la descripción incluye el número del pago o cobro, el medio y el número del cheque cuando se utilizó.
 
 Al abrir un movimiento y volver al detalle, se conserva la pestaña activa y la posición de scroll.
 

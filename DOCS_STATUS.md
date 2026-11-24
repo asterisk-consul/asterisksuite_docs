@@ -6,14 +6,74 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.179.0-alpha** (2026-11-21) |
+| Última versión de la app | **v0.182.0-alpha** (2026-11-24) |
 | Documentación al día hasta | **v0.135.0-alpha** |
 | Última revisión de docs | 2026-11-05 |
-| Versiones pendientes de revisar | **69** (0.179.0-alpha, 0.178.3-alpha, 0.178.1-alpha, 0.178.0-alpha, 0.177.0-alpha, 0.176.1-alpha, 0.176.0-alpha, 0.175.0-alpha, 0.174.0-alpha, 0.173.3-alpha, 0.173.2-alpha, 0.173.1-alpha, 0.173.0-alpha, 0.172.0-alpha, 0.171.0-alpha, 0.170.0-alpha, 0.169.0-alpha, 0.168.2-alpha, 0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
+| Versiones pendientes de revisar | **77** (0.182.0-alpha, 0.181.1-alpha, 0.181.0-alpha, 0.180.4-alpha, 0.180.3-alpha, 0.180.2-alpha, 0.180.1-alpha, 0.180.0-alpha, 0.179.0-alpha, 0.178.3-alpha, 0.178.1-alpha, 0.178.0-alpha, 0.177.0-alpha, 0.176.1-alpha, 0.176.0-alpha, 0.175.0-alpha, 0.174.0-alpha, 0.173.3-alpha, 0.173.2-alpha, 0.173.1-alpha, 0.173.0-alpha, 0.172.0-alpha, 0.171.0-alpha, 0.170.0-alpha, 0.169.0-alpha, 0.168.2-alpha, 0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
 
 ## Pendientes
 
 Cada entrada es una versión de la app que todavía no se revisó contra los contenidos de `src/content/docs/`.
+
+### v0.182.0-alpha (2026-11-24) — parcial
+
+> Se documentan los avisos de acreditación automática y fallos; el registro de Asterisk no confirma el impacto bancario.
+
+- Notificar en la campanita el registro o fallo de la acreditación automática de eCheq
+- Aclarar que el aviso de acreditación no reemplaza la verificación del extracto bancario
+
+### v0.181.1-alpha (2026-11-24) — pendiente
+
+- Mostrar categoría, prioridad e inicio y vencimiento como chips editables independientes
+- Documentar la edición individual de campos en el detalle de tareas
+
+### v0.181.0-alpha (2026-11-24) — parcial
+
+> Se documentó el formato físico/eCheq, la acreditación automática al vencimiento en cuentas locales o compartidas autorizadas para Cobros y el uso del concepto de crédito de la empresa titular; el corte global sigue pendiente por versiones anteriores.
+
+- Distinguir cheques físicos y eCheq en altas y ediciones
+- Acreditar automáticamente eCheq recibidos vencidos en una cuenta local o compartida
+- Asociar al movimiento automático el concepto de crédito de la empresa titular
+- Documentar formatos, cuenta, concepto y acreditación automática de eCheq
+
+### v0.180.4-alpha (2026-11-24) — parcial
+
+> Se documentó la etiqueta Retiro de socio para débitos asociados a vales; la revisión general sigue pendiente por versiones anteriores.
+
+- Identificar los débitos de vales de socios como Retiro de socio
+- Documentar la etiqueta de los retiros de socios en Bancos
+
+### v0.180.3-alpha (2026-11-24) — parcial
+
+> Se documentó la distinción entre retiros manuales y pagos en el historial bancario; la revisión general sigue pendiente por versiones anteriores.
+
+- Mostrar como Retiro los débitos manuales históricos guardados como Pago
+- Aclarar la diferencia entre retiros manuales y pagos en el historial bancario
+
+### v0.180.2-alpha (2026-11-23) — parcial
+
+> Se documentó la visualización de cheques asociados y la advertencia si falta el vínculo; la revisión general sigue pendiente por versiones anteriores.
+
+- Mostrar cheques vinculados por aplicación y por relación directa con el pago
+- Advertir cuando un pago indica cheque pero no tiene una asociación visible
+- Documentar la trazabilidad de cheques desde el detalle del pago
+
+### v0.180.1-alpha (2026-11-23) — parcial
+
+> Se documentó la conservación de búsqueda, filtros, tipo de operación, anulados y ordenamiento al volver al listado; la revisión general sigue pendiente por versiones anteriores.
+
+- Conservar filtros, búsquedas y orden del listado de pagos y cobros al volver
+- Documentar la persistencia de filtros del listado de Tesorería
+
+### v0.180.0-alpha (2026-11-23) — parcial
+
+> Se documentó la aplicación múltiple de anticipos y la consulta de pagos vinculados a saldos iniciales, incluidos vínculos históricos anulados; el corte general sigue pendiente por versiones anteriores.
+
+- Aplicar pagos y cobros anticipados a varios documentos en una sola operación
+- Incluir saldos iniciales pendientes en la aplicación de anticipos
+- Mostrar pagos y cobros vinculados desde el detalle de saldos iniciales
+- Distinguir los vínculos históricos de pagos anulados del importe aplicado vigente
+- Documentar la distribución de anticipos y la trazabilidad de pagos en saldos iniciales
 
 ### v0.179.0-alpha (2026-11-21) — parcial
 

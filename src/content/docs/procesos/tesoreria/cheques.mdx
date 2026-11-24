@@ -24,6 +24,7 @@ Los **cheques** administran tanto los **propios** (emitidos por la empresa) como
 - **Emisor** (nombre e identificación).
 - **Monto** y **moneda**; **cotización** y **monto convertido** si es en otra moneda.
 - **Fecha de emisión** y **vencimiento**.
+- **Formato**: cheque físico o eCheq.
 - **Es propio** (cheque propio) o de un tercero.
 - **Notas** y **fecha de pago**.
 
@@ -41,9 +42,11 @@ import { Steps } from '@astrojs/starlight/components'
 
    Número, banco, emisor, monto, moneda y fechas.
 
-3. **Indicá si es propio**
+3. **Indicá si es propio y el formato**
 
-   Marcá si el cheque es **propio** (emitido por la empresa) o de un tercero. Para el cheque propio, elegí la cuenta bancaria que se debitará: puede ser de esta empresa o una cuenta compartida por otra empresa para **Pagos y sueldos**. La moneda de la cuenta debe coincidir con la del cheque.
+   Marcá si el cheque es **propio** (emitido por la empresa) o de un tercero, y elegí si es **físico** o **eCheq**. Para el cheque propio, elegí la cuenta bancaria que se debitará: puede ser de esta empresa o una cuenta compartida por otra empresa para **Pagos y sueldos**. La moneda de la cuenta debe coincidir con la del cheque.
+
+   Para un **eCheq recibido**, seleccioná una cuenta bancaria activa y en la misma moneda. Puede ser local o compartida por otra empresa con autorización para **Cobros**. Opcionalmente, asociá un concepto bancario de naturaleza **Crédito** que afecte el saldo; en una cuenta compartida se elige entre los conceptos de la empresa titular. Al llegar el vencimiento, Tesorería registra la acreditación en la cuenta elegida y lo marca como **Cobrado**. Los cheques físicos siguen en cartera hasta su depósito o cobro manual. Los eCheq propios se identifican como electrónicos, pero mantienen el circuito de débito propio.
 
 4. **Guardá**
 
@@ -53,7 +56,7 @@ import { Steps } from '@astrojs/starlight/components'
 
 | Estado | Descripción |
 |---|---|
-| **Pendiente** | Registrado. Un cheque propio espera a que se asocie y se confirme su pago; un cheque de tercero permanece en cartera hasta depositarlo, cobrarlo o aplicarlo a un pago. |
+| **Pendiente** | Registrado. Un cheque propio espera a que se asocie y se confirme su pago; un cheque físico de tercero permanece en cartera hasta depositarlo, cobrarlo o aplicarlo a un pago. Un eCheq recibido espera su vencimiento para la acreditación automática, salvo que se use antes para pagar. |
 | **Confirmado** | Cheque propio cuyo pago asociado fue confirmado. No registra por sí solo un movimiento bancario. |
 | **Cobrado** | Acreditado (cobrado/depositado). |
 | **Rechazado** | Rechazado por el banco. |
@@ -61,19 +64,22 @@ import { Steps } from '@astrojs/starlight/components'
 
 ## Pago o cobro relacionado
 
-En la cartera, la columna **Pago / Cobro** muestra el comprobante de tesorería relacionado con el cheque, si existe. Si el cheque se aplicó a más de una operación, aparecen todos los pagos vinculados. Cuando todavía no tiene relación, se indica **Pendiente de asociar**. Con permiso para ver pagos (`payments.read`) o como administrador/propietario, podés abrir cada registro desde ese enlace; sin ese permiso, el número se muestra sin navegación.
+En la cartera, la columna **Pago / Cobro** muestra las asociaciones vigentes del cheque. Si el cheque se aplicó a más de una operación, aparecen todos los pagos activos. Cuando las asociaciones anteriores están anuladas o eliminadas, se indica **Pendiente de asociar** y el historial queda separado; el cheque puede seleccionarse en otro pago si su estado lo permite. Con permiso para ver pagos (`payments.read`) o como administrador/propietario, podés abrir cada asociación vigente desde ese enlace; sin ese permiso, el número se muestra sin navegación.
+
+Los filtros de la cartera permiten buscar por número de cheque o banco, emisor, cliente/proveedor y pago o cobro relacionado; también se puede filtrar por tipo y estado desde **Filtros**. Si un cheque conserva un vínculo directo a un pago anulado, rechazado o eliminado, la tabla lo identifica y, con `checks.update`, permite **Desvincular**. La acción quita la asociación vigente y conserva el historial; si el cheque estaba confirmado, vuelve a pendiente. En los demás estados el cheque conserva su estado.
 
 ## Acciones
 
 - **Asociar un cheque propio a un pago**. Al confirmar ese pago, el cheque propio se confirma automáticamente. No hay confirmación manual desde la cartera; un pago todavía en borrador no confirma el cheque.
 - **Depositar** un cheque de terceros, eligiendo el destino. La acción está disponible aunque el cheque todavía no esté asociado a un pago o cobro.
 - **Cobrar/ingresar** un cheque de terceros en una caja abierta.
+- **Acreditar un eCheq recibido**: no se deposita manualmente ni se cobra por caja. El proceso diario lo acredita en la cuenta local elegida al vencimiento; si se asoció un concepto de crédito, queda registrado en el movimiento bancario.
 - **Procesar** un cheque propio confirmado y vencido (débito bancario o pago con efectivo de caja). Se requiere `checks.deposit`; la pantalla muestra la acción luego de confirmar el pago asociado y llegado el vencimiento.
 - **Endosar** (transferir a un tercero).
 - **Rechazar** un cheque.
 - **Revertir** una operación.
 
-Si anulás un pago con cheque y luego lo volvés a **Borrador** desde el detalle del pago, el cheque se libera para seleccionarlo de nuevo en esa operación u otra. Si al anular elegiste **Cancelar también el cheque**, permanece cancelado y no se puede reutilizar.
+Al anular o rechazar un pago, el cheque vuelve a la cartera y se desvincula para poder asociarlo a otro pago; la relación histórica se conserva en el pago. Si al anular elegiste **Cancelar también el cheque**, permanece cancelado y no se puede reutilizar. Los vínculos antiguos que hayan quedado retenidos por un pago anulado, rechazado o eliminado se pueden desvincular desde la acción de la cartera.
 
 ## Avisos de vencimiento
 
@@ -82,6 +88,8 @@ La campanita consulta la cartera actual y muestra avisos de cheques de terceros 
 Podés ocultar cada grupo hasta el día siguiente. Si todavía hay cheques pendientes, el grupo vuelve a aparecer; al depositar, cobrar, debitar, rechazar o anularlos, dejan de mostrarse. **Ver cheques** abre **Tesorería → Cheques** con el grupo filtrado.
 
 En **Tesorería → Cheques**, las tarjetas compactas de vencimientos filtran la tabla al hacer clic en su botón; podés desplegarlas para leer más detalle. Muestran cheques de terceros que vencen hoy o ya vencieron, cheques propios con débito pendiente de registrar y cheques próximos a vencer. Las fechas se interpretan según el calendario de Argentina. Usá **Ver todos** para quitar el filtro. El **Dashboard de Tesorería** usa las mismas tarjetas; al elegir una, abre la cartera con el grupo correspondiente filtrado. La campanita muestra próximos vencimientos dentro de 30 días; el plazo de las tarjetas se puede ajustar desde el dashboard.
+
+Cuando el proceso automático registra la acreditación de un eCheq recibido, la campanita avisa a los administradores de la empresa y a quienes registraron el cheque o sus pagos asociados. Si el proceso falla, avisa que el cheque sigue pendiente. El aviso confirma que Asterisk registró el movimiento en la cuenta con fecha de vencimiento; no confirma que el banco lo haya acreditado. Compará el movimiento con el extracto bancario.
 
 ## Cómo depositar un cheque de terceros
 
@@ -133,6 +141,7 @@ Si el banco pertenece a otra empresa, el cheque y su pago o cobro permanecen en 
 
 - El **número**, **banco**, **emisor**, **monto** (mayor a 0), **moneda** y **fechas** son obligatorios.
 - Para **depositar** hay que elegir una **cuenta bancaria** (activa y en la moneda del cheque).
+- Para un **eCheq recibido**, la cuenta de acreditación es obligatoria, activa y de la misma moneda. Si es compartida, la empresa titular debe autorizar **Cobros**. El concepto bancario es opcional; si se elige, debe ser de naturaleza **Crédito** y afectar el saldo. La acreditación se procesa automáticamente cada día y usa como fecha del movimiento el vencimiento del cheque.
 - Las cuentas compartidas solo se ofrecen cuando la empresa titular habilitó el uso correspondiente: **Cobros** para depositar un cheque de terceros o **Pagos y sueldos** para debitar uno propio. El depósito toma el importe disponible completo del cheque.
 - Para **cobrar en caja** o **pagar con efectivo de caja** hay que elegir una caja **abierta**, a la que tengas acceso y en la **moneda del cheque**; se requiere además una **sesión abierta** y saldo suficiente en caso de egreso.
 - Las operaciones locales validan sesión, permisos, moneda y saldo dentro de una **única transacción**. En una cuenta compartida, cada empresa conserva su propio registro y el sistema intenta compensar en la cuenta titular si falla el guardado del cheque después del movimiento bancario.
@@ -148,6 +157,7 @@ Si el banco pertenece a otra empresa, el cheque y su pago o cobro permanecen en 
 | No aparecen cajas para cobrar el cheque | No hay cajas abiertas, autorizadas o en la moneda del cheque. | Abrí una sesión en una caja compatible o ajustá su moneda. |
 | No puedo cobrar el cheque en caja | Te falta `checks.deposit` o `cash_box_movements.create_manual`. | Pedí que te agreguen los permisos a tu rol. |
 | No puedo procesar el débito del cheque propio | No hay caja abierta compatible o falta saldo. | Verificá la sesión y el saldo de la caja, o usá el débito bancario directo. |
+| El eCheq vencido sigue pendiente | La cuenta o el concepto de acreditación está inactivo, falta la migración o el proceso diario no pudo ejecutarse. | Revisá que Tesorería esté habilitada, que la cuenta y el concepto sigan activos y consultá el log `echeq_auto_accreditation` del backend. |
 
 ## Ver también
 
