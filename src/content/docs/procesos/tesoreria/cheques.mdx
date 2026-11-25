@@ -66,7 +66,7 @@ import { Steps } from '@astrojs/starlight/components'
 
 En la cartera, la columna **Pago / Cobro** muestra las asociaciones vigentes del cheque. Si el cheque se aplicó a más de una operación, aparecen todos los pagos activos. Cuando las asociaciones anteriores están anuladas o eliminadas, se indica **Pendiente de asociar** y el historial queda separado; el cheque puede seleccionarse en otro pago si su estado lo permite. Con permiso para ver pagos (`payments.read`) o como administrador/propietario, podés abrir cada asociación vigente desde ese enlace; sin ese permiso, el número se muestra sin navegación.
 
-Los filtros de la cartera permiten buscar por número de cheque o banco, emisor, cliente/proveedor y pago o cobro relacionado; también se puede filtrar por tipo y estado desde **Filtros**. Si un cheque conserva un vínculo directo a un pago anulado, rechazado o eliminado, la tabla lo identifica y, con `checks.update`, permite **Desvincular**. La acción quita la asociación vigente y conserva el historial; si el cheque estaba confirmado, vuelve a pendiente. En los demás estados el cheque conserva su estado.
+Los filtros de la cartera permiten buscar por número de cheque o banco, emisor, cliente/proveedor y pago o cobro relacionado, incluido su estado visible en el historial; también se puede filtrar por tipo y estado desde **Filtros**. Si un cheque conserva un vínculo directo a un pago anulado, rechazado o eliminado, la tabla lo identifica y, con `checks.update`, permite **Desvincular**. La acción quita la asociación vigente y conserva el historial; si el cheque estaba confirmado, vuelve a pendiente. En los demás estados el cheque conserva su estado.
 
 ## Acciones
 

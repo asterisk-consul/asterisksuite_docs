@@ -31,6 +31,8 @@ Reúne los reportes de **Tesorería**: movimientos, consolidados, gastos, impues
 | **Pagos de servicios** | Servicios públicos y otros. |
 | **Contable** | Asientos/movimientos contables. |
 
+En **Movimientos**, podés filtrar por nombre y descripción. Owner/Admin también puede filtrar por tipo; ese campo reconoce el nombre visible —por ejemplo **Pago** o **Cobro**— además del código interno.
+
 ## Exportación
 
 Varios reportes se pueden **exportar** (Excel/CSV) según los permisos.

@@ -2,10 +2,12 @@
   "documentedUpTo": "0.135.0-alpha",
   "lastReview": "2026-11-05",
   "app": {
-    "version": "0.182.0-alpha",
-    "date": "2026-11-24"
+    "version": "0.183.0-alpha",
+    "date": "2026-11-25"
   },
   "pending": [
+    "0.183.0-alpha",
+    "0.182.1-alpha",
     "0.182.0-alpha",
     "0.181.1-alpha",
     "0.181.0-alpha",
@@ -336,6 +338,14 @@
     "0.182.0-alpha": {
       "status": "partial",
       "note": "Se documentan los avisos de acreditación automática y fallos; el registro de Asterisk no confirma el impacto bancario."
+    },
+    "0.182.1-alpha": {
+      "status": "partial",
+      "note": "Se corrigió la sincronización de los filtros rápidos y se documentaron Terceros, Socios y Empleados; otras tablas locales quedan cubiertas por la barra compartida."
+    },
+    "0.183.0-alpha": {
+      "status": "partial",
+      "note": "Actualizadas las guías de tareas, créditos de saldo inicial a nuestro favor, filtros y transferencias entre monedas; el corte global conserva versiones anteriores pendientes."
     }
   },
   "notes": "Corte calculado el 2026-10-20 comparando los cambios de asterisksuite_frontend/versiones/versions.json contra el contenido de src/content/docs/: los módulos publicados hasta 0.71.0-alpha (inversiones, libro de movimientos bancarios, gastos bancarios, clientes internos, precancelación) están descriptos; de 0.72.0-alpha en adelante casi no hay rastro en los docs, con incorporaciones puntuales en 0.76.0-alpha (variantes) y 0.82.0-alpha (circuito de compras)."

@@ -42,6 +42,8 @@ Al confirmar un pago o cobro **A cuenta**, el saldo disponible se registra en la
 
 Desde la pantalla se puede registrar un **saldo inicial** por tercero, para migrar cuentas existentes.
 
+Cuando un saldo inicial confirmado de proveedor representa un **crédito a nuestro favor**, abrí su comprobante y usá **Aplicar saldo a favor**. El documento `SI-P` tiene total negativo. El sistema lo habilita como anticipo interno para aplicarlo a una o varias facturas del mismo proveedor. No genera caja ni banco ni duplica el movimiento de cuenta corriente original. Podés usar **Quitar aplicación** desde el detalle del crédito para recuperar el disponible y devolver el pendiente a la factura. Antes de anular el saldo inicial, quitá las aplicaciones del anticipo asociado.
+
 Desde su movimiento en el detalle de la cuenta corriente podés abrir el saldo inicial. En el comprobante, la sección **Pagos y cobros asociados** muestra los movimientos vinculados, el estado, la fecha, el medio, el importe aplicado y el total del pago o cobro. Los movimientos anulados o revertidos se identifican como vínculos históricos y no se consideran vigentes para el saldo. Si tenés `payments.read`, podés abrir cada movimiento desde esa sección.
 
 ## Retenciones en cuenta corriente
@@ -60,6 +62,8 @@ Al abrir un tercero (`/erp/treasury/current-accounts/[partyId]`), el **resumen d
 - **Análisis de la cuenta**: evolución y composición de los movimientos.
 
 En **Historial de movimientos**, el botón del ojo abre el detalle del movimiento. Para pagos y cobros muestra el medio utilizado, los comprobantes asociados y, si corresponde, los cheques. Al exportar el estado de cuenta a Excel, la descripción incluye el número del pago o cobro, el medio y el número del cheque cuando se utilizó.
+
+Los filtros de tipo y descripción aceptan tanto el código del movimiento como su nombre visible, por ejemplo **Pago**, **Cobro**, **A cuenta** o **Saldo inicial**.
 
 Al abrir un movimiento y volver al detalle, se conserva la pestaña activa y la posición de scroll.
 

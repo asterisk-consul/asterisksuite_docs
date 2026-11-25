@@ -27,6 +27,8 @@ El módulo de **Mantenimiento** gestiona el mantenimiento de la flota y los acti
 
 En el detalle se agregan **tareas**, **repuestos**, **mano de obra** y **servicios externos**, y se recorre el ciclo de estados hasta **Completada** (Pendiente, Programada, En progreso, Esperando repuestos, Esperando proveedor, Completada, Cancelada).
 
+En el listado, los filtros de **Estado** y **Prioridad** aceptan los nombres visibles, como **Pendiente**, **Esperando repuestos**, **Crítica** o **Alta**.
+
 ## Planes preventivos
 
 **Nuevo plan** (`/logistica/mantenimiento/planes/nuevo`):
@@ -34,6 +36,8 @@ En el detalle se agregan **tareas**, **repuestos**, **mano de obra** y **servici
 - **Activo**, **categoría** y **tipo** de mantenimiento.
 - **Intervalo**: por kilómetros, días, meses o fecha fija.
 - **Tareas predeterminadas** y valores estimados.
+
+En el listado de planes, el filtro **Activo** acepta **Activo** e **Inactivo**.
 
 El sistema calcula el **próximo vencimiento** y lo muestra entre los próximos mantenimientos.
 
@@ -45,6 +49,8 @@ El sistema calcula el **próximo vencimiento** y lo muestra entre los próximos 
 - Proveedor, fecha, costo y depósito (opcional).
 
 Operaciones: **Instalar** (vehículo, posición, odómetro), **Rotar**, **Retirar**, **Reparar/Recapar**, **Dar de baja** y **Vender**. Estados: En stock, Instalada, En reparación, Dada de baja y Vendida.
+
+El filtro de **Estado** del listado reconoce esos nombres visibles, por ejemplo **En stock** o **Instalada**.
 
 ## Reglas y consideraciones
 

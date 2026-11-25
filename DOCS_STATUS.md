@@ -6,14 +6,37 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.182.0-alpha** (2026-11-24) |
+| Última versión de la app | **v0.183.0-alpha** (2026-11-25) |
 | Documentación al día hasta | **v0.135.0-alpha** |
 | Última revisión de docs | 2026-11-05 |
-| Versiones pendientes de revisar | **77** (0.182.0-alpha, 0.181.1-alpha, 0.181.0-alpha, 0.180.4-alpha, 0.180.3-alpha, 0.180.2-alpha, 0.180.1-alpha, 0.180.0-alpha, 0.179.0-alpha, 0.178.3-alpha, 0.178.1-alpha, 0.178.0-alpha, 0.177.0-alpha, 0.176.1-alpha, 0.176.0-alpha, 0.175.0-alpha, 0.174.0-alpha, 0.173.3-alpha, 0.173.2-alpha, 0.173.1-alpha, 0.173.0-alpha, 0.172.0-alpha, 0.171.0-alpha, 0.170.0-alpha, 0.169.0-alpha, 0.168.2-alpha, 0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
+| Versiones pendientes de revisar | **79** (0.183.0-alpha, 0.182.1-alpha, 0.182.0-alpha, 0.181.1-alpha, 0.181.0-alpha, 0.180.4-alpha, 0.180.3-alpha, 0.180.2-alpha, 0.180.1-alpha, 0.180.0-alpha, 0.179.0-alpha, 0.178.3-alpha, 0.178.1-alpha, 0.178.0-alpha, 0.177.0-alpha, 0.176.1-alpha, 0.176.0-alpha, 0.175.0-alpha, 0.174.0-alpha, 0.173.3-alpha, 0.173.2-alpha, 0.173.1-alpha, 0.173.0-alpha, 0.172.0-alpha, 0.171.0-alpha, 0.170.0-alpha, 0.169.0-alpha, 0.168.2-alpha, 0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
 
 ## Pendientes
 
 Cada entrada es una versión de la app que todavía no se revisó contra los contenidos de `src/content/docs/`.
+
+### v0.183.0-alpha (2026-11-25) — parcial
+
+> Actualizadas las guías de tareas, créditos de saldo inicial a nuestro favor, filtros y transferencias entre monedas; el corte global conserva versiones anteriores pendientes.
+
+- Abrir cada tablero desde el menú lateral con vistas de resumen, lista, tablero, cronograma y calendario
+- Consultar documentos y adjuntos del tablero con acceso a sus tareas y vista ampliada del espacio de trabajo
+- Identificar tareas con un prefijo configurable al crear el tablero y numeración correlativa por tablero
+- Crear subtareas y vincular actividades como bloqueantes, complementarias o relacionadas
+- Aplicar saldos iniciales a nuestro favor con proveedores a varias facturas y retirar aplicaciones sin duplicar saldos ni mover caja o banco
+- Excluir los créditos internos de saldo inicial de los movimientos de caja de los reportes
+- Elegir la moneda del importe y mostrar el débito de origen y la acreditación de destino en transferencias entre monedas
+- Validar cotización y saldo disponible antes de registrar una transferencia
+- Sincronizar filtros rápidos y buscar por etiquetas visibles, códigos y textos sin distinguir acentos
+- Mejorar búsquedas de pagos asociados a cheques, movimientos de stock y tipos de Mis pendientes
+- Actualizar las guías de tareas, filtros, transferencias y saldos iniciales a favor
+
+### v0.182.1-alpha (2026-11-25) — parcial
+
+> Se corrigió la sincronización de los filtros rápidos y se documentaron Terceros, Socios y Empleados; otras tablas locales quedan cubiertas por la barra compartida.
+
+- Sincronizar los filtros rápidos con el estado de la tabla
+- Documentar los filtros de terceros, socios y empleados y su regla de implementación
 
 ### v0.182.0-alpha (2026-11-24) — parcial
 

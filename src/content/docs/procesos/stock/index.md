@@ -16,6 +16,8 @@ Reúne el control de **stock** por depósito, el análisis de **disponibilidad c
 - **Fabricación**: registro de producción, descuento de materiales e historial.
 - **Picking y pallets**: preparación y movimiento dentro del depósito (Logística).
 
+En el detalle de un depósito, el historial permite filtrar movimientos por producto, tipo y dirección. Los filtros reconocen los nombres que aparecen en la tabla, como **Entrada**, **Salida**, **Transferencia** o **Remito**.
+
 ## Portada de Stock
 
 La página **Stock** reúne los datos de consulta rápida y los accesos del menú lateral. Según los permisos de la persona, muestra:

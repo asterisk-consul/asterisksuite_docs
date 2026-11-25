@@ -83,6 +83,12 @@ Al confirmar el anticipo, su saldo disponible aparece en la cuenta corriente del
 
 Si no aparece una factura, verificá que pertenezca al mismo proveedor, esté confirmada y tenga saldo pendiente.
 
+### Usar un saldo inicial a nuestro favor con un proveedor
+
+Si tenemos un **saldo inicial confirmado a nuestro favor con un proveedor**, abrí ese saldo desde la cuenta corriente o desde Compras y elegí **Aplicar saldo a favor**. El documento de proveedor (`SI-P`) tiene un total negativo y representa crédito disponible para aplicar. El sistema crea o reutiliza un anticipo interno por el saldo disponible y abre su detalle para asociarlo con una o varias facturas pendientes del mismo proveedor. La imputación actualiza cuánto queda disponible y el saldo aplicado de cada factura, sin generar un nuevo movimiento de cuenta corriente ni afectar caja o banco: el crédito ya está representado por el movimiento original del saldo inicial. En el detalle del crédito, **Quitar aplicación** devuelve el importe al disponible y restituye el pendiente de la factura. Para anular el saldo de origen, primero quitá todas sus aplicaciones y luego anulalo desde el comprobante. Se requieren los permisos de crear y actualizar pagos para habilitarlo, y actualizar pagos para administrar sus aplicaciones.
+
+Esta acción corresponde a saldos iniciales con crédito a favor, no convierte una nota de crédito. Si una NC se cargó por error como sustituto de un saldo inicial, regularizá o anulá la NC según su estado y registrá el saldo inicial correcto antes de aplicar el crédito.
+
 ## Consultar pagos y documentos aplicados
 
 En **Tesorería → Pagos** (`/erp/treasury/payments`), la tabla permite filtrar rápidamente por número, tercero y documento o concepto pagado. El filtro superior **A cuenta** incluye tanto pagos como cobros de ese modo; en la columna **Tipo** se identifican como **Pago (A cuenta)** o **Cobro (A cuenta)**. En **Filtros** también se puede acotar por fecha, tipo, medio, importe, cuenta y estado. Si el movimiento usa cheques, su número aparece junto al método y en **Documento / concepto pagado**. Esa columna también muestra el comprobante y el importe aplicado; cuando es una factura de ventas o compras, podés abrirla haciendo clic en su referencia. Si se pagó un servicio u obligación, muestra su descripción y período. Para ver todos los comprobantes asociados, abrí el detalle del pago: ahí se muestra el cliente o proveedor en la parte superior y podés abrir cada factura desde su número.

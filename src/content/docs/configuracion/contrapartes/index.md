@@ -9,6 +9,8 @@ sidebar:
 
 Las **contrapartes** (o "terceros") son todas las personas y entidades con las que se opera: clientes, proveedores, socios, empleados, entes impositivos, servicios públicos, entidades financieras y proveedores de servicios. Se administran de forma unificada en **Terceros** (`/erp/stakeholders`).
 
+En el listado de **Terceros**, los campos rápidos filtran por **Razón social** y **CUIT** mientras escribís. Se pueden combinar y borrar por separado; al limpiarlos se vuelve a mostrar el listado completo. El menú **Filtros** permite agregar condiciones como **Tipo** o **Estado**.
+
 ## Tipos de contraparte
 
 | Tipo | Descripción |
