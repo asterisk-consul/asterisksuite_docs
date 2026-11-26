@@ -6,14 +6,30 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.183.0-alpha** (2026-11-25) |
+| Última versión de la app | **v0.183.3-alpha** (2026-11-26) |
 | Documentación al día hasta | **v0.135.0-alpha** |
 | Última revisión de docs | 2026-11-05 |
-| Versiones pendientes de revisar | **79** (0.183.0-alpha, 0.182.1-alpha, 0.182.0-alpha, 0.181.1-alpha, 0.181.0-alpha, 0.180.4-alpha, 0.180.3-alpha, 0.180.2-alpha, 0.180.1-alpha, 0.180.0-alpha, 0.179.0-alpha, 0.178.3-alpha, 0.178.1-alpha, 0.178.0-alpha, 0.177.0-alpha, 0.176.1-alpha, 0.176.0-alpha, 0.175.0-alpha, 0.174.0-alpha, 0.173.3-alpha, 0.173.2-alpha, 0.173.1-alpha, 0.173.0-alpha, 0.172.0-alpha, 0.171.0-alpha, 0.170.0-alpha, 0.169.0-alpha, 0.168.2-alpha, 0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
+| Versiones pendientes de revisar | **82** (0.183.3-alpha, 0.183.2-alpha, 0.183.1-alpha, 0.183.0-alpha, 0.182.1-alpha, 0.182.0-alpha, 0.181.1-alpha, 0.181.0-alpha, 0.180.4-alpha, 0.180.3-alpha, 0.180.2-alpha, 0.180.1-alpha, 0.180.0-alpha, 0.179.0-alpha, 0.178.3-alpha, 0.178.1-alpha, 0.178.0-alpha, 0.177.0-alpha, 0.176.1-alpha, 0.176.0-alpha, 0.175.0-alpha, 0.174.0-alpha, 0.173.3-alpha, 0.173.2-alpha, 0.173.1-alpha, 0.173.0-alpha, 0.172.0-alpha, 0.171.0-alpha, 0.170.0-alpha, 0.169.0-alpha, 0.168.2-alpha, 0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
 
 ## Pendientes
 
 Cada entrada es una versión de la app que todavía no se revisó contra los contenidos de `src/content/docs/`.
+
+### v0.183.3-alpha (2026-11-26) — pendiente
+
+- Integrar los tableros activos en una vista general con búsqueda, filtro por cliente y acceso individual
+- Documentar la vista integrada de tableros
+
+### v0.183.2-alpha (2026-11-26) — pendiente
+
+- Cargar todos los tableros con páginas acotadas y permitir filtrarlos desde el menú lateral
+- Separar el clic para abrir una tarea del gesto de arrastre entre listas
+- Documentar la búsqueda de tableros y la apertura de tarjetas
+
+### v0.183.1-alpha (2026-11-26) — pendiente
+
+- Ocultar adjuntos con archivos eliminados y actualizar la lista al detectar una eliminación concurrente
+- Documentar la actualización de adjuntos en el detalle de tareas
 
 ### v0.183.0-alpha (2026-11-25) — parcial
 

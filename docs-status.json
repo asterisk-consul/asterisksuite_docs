@@ -2,10 +2,14 @@
   "documentedUpTo": "0.135.0-alpha",
   "lastReview": "2026-11-05",
   "app": {
-    "version": "0.183.0-alpha",
-    "date": "2026-11-25"
+    "version": "0.183.4-alpha",
+    "date": "2026-11-26"
   },
   "pending": [
+    "0.183.4-alpha",
+    "0.183.3-alpha",
+    "0.183.2-alpha",
+    "0.183.1-alpha",
     "0.183.0-alpha",
     "0.182.1-alpha",
     "0.182.0-alpha",

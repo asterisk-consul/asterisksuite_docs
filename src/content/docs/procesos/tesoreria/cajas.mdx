@@ -11,6 +11,8 @@ import { Steps } from '@astrojs/starlight/components'
 
 Las **cajas** controlan el **efectivo**. Cada caja tiene una **moneda** y un **saldo**, y se opera por **sesiones** (apertura y cierre). Se administran en **Tesorería → Cajas** (`/erp/treasury/cash-boxes`).
 
+En el **Dashboard de Tesorería**, el bloque **Cajas** muestra el saldo de cada caja por moneda, junto con su estado **Abierta** o **Cerrada**. Los saldos negativos se destacan; si todavía no hay saldos registrados, se indica expresamente. Al seleccionar una caja, se abre su detalle.
+
 ## Permisos necesarios
 
 :::note[Permisos necesarios]

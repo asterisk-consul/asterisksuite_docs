@@ -15,7 +15,7 @@ Los **paneles** muestran la operación de un vistazo: el **inicio** (`/`), con u
 
 :::note[Permisos necesarios]
 - El inicio se abre con cualquier rol, pero cada **tarjeta KPI** y cada **widget** se muestra sólo si tenés su permiso. Los usuarios **OWNER** y **ADMIN** ven todo.
-- Los permisos que habilitan contenido en el inicio: Ver documentos · Ver productos · Ver cheques · Ver cuentas bancarias · Ver pagos · Ver tipos de cambio · Ver empleados · Ver picking · Ver viajes · Ver operaciones internacionales.
+- Los permisos que habilitan contenido en el inicio: Ver documentos · Ver productos · Ver cheques · Ver cuentas bancarias · Ver cajas · Ver pagos · Ver transferencias de caja · Ver tipos de cambio · Ver empleados · Ver picking · Ver viajes · Ver operaciones internacionales.
 :::
 
 ## El inicio (`/`)
@@ -51,7 +51,7 @@ Debajo de las tarjetas KPI se ordenan los **widgets**, bloques de detalle con gr
 | **Mi actividad** | Resumen diario de registros creados, tareas resueltas y pendientes actuales | personal | Siempre visible |
 | **Accesos directos** | Atajos a los módulos | personal | Siempre visible |
 | **Dólar del día** | Cotización oficial y blue | tesorería | Ver documentos, Ver pagos, Ver tipos de cambio **o** Ver operaciones internacionales (basta uno) |
-| **Finanzas** | Saldos bancarios y cajas, pagos y cobros | tesorería | Ver cuentas bancarias |
+| **Pendientes de tesorería** | Cheques próximos, anticipos, borradores, obligaciones y transferencias por resolver | tesorería | Ver cheques, Ver pagos o Ver transferencias de caja |
 | **Presupuestos** | Presupuestos por estado | comercial | Ver documentos |
 | **Órdenes de venta** | Órdenes pendientes de entrega | comercial | Ver documentos |
 | **Remitos** | Remitos por estado | comercial | Ver documentos |
@@ -97,14 +97,16 @@ Muestra la **cotización oficial** y la **blue** (compra y venta) con su hora de
 - Con permiso **Ver tipos de cambio** (o OWNER/ADMIN) aparece el enlace **Ver cotizaciones**, que abre `/settings/monedas`.
 - Si la fuente no responde se muestra **Cotización no disponible** con un botón **Reintentar**.
 
-## Finanzas
+## Pendientes de tesorería
 
-Muestra la posición de tesorería con permiso **Ver cuentas bancarias**:
+El widget muestra en formato compacto los asuntos de tesorería que requieren una acción y se adapta a tus permisos:
 
-- **Saldo bancario** y **Saldo cajas**, con el detalle por moneda (pesos y las monedas extra que uses) y enlaces a las cuentas y cajas.
-- **Cheques a cobrar** (de terceros) y **Cheques a pagar** (propios) pendientes.
-- Totales de **pagos registrados** y **cobros registrados** del período.
-- Botón de **actualización** propio. Si la carga falla aparece **"No pudimos cargar las finanzas"** con un botón **Reintentar**.
+- Con **Ver cheques**, muestra cheques próximos a cobrar y a pagar según el plazo configurado para los avisos de cheques.
+- Con **Ver pagos**, muestra anticipos y créditos por aplicar, pagos y cobros en borrador, y obligaciones próximas o vencidas.
+- Con **Ver transferencias de caja**, muestra las transferencias que requieren confirmación.
+- Cada grupo muestra cantidad e importes separados por moneda. Los importes estimados de obligaciones se identifican como tales; no se suman monedas distintas. Los accesos abren el listado con el grupo correspondiente filtrado.
+- **Abrir tablero de tesorería** lleva a los saldos por cuenta, la configuración de avisos de cheques y el resto de los pendientes.
+- El botón de actualización recarga los pendientes. Si falla la consulta, aparece **No pudimos cargar los pendientes** con una acción para reintentar.
 
 ## Cómo personalizar el inicio
 
@@ -145,7 +147,7 @@ La personalización se guarda **por usuario** (no afecta la vista de los demás)
 | No veo una tarjeta KPI o un widget que otro usuario sí ve | No tenés el permiso del widget (o no sos OWNER/ADMIN). | Pedile al administrador el permiso indicado en la tabla de widgets. |
 | No puedo guardar la vista | Falló la conexión con el servidor. | Reintentá guardar; verás el aviso *"No pudimos guardar la vista"*. |
 | El dólar no cambió recién actualizado | La fuente se cachea **5 minutos** en el servidor. | Esperá unos minutos o presioná el botón de actualizar del widget. |
-| Finanzas muestra un error | No se pudieron cargar los datos de tesorería. | Presionar **Reintentar** dentro del widget. |
+| Pendientes de tesorería muestra un error | No se pudieron cargar los grupos pendientes. | Presioná **Actualizar** dentro del widget para volver a consultar. |
 | La actividad muestra pocos documentos | El período elegido es corto (Hoy o 7 días). | Ampliá el período a 30 días o 1 año. |
 | Al hacer clic en el gráfico no abre nada | El clic cayó fuera de una barra, sector o leyenda. | Hacé clic directamente sobre el elemento del gráfico. |
 
