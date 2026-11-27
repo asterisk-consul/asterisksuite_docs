@@ -6,14 +6,77 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.183.3-alpha** (2026-11-26) |
+| Última versión de la app | **v0.184.0-alpha** (2026-11-27) |
 | Documentación al día hasta | **v0.135.0-alpha** |
 | Última revisión de docs | 2026-11-05 |
-| Versiones pendientes de revisar | **82** (0.183.3-alpha, 0.183.2-alpha, 0.183.1-alpha, 0.183.0-alpha, 0.182.1-alpha, 0.182.0-alpha, 0.181.1-alpha, 0.181.0-alpha, 0.180.4-alpha, 0.180.3-alpha, 0.180.2-alpha, 0.180.1-alpha, 0.180.0-alpha, 0.179.0-alpha, 0.178.3-alpha, 0.178.1-alpha, 0.178.0-alpha, 0.177.0-alpha, 0.176.1-alpha, 0.176.0-alpha, 0.175.0-alpha, 0.174.0-alpha, 0.173.3-alpha, 0.173.2-alpha, 0.173.1-alpha, 0.173.0-alpha, 0.172.0-alpha, 0.171.0-alpha, 0.170.0-alpha, 0.169.0-alpha, 0.168.2-alpha, 0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
+| Versiones pendientes de revisar | **93** (0.184.0-alpha, 0.183.13-alpha, 0.183.12-alpha, 0.183.11-alpha, 0.183.10-alpha, 0.183.9-alpha, 0.183.8-alpha, 0.183.7-alpha, 0.183.6-alpha, 0.183.5-alpha, 0.183.4-alpha, 0.183.3-alpha, 0.183.2-alpha, 0.183.1-alpha, 0.183.0-alpha, 0.182.1-alpha, 0.182.0-alpha, 0.181.1-alpha, 0.181.0-alpha, 0.180.4-alpha, 0.180.3-alpha, 0.180.2-alpha, 0.180.1-alpha, 0.180.0-alpha, 0.179.0-alpha, 0.178.3-alpha, 0.178.1-alpha, 0.178.0-alpha, 0.177.0-alpha, 0.176.1-alpha, 0.176.0-alpha, 0.175.0-alpha, 0.174.0-alpha, 0.173.3-alpha, 0.173.2-alpha, 0.173.1-alpha, 0.173.0-alpha, 0.172.0-alpha, 0.171.0-alpha, 0.170.0-alpha, 0.169.0-alpha, 0.168.2-alpha, 0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
 
 ## Pendientes
 
 Cada entrada es una versión de la app que todavía no se revisó contra los contenidos de `src/content/docs/`.
+
+### v0.184.0-alpha (2026-11-27) — pendiente
+
+- Compartir y revocar tareas para usuarios seleccionados de la empresa cliente mediante coincidencia de CUIT
+- Abrir Tareas compartidas para los destinatarios aunque no tengan el módulo CRM o el permiso general de lectura
+- Consultar tareas compartidas en lista, cronograma y calendario, con descripción y avance de las subtareas incluidas
+- Registrar tiempo de trabajo en semanas, días, horas y minutos, también al cambiar de estado
+- Mostrar el tiempo empleado y restante acumulado de la tarea y sus subtareas
+- Abrir las opciones para compartir desde un icono junto al cliente y explicar el alcance del acceso
+- Permitir registrar tiempo sin volver a cargar la estimación restante
+- Conservar la posición del cursor al editar la descripción de una tarea
+- Documentar el acceso compartido, el avance de subtareas y el seguimiento de tiempo
+
+### v0.183.13-alpha (2026-11-27) — pendiente
+
+- Suavizar la animación de expansión y contracción de los badges en las tarjetas
+
+### v0.183.12-alpha (2026-11-27) — pendiente
+
+- Aplicar los colores de prioridad también al chip del detalle de la tarea
+- Aclarar que los colores de prioridad son consistentes en el detalle y el tablero
+
+### v0.183.11-alpha (2026-11-27) — pendiente
+
+- Indicar la selección de categoría y prioridad con un color de fondo más oscuro
+- Documentar el estado visual de las opciones seleccionadas
+
+### v0.183.10-alpha (2026-11-27) — pendiente
+
+- Elegir prioridad y categoría mediante badges con el color de las tarjetas
+- Crear y seleccionar una categoría desde el selector de la tarea
+- Documentar la selección visual de categoría y prioridad
+
+### v0.183.9-alpha (2026-11-27) — pendiente
+
+- Unificar el estilo de prioridad y categoría y ampliar la paleta de colores
+- Aceptar los nuevos colores de categorías y etiquetas en la API
+- Documentar el estilo común y los colores disponibles para las categorías
+
+### v0.183.8-alpha (2026-11-27) — pendiente
+
+- Acercar prioridad y categoría y aplicar sus colores reales en todas sus vistas
+- Documentar el orden y color de las barras en las tarjetas
+
+### v0.183.7-alpha (2026-11-27) — pendiente
+
+- Mantener fijas las barras de categoría y prioridad y desplegarlas en conjunto con sus colores
+- Documentar la expansión conjunta y los colores de categoría en las tarjetas
+
+### v0.183.6-alpha (2026-11-27) — pendiente
+
+- Mostrar categoría y prioridad compactas y desplegables en las tarjetas
+- Documentar la categoría y prioridad desplegables en el tablero
+
+### v0.183.5-alpha (2026-11-27) — pendiente
+
+- Separar el control de arrastre del clic que abre el detalle de la tarea
+- Documentar el control de agarre para mover tarjetas
+
+### v0.183.4-alpha (2026-11-26) — pendiente
+
+- Priorizar cheques y compactar los pendientes del widget de tesorería
+- Actualizar la documentación del panel de tesorería y los avisos de cheques
 
 ### v0.183.3-alpha (2026-11-26) — pendiente
 

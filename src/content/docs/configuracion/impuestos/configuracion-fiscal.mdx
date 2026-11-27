@@ -37,7 +37,10 @@ Desde esta pantalla también se accede a **Reglas y alícuotas** y a **Retencion
 ## Reglas y consideraciones
 
 - En modo **Simples**, no se discrimina IVA ni se aplican percepciones/retenciones automáticas.
-- En modo **Completos**, el motor resuelve IVA por condición emisor × receptor y aplica reglas de percepción/retención.
+- La condición del emisor y del receptor valida qué letra de factura corresponde. El importe de IVA se obtiene de los impuestos configurados para los productos y del tipo de documento; no se calcula a partir de la condición fiscal del tercero.
+- El modo **Completos** habilita la configuración fiscal avanzada y las reglas de impuestos disponibles para la operación.
+- La condición frente al IVA de clientes y proveedores también valida la letra de la factura según la [matriz vigente de ARCA](https://www.arca.gob.ar/facturacion/regimen-general/comprobantes.asp). Para un emisor Responsable Inscripto: receptor Responsable Inscripto o Monotributista → letra A; receptor Consumidor Final o Exento → letra B. Un emisor Monotributista o Exento utiliza letra C.
+- La condición frente al IVA no fija por sí sola el importe de IVA: ese cálculo depende de los impuestos asociados a los productos y de la configuración del tipo de documento.
 - El **país** condiciona los impuestos y reglas disponibles.
 
 ## Problemas frecuentes

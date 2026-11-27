@@ -30,7 +30,7 @@ Permite dar de alta y editar cualquier **contraparte** (tercero) del sistema, ju
 
 2. **Completá los datos generales**
 
-   Nombre (y apellido si es persona), razón social, email, condición de IVA, exención y estado activo. Para **Ente Impositivo** (por ejemplo, ARCA), identificá el registro por su nombre: los campos de tipo y número de documento se ocultan.
+   Nombre (y apellido si es persona), razón social, email, condición de IVA, exención y estado activo. Para **Cliente** y **Proveedor**, elegí expresamente la condición frente al IVA; no se asigna Consumidor Final por defecto. Para **Ente Impositivo** (por ejemplo, ARCA), identificá el registro por su nombre: los campos de tipo y número de documento se ocultan.
 
 3. **Completá las pestañas**
 
@@ -63,6 +63,8 @@ Un tercero puede cumplir **varios roles** además de su tipo principal. El caso 
 2. Al activarlo y guardar, la contraparte suma el rol **Cliente**.
 3. Desde ese momento aparece **también en las listas de clientes**: se le puede vender, facturar, asignar precios por cliente y llevar su cuenta corriente.
 
+Al habilitar el rol de cliente también se solicita la condición frente al IVA en la pestaña **Impuestos**, porque la ficha podrá usarse para emitir comprobantes.
+
 Esto permite **una sola ficha** (un solo CUIT/identificación) compartiendo direcciones, contactos y cuentas, pero usándose como cliente, proveedor, empleado o socio según los roles activos.
 
 ## Validación del documento
@@ -87,6 +89,9 @@ La comparación del documento ignora espacios, guiones y otros separadores. La d
 ## Reglas y validaciones
 
 - El **tipo** y el **nombre** son obligatorios.
+- Para guardar un **Cliente** o **Proveedor**, también es obligatoria la condición frente al IVA: Responsable Inscripto, Monotributista, Consumidor Final o Exento. Elegí la condición real del tercero; el sistema no la completa automáticamente como Consumidor Final.
+- La condición del tercero se usa para validar la letra de la factura según la [matriz vigente de ARCA](https://www.arca.gob.ar/facturacion/regimen-general/comprobantes.asp). Si la empresa emisora es Responsable Inscripto, corresponde letra A cuando el receptor es Responsable Inscripto o Monotributista, y letra B cuando es Consumidor Final o Exento. Si el emisor es Monotributista o Exento, corresponde letra C.
+- La condición frente al IVA no determina por sí sola el importe del impuesto: el cálculo depende de los impuestos configurados en los productos y del tipo de documento.
 - El nombre o razón social no puede coincidir con otra parte interesada de la misma empresa, aunque ninguna tenga documento.
 - Para Empleado y Socio, el nombre se separa en **nombre** y **apellido**.
 - El **documento** debe cumplir el formato del tipo seleccionado.
@@ -101,6 +106,7 @@ La comparación del documento ignora espacios, guiones y otros separadores. La d
 | Mensaje / síntoma | Causa | Solución |
 |---|---|---|
 | "El CUIT debe tener 11 dígitos" | El número no coincide con el tipo. | Corregí el número o el tipo de documento. |
+| Falta la condición frente al IVA | El cliente o proveedor no tiene una condición seleccionada. | Abrí la pestaña **Impuestos** y elegí la condición fiscal real antes de guardar y emitir comprobantes. |
 | Ya existe una parte interesada con el mismo documento | El número ya está cargado en otra ficha o en RRHH, posiblemente con otro formato. | Abrí la ficha existente y reutilizala/asignale el rol necesario; no la dupliques. |
 | Ya existe una parte interesada con el mismo nombre | Otra ficha de la empresa tiene ese nombre o razón social, aunque esté escrita con distintas mayúsculas o espacios. | Abrí la ficha existente y reutilizala o corregí el nombre. |
 | El empleado no aparece como cliente | No se activó "Habilitar como cliente interno". | Editalo y activá esa opción. |

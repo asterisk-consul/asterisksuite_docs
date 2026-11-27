@@ -47,9 +47,9 @@ import { Steps } from '@astrojs/starlight/components'
 
    Buscá por número, referencia, proveedor o tipo de documento. Usá las pestañas para filtrar por tipo y **Seleccionados** para revisar lo que ya agregaste. Elegí las facturas de compra o vales pendientes y el **importe aplicado**. Para un vale, el pago debe usar la misma moneda del documento.
 
-   Si aplicás un comprobante en **USD** y el pago se realiza en **ARS**, ingresá la cotización ARS por USD. El formulario propone la guardada en la factura, pero podés reemplazarla por la cotización efectiva del pago. No se puede guardar ni confirmar el pago sin una cotización válida; si falta en la factura, se intenta usar la cotización del sistema para la fecha del pago.
+   Si aplicás un comprobante en **USD** y el pago se realiza en **ARS**, se propone la cotización efectiva para la fecha del pago. Podés corregirla si corresponde. El importe en pesos se convierte a USD con esa cotización y reduce el saldo de la factura en USD; no se reutiliza la cotización histórica del comprobante. No se puede guardar ni confirmar sin una cotización válida para la fecha del pago.
 
-   Si cambiás la moneda del pago de USD a ARS, el importe aplicado a la factura se convierte a pesos con su cotización guardada. Si la factura no tiene cotización, completá la que corresponda antes de guardar.
+   Si el pago y la factura están en **USD**, el importe aplicado reduce el saldo en USD. La cotización del pago se usa para valuar el movimiento en moneda base. El sistema no genera compensaciones automáticas por diferencia de cambio; los ajustes comerciales se registran mediante los comprobantes correspondientes, como notas de débito o crédito. Si cambiás la moneda del pago, el importe aplicado se recalcula con la cotización efectiva de la fecha del pago.
 
 5. **Revisá las retenciones**
 
@@ -97,7 +97,7 @@ En el detalle de una factura, quienes tengan acceso de lectura a pagos (`payment
 
 ## Editar un pago
 
-Mientras el pago esté en **Borrador**, podés editar sus datos, incluida la **fecha**. Al confirmar, la fecha, el medio y los documentos aplicados quedan de solo lectura. Un usuario OWNER/ADMIN o con `payments.update` puede corregir la **cotización** de cualquier pago confirmado o pagado en ARS aplicado a una factura en USD. La corrección actualiza el dato del pago y sus movimientos relacionados, sin cambiar el importe en pesos ni el importe aplicado a la factura. Para pagos en efectivo o por transferencia, ese mismo permiso también permite ajustar **retenciones** y **cuenta contable**; si un gasto todavía no tiene proveedor o entidad, se puede asociar desde esta sección para habilitar retenciones y reflejarlas en su cuenta corriente. El tercero asociado no se puede reemplazar después. Si se modifican retenciones, el importe bruto aplicado a cada factura se conserva; el sistema actualiza el importe neto del pago y el movimiento original de caja o banco, y recalcula sus saldos y la cuenta corriente. No agrega un movimiento separado de ajuste ni modifica el total de la factura. El sistema no crea asientos de mayor automáticamente. Las retenciones con certificado, remesa o imputación fiscal activa quedan protegidas y deben regularizarse primero desde su circuito fiscal.
+Mientras el pago esté en **Borrador**, podés editar sus datos, incluida la **fecha**. Al confirmar, la fecha, el medio y los documentos aplicados quedan de solo lectura. Un usuario OWNER/ADMIN o con `payments.update` puede corregir la **cotización** de un pago confirmado o pagado en ARS o USD aplicado a una factura en USD. La corrección recalcula en forma atómica el importe cancelado en USD cuando corresponda, el saldo pendiente del comprobante y la valuación del pago en la cuenta corriente. Si ese pago tenía compensaciones automáticas de cambio anteriores, la corrección las retira y reconstruye el saldo corrido. En un pago en USD, el importe cancelado en USD no cambia; se actualiza su valuación en moneda base. El total y la cotización histórica de la factura no cambian. Si la nueva cotización hiciera que el importe aplicado supere el saldo de la factura, se rechaza la corrección. Para pagos en efectivo o por transferencia, ese mismo permiso también permite ajustar **retenciones** y **cuenta contable**; si un gasto todavía no tiene proveedor o entidad, se puede asociar desde esta sección para habilitar retenciones y reflejarlas en su cuenta corriente. El tercero asociado no se puede reemplazar después. Si se modifican retenciones, el importe bruto aplicado a cada factura se conserva; el sistema actualiza el importe neto del pago y el movimiento original de caja o banco, y recalcula sus saldos y la cuenta corriente. El sistema no crea asientos de mayor automáticamente. Las retenciones con certificado, remesa o imputación fiscal activa quedan protegidas y deben regularizarse primero desde su circuito fiscal.
 
 ## Recuperar un pago anulado como borrador
 
@@ -107,7 +107,7 @@ No se puede recuperar desde esta acción un pago con tarjeta ni uno con retencio
 
 ## Reglas y validaciones
 
-- El **importe aplicado** no puede superar el **saldo pendiente** del documento.
+- El **importe aplicado** no puede superar el **saldo pendiente** del documento. En las facturas de compra, el pendiente descuenta las notas de crédito de compra confirmadas y activas vinculadas a esa factura.
 - Se requiere **caja abierta** o **cuenta** según el medio.
 - Las **retenciones practicadas** dependen del motor fiscal y del medio.
 - No cierres ni recargues la pantalla mientras el guardado o la confirmación están en curso.

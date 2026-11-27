@@ -15,11 +15,11 @@ Se administran en **Tipos de Documento** (`/erp/settings/document-types`).
 
 ## Campos principales
 
-- **Código** y **Descripción**.
-- **Dirección**: Venta o Compra.
-- **Letra** (A, B, C).
-- **Código AFIP**.
-- **Categoría**: Factura, Nota de Crédito, Nota de Débito, Orden, Presupuesto, Recibo o Remito.
+- **Código** (máximo 20 caracteres) y **Descripción** (máximo 150): ambos son obligatorios.
+- **Dirección** (obligatoria): Venta o Compra.
+- **Letra AFIP** (A, B, C o X) cuando corresponda; elegí **Sin letra fiscal (no aplica)** si ese tipo no usa letra fiscal.
+- **Código AFIP**: opcional, hasta 5 dígitos.
+- **Categoría**: Factura, Nota de Crédito, Nota de Débito, Orden, Presupuesto, Recibo o Remito. Es opcional para tipos internos; elegí la categoría del circuito para que el tipo se ofrezca al crear ese comprobante.
 - **Afecta stock**.
 - **Afecta contabilidad**.
 - **Afecta libro de IVA**.
@@ -35,8 +35,9 @@ Se administran en **Tipos de Documento** (`/erp/settings/document-types`).
 <Steps>
 
 1. Ir a **Tipos de Documento** y presionar **Nuevo tipo**.
-2. Completar código, descripción, dirección, letra, categoría y las banderas de comportamiento.
-3. Guardar.
+2. Completar código, descripción y dirección. Para usarlo en facturas, órdenes, remitos u otro circuito, elegir también su categoría.
+3. Asociar una secuencia si el tipo va a numerar comprobantes. El nombre admite hasta 50 caracteres, el punto de venta hasta 10 y el prefijo hasta 20; los rangos, si se indican, deben ser enteros positivos y el fin no puede ser menor que el inicio.
+4. Guardar. El formulario bloquea los campos requeridos vacíos y los valores que exceden los límites.
 
 </Steps>
 
@@ -66,7 +67,13 @@ Activá **Acepta conceptos comerciales** en cada tipo que deba permitir descuent
 ## Reglas y validaciones
 
 - El **código** y la **descripción** son obligatorios.
+- El código admite hasta **20** caracteres y debe ser único; la descripción, hasta **150**.
+- La dirección solo admite **Venta** o **Compra**. La letra solo admite **A, B, C o X**.
+- **Sin letra fiscal (no aplica)** guarda la letra vacía y evita validar la matriz de letras fiscales para ese tipo. Para usarlo en el circuito de facturas, mantené la categoría **Factura** y asociá su secuencia.
+- El código AFIP es opcional, numérico y admite hasta **5** dígitos.
+- Desactivar **Calcula impuestos** omite el cálculo para ese documento; conserva la categoría fiscal de los productos y la condición fiscal de la contraparte.
 - La **letra** y el **código AFIP** se usan para la emisión fiscal.
+- Al editar un borrador se puede cambiar el tipo por otro de la misma dirección y categoría. El sistema recalcula con la configuración del tipo elegido y asigna su secuencia; los comprobantes confirmados no admiten ese cambio.
 - Algunas banderas (afecta stock/contabilidad/IVA) determinan si el comprobante genera movimientos.
 
 ## Problemas frecuentes

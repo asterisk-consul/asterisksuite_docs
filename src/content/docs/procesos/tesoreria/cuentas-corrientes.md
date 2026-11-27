@@ -36,6 +36,8 @@ El saldo se compone de movimientos como:
 - **Cheque emitido**, **cheque recibido** y **cheque rechazado**.
 - **Retenciones** practicadas a proveedores o sufridas de clientes.
 
+Cuando se paga o cobra un comprobante en **USD**, se conserva la cotización histórica de la factura y se calcula el saldo pendiente en USD. La cotización efectiva del movimiento valúa el pago o cobro en moneda base. El sistema no agrega compensaciones automáticas por diferencia de cambio. Si existe una diferencia comercial documentada, se refleja mediante la nota de débito o crédito correspondiente. La cuenta corriente conserva las valuaciones de los comprobantes y del pago.
+
 Al confirmar un pago o cobro **A cuenta**, el saldo disponible se registra en la cuenta corriente del cliente o proveedor. Cuando se aplica a una factura, a un saldo inicial o a una OV permitida por el circuito, disminuye el disponible y se registra la imputación en el comprobante sin duplicar el saldo. En el detalle de la cuenta, estos movimientos se identifican como **A cuenta**. Si se quita la aplicación, el importe vuelve a quedar disponible.
 
 ## Saldo inicial
@@ -74,6 +76,7 @@ Una **NC/ND confirmada sin factura de origen** también puede anularse y enviars
 ## Reglas y consideraciones
 
 - Los saldos se expresan en la **moneda base**.
+- Al anular un pago o cobro se retiran también sus compensaciones automáticas de cambio históricas. Al volver a confirmarlo no se generan nuevas compensaciones. Corregir la cotización de un pago confirmado también retira esas compensaciones anteriores y recalcula el saldo corrido.
 - Los movimientos se generan desde documentos, pagos, cobros y cheques.
 - Para incorporar anticipos confirmados anteriores a este comportamiento, ejecutar una vez `prisma/repairs/20261111_backfill_advance_current_accounts.sql` en cada base tenant. El script solo agrega el saldo aún disponible y recalcula la cuenta corriente; no modifica documentos, aplicaciones, caja ni bancos.
 - Un saldo positivo/negativo indica a favor o contra el tercero según el tipo.
