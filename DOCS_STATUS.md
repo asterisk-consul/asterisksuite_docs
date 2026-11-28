@@ -6,14 +6,39 @@
 
 | | |
 | --- | --- |
-| Última versión de la app | **v0.184.0-alpha** (2026-11-27) |
+| Última versión de la app | **v0.184.3-alpha** (2026-11-28) |
 | Documentación al día hasta | **v0.135.0-alpha** |
 | Última revisión de docs | 2026-11-05 |
-| Versiones pendientes de revisar | **93** (0.184.0-alpha, 0.183.13-alpha, 0.183.12-alpha, 0.183.11-alpha, 0.183.10-alpha, 0.183.9-alpha, 0.183.8-alpha, 0.183.7-alpha, 0.183.6-alpha, 0.183.5-alpha, 0.183.4-alpha, 0.183.3-alpha, 0.183.2-alpha, 0.183.1-alpha, 0.183.0-alpha, 0.182.1-alpha, 0.182.0-alpha, 0.181.1-alpha, 0.181.0-alpha, 0.180.4-alpha, 0.180.3-alpha, 0.180.2-alpha, 0.180.1-alpha, 0.180.0-alpha, 0.179.0-alpha, 0.178.3-alpha, 0.178.1-alpha, 0.178.0-alpha, 0.177.0-alpha, 0.176.1-alpha, 0.176.0-alpha, 0.175.0-alpha, 0.174.0-alpha, 0.173.3-alpha, 0.173.2-alpha, 0.173.1-alpha, 0.173.0-alpha, 0.172.0-alpha, 0.171.0-alpha, 0.170.0-alpha, 0.169.0-alpha, 0.168.2-alpha, 0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
+| Versiones pendientes de revisar | **96** (0.184.3-alpha, 0.184.2-alpha, 0.184.1-alpha, 0.184.0-alpha, 0.183.13-alpha, 0.183.12-alpha, 0.183.11-alpha, 0.183.10-alpha, 0.183.9-alpha, 0.183.8-alpha, 0.183.7-alpha, 0.183.6-alpha, 0.183.5-alpha, 0.183.4-alpha, 0.183.3-alpha, 0.183.2-alpha, 0.183.1-alpha, 0.183.0-alpha, 0.182.1-alpha, 0.182.0-alpha, 0.181.1-alpha, 0.181.0-alpha, 0.180.4-alpha, 0.180.3-alpha, 0.180.2-alpha, 0.180.1-alpha, 0.180.0-alpha, 0.179.0-alpha, 0.178.3-alpha, 0.178.1-alpha, 0.178.0-alpha, 0.177.0-alpha, 0.176.1-alpha, 0.176.0-alpha, 0.175.0-alpha, 0.174.0-alpha, 0.173.3-alpha, 0.173.2-alpha, 0.173.1-alpha, 0.173.0-alpha, 0.172.0-alpha, 0.171.0-alpha, 0.170.0-alpha, 0.169.0-alpha, 0.168.2-alpha, 0.168.1-alpha, 0.168.0-alpha, 0.167.0-alpha, 0.166.0-alpha, 0.165.1-alpha, 0.165.0-alpha, 0.164.1-alpha, 0.164.0-alpha, 0.163.0-alpha, 0.162.0-alpha, 0.161.0-alpha, 0.160.0-alpha, 0.159.0-alpha, 0.158.1-alpha, 0.158.0-alpha, 0.157.0-alpha, 0.156.0-alpha, 0.155.1-alpha, 0.155.0-alpha, 0.154.0-alpha, 0.153.3-alpha, 0.153.2-alpha, 0.153.1-alpha, 0.153.0-alpha, 0.152.0-alpha, 0.151.3-alpha, 0.151.1-alpha, 0.151.0-alpha, 0.150.0-alpha, 0.149.0-alpha, 0.148.5-alpha, 0.148.4-alpha, 0.148.3-alpha, 0.148.0-alpha, 0.147.0-alpha, 0.146.0-alpha, 0.145.0-alpha, 0.144.1-alpha, 0.144.0-alpha, 0.143.0-alpha, 0.142.0-alpha, 0.141.0-alpha, 0.140.2-alpha, 0.140.1-alpha, 0.140.0-alpha, 0.139.0-alpha, 0.138.2-alpha, 0.138.1-alpha, 0.138.0-alpha, 0.137.1-alpha, 0.136.0-alpha) |
 
 ## Pendientes
 
 Cada entrada es una versión de la app que todavía no se revisó contra los contenidos de `src/content/docs/`.
+
+### v0.184.3-alpha (2026-11-28) — parcial
+
+> Actualizadas las guías de pagos y cobros con la cotización persistida y las acciones de borrador. La guía de Tareas describe el acceso compartido con CRM apagado. Quedan versiones anteriores por revisar.
+
+- Conservar la cotización guardada al abrir un borrador y recalcular los comprobantes al editarla
+- Mostrar Guardar borrador solo con cambios pendientes y Confirmar cuando el borrador está guardado
+- Mostrar solo Tareas compartidas en el menú con el CRM desactivado si el usuario recibió alguna
+- Actualizar las guías de pagos, cobros y acceso a tareas compartidas
+
+### v0.184.2-alpha (2026-11-28) — parcial
+
+> Documentados pagos y cobros con guardado previo a confirmar y cotización del movimiento, gastos bancarios en transferencias, orden del menú y requisito del módulo Logística para generar desde viajes; quedan pendientes versiones anteriores del portal.
+
+- Recalcular los comprobantes seleccionados cuando cambia la cotización del pago y guardar el borrador antes de confirmarlo
+- Guardar y recuperar los gastos bancarios al editar pagos por transferencia
+- Ubicar Tareas debajo de Tesorería y Reportes debajo de Stock en el menú lateral
+- Ocultar Generar desde viajes cuando Logística está desactivada para la empresa
+- Actualizar las guías de pagos y cobros con la cotización del movimiento y el guardado previo a la confirmación
+
+### v0.184.1-alpha (2026-11-27) — pendiente
+
+- Mostrar los tableros del CRM a los titulares y usuarios con permiso de lectura, incluso cuando tienen tareas compartidas
+- Recuperar el botón Expandir Tareas y mantener el modo expandido al volver al listado de tableros
+- Documentar el acceso a los tableros y la navegación en modo expandido
 
 ### v0.184.0-alpha (2026-11-27) — pendiente
 
@@ -26,6 +51,16 @@ Cada entrada es una versión de la app que todavía no se revisó contra los con
 - Permitir registrar tiempo sin volver a cargar la estimación restante
 - Conservar la posición del cursor al editar la descripción de una tarea
 - Documentar el acceso compartido, el avance de subtareas y el seguimiento de tiempo
+- Abrir las reglas de tiempo desde Todos los tableros y recuperar el aviso de registro obligatorio al cambiar de estado
+- Organizar la conciliación en Comparación, Resolver movimientos, Movimientos del sistema y Notas
+- Interpretar fechas e importes locales del CSV y permitir importar importes y saldos expresados en centavos
+- Mejorar la coincidencia de movimientos por importe, referencia y fecha y señalar casos ambiguos
+- Asignar conceptos bancarios en lote y recordar sugerencias por descripción y sentido para futuras cargas
+- Guardar notas de conciliación por cuenta y archivo, descargarlas e incluirlas en el Excel
+- Aplicar pagos en pesos a facturas en dólares con la cotización efectiva de la fecha del pago
+- Evitar compensaciones automáticas por diferencia de cambio al confirmar o aplicar un pago
+- Recalcular saldos y valuación al corregir la cotización de pagos confirmados en pesos o dólares
+- Descontar las notas de crédito de compra al validar el saldo disponible de una factura
 
 ### v0.183.13-alpha (2026-11-27) — pendiente
 

@@ -2,10 +2,13 @@
   "documentedUpTo": "0.135.0-alpha",
   "lastReview": "2026-11-05",
   "app": {
-    "version": "0.184.0-alpha",
-    "date": "2026-11-27"
+    "version": "0.184.3-alpha",
+    "date": "2026-11-28"
   },
   "pending": [
+    "0.184.3-alpha",
+    "0.184.2-alpha",
+    "0.184.1-alpha",
     "0.184.0-alpha",
     "0.183.13-alpha",
     "0.183.12-alpha",
@@ -360,6 +363,14 @@
     "0.183.0-alpha": {
       "status": "partial",
       "note": "Actualizadas las guías de tareas, créditos de saldo inicial a nuestro favor, filtros y transferencias entre monedas; el corte global conserva versiones anteriores pendientes."
+    },
+    "0.184.2-alpha": {
+      "status": "partial",
+      "note": "Documentados pagos y cobros con guardado previo a confirmar y cotización del movimiento, gastos bancarios en transferencias, orden del menú y requisito del módulo Logística para generar desde viajes; quedan pendientes versiones anteriores del portal."
+    },
+    "0.184.3-alpha": {
+      "status": "partial",
+      "note": "Actualizadas las guías de pagos y cobros con la cotización persistida y las acciones de borrador. La guía de Tareas describe el acceso compartido con CRM apagado. Quedan versiones anteriores por revisar."
     }
   },
   "notes": "Corte calculado el 2026-10-20 comparando los cambios de asterisksuite_frontend/versiones/versions.json contra el contenido de src/content/docs/: los módulos publicados hasta 0.71.0-alpha (inversiones, libro de movimientos bancarios, gastos bancarios, clientes internos, precancelación) están descriptos; de 0.72.0-alpha en adelante casi no hay rastro en los docs, con incorporaciones puntuales en 0.76.0-alpha (variantes) y 0.82.0-alpha (circuito de compras)."

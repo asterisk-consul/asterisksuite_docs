@@ -57,6 +57,8 @@ En el detalle de presupuestos, órdenes, remitos y comprobantes, hacé clic en e
 
 El botón **Crear nuevo comprobante** aparece en **Ventas → Comprobantes** (`/erp/sales/comprobantes`) y en los listados de **Presupuestos** (`/erp/budgets`), **Órdenes de Venta** (`/erp/orders`) y **Remitos** (`/erp/remitos`). Permite iniciar cualquiera de esos comprobantes, una factura o una nota de crédito/débito sin importar desde cuál listado lo abriste. El botón muestra **Alt + N**, que abre el menú. En los formularios, los atajos se muestran junto a su acción: **F2** abre el selector de productos, **Tab** recorre los campos, **Ctrl + Enter** agrega los productos seleccionados y **Ctrl + S** guarda. Podés filtrar el selector por categorías y etiquetas, marcar varios productos y agregarlos juntos; cada uno comienza con cantidad 1 y podés ajustarla en su renglón. Si seleccionás más de una categoría o etiqueta, basta con que el producto coincida con una opción de cada filtro activo. Las opciones disponibles respetan los permisos de creación de cada tipo.
 
+En **Ventas → Comprobantes**, **Generar desde viajes** se muestra cuando el módulo **Logística** está activo para la empresa.
+
 ## Páginas de esta sección
 
 - [Presupuestos](/procesos/ventas/presupuestos/)

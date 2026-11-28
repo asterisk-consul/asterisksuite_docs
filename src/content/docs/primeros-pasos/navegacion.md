@@ -16,6 +16,7 @@ El sistema es **multi-empresa**: siempre trabajás dentro de una **empresa activ
 ## Menú y accesos
 
 - El **menú lateral** agrupa los módulos por área (ERP, Stock, Logística, etc.).
+- Cuando están disponibles para tu empresa y tus permisos, **Tareas** aparece debajo de **Tesorería** y **Reportes** debajo de **Stock**.
 - Al seleccionar una sección con subopciones, se abre su primera página disponible; por ejemplo, **Configuración** abre el **Centro de configuración**. Las páginas sin subopciones abren directamente su destino. Las opciones se filtran según los permisos del usuario.
 - El botón con el ícono de panel está en el encabezado de la página, junto al título. En pantallas amplias cambia el menú lateral entre la vista completa y la vista compacta de íconos; en pantallas pequeñas abre o cierra el menú. Al pasar el cursor o enfocarlo, el tooltip indica la acción disponible.
 - El **Centro de configuración** (`/settings`) reúne todos los parámetros.

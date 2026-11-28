@@ -47,7 +47,7 @@ import { Steps } from '@astrojs/starlight/components'
 
    Buscá por número, referencia, proveedor o tipo de documento. Usá las pestañas para filtrar por tipo y **Seleccionados** para revisar lo que ya agregaste. Elegí las facturas de compra o vales pendientes y el **importe aplicado**. Para un vale, el pago debe usar la misma moneda del documento.
 
-   Si aplicás un comprobante en **USD** y el pago se realiza en **ARS**, se propone la cotización efectiva para la fecha del pago. Podés corregirla si corresponde. El importe en pesos se convierte a USD con esa cotización y reduce el saldo de la factura en USD; no se reutiliza la cotización histórica del comprobante. No se puede guardar ni confirmar sin una cotización válida para la fecha del pago.
+   Si aplicás un comprobante en **USD** y el pago se realiza en **ARS**, se propone la cotización efectiva para la fecha del pago. Podés corregirla si corresponde. Al cambiarla, se recalculan en el acto los importes de los comprobantes seleccionados; el saldo se reduce en USD y el pago conserva su importe en pesos. No se reutiliza la cotización histórica del comprobante ni se puede guardar o confirmar sin una cotización válida.
 
    Si el pago y la factura están en **USD**, el importe aplicado reduce el saldo en USD. La cotización del pago se usa para valuar el movimiento en moneda base. El sistema no genera compensaciones automáticas por diferencia de cambio; los ajustes comerciales se registran mediante los comprobantes correspondientes, como notas de débito o crédito. Si cambiás la moneda del pago, el importe aplicado se recalcula con la cotización efectiva de la fecha del pago.
 
@@ -61,13 +61,13 @@ import { Steps } from '@astrojs/starlight/components'
 
 </Steps>
 
-En un pago o cobro en borrador, si modificás datos, comprobantes, medios o retenciones, el formulario indica qué secciones cambiaron y muestra **Guardar borrador**. Después de guardar, cuando no quedan cambios pendientes, muestra **Confirmar**. Las retenciones cargadas pero no guardadas no se aplican ni generan movimientos en la cuenta corriente; guardá el borrador antes de confirmar.
+Al abrir un pago o cobro en borrador, se conserva la cotización guardada, incluida una ingresada manualmente. Si no hay cambios pendientes, aparece **Confirmar**. Si modificás datos, comprobantes, medios, retenciones o gastos bancarios, aparece **Guardar borrador** en su lugar; después de guardar vuelve **Confirmar**. El aviso de cambios aparece solo cuando los datos difieren de los guardados. Las retenciones y los gastos bancarios no guardados todavía no generan movimientos.
 
 ## Atajos de teclado
 
 - En el listado **Tesorería → Pagos**, `Alt + N` abre un nuevo pago/cobro si tenés permiso para crearlo.
 - En las pantallas de crear o editar un borrador, `Ctrl + S` guarda (en un borrador existente, cuando hay cambios pendientes) y `Esc` cancela desde cualquier parte de la página. Si hay un diálogo, menú o selector abierto, `Esc` lo cierra primero.
-- En el detalle de un pago, `Alt + C` abre **Confirmar** (borrador), `Alt + P` abre **Marcar pagado** (confirmado), `Alt + R` abre **Rechazar** (confirmado) y `Alt + A` abre **Anular** (confirmado o pagado). Se muestran según el estado y tus permisos. Si hay cambios pendientes, guardá el borrador antes de confirmar. Los atajos no actúan mientras escribís en un campo o hay un diálogo o selector abierto.
+- En el detalle de un pago, `Alt + C` abre **Confirmar** (borrador sin cambios pendientes), `Alt + P` abre **Marcar pagado** (confirmado), `Alt + R` abre **Rechazar** (confirmado) y `Alt + A` abre **Anular** (confirmado o pagado). Se muestran según el estado y tus permisos. Si hay cambios pendientes, guardá el borrador antes de confirmar. Los atajos no actúan mientras escribís en un campo o hay un diálogo o selector abierto.
 
 ## Confirmar el pago
 
